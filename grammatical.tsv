@@ -1,0 +1,24 @@
+([a-z])-([a-z])	\1\2	# non-obvious => nonobvious
+n't(?:\s|$)	nt	# don't => dont
+'ve(?:\s|$)	ve	# should've shouldve
+(?:\s|^)I'm(?:\s|$)	Im	# I'm => Im
+([^aeiou's])s(?:\s|$)	\1	# books => book
+\S's(?:\s|$)	s	# Jack's => Jacks
+((?:\s|^)[Ii])ts(?:\s|$)	\1t's	# its => it's
+((?:\s|^)[Oo])nes(?:\s|$)	\1ne's	# ones => one's
+((?:\s|^)[Yy])our(?:\s|$)	\1ou're	# your => you're
+((?:\s|^)[Yy])ou're(?:\s|$)	\1our	# you're => your
+((?:\s|^)[Hh])e's(?:\s|$)	\1is	# he's => his
+((?:\s|^)[Hh])is(?:\s|$)	\1e's	# his => he's
+((?:\s|^)[Ww])e're(?:\s|$)	\1ere	# we're => were
+((?:\s|^)[Ww])ere(?:\s|$)	\1e're	# were => we're
+((?:\s|^)[Tt])ere(?:\s|$)	\1heir	# there => their
+((?:\s|^)[Tt])eir(?:\s|$)	\1here	# their => there
+((?:\s|^)[Tt])ey're(?:\s|$)	\1heir	# they're => their
+((?:\s|^)[Tt])eir(?:\s|$)	\1hey're	# their => they're
+((?:\s|^)[Ll])et's(?:\s|$)	\1ets	# let's => lets
+((?:\s|^)[Ll])ets(?:\s|$)	\1et's	# lets => let's
+((?:\s|^)[Yy])ours(?:\s|$)	\1our's	# yours => your's
+((?:\s|^)[Hh])ers(?:\s|$)	\1er's	# hers => her's
+((?:\s|^)[Ou])urs(?:\s|$)	\1ur's	# ours => our's
+((?:\s|^)[Tt])heirs(?:\s|$)	\1heir's	# theirs => their's
