@@ -39,6 +39,7 @@ def neighbor_neighbor_thats_not_neighbor(c:str,n:str)->str:
 rules = {} 
 anti_rules = {} 
 
+# fat fingers
 for c,ns in qwerty_neighbors.items():
    for n in ns:
       cn = '[^\\s'+c+n+']'
@@ -48,22 +49,29 @@ for c,ns in qwerty_neighbors.items():
       rules[f'({cn*2}){c}({cnn*2})'] = f'\\1{c+n}\\2'
       rules[f'({cnn*2}){c}({cnn*2})'] = f'\\1{n}\\2'
 
+# long shift
 for c in qwerty_neighbors.keys():
    rules[f'((\\s|^)[A-Z]){c}([a-z])'] = f'\\1{c.upper()}\\2'
 
+# odd repetitions is zero even is one
 for c in qwerty_neighbors.keys():
    rules[f'(^|[^{c}])({c}({c}{c})+)([^{c}]|$)'] = f'\\1\\2{c}\\4'
 
+# fat fingers require grammar tool
+
+# long shift
+for c in qwerty_neighbors.keys():
+   anti_rules[f'((\\s|^)[A-Z]){c.upper()}([a-z])'] = f'\\1{c.upper()}\\2'
+
+# odd repetitions is zero even is one
 for c in qwerty_neighbors.keys():
    anti_rules[f'(^|[^{c}]){c}({c}({c}{c})+)([^{c}]|$)'] = f'\\1\\2{c}\\4'
+   
 
-with open('new.keyboard.rules','w') as f:
+with open('keyboard.tsv','w') as f:
    for k,v in rules.items():
       f.write(f'{k}\t{v}\n')
 
-with open('anti.keyboard.rules','w') as f:
+with open('anti.keyboard.tsv','w') as f:
    for k,v in anti_rules.items():
       f.write(f'{k}\t{v}\n')
-
-
-# print(u)

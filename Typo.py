@@ -26,8 +26,8 @@ ROOT_DIR = os.path.dirname(script_path)
 
 
 #@title parseRules
-def parseRules(name,ROOT_DIR=ROOT_DIR):
-   with open(ROOT_DIR + f'/{name}.rules','r') as f:
+def parseRules(name,ROOT_DIR=ROOT_DIR)->List[Tuple[str,str]]:
+   with open(ROOT_DIR + f'/{name}.tsv','r') as f:
       lines = f.readlines()
       cnt = -1
       results = []
@@ -41,23 +41,18 @@ def parseRules(name,ROOT_DIR=ROOT_DIR):
             results.append((line[0],line[1]))
    return results
 
-def trimmed(y,z):
-   return (y[6:]+z[3:],z[:3]+y[6:-1])
-   
-WORD_RULES = parseRules('variant') + parseRules('grammatical') + parseRules('misspelling')
-WORD_RULES = ((x[1:-1],y) for x,y in WORD_RULES)
-SAFE_KEYBOARD_RULES = parseRules('keyboard.safer')
-KEYBOARD_RULES = parseRules('keyboard')
-WORD_CORRECTION_RULES = (trimmed(y,z) for y,z in WORD_RULES)
-def compile_first(x):
+def compile_first(x:Tuple[str,str])->Tuple[re.Pattern[str],str]:
    try:
       return (re.compile(x[0]),x[1])
    except:
       print(x)
-WORD_RULES = list(map(compile_first , WORD_RULES))
-WORD_CORRECTION_RULES = list(map(compile_first , WORD_CORRECTION_RULES))
-KEYBOARD_RULES = list(map(compile_first, KEYBOARD_RULES))
-SAFE_KEYBOARD_RULES = list(map(compile_first, SAFE_KEYBOARD_RULES))
+      raise ValueError(f'compilable {x}')
+   
+WORD_CORRECTION_RULES = list(map(compile_first , parseRules('anti.variant') + parseRules('anti.misspelling')))
+KEYBOARD_CORRECTION_RULES = list(map(compile_first , parseRules('anti.keyboard')))
+WORD_RULES = list(map(compile_first ,  parseRules('variant') + parseRules('grammatical') + parseRules('misspelling')))
+KEYBOARD_RULES = list(map(compile_first,  parseRules('keyboard')))
+
 
 def parse_trigrams(ROOT_DIR=ROOT_DIR):
    d = dict()
@@ -108,9 +103,9 @@ class util:
 
 
    @staticmethod
-   def keyboard_rules_scan(text: str, safe=False)->List[Tuple[Tuple[int, int], str, re.Pattern]]:
+   def keyboard_rules_scan(text: str)->List[Tuple[Tuple[int, int], str, re.Pattern]]:
       matches = []
-      rules = SAFE_KEYBOARD_RULES if safe else KEYBOARD_RULES
+      rules = KEYBOARD_RULES
       for regex, repl in rules:
          for x in regex.finditer(text):
             matches.append((x.span(), repl, regex))
