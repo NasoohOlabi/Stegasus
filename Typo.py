@@ -1,24 +1,31 @@
 #@title imports
 # !pin install contextualSpellCheck
 
+import itertools
 import json
 import math
 import os
 import re
 # Get the path of the script
 from dataclasses import dataclass, field
-from typing import List, Optional, Tuple
+from typing import Callable, Generator, List, Optional, Tuple
 
+import Levenshtein
 import nltk
-import spacy
+from language_tool_python import LanguageTool
 from nltk.tokenize import word_tokenize
+from spellchecker import SpellChecker
 
 # nltk.download('punkt')
+# nltk.download('perluniprops')
 
 
+
+# Initialize the LanguageTool tool
+lang_tool = LanguageTool('en-US')
+spell_tool = SpellChecker()
 
 # Get the path of the script
-
 script_path = os.path.abspath(__file__)
 
 ROOT_DIR = os.path.dirname(script_path)
@@ -26,20 +33,15 @@ ROOT_DIR = os.path.dirname(script_path)
 
 
 #@title parseRules
-def parseRules(name,ROOT_DIR=ROOT_DIR)->List[Tuple[str,str]]:
-   with open(ROOT_DIR + f'/{name}.tsv','r') as f:
-      lines = f.readlines()
-      cnt = -1
-      results = []
-      for line in lines:
-         cnt+=1
-         line = line[:-1].strip()
-         if len(line) == 0:
-            continue
-         line = line.split('\t')
-         if len(line) > 1:
-            results.append((line[0],line[1]))
-   return results
+def parseRules(name, ROOT_DIR=ROOT_DIR) -> Generator[Tuple[str, str], None, None]:
+   with open(ROOT_DIR + f'/{name}.tsv', 'r') as f:
+      for line in f:
+            line = line.strip()
+            if len(line) == 0:
+               continue
+            line = line.split('\t')
+            if len(line) > 1:
+               yield (line[0], line[1])
 
 def compile_first(x:Tuple[str,str])->Tuple[re.Pattern[str],str]:
    try:
@@ -48,9 +50,10 @@ def compile_first(x:Tuple[str,str])->Tuple[re.Pattern[str],str]:
       print(x)
       raise ValueError(f'compilable {x}')
    
-WORD_CORRECTION_RULES = list(map(compile_first , parseRules('anti.variant') + parseRules('anti.misspelling')))
+WORD_CORRECTION_RULES = list(map(compile_first , itertools.chain(parseRules('anti.variant'), parseRules('anti.misspelling'))))
+FAT_CORRECTION_RULES = list(map(compile_first , parseRules('fat.keyboard')))
 KEYBOARD_CORRECTION_RULES = list(map(compile_first , parseRules('anti.keyboard')))
-WORD_RULES = list(map(compile_first ,  parseRules('variant') + parseRules('grammatical') + parseRules('misspelling')))
+WORD_RULES = list(map(compile_first ,  itertools.chain(parseRules('variant'), parseRules('grammatical'), parseRules('misspelling'))))
 KEYBOARD_RULES = list(map(compile_first,  parseRules('keyboard')))
 
 
@@ -70,21 +73,42 @@ PARSED_TRIGRAMS = parse_trigrams()
 class util:
    
    @staticmethod
-   def get_words(t: str) -> List[str]:
-      return word_tokenize(t.strip())
+   def get_words(text: str,verbose=False) -> Tuple[List[str],Callable[[List[str],bool],str]]:
+      words = word_tokenize(text)
+      spans = []
+      first_word_hit = text.find(words[0])
+      spans.append((0,first_word_hit))
+      last_hit_end = first_word_hit + len(words[0])
+      for w in words[1:]:
+         hit_end = text.find(w,last_hit_end) 
+         spans.append((last_hit_end,hit_end))
+         last_hit_end = hit_end + len(w)
+      spans.append((last_hit_end,len(text)))
+      non_words = list(map(lambda x: text[x[0]:x[1]], spans))
 
+      def detokenize(words:List[str],verbose=verbose) -> str:
+         ## combine words with non_words into a single string
+         tokens = [non_words[0]]
+         for i in range(len(words)):
+            tokens.append(words[i])
+            tokens.append(non_words[i+1])
+         print(f"detokenize '{text}' -> '{words}' + '{non_words}' -> '{text}'")
+         return ''.join(tokens)
+      
+      return  words ,detokenize
+   
    @staticmethod
    def show_diff(a: str, b: str):
-      l_a = util.get_words(a)
-      l_b = util.get_words(b)
+      l_a,_ = util.get_words(a)
+      l_b,_ = util.get_words(b)
       for i in range(min(len(l_a), len(l_b))):
          if l_a[i] != l_b[i]:
             print(f'i:{i} a:"{l_a[i]}" b:"{l_b[i]}"')
    
    @staticmethod
    def diff(a: str, b: str):
-      l_a = util.get_words(a)
-      l_b = util.get_words(b)
+      l_a,_ = util.get_words(a)
+      l_b,_ = util.get_words(b)
       acc = []
       for i in range(min(len(l_a), len(l_b))):
          if l_a[i] != l_b[i]:
@@ -101,7 +125,6 @@ class util:
          print(f"After replace: {replaced_text}")
       return text[:span[0]] + replaced_text + text[span[1]:]
 
-
    @staticmethod
    def keyboard_rules_scan(text: str)->List[Tuple[Tuple[int, int], str, re.Pattern]]:
       matches = []
@@ -112,19 +135,14 @@ class util:
       matches.sort()
       return matches
 
-
    @staticmethod
    def word_rules_scan(text: str)->List[Tuple[Tuple[int, int], str, re.Pattern]]:
-      text_words = util.get_words(text)
       matches = []
-      for i, word in enumerate(text_words):
-         for regex, repl in WORD_RULES:
-            x = regex.match(word)
-            if x is not None:
-               start, end = x.span()
-               start += sum(map(len, text_words[0:i]))
-               end += sum(map(len, text_words[0:i]))
-               matches.append(((start, end), repl, regex))
+      for regex, repl in WORD_RULES:
+         x = regex.match(text)
+         if x is not None:
+            start, end = x.span()
+            matches.append(((start, end), repl, regex))
       matches.sort()
       return matches
 
@@ -143,66 +161,91 @@ class util:
       return result
 
    @staticmethod
-   def valid_matches(text:str,slots:List[Tuple[Tuple[int, int], str, re.Pattern]],freq=PARSED_TRIGRAMS, verbose=False):
-      """A match is valid if it modifies one word and doesn't modify the first and last letter and doesn't modify the word to a correct spelling word and is decodable"""
-      fist_check = util.spellcheck(text) 
-      if fist_check != text:
-         raise ValueError(f"MatchValidator: text already contains typos '{text}' can't operate on texts with a typo ... the typo is {fist_check}")
-      uText = text.upper()
-      uText_words = util.get_words(uText)
-      valid_regex = re.compile('[A-Z][A-Z][A-Z]')
-      mutations: List[str] = list(map(lambda x: '',slots))
+   def valid_matches(text:str, slots:List[Tuple[Tuple[int, int], str, re.Pattern]], freq=PARSED_TRIGRAMS, verbose=False):
+      text_words, _ = util.get_words(text)
+      mutations: List[str] = list(map(lambda x: '', slots))
+
+      # Apply the match to the text and get the resulting strings
       for match_index, match_result in enumerate(slots):
-         span,repl,regex = match_result
-         
-         newString = util.apply_match(text,  match_result,verbose)
-         mutations[match_index] = newString
-         
-
-         words = util.get_words(newString)
-         if len(words) != len(uText_words):
-            if verbose:
-               print(f"MatchValidator: length of words in transformed string ({len(words)}) does not match original string ({len(uText_words)})")
-            mutations[match_index] = ''
-            continue
-         
-         for ow,nw in zip(uText_words,words):
-            ow = ow.lower()
-            nw = nw.lower()
-            if ow[0] != nw[0] or ow[-1] != nw[-1]:
-               if verbose:
-                  print(f"MatchValidator: first and/or last character of word in transformed string ({nw}) does not match original string ({ow})")
-               mutations[match_index] = ''
-               continue
-
-      if verbose:
-         print(list(zip(slots,mutations)))
-      ambiguous_invalid_matches = []
-
-      for i , newString in enumerate(mutations):
-         if len(newString) == 0:
-            ambiguous_invalid_matches.append(i)
+         new_string = util.apply_match_and_validate(text, match_result, mutations, match_index, text_words, verbose)
+         norm = util.normalize(new_string,verbose)
+         if norm != new_string:
+            mutations[match_index] = new_string
          else:
-            for j in range(i):
-               if mutations[j] == mutations[i]:
-                  ambiguous_invalid_matches.append(i)
+            print(f'rule undetectable "{norm}" != "{text}"')
 
+      # Print the list of matches and their mutations if verbose output is enabled
+      if verbose:
+         print(list(zip(slots, mutations)))
+
+      # Check for ambiguous and invalid matches
+      ambiguous_invalid_matches = util.find_ambiguous_or_invalid_matches(mutations)
+
+      # Create a list of valid matches
       valid_slots = [elem for i, elem in enumerate(slots) if i not in ambiguous_invalid_matches]
 
       return valid_slots
 
    @staticmethod
+   def apply_match_and_validate(text: str, match_result: Tuple[Tuple[int, int], str, re.Pattern], mutations: List[str], match_index: int, text_words: List[str], verbose: bool) -> str:
+      span, repl, regex = match_result
+      new_string = util.apply_match(text, match_result, verbose)
+      print(f"MatchValidator: validating match {text}->{new_string}")
+
+      # Check if the resulting string has the same number of words as the original text
+      words, _ = util.get_words(new_string)
+      if len(words) != len(text_words):
+         if verbose:
+               print(f"MatchValidator: length of words in transformed string ({len(words)}) does not match original string ({len(text_words)})")
+         # Set the mutation to an empty string if it is not valid
+         mutations[match_index] = ''
+      else:
+         # Check if the first and last character of each modified word is the same as the original word
+         for ow, nw in zip(text_words, words):
+               ow = ow.lower()
+               nw = nw.lower()
+               if ow[0] != nw[0] or ow[-1] != nw[-1]:
+                  if verbose:
+                     print(f"MatchValidator: first and/or last character of word in transformed string ({nw}) does not match original string ({ow})")
+                  # Set the mutation to an empty string if it is not valid
+                  mutations[match_index] = ''
+                  break
+
+      return new_string
+
+   @staticmethod
+   def find_ambiguous_or_invalid_matches(mutations: List[str]) -> List[int]:
+      ambiguous_invalid_matches = []
+      for i, new_string in enumerate(mutations):
+         if len(new_string) == 0:
+               # If the mutation is an empty string, it is ambiguous or invalid
+               ambiguous_invalid_matches.append(i)
+         else:
+               for j in range(i):
+                  if mutations[j] == mutations[i]:
+                     # If the mutation is the same as a previous one, it is ambiguous
+                     ambiguous_invalid_matches.append(i)
+                     break
+
+      return ambiguous_invalid_matches
+
+
+
+   @staticmethod
    def valid_rules_scan(text:str,verbose=False):
       proposed_slots = util.rules_scan(text)
+      print('proposed_slots: ',proposed_slots)
       try:
-         return util.valid_matches(text,proposed_slots,verbose=verbose)
+         valid_slots = util.valid_matches(text,proposed_slots,verbose=verbose)
+         print('valid_slots: ',valid_slots)
+         return valid_slots
       except ValueError:
          return []
       
    @staticmethod
    def chunker(text:str,span_size = 6):
       # Iterate over the spans in the sentence
-      words = util.get_words(text)
+      words,_ = util.get_words(text)
       chunks = []
       cur_word = 0
       last_sep = 0
@@ -221,13 +264,57 @@ class util:
       return chunks
 
    @staticmethod
-   def spellcheck(text:str,verbose=False):
+   def word_we_misspelled(word,spelling):
+      if util.string_mutation_distance(spelling,word) == 1 \
+         and spelling[0].lower() == word[0].lower() \
+         and spelling[-1].lower() == word[-1].lower():
+
+         for regex,repl in FAT_CORRECTION_RULES:
+            if regex.sub(repl,word) == spelling:
+               return spelling
+         return word
+      else:
+         return word # speller is wrong since input is ai generated and the only source for bad spelling is us and it's probably a name of sth
+   @staticmethod
+   def spell_word(word:str) -> str:
+      spellingOpt = spell_tool.correction(word)
+      spelling = spellingOpt if spellingOpt is not None else word
+      return spelling if util.word_we_misspelled(word,spelling) else word 
+
+   @staticmethod
+   def normalize(original_text:str,verbose=False):
+      text = original_text
+      temp = text
       for regex,repl in WORD_CORRECTION_RULES:
-         text =  regex.sub(repl, text)
+         temp =  regex.sub(repl, text)
+         if verbose and text != temp:
+            print(f'WORD_CORRECTION_RULES rule:{(regex,repl)} "{text}" -> "{temp}"')
+         text = temp 
+
+      for regex,repl in KEYBOARD_CORRECTION_RULES:
+         temp =  regex.sub(repl, text)
+         if verbose and text != temp:
+            print(f'KEYBOARD_CORRECTION_RULES rule:{(regex,repl)} "{text}" -> "{temp}"')
+         text = temp 
+
+      temp = lang_tool.correct(text)
+      if verbose and text != temp:
+         print(f'lang_tool.correct "{text}" -> "{temp}"')
+      text = temp 
+
+      words, get_sentence  = util.get_words(text)
+      spelled_words = [util.spell_word(w) for w in words]
+
+      spelled_text = get_sentence(spelled_words,verbose)
 
       if verbose:
-         print(f"util.spellcheck('{text}') = '{text}'")
-      return text
+         print(f"util.normalize('{original_text}') => '{spelled_text}'")
+      return spelled_text
+   
+   @staticmethod
+   def string_mutation_distance(str1: str, str2: str) -> int:
+      """Returns the number of mutations required to transform str1 into str2"""
+      return Levenshtein.distance(str1, str2)
 
 @dataclass
 class Typo:
@@ -240,7 +327,7 @@ class Typo:
    verbose: bool = field(init=True,repr=False,default=False)
 
    def __post_init__(self):
-      if self.text != util.spellcheck(self.text):
+      if self.text != util.normalize(self.text,self.verbose):
          raise ValueError("Text isn't spelled correctly")
 
    def apply(self, space: int, offset: int, text: str) -> str:
@@ -341,61 +428,60 @@ class Typo:
       return bit_values, remaining_bits
 
 
-import language_tool_python
-
-# Initialize the LanguageTool tool
-tool = language_tool_python.LanguageTool('en-US')
 
 
 
-# Test case 1: Correct simple grammar error
-# Define the input sentence
-s1 = "Your the best"
 
-# Use LanguageTool to correct grammar errors
-s2 = tool.correct(s1)
+# # Test case 1: Correct simple grammar error
+# # Define the input sentence
+# s1 = "Your the best"
 
-# Check that the output is correct
-print('s1,s2')
-util.show_diff(s2, "You're the best")
+# # Use LanguageTool to correct grammar errors
+# s2 = tool.correct(s1)
 
-# Test case 2: Handle correct input sentence
-# Define the input sentence
-s3 = "You're the best"
+# # Check that the output is correct
+# print('s1,s2')
+# util.show_diff(s2, "You're the best")
 
-# Use LanguageTool to correct grammar errors
-print('s3,s4')
-s4 = tool.correct(s3)
+# # Test case 2: Handle correct input sentence
+# # Define the input sentence
+# s3 = "You're the best"
 
-# Check that the output is correct
-util.show_diff(s4, "You're the best")
+# # Use LanguageTool to correct grammar errors
+# print('s3,s4')
+# s4 = tool.correct(s3)
 
-# Example 1: Correct a complex sentence
-# Define the input sentence
-s5 = "The dog chased it's tail, but its too short."
+# # Check that the output is correct
+# util.show_diff(s4, "You're the best")
 
-# Use LanguageTool to correct grammar errors
-s6 = tool.correct(s5)
+# # Example 1: Correct a complex sentence
+# # Define the input sentence
+# s5 = "The dog chased it's tail, but its too short."
 
-# Print the corrected sentence
-print('s5,s6')
-util.show_diff(s5,s6)
-print(s6)
-# Expected output: "The dog chased its tail, but it's too short."
+# # Use LanguageTool to correct grammar errors
+# s6 = tool.correct(s5)
 
-# Example 2: Handle correct input sentence
-# Define the input sentence
-s7 = "The quick brown fox jumped over the lazy dog."
+# # Print the corrected sentence
+# print('s5,s6')
+# util.show_diff(s5,s6)
+# print(s6)
+# # Expected output: "The dog chased its tail, but it's too short."
 
-# Use LanguageTool to correct grammar errors
-s8 = tool.correct(s7)
-print('s7,s8')
-util.show_diff(s7,s8)
+# # Example 2: Handle correct input sentence
+# # Define the input sentence
+# s7 = "The quick brown fox jumped over the lazy dog."
 
-# Print the corrected sentence
-print(s8)
+# # Use LanguageTool to correct grammar errors
+# s8 = tool.correct(s7)
+# print('s7,s8')
+# util.show_diff(s7,s8)
+
+# # Print the corrected sentence
+# print(s8)
 # Expected output: "The quick brown fox jumped over the lazy dog."
 
 
 
-t = Typo('Hi, How are you?')
+t = Typo('Hi, How are you?',verbose=True)
+
+t.slots
