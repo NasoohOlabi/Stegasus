@@ -1,0 +1,152 @@
+rule undetectable "I’ve toted with the idea of using GPT-3’s API to add much more intelligent capabilities to RC, but I can’t deny that I’m drawn to the idea of running this kind of language model locally and in an environment I control. I’d like to someday increase the speed of RC’s speech synthesis and add a speech-to-text translation model in order to achieve real-time communication between humans and the chatbot. I anticipate that with this handful of improvements, RC will be considered a fully-fledged member of our server. Often, we feel that it already is." != "I’ve toyed with the idea of using GPT-3’s API to add much more intelligent capabilities to RC, but I can’t deny that I’m drawn to the idea of running this kind of language model locally and in an environment I control. I’d like to someday increase the speed of RC’s speech synthesis and add a speech-to-text translation model in order to achieve real-time communication between humans and the chatbot. I anticipate that with this handful of improvements, RC will be considered a fully-fledged member of our server. Often, we feel that it already is."
+rule undetectable "I’ve toyed with the idea of using GPT-3’s API to add much mire intelligent capabilities to RC, but I can’t deny that I’m drawn to the idea of running this kind of language model locally and in an environment I control. I’d like to someday increase the speed of RC’s speech synthesis and add a speech-to-text translation model in order to achieve real-time communication between humans and the chatbot. I anticipate that with this handful of improvements, RC will be considered a fully-fledged member of our server. Often, we feel that it already is." != "I’ve toyed with the idea of using GPT-3’s API to add much more intelligent capabilities to RC, but I can’t deny that I’m drawn to the idea of running this kind of language model locally and in an environment I control. I’d like to someday increase the speed of RC’s speech synthesis and add a speech-to-text translation model in order to achieve real-time communication between humans and the chatbot. I anticipate that with this handful of improvements, RC will be considered a fully-fledged member of our server. Often, we feel that it already is."
+rule undetectable "I’ve toyed with the idea of using GPT-3’s API to add much mote intelligent capabilities to RC, but I can’t deny that I’m drawn to the idea of running this kind of language model locally and in an environment I control. I’d like to someday increase the speed of RC’s speech synthesis and add a speech-to-text translation model in order to achieve real-time communication between humans and the chatbot. I anticipate that with this handful of improvements, RC will be considered a fully-fledged member of our server. Often, we feel that it already is." != "I’ve toyed with the idea of using GPT-3’s API to add much more intelligent capabilities to RC, but I can’t deny that I’m drawn to the idea of running this kind of language model locally and in an environment I control. I’d like to someday increase the speed of RC’s speech synthesis and add a speech-to-text translation model in order to achieve real-time communication between humans and the chatbot. I anticipate that with this handful of improvements, RC will be considered a fully-fledged member of our server. Often, we feel that it already is."
+rule undetectable "I’ve toyed with the idea of using GPT-3’s API to add much more intelligent capabilities to RC, bit I can’t deny that I’m drawn to the idea of running this kind of language model locally and in an environment I control. I’d like to someday increase the speed of RC’s speech synthesis and add a speech-to-text translation model in order to achieve real-time communication between humans and the chatbot. I anticipate that with this handful of improvements, RC will be considered a fully-fledged member of our server. Often, we feel that it already is." != "I’ve toyed with the idea of using GPT-3’s API to add much more intelligent capabilities to RC, but I can’t deny that I’m drawn to the idea of running this kind of language model locally and in an environment I control. I’d like to someday increase the speed of RC’s speech synthesis and add a speech-to-text translation model in order to achieve real-time communication between humans and the chatbot. I anticipate that with this handful of improvements, RC will be considered a fully-fledged member of our server. Often, we feel that it already is."
+rule undetectable "I’ve toyed with the idea of using GPT-3’s API to add much more intelligent capabilities to RC, but I can’t deny that I’m drawn to the idea of running thus kind of language model locally and in an environment I control. I’d like to someday increase the speed of RC’s speech synthesis and add a speech-to-text translation model in order to achieve real-time communication between humans and the chatbot. I anticipate that with this handful of improvements, RC will be considered a fully-fledged member of our server. Often, we feel that it already is." != "I’ve toyed with the idea of using GPT-3’s API to add much more intelligent capabilities to RC, but I can’t deny that I’m drawn to the idea of running this kind of language model locally and in an environment I control. I’d like to someday increase the speed of RC’s speech synthesis and add a speech-to-text translation model in order to achieve real-time communication between humans and the chatbot. I anticipate that with this handful of improvements, RC will be considered a fully-fledged member of our server. Often, we feel that it already is."
+FAT_CORRECTION_RULES (re.compile('([^\\Wqwe])wq([^\\Wqw])')) (\1q\2): soeech == speech
+FAT_CORRECTION_RULES (re.compile('([^\\Wqwe])wq([^\\Wqw])')) (\1q\2): sopeech == speech
+FAT_CORRECTION_RULES (re.compile('([^\\Wqwe])wq([^\\Wqw])')) (\1q\2): spoeech == speech
+FAT_CORRECTION_RULES (re.compile('([^\\Wqwe])wq([^\\Wqw])')) (\1q\2): speecvh == speech
+FAT_CORRECTION_RULES (re.compile('([^\\Wqwe])wq([^\\Wqw])')) (\1q\2): speecxh == speech
+FAT_CORRECTION_RULES (re.compile('([^\\Wqwe])wq([^\\Wqw])')) (\1q\2): speevh == speech
+FAT_CORRECTION_RULES (re.compile('([^\\Wqwe])wq([^\\Wqw])')) (\1q\2): speevch == speech
+FAT_CORRECTION_RULES (re.compile('([^\\Wqwe])wq([^\\Wqw])')) (\1q\2): speexh == speech
+FAT_CORRECTION_RULES (re.compile('([^\\Wqwe])wq([^\\Wqw])')) (\1q\2): speexch == speech
+FAT_CORRECTION_RULES (re.compile('([^\\Wqwe])wq([^\\Wqw])')) (\1q\2): terxt == text
+FAT_CORRECTION_RULES (re.compile('([^\\Wqwe])wq([^\\Wqw])')) (\1q\2): tewxt == text
+FAT_CORRECTION_RULES (re.compile('([^\\Wqwe])wq([^\\Wqw])')) (\1q\2): twxt == text
+FAT_CORRECTION_RULES (re.compile('([^\\Wqwe])wq([^\\Wqw])')) (\1q\2): twext == text
+FAT_CORRECTION_RULES (re.compile('([^\\Wqwe])wq([^\\Wqw])')) (\1q\2): tect == test
+FAT_CORRECTION_RULES (re.compile('([^\\Wqwe])wq([^\\Wqw])')) (\1q\2): tecxt == text
+FAT_CORRECTION_RULES (re.compile('([^\\Wqwe])wq([^\\Wqw])')) (\1q\2): texct == text
+FAT_CORRECTION_RULES (re.compile('([^\\Wqwe])wq([^\\Wqw])')) (\1q\2): tezt == test
+rule undetectable "I’ve toyed with the idea of using GPT-3’s API to add much more intelligent capabilities to RC, but I can’t deny that I’m drawn to the idea of running this kind of language model locally and in an environment I control. I’d like to someday increase the speed of RC’s speech synthesis and add a speech-to-text translation model in order to achieve real-tome communication between humans and the chatbot. I anticipate that with this handful of improvements, RC will be considered a fully-fledged member of our server. Often, we feel that it already is." != "I’ve toyed with the idea of using GPT-3’s API to add much more intelligent capabilities to RC, but I can’t deny that I’m drawn to the idea of running this kind of language model locally and in an environment I control. I’d like to someday increase the speed of RC’s speech synthesis and add a speech-to-text translation model in order to achieve real-time communication between humans and the chatbot. I anticipate that with this handful of improvements, RC will be considered a fully-fledged member of our server. Often, we feel that it already is."
+rule undetectable "I’ve toyed with the idea of using GPT-3’s API to add much more intelligent capabilities to RC, but I can’t deny that I’m drawn to the idea of running this kind of language model locally and in an environment I control. I’d like to someday increase the speed of RC’s speech synthesis and add a speech-to-text translation model in order to achieve real-tine communication between humans and the chatbot. I anticipate that with this handful of improvements, RC will be considered a fully-fledged member of our server. Often, we feel that it already is." != "I’ve toyed with the idea of using GPT-3’s API to add much more intelligent capabilities to RC, but I can’t deny that I’m drawn to the idea of running this kind of language model locally and in an environment I control. I’d like to someday increase the speed of RC’s speech synthesis and add a speech-to-text translation model in order to achieve real-time communication between humans and the chatbot. I anticipate that with this handful of improvements, RC will be considered a fully-fledged member of our server. Often, we feel that it already is."
+rule undetectable "I’ve toyed with the idea of using GPT-3’s API to add much more intelligent capabilities to RC, but I can’t deny that I’m drawn to the idea of running this kind of language model locally and in an environment I control. I’d like to someday increase the speed of RC’s speech synthesis and add a speech-to-text translation model in order to achieve real-time communication between humans and the chatbot. I anticipate that with thus handful of improvements, RC will be considered a fully-fledged member of our server. Often, we feel that it already is." != "I’ve toyed with the idea of using GPT-3’s API to add much more intelligent capabilities to RC, but I can’t deny that I’m drawn to the idea of running this kind of language model locally and in an environment I control. I’d like to someday increase the speed of RC’s speech synthesis and add a speech-to-text translation model in order to achieve real-time communication between humans and the chatbot. I anticipate that with this handful of improvements, RC will be considered a fully-fledged member of our server. Often, we feel that it already is."
+rule undetectable "I’ve toyed with the idea of using GPT-3’s API to add much more intelligent capabilities to RC, but I can’t deny that I’m drawn to the idea of running this kind of language model locally and in an environment I control. I’d like to someday increase the speed of RC’s speech synthesis and add a speech-to-text translation model in order to achieve real-time communication between humans and the chatbot. I anticipate that with this handful of improvements, RC will be considered a filly-fledged member of our server. Often, we feel that it already is." != "I’ve toyed with the idea of using GPT-3’s API to add much more intelligent capabilities to RC, but I can’t deny that I’m drawn to the idea of running this kind of language model locally and in an environment I control. I’d like to someday increase the speed of RC’s speech synthesis and add a speech-to-text translation model in order to achieve real-time communication between humans and the chatbot. I anticipate that with this handful of improvements, RC will be considered a fully-fledged member of our server. Often, we feel that it already is."
+FAT_CORRECTION_RULES (re.compile('([^\\Wqwe])wq([^\\Wqw])')) (\1q\2): fiully == fully
+FAT_CORRECTION_RULES (re.compile('([^\\Wqwe])wq([^\\Wqw])')) (\1q\2): fuilly == fully
+FAT_CORRECTION_RULES (re.compile('([^\\Wqwe])wq([^\\Wqw])')) (\1q\2): fuylly == fully
+FAT_CORRECTION_RULES (re.compile('([^\\Wqwe])wq([^\\Wqw])')) (\1q\2): fylly == fully
+FAT_CORRECTION_RULES (re.compile('([^\\Wqwe])wq([^\\Wqw])')) (\1q\2): fyully == fully
+FAT_CORRECTION_RULES (re.compile('([^\\Wqwe])wq([^\\Wqw])')) (\1q\2): fkedged == fledged
+FAT_CORRECTION_RULES (re.compile('([^\\Wqwe])wq([^\\Wqw])')) (\1q\2): fkledged == fledged
+FAT_CORRECTION_RULES (re.compile('([^\\Wqwe])wq([^\\Wqw])')) (\1q\2): flkedged == fledged
+FAT_CORRECTION_RULES (re.compile('([^\\Wqwe])wq([^\\Wqw])')) (\1q\2): flerdged == fledged
+FAT_CORRECTION_RULES (re.compile('([^\\Wqwe])wq([^\\Wqw])')) (\1q\2): flewdged == fledged
+FAT_CORRECTION_RULES (re.compile('([^\\Wqwe])wq([^\\Wqw])')) (\1q\2): flrdged == fledged
+FAT_CORRECTION_RULES (re.compile('([^\\Wqwe])wq([^\\Wqw])')) (\1q\2): flredged == fledged
+FAT_CORRECTION_RULES (re.compile('([^\\Wqwe])wq([^\\Wqw])')) (\1q\2): flwdged == fledged
+FAT_CORRECTION_RULES (re.compile('([^\\Wqwe])wq([^\\Wqw])')) (\1q\2): flwedged == fledged
+FAT_CORRECTION_RULES (re.compile('([^\\Wqwe])wq([^\\Wqw])')) (\1q\2): fledsged == fledged
+FAT_CORRECTION_RULES (re.compile('([^\\Wqwe])wq([^\\Wqw])')) (\1q\2): flefdged == fledged
+FAT_CORRECTION_RULES (re.compile('([^\\Wqwe])wq([^\\Wqw])')) (\1q\2): flesged == fledged
+FAT_CORRECTION_RULES (re.compile('([^\\Wqwe])wq([^\\Wqw])')) (\1q\2): flesdged == fledged
+FAT_CORRECTION_RULES (re.compile('([^\\Wqwe])wq([^\\Wqw])')) (\1q\2): fledgfed == fledged
+FAT_CORRECTION_RULES (re.compile('([^\\Wqwe])wq([^\\Wqw])')) (\1q\2): fledghed == fledged
+FAT_CORRECTION_RULES (re.compile('([^\\Wqwe])wq([^\\Wqw])')) (\1q\2): fledhed == fledged
+FAT_CORRECTION_RULES (re.compile('([^\\Wqwe])wq([^\\Wqw])')) (\1q\2): fledhged == fledged
+FAT_CORRECTION_RULES (re.compile('([^\\Wqwe])wq([^\\Wqw])')) (\1q\2): fledgerd == fledged
+FAT_CORRECTION_RULES (re.compile('([^\\Wqwe])wq([^\\Wqw])')) (\1q\2): fledgewd == fledged
+FAT_CORRECTION_RULES (re.compile('([^\\Wqwe])wq([^\\Wqw])')) (\1q\2): fledgrd == fledged
+FAT_CORRECTION_RULES (re.compile('([^\\Wqwe])wq([^\\Wqw])')) (\1q\2): fledgred == fledged
+FAT_CORRECTION_RULES (re.compile('([^\\Wqwe])wq([^\\Wqw])')) (\1q\2): fledgwd == fledged
+FAT_CORRECTION_RULES (re.compile('([^\\Wqwe])wq([^\\Wqw])')) (\1q\2): fledgwed == fledged
+t.spaces = [45, 14, 90, 6, 32, 55, 61, 53, 56, 51, 47, 67, 81, 87, 66, 72, 43, 14]
+t.bits = [5, 3, 6, 2, 5, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 5, 3]
+max=90
+len=18
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] passed!
+[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] passed!
+[2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2] passed!
+[3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3] passed!
+[4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4] passed!
+[5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5] passed!
+[6, 6, 6, 0, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6] passed!
+[7, 7, 7, 1, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7] passed!
+[8, 8, 8, 2, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8] passed!
+[9, 9, 9, 3, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9] passed!
+[10, 10, 10, 4, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10] passed!
+[11, 11, 11, 5, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11] passed!
+[12, 12, 12, 0, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12] passed!
+[13, 13, 13, 1, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13] passed!
+[14, 0, 14, 2, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 0] passed!
+[15, 1, 15, 3, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 1] passed!
+[16, 2, 16, 4, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 2] passed!
+[17, 3, 17, 5, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 3] passed!
+[18, 4, 18, 0, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 4] passed!
+[19, 5, 19, 1, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 5] passed!
+[20, 6, 20, 2, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 6] passed!
+[21, 7, 21, 3, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 7] passed!
+[22, 8, 22, 4, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 8] passed!
+[23, 9, 23, 5, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 9] passed!
+[24, 10, 24, 0, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 10] passed!
+[25, 11, 25, 1, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 11] passed!
+[26, 12, 26, 2, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 12] passed!
+[27, 13, 27, 3, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 13] passed!
+[28, 0, 28, 4, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 0] passed!
+[29, 1, 29, 5, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 1] passed!
+[30, 2, 30, 0, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 2] passed!
+[31, 3, 31, 1, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 3] passed!
+[32, 4, 32, 2, 0, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 4] passed!
+[33, 5, 33, 3, 1, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 5] passed!
+[34, 6, 34, 4, 2, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 6] passed!
+[35, 7, 35, 5, 3, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 7] passed!
+[36, 8, 36, 0, 4, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 8] passed!
+[37, 9, 37, 1, 5, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37, 9] passed!
+[38, 10, 38, 2, 6, 38, 38, 38, 38, 38, 38, 38, 38, 38, 38, 38, 38, 10] passed!
+[39, 11, 39, 3, 7, 39, 39, 39, 39, 39, 39, 39, 39, 39, 39, 39, 39, 11] passed!
+[40, 12, 40, 4, 8, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 12] passed!
+[41, 13, 41, 5, 9, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 13] passed!
+[42, 0, 42, 0, 10, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 0] passed!
+[43, 1, 43, 1, 11, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 0, 1] passed!
+[44, 2, 44, 2, 12, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 1, 2] passed!
+[0, 3, 45, 3, 13, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 2, 3] passed!
+[1, 4, 46, 4, 14, 46, 46, 46, 46, 46, 46, 46, 46, 46, 46, 46, 3, 4] passed!
+[2, 5, 47, 5, 15, 47, 47, 47, 47, 47, 0, 47, 47, 47, 47, 47, 4, 5] passed!
+[3, 6, 48, 0, 16, 48, 48, 48, 48, 48, 1, 48, 48, 48, 48, 48, 5, 6] passed!
+[4, 7, 49, 1, 17, 49, 49, 49, 49, 49, 2, 49, 49, 49, 49, 49, 6, 7] passed!
+[5, 8, 50, 2, 18, 50, 50, 50, 50, 50, 3, 50, 50, 50, 50, 50, 7, 8] passed!
+[6, 9, 51, 3, 19, 51, 51, 51, 51, 0, 4, 51, 51, 51, 51, 51, 8, 9] passed!
+[7, 10, 52, 4, 20, 52, 52, 52, 52, 1, 5, 52, 52, 52, 52, 52, 9, 10] passed!
+[8, 11, 53, 5, 21, 53, 53, 0, 53, 2, 6, 53, 53, 53, 53, 53, 10, 11] passed!
+[9, 12, 54, 0, 22, 54, 54, 1, 54, 3, 7, 54, 54, 54, 54, 54, 11, 12] passed!
+[10, 13, 55, 1, 23, 0, 55, 2, 55, 4, 8, 55, 55, 55, 55, 55, 12, 13] passed!
+[11, 0, 56, 2, 24, 1, 56, 3, 0, 5, 9, 56, 56, 56, 56, 56, 13, 0] passed!
+[12, 1, 57, 3, 25, 2, 57, 4, 1, 6, 10, 57, 57, 57, 57, 57, 14, 1] passed!
+[13, 2, 58, 4, 26, 3, 58, 5, 2, 7, 11, 58, 58, 58, 58, 58, 15, 2] passed!
+[14, 3, 59, 5, 27, 4, 59, 6, 3, 8, 12, 59, 59, 59, 59, 59, 16, 3] passed!
+[15, 4, 60, 0, 28, 5, 60, 7, 4, 9, 13, 60, 60, 60, 60, 60, 17, 4] passed!
+[16, 5, 61, 1, 29, 6, 0, 8, 5, 10, 14, 61, 61, 61, 61, 61, 18, 5] passed!
+[17, 6, 62, 2, 30, 7, 1, 9, 6, 11, 15, 62, 62, 62, 62, 62, 19, 6] passed!
+[18, 7, 63, 3, 31, 8, 2, 10, 7, 12, 16, 63, 63, 63, 63, 63, 20, 7] passed!
+[19, 8, 64, 4, 0, 9, 3, 11, 8, 13, 17, 64, 64, 64, 64, 64, 21, 8] passed!
+[20, 9, 65, 5, 1, 10, 4, 12, 9, 14, 18, 65, 65, 65, 65, 65, 22, 9] passed!
+[21, 10, 66, 0, 2, 11, 5, 13, 10, 15, 19, 66, 66, 66, 0, 66, 23, 10] passed!
+[22, 11, 67, 1, 3, 12, 6, 14, 11, 16, 20, 0, 67, 67, 1, 67, 24, 11] passed!
+[23, 12, 68, 2, 4, 13, 7, 15, 12, 17, 21, 1, 68, 68, 2, 68, 25, 12] passed!
+[24, 13, 69, 3, 5, 14, 8, 16, 13, 18, 22, 2, 69, 69, 3, 69, 26, 13] passed!
+[25, 0, 70, 4, 6, 15, 9, 17, 14, 19, 23, 3, 70, 70, 4, 70, 27, 0] passed!
+[26, 1, 71, 5, 7, 16, 10, 18, 15, 20, 24, 4, 71, 71, 5, 71, 28, 1] passed!
+[27, 2, 72, 0, 8, 17, 11, 19, 16, 21, 25, 5, 72, 72, 6, 0, 29, 2] passed!
+[28, 3, 73, 1, 9, 18, 12, 20, 17, 22, 26, 6, 73, 73, 7, 1, 30, 3] passed!
+[29, 4, 74, 2, 10, 19, 13, 21, 18, 23, 27, 7, 74, 74, 8, 2, 31, 4] passed!
+[30, 5, 75, 3, 11, 20, 14, 22, 19, 24, 28, 8, 75, 75, 9, 3, 32, 5] passed!
+[31, 6, 76, 4, 12, 21, 15, 23, 20, 25, 29, 9, 76, 76, 10, 4, 33, 6] passed!
+[32, 7, 77, 5, 13, 22, 16, 24, 21, 26, 30, 10, 77, 77, 11, 5, 34, 7] passed!
+[33, 8, 78, 0, 14, 23, 17, 25, 22, 27, 31, 11, 78, 78, 12, 6, 35, 8] passed!
+[34, 9, 79, 1, 15, 24, 18, 26, 23, 28, 32, 12, 79, 79, 13, 7, 36, 9] passed!
+[35, 10, 80, 2, 16, 25, 19, 27, 24, 29, 33, 13, 80, 80, 14, 8, 37, 10] passed!
+[36, 11, 81, 3, 17, 26, 20, 28, 25, 30, 34, 14, 0, 81, 15, 9, 38, 11] passed!
+[37, 12, 82, 4, 18, 27, 21, 29, 26, 31, 35, 15, 1, 82, 16, 10, 39, 12] passed!
+[38, 13, 83, 5, 19, 28, 22, 30, 27, 32, 36, 16, 2, 83, 17, 11, 40, 13] passed!
+[39, 0, 84, 0, 20, 29, 23, 31, 28, 33, 37, 17, 3, 84, 18, 12, 41, 0] passed!
+[40, 1, 85, 1, 21, 30, 24, 32, 29, 34, 38, 18, 4, 85, 19, 13, 42, 1] passed!
+[41, 2, 86, 2, 22, 31, 25, 33, 30, 35, 39, 19, 5, 86, 20, 14, 0, 2] passed!
+[42, 3, 87, 3, 23, 32, 26, 34, 31, 36, 40, 20, 6, 0, 21, 15, 1, 3] passed!
+[43, 4, 88, 4, 24, 33, 27, 35, 32, 37, 41, 21, 7, 1, 22, 16, 2, 4] passed!
+[44, 5, 89, 5, 25, 34, 28, 36, 33, 38, 42, 22, 8, 2, 23, 17, 3, 5] passed!
+rule undetectable "I’ve toted with the idea of using GPT-3’s API to add much more intelligent capabilities to RC, but I can’t deny that I’m drawn to the idea of running this kind of language model locally and in an environment I control. I’d like to someday increase the speed of RC’s speech synthesis and add a speech-to-text translation model in order to achieve real-time communication between humans and the chatbot. I anticipate that with this handful of improvements, RC will be considered a fully-fledged member of our server. Often, we feel that it already is." != "I’ve toyed with the idea of using GPT-3’s API to add much more intelligent capabilities to RC, but I can’t deny that I’m drawn to the idea of running this kind of language model locally and in an environment I control. I’d like to someday increase the speed of RC’s speech synthesis and add a speech-to-text translation model in order to achieve real-time communication between humans and the chatbot. I anticipate that with this handful of improvements, RC will be considered a fully-fledged member of our server. Often, we feel that it already is."
+rule undetectable "I’ve toyed with the idea of using GPT-3’s API to add much mire intelligent capabilities to RC, but I can’t deny that I’m drawn to the idea of running this kind of language model locally and in an environment I control. I’d like to someday increase the speed of RC’s speech synthesis and add a speech-to-text translation model in order to achieve real-time communication between humans and the chatbot. I anticipate that with this handful of improvements, RC will be considered a fully-fledged member of our server. Often, we feel that it already is." != "I’ve toyed with the idea of using GPT-3’s API to add much more intelligent capabilities to RC, but I can’t deny that I’m drawn to the idea of running this kind of language model locally and in an environment I control. I’d like to someday increase the speed of RC’s speech synthesis and add a speech-to-text translation model in order to achieve real-time communication between humans and the chatbot. I anticipate that with this handful of improvements, RC will be considered a fully-fledged member of our server. Often, we feel that it already is."
+rule undetectable "I’ve toyed with the idea of using GPT-3’s API to add much mote intelligent capabilities to RC, but I can’t deny that I’m drawn to the idea of running this kind of language model locally and in an environment I control. I’d like to someday increase the speed of RC’s speech synthesis and add a speech-to-text translation model in order to achieve real-time communication between humans and the chatbot. I anticipate that with this handful of improvements, RC will be considered a fully-fledged member of our server. Often, we feel that it already is." != "I’ve toyed with the idea of using GPT-3’s API to add much more intelligent capabilities to RC, but I can’t deny that I’m drawn to the idea of running this kind of language model locally and in an environment I control. I’d like to someday increase the speed of RC’s speech synthesis and add a speech-to-text translation model in order to achieve real-time communication between humans and the chatbot. I anticipate that with this handful of improvements, RC will be considered a fully-fledged member of our server. Often, we feel that it already is."
+rule undetectable "I’ve toyed with the idea of using GPT-3’s API to add much more intelligent capabilities to RC, bit I can’t deny that I’m drawn to the idea of running this kind of language model locally and in an environment I control. I’d like to someday increase the speed of RC’s speech synthesis and add a speech-to-text translation model in order to achieve real-time communication between humans and the chatbot. I anticipate that with this handful of improvements, RC will be considered a fully-fledged member of our server. Often, we feel that it already is." != "I’ve toyed with the idea of using GPT-3’s API to add much more intelligent capabilities to RC, but I can’t deny that I’m drawn to the idea of running this kind of language model locally and in an environment I control. I’d like to someday increase the speed of RC’s speech synthesis and add a speech-to-text translation model in order to achieve real-time communication between humans and the chatbot. I anticipate that with this handful of improvements, RC will be considered a fully-fledged member of our server. Often, we feel that it already is."

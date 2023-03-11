@@ -92,7 +92,8 @@ class util:
          for i in range(len(words)):
             tokens.append(words[i])
             tokens.append(non_words[i+1])
-         print(f"detokenize '{text}' -> '{words}' + '{non_words}' -> '{text}'")
+         if verbose:
+            print(f"detokenize '{text}' -> '{words}' + '{non_words}' -> '{text}'")
          return ''.join(tokens)
       
       return  words ,detokenize
@@ -190,7 +191,8 @@ class util:
    def apply_match_and_validate(text: str, match_result: Tuple[Tuple[int, int], str, re.Pattern], mutations: List[str], match_index: int, text_words: List[str], verbose: bool) -> str:
       span, repl, regex = match_result
       new_string = util.apply_match(text, match_result, verbose)
-      print(f"MatchValidator: validating match {text}->{new_string}")
+      if verbose:
+         print(f"MatchValidator: validating match {text} -> {new_string}")
 
       # Check if the resulting string has the same number of words as the original text
       words, _ = util.get_words(new_string)
@@ -234,10 +236,12 @@ class util:
    @staticmethod
    def valid_rules_scan(text:str,verbose=False):
       proposed_slots = util.rules_scan(text)
-      print('proposed_slots: ',proposed_slots)
+      if verbose:
+         print('proposed_slots: ',proposed_slots)
       try:
          valid_slots = util.valid_matches(text,proposed_slots,verbose=verbose)
-         print('valid_slots: ',valid_slots)
+         if verbose:
+            print('valid_slots: ',valid_slots)
          return valid_slots
       except ValueError:
          return []
@@ -271,6 +275,7 @@ class util:
 
          for regex,repl in FAT_CORRECTION_RULES:
             if regex.sub(repl,word) == spelling:
+               # TODO: if verbose print that we've misspelled this word print()
                return spelling
          return word
       else:
@@ -304,6 +309,9 @@ class util:
 
       words, get_sentence  = util.get_words(text)
       spelled_words = [util.spell_word(w) for w in words]
+      if verbose:
+         # TODO: be verbose
+         pass
 
       spelled_text = get_sentence(spelled_words,verbose)
 
@@ -387,7 +395,7 @@ class Typo:
    def bits(self, bits: int):
       pass
 
-   def encode(self, values):
+   def encode(self, values:List[int]):
       spaces = self.spaces
       if len(values) > len(spaces):
          raise ValueError("Can't encode")
@@ -399,7 +407,7 @@ class Typo:
          result = self.apply(i, values[i], result)
       return result
 
-   def decode(self, text):
+   def decode(self, text:str):
       spaces = self.spaces
       differences = len(util.diff(text, self.text))
       if differences > len(spaces):
@@ -482,6 +490,30 @@ class Typo:
 
 
 
-t = Typo('Hi, How are you?',verbose=True)
+def testTypoCarrier(text,verbose=False):
+   t = Typo(text,verbose=verbose)
 
-t.slots
+   def get_combinations(xs: List[int]) -> List[List[int]]:
+      max_values = [range(x) for x in xs]
+      combinations = itertools.product(*max_values)
+      return [list(c) for c in combinations]
+
+   for v in get_combinations(t.spaces):
+      x =t.decode(t.encode(v))
+      if not x == v:
+         print(f't.decode(t.encode(v)):{x}')
+         print(f't.text:{v}')
+
+text = '''Hi, How are you?'''
+testTypoCarrier(text)
+# nltk.tokenize That's -> That 's
+# speller That's -> Thats
+
+text = '''However, you may as well just use a function statement instead; the only advantage that a lambda offers is that you can put a function definition for a simple expression inside a larger expression. But the above lambda is not part of a larger expression, it is only ever part of an assignment statement, binding it to a name. That's exactly what a  statement would achieve.'''
+testTypoCarrier(text)
+# text = '''Hi'''
+# testTypoCarrier(text)
+# text = '''I’ve toyed with the idea of using GPT-3’s API to add much more intelligent capabilities to RC, but I can’t deny that I’m drawn to the idea of running this kind of language model locally and in an environment I control. I’d like to someday increase the speed of RC’s speech synthesis and add a speech-to-text translation model in order to achieve real-time communication between humans and the chatbot. I anticipate that with this handful of improvements, RC will be considered a fully-fledged member of our server. Often, we feel that it already is.'''
+# testTypoCarrier(text)
+# text = '''Our discord server still uses RC’s utilities regularly and engages in the occasional chat with GPT-2, but I’d like to move beyond 355M once my hardware can support a larger model. As I experienced first-hand during my time with AI Dungeon, GPT-2’s 1.5 billion parameter model can produce text that at times is nigh-indistinguishable from a human’s. However, drastically increasing the parameter size is far from a silver bullet of language synthesis—even OpenAI’s 175 billion parameter GPT-3 can produce wildly inadequate responses, particularly when caught in language loops or context failures. At the same time, transfer learning has proved itself to be a powerful tool to support use-cases outside the bounds of text synthesis, including code generation and basic math.'''
+# testTypoCarrier(text)

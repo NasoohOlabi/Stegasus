@@ -1,0 +1,62 @@
+lang_tool.correct 
+"I’ve toyed with the idea of using GPT-3’s API to add much more intelligent capabilities to RC, but I can’t deny that I’m drawn to the idea of running this kind of language model locally and in an environment I control. I’d like to someday increase the speed of RC’s speech synthesis and add a speech-to-text translation model in order to achieve real-time communication between humans and the chatbot. I anticipate that with this handful of improvements, RC will be considered a fully-fledged member of our server. Often, we feel that it already is." 
+-> 
+"I’ve toyed with the idea of using GPT-3’s API to add much more intelligent capabilities to RC, but I can’t deny that I’m drawn to the idea of running this kind of language model locally and in an environment I control. I’d like to someday increase the speed of RC’s speech synthesis and add a speech-to-text translation model in order to achieve real-time communication between humans and the chatbot. Furthermore, I anticipate that with this handful of improvements, RC will be considered a fully-fledged member of our server. Often, we feel that it already is."
+normalize speller: 'GPT' -> 'get'
+normalize speller: 's' -> 'i'
+normalize speller: 'API' -> 'ape'
+normalize speller: 'RC' -> 're'
+normalize speller: 't' -> 'i'
+normalize speller: 'm' -> 'i'
+normalize speller: 'd' -> 'i'
+normalize speller: 'RC' -> 're'
+normalize speller: 's' -> 'i'
+normalize speller: 'chatbot' -> 'chariot'
+normalize speller: 'RC' -> 're'
+detokenize 
+'I’ve toyed with the idea of using GPT-3’s API to add much more intelligent capabilities to RC, but I can’t deny that I’m drawn to the idea of running this kind of language model locally and in an environment I control. I’d like to someday increase the speed of RC’s speech synthesis and add a speech-to-text translation model in order to achieve real-time communication between humans and the chatbot. Furthermore, I anticipate that with this handful of improvements, RC will be considered a fully-fledged member of our server. Often, we feel that it already is.' 
+-> 
+'['I', 've', 'toyed', 'with', 'the', 'idea', 'of', 'using', 'get', '3', 'i', 'ape', 'to', 'add', 'much', 'more', 'intelligent', 'capabilities', 'to', 're', 'but', 'I', 'can', 'i', 'deny', 'that', 'I', 'i', 'drawn', 'to', 'the', 'idea', 'of', 'running', 'this', 'kind', 'of', 'language', 'model', 'locally', 'and', 'in', 'an', 'environment', 'I', 'control', 'I', 'i', 'like', 'to', 'someday', 'increase', 'the', 'speed', 'of', 're', 'i', 'speech', 'synthesis', 'and', 'add', 'a', 'speech', 'to', 'text', 'translation', 'model', 'in', 'order', 'to', 'achieve', 'real', 'time', 'communication', 'between', 'humans', 'and', 'the', 'chariot', 'Furthermore', 'I', 'anticipate', 'that', 'with', 'this', 'handful', 'of', 'improvements', 're', 'will', 'be', 'considered', 'a', 'fully', 'fledged', 'member', 'of', 'our', 'server', 'Often', 'we', 'feel', 'that', 'it', 'already', 'is']' + 
+'['', '’', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '-', '’', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ', ', ' ', ' ', '’', ' ', ' ', ' ', '’', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '. ', '’', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '’', ' ', ' ', ' ', ' ', ' ', ' ', '-', '-', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '-', ' ', ' ', ' ', ' ', ' ', ' ', '. ', ', ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ', ', ' ', ' ', ' ', ' ', ' ', '-', ' ', ' ', ' ', ' ', '. ', ', ', ' ', ' ', ' ', ' ', ' ', '.']' 
+-> 
+'I’ve toyed with the idea of using GPT-3’s API to add much more intelligent capabilities to RC, but I can’t deny that I’m drawn to the idea of running this kind of language model locally and in an environment I control. I’d like to someday increase the speed of RC’s speech synthesis and add a speech-to-text translation model in order to achieve real-time communication between humans and the chatbot. Furthermore, I anticipate that with this handful of improvements, RC will be considered a fully-fledged member of our server. Often, we feel that it already is.'
+util.normalize('I’ve toyed with the idea of using GPT-3’s API to add much more intelligent capabilities to RC, but I can’t deny that I’m drawn to the idea of running this kind of language model locally and in an environment I control. I’d like to someday increase the speed of RC’s speech synthesis and add a speech-to-text translation model in order to achieve real-time communication between humans and the chatbot. I anticipate that with this handful of improvements, RC will be considered a fully-fledged member of our server. Often, we feel that it already is.') => 'I’ve toyed with the idea of using get-3’i ape to add much more intelligent capabilities to re, but I can’i deny that I’i drawn to the idea of running this kind of language model locally and in an environment I control. I’i like to someday increase the speed of re’i speech synthesis and add a speech-to-text translation model in order to achieve real-time communication between humans and the chariot. Furthermore, I anticipate that with this handful of improvements, re will be considered a fully-fledged member of our server. Often, we feel that it already is.'
+==========diff==========
+i:8 a:"GPT" b:"get"
+i:10 a:"s" b:"i"
+i:11 a:"API" b:"ape"
+i:19 a:"RC" b:"re"
+i:23 a:"t" b:"i"
+i:27 a:"m" b:"i"
+i:47 a:"d" b:"i"
+i:55 a:"RC" b:"re"
+i:56 a:"s" b:"i"
+i:78 a:"chatbot" b:"chariot"
+i:79 a:"I" b:"Furthermore"
+i:80 a:"anticipate" b:"I"
+i:81 a:"that" b:"anticipate"
+i:82 a:"with" b:"that"
+i:83 a:"this" b:"with"
+i:84 a:"handful" b:"this"
+i:85 a:"of" b:"handful"
+i:86 a:"improvements" b:"of"
+i:87 a:"RC" b:"improvements"
+i:88 a:"will" b:"re"
+i:89 a:"be" b:"will"
+i:90 a:"considered" b:"be"
+i:91 a:"a" b:"considered"
+i:92 a:"fully" b:"a"
+i:93 a:"fledged" b:"fully"
+i:94 a:"member" b:"fledged"
+i:95 a:"of" b:"member"
+i:96 a:"our" b:"of"
+i:97 a:"server" b:"our"
+i:98 a:"Often" b:"server"
+i:99 a:"we" b:"Often"
+i:100 a:"feel" b:"we"
+i:101 a:"that" b:"feel"
+i:102 a:"it" b:"that"
+i:103 a:"already" b:"it"
+i:104 a:"is" b:"already"
+====================
+Hello, world!

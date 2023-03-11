@@ -1465,7 +1465,6 @@
 ((?:\W|^)[Tt])ightley(\W|$)	\1ightly\2
 ((?:\W|^)[Tt])ilda(\W|$)	\1ilde\2
 ((?:\W|^)[Tt])innitis(\W|$)	\1innitus\2
-((?:\W|^)[Tt])o(\W|$)	\1oo\2
 ((?:\W|^)[Tt])omatos(\W|$)	\1omatoes\2
 ((?:\W|^)[Tt])oponomist(\W|$)	\1oponymist\2
 ((?:\W|^)[Tt])orroid(\W|$)	\1oroid\2
