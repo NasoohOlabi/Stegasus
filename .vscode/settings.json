@@ -1,9 +1,0 @@
-{
-	"python.analysis.typeCheckingMode": "basic",
-	"cSpell.words": [
-		"chunker",
-		"detokenize",
-		"misstakes",
-		"Typoceros"
-	]
-}

@@ -1,0 +1,4 @@
+language_tool_python==2.7.1
+pyspellchecker==0.7.1
+python_Levenshtein==0.20.9
+spellchecker==0.4
