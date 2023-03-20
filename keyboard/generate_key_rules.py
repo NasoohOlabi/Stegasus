@@ -71,7 +71,7 @@ for c,ns in qwerty_neighbors.items():
 
 # long shift
 for c in qwerty_neighbors.keys():
-   anti_rules[f'((?:\\W|^)[A-Z]){c.upper()}([a-z])'] = f'\\1{c.upper()}\\2'
+   anti_rules[f'((?:\\W|^)[A-Z]){c.upper()}([a-z])'] = f'\\1{c}\\2'
 
 # odd repetitions is zero even is one
 for c in qwerty_neighbors.keys():
