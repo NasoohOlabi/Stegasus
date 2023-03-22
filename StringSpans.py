@@ -1,5 +1,6 @@
-import re
 from typing import Callable, List, Tuple
+
+import regex as re
 
 
 class StringSpans:
@@ -10,7 +11,7 @@ class StringSpans:
    
    @staticmethod
    def _get_words(text: str,verbose=False) -> Tuple[List[Tuple[int,int]],List[Tuple[int,int]],List[Tuple[int,int]],List[Tuple[int,int]]]:
-      word_regex = re.compile(r'[a-zA-Z\']+')
+      word_regex = re.compile(r'[a-zA-Z\'\-]+')
       space_regex = re.compile(r'\s')
       spans = []
       words = []
@@ -71,7 +72,8 @@ class StringSpans:
       start, end = self.words[word_index]
       
       return self.string[start:end]
-   
+   def get(self,span):
+      return self.string[span[0]:span[1]]
    def replace_word_StringSpans(self, word_index: int, replacement: str):
       ss = StringSpans()
       ss.string = self.replace_word(word_index, replacement)
@@ -89,3 +91,9 @@ class StringSpans:
       ss.words[word_index] = (word_start,word_start+new_len)
       ss.spans[span_index] = (word_start,word_start+new_len)
       return ss
+   def get_words(self):
+      return [self.string[start:end] for start,end in self.words]
+   def isw(self):
+      return ((i,start,end,self.words[start:end]) for i,(start,end) in enumerate(self.words))
+   def iws(self):
+      return ((start,end,self.words[start:end]) for (start,end) in self.words)
