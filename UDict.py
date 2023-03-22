@@ -19,12 +19,13 @@ if not os.path.exists(dict_path):
 with open(dict_path, 'rb') as f:
 	trie = pickle.load(f)
 
-def add_word(word:str):
+def add_word(word:str) -> None:
 	trie[word] = True
 	# Save the trie to a file using pickle
 	with open(dict_path, 'wb') as f:
 		pickle.dump(trie, f)
-def check_word(word:str):
+
+def check_word(word:str) -> bool:
 	return word in trie
 
 
