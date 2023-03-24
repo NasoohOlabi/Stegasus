@@ -1,0 +1,777 @@
+t.spaces = [51]
+t.bits = [5]
+max=51
+len=1
+[0]
+after encoding [0] Hey, How are you? Did you see the last John Cena movie?
+original text candidate "Hey, How are you? Did you see the last John Cena movie?"
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> passed!
+[1]
+after encoding [1] HEy, How are you? Did you see the last John Cena movie?
+t.spaces = [51]
+t.bits = [5]
+max=51
+len=1
+[0]
+after encoding [0] Hey, How are you? Did you see the last John Cena movie?
+original text candidate "Hey, How are you? Did you see the last John Cena movie?"
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> passed!
+[1]
+after encoding [1] HEy, How are you? Did you see the last John Cena movie?
+original=
+HEy, How are you? Did you see the last John Cena movie?
+test_self.text=
+Hey, How are you? Did you see the last John Cena movie?
+chunks=[(0, 54)]
+offsets=[]
+chunks_offsets=[[]]
+affected_words=[]
+affected_words_corrections=[]
+os=[]
+proposed_slots:  [((0, 3), '\\1E\\2', regex.Regex('((?:\\W|^)[A-Z])e([a-z])', flags=regex.V0)), ((0, 3), '\\1er\\2', regex.Regex('([^\\Wer])e([^\\Wert])', flags=regex.V0)), ((0, 3), '\\1ew\\2', regex.Regex('([^\\Wew])e([^\\Wewq])', flags=regex.V0)), ((0, 3), '\\1r\\2', regex.Regex('([^\\Wert])e([^\\Wert])', flags=regex.V0)), ((0, 3), '\\1re\\2', regex.Regex('([^\\Wert])e([^\\Wer])', flags=regex.V0)), ((0, 3), '\\1w\\2', regex.Regex('([^\\Wewq])e([^\\Wewq])', flags=regex.V0)), ((0, 3), '\\1we\\2', regex.Regex('([^\\Wewq])e([^\\Wew])', flags=regex.V0)), ((4, 8), '\\1O\\2', regex.Regex('((?:\\W|^)[A-Z])o([a-z])', flags=regex.V0)), ((5, 8), '\\1i\\2', regex.Regex('([^\\Woiu])o([^\\Woiu])', flags=regex.V0)), ((5, 8), '\\1io\\2', regex.Regex('([^\\Woiu])o([^\\Woi])', flags=regex.V0)), ((5, 8), '\\1oi\\2', regex.Regex('([^\\Woi])o([^\\Woiu])', flags=regex.V0)), ((5, 8), '\\1p\\2', regex.Regex('([^\\Wop])o([^\\Wop])', flags=regex.V0)), ((9, 12), '\\1rt\\2', regex.Regex('([^\\Wrt])r([^\\Wrty])', flags=regex.V0)), ((9, 12), '\\1t\\2', regex.Regex('([^\\Wrty])r([^\\Wrty])', flags=regex.V0)), ((9, 12), '\\1tr\\2', regex.Regex('([^\\Wrty])r([^\\Wrt])', flags=regex.V0)), ((13, 16), '\\1io\\2', regex.Regex('([^\\Woiu])o([^\\Woi])', flags=regex.V0)), ((13, 16), '\\1p\\2', regex.Regex('([^\\Wop])o([^\\Wop])', flags=regex.V0)), ((17, 21), '\\1I\\2', regex.Regex('((?:\\W|^)[A-Z])i([a-z])', flags=regex.V0)), ((18, 21), '\\1io\\2', regex.Regex('([^\\Wio])i([^\\Wiop])', flags=regex.V0)), ((18, 21), '\\1iu\\2', regex.Regex('([^\\Wiu])i([^\\Wiuy])', flags=regex.V0)), ((18, 21), '\\1o\\2', regex.Regex('([^\\Wiop])i([^\\Wiop])', flags=regex.V0)), ((18, 21), '\\1oi\\2', regex.Regex('([^\\Wiop])i([^\\Wio])', flags=regex.V0)), ((18, 21), '\\1u\\2', regex.Regex('([^\\Wiuy])i([^\\Wiuy])', flags=regex.V0)), ((18, 21), '\\1ui\\2', regex.Regex('([^\\Wiuy])i([^\\Wiu])', flags=regex.V0)), ((22, 25), '\\1io\\2', regex.Regex('([^\\Woiu])o([^\\Woi])', flags=regex.V0)), ((22, 25), '\\1p\\2', regex.Regex('([^\\Wop])o([^\\Wop])', flags=regex.V0)), ((30, 33), '\\1g\\2', regex.Regex('([^\\Whgf])h([^\\Whgf])', flags=regex.V0)), ((30, 33), '\\1gh\\2', regex.Regex('([^\\Whgf])h([^\\Whg])', flags=regex.V0)), ((30, 33), '\\1hg\\2', regex.Regex('([^\\Whg])h([^\\Whgf])', flags=regex.V0)), ((30, 33), '\\1hj\\2', regex.Regex('([^\\Whj])h([^\\Whjk])', flags=regex.V0)), ((30, 33), '\\1j\\2', regex.Regex('([^\\Whjk])h([^\\Whjk])', flags=regex.V0)), ((30, 33), '\\1jh\\2', regex.Regex('([^\\Whjk])h([^\\Whj])', flags=regex.V0)), ((35, 38), '\\1d\\2', regex.Regex('([^\\Wsdf])s([^\\Wsdf])', flags=regex.V0)), ((35, 38), '\\1ds\\2', regex.Regex('([^\\Wsdf])s([^\\Wsd])', flags=regex.V0)), ((35, 38), '\\1sd\\2', regex.Regex('([^\\Wsd])s([^\\Wsdf])', flags=regex.V0)), ((38, 42), '\\1O\\2', regex.Regex('((?:\\W|^)[A-Z])o([a-z])', flags=regex.V0)), ((39, 42), '\\1i\\2', regex.Regex('([^\\Woiu])o([^\\Woiu])', flags=regex.V0)), ((39, 42), '\\1io\\2', regex.Regex('([^\\Woiu])o([^\\Woi])', flags=regex.V0)), ((39, 42), '\\1oi\\2', regex.Regex('([^\\Woi])o([^\\Woiu])', flags=regex.V0)), ((39, 42), '\\1p\\2', regex.Regex('([^\\Wop])o([^\\Wop])', flags=regex.V0)), ((40, 43), '\\1g\\2', regex.Regex('([^\\Whgf])h([^\\Whgf])', flags=regex.V0)), ((40, 43), '\\1gh\\2', regex.Regex('([^\\Whgf])h([^\\Whg])', flags=regex.V0)), ((40, 43), '\\1hg\\2', regex.Regex('([^\\Whg])h([^\\Whgf])', flags=regex.V0)), ((40, 43), '\\1hj\\2', regex.Regex('([^\\Whj])h([^\\Whjk])', flags=regex.V0)), ((40, 43), '\\1j\\2', regex.Regex('([^\\Whjk])h([^\\Whjk])', flags=regex.V0)), ((40, 43), '\\1jh\\2', regex.Regex('([^\\Whjk])h([^\\Whj])', flags=regex.V0)), ((43, 47), '\\1E\\2', regex.Regex('((?:\\W|^)[A-Z])e([a-z])', flags=regex.V0)), ((44, 47), '\\1er\\2', regex.Regex('([^\\Wer])e([^\\Wert])', flags=regex.V0)), ((44, 47), '\\1ew\\2', regex.Regex('([^\\Wew])e([^\\Wewq])', flags=regex.V0)), ((44, 47), '\\1r\\2', regex.Regex('([^\\Wert])e([^\\Wert])', flags=regex.V0)), ((44, 47), '\\1re\\2', regex.Regex('([^\\Wert])e([^\\Wer])', flags=regex.V0)), ((44, 47), '\\1w\\2', regex.Regex('([^\\Wewq])e([^\\Wewq])', flags=regex.V0)), ((44, 47), '\\1we\\2', regex.Regex('([^\\Wewq])e([^\\Wew])', flags=regex.V0)), ((45, 48), '\\1b\\2', regex.Regex('([^\\Wnbv])n([^\\Wnbv])', flags=regex.V0)), ((45, 48), '\\1bn\\2', regex.Regex('([^\\Wnbv])n([^\\Wnb])', flags=regex.V0)), ((45, 48), '\\1m\\2', regex.Regex('([^\\Wnm])n([^\\Wnm])', flags=regex.V0)), ((45, 48), '\\1nb\\2', regex.Regex('([^\\Wnb])n([^\\Wnbv])', flags=regex.V0)), ((49, 52), '\\1i\\2', regex.Regex('([^\\Woiu])o([^\\Woiu])', flags=regex.V0)), ((49, 52), '\\1io\\2', regex.Regex('([^\\Woiu])o([^\\Woi])', flags=regex.V0)), ((49, 52), '\\1oi\\2', regex.Regex('([^\\Woi])o([^\\Woiu])', flags=regex.V0)), ((49, 52), '\\1p\\2', regex.Regex('([^\\Wop])o([^\\Wop])', flags=regex.V0)), ((50, 53), '\\1b\\2', regex.Regex('([^\\Wvbn])v([^\\Wvbn])', flags=regex.V0)), ((50, 53), '\\1bv\\2', regex.Regex('([^\\Wvbn])v([^\\Wvb])', flags=regex.V0)), ((50, 53), '\\1c\\2', regex.Regex('([^\\Wvcx])v([^\\Wvcx])', flags=regex.V0)), ((50, 53), '\\1cv\\2', regex.Regex('([^\\Wvcx])v([^\\Wvc])', flags=regex.V0)), ((50, 53), '\\1vb\\2', regex.Regex('([^\\Wvb])v([^\\Wvbn])', flags=regex.V0)), ((50, 53), '\\1vc\\2', regex.Regex('([^\\Wvc])v([^\\Wvcx])', flags=regex.V0)), ((51, 54), '\\1io\\2', regex.Regex('([^\\Wio])i([^\\Wiop])', flags=regex.V0)), ((51, 54), '\\1iu\\2', regex.Regex('([^\\Wiu])i([^\\Wiuy])', flags=regex.V0)), ((51, 54), '\\1o\\2', regex.Regex('([^\\Wiop])i([^\\Wiop])', flags=regex.V0)), ((51, 54), '\\1oi\\2', regex.Regex('([^\\Wiop])i([^\\Wio])', flags=regex.V0)), ((51, 54), '\\1u\\2', regex.Regex('([^\\Wiuy])i([^\\Wiuy])', flags=regex.V0)), ((51, 54), '\\1ui\\2', regex.Regex('([^\\Wiuy])i([^\\Wiu])', flags=regex.V0))]
+Before replace: Hey
+After replace: HEy
+unfiltered votes ['Hey', 'Hey']
+filtered votes ['Hey', 'Hey']
+new_word: HEy can't be fixes
+Before replace: Hey
+After replace: Hery
+unfiltered votes ['Hey', 'Hry']
+filtered votes ['Hey']
+new_word: Hery can't be fixes
+Before replace: Hey
+After replace: Hewy
+unfiltered votes ['Hwy', 'Hey']
+filtered votes ['Hwy', 'Hey']
+new_word: Hewy can't be fixes
+rule undetectable or modify looks! new word "Hewy" != "Hey" original and will be corrected to Hwy from ['Hwy', 'Hey']
+Before replace: Hey
+After replace: Hry
+unfiltered votes ['Hey', 'Hty']
+filtered votes ['Hey']
+new_word: Hry can't be fixes
+Before replace: Hey
+After replace: Hrey
+unfiltered votes ['Hey', 'Hry']
+filtered votes ['Hey']
+new_word: Hrey can't be fixes
+Before replace: Hey
+After replace: Hwy
+unfiltered votes ['Hqy', 'Hey']
+filtered votes ['Hey']
+new_word: Hwy can't be fixes
+rule undetectable or modify looks! new word "Hwy" != "Hey" original and will be corrected to Hey from ['Hey']
+Before replace: Hey
+After replace: Hwey
+unfiltered votes ['Hwy', 'Hey']
+filtered votes ['Hwy', 'Hey']
+new_word: Hwey can't be fixes
+rule undetectable or modify looks! new word "Hwey" != "Hey" original and will be corrected to Hwy from ['Hwy', 'Hey']
+Before replace: Hey
+After replace: Hey
+unfiltered votes ['Hwy', 'Hry']
+filtered votes ['Hwy']
+new_word: Hey can't be fixes
+rule undetectable or modify looks! new word "Hey" != "Hey" original and will be corrected to Hwy from ['Hwy']
+Before replace: How
+After replace: Hiw
+unfiltered votes ['Huw', 'How']
+filtered votes ['How']
+new_word: Hiw can't be fixes
+Before replace: How
+After replace: Hiow
+unfiltered votes ['Hiw', 'How']
+filtered votes ['How']
+new_word: Hiow can't be fixes
+Before replace: How
+After replace: Hoiw
+unfiltered votes ['Hiw', 'How']
+filtered votes ['How']
+new_word: Hoiw can't be fixes
+Before replace: How
+After replace: Hpw
+unfiltered votes ['How']
+filtered votes ['How']
+new_word: Hpw can't be fixes
+Before replace: are
+After replace: arte
+unfiltered votes ['are', 'ate']
+filtered votes ['are', 'ate']
+new_word: arte can't be fixes
+Before replace: are
+After replace: ate
+unfiltered votes ['are', 'aye']
+filtered votes ['are', 'aye']
+new_word: ate can't be fixes
+rule undetectable or modify looks! new word "ate" != "are" original and will be corrected to are from ['are', 'aye']
+Before replace: are
+After replace: atre
+unfiltered votes ['are']
+filtered votes ['are']
+new_word: atre can't be fixes
+Before replace: you
+After replace: yiou
+unfiltered votes ['yiu', 'you']
+filtered votes ['you']
+new_word: yiou can't be fixes
+Before replace: you
+After replace: ypu
+unfiltered votes ['you']
+filtered votes ['you']
+new_word: ypu can't be fixes
+Before replace: Hey
+After replace: Hey
+unfiltered votes ['Hwy', 'Hry']
+filtered votes ['Hwy']
+new_word: Hey can't be fixes
+rule undetectable or modify looks! new word "Hey" != "Hey" original and will be corrected to Hwy from ['Hwy']
+Before replace: Did
+After replace: Diod
+unfiltered votes ['Did', 'Dod']
+filtered votes ['Did']
+new_word: Diod can't be fixes
+Before replace: Did
+After replace: Diud
+unfiltered votes ['Dud', 'Did']
+filtered votes ['Dud', 'Did']
+new_word: Diud can't be fixes
+rule undetectable or modify looks! new word "Diud" != "Did" original and will be corrected to Dud from ['Dud', 'Did']
+Before replace: Did
+After replace: Dod
+unfiltered votes ['Did', 'Dpd']
+filtered votes ['Did']
+new_word: Dod can't be fixes
+Before replace: Did
+After replace: Doid
+unfiltered votes ['Did', 'Dod']
+filtered votes ['Did']
+new_word: Doid can't be fixes
+Before replace: Did
+After replace: Dud
+unfiltered votes ['Dyd', 'Did']
+filtered votes ['Did']
+new_word: Dud can't be fixes
+rule undetectable or modify looks! new word "Dud" != "Did" original and will be corrected to Did from ['Did']
+Before replace: Did
+After replace: Duid
+unfiltered votes ['Dud', 'Did']
+filtered votes ['Dud', 'Did']
+new_word: Duid can't be fixes
+rule undetectable or modify looks! new word "Duid" != "Did" original and will be corrected to Dud from ['Dud', 'Did']
+Before replace: you
+After replace: yiou
+unfiltered votes ['yiu', 'you']
+filtered votes ['you']
+new_word: yiou can't be fixes
+Before replace: you
+After replace: ypu
+unfiltered votes ['you']
+filtered votes ['you']
+new_word: ypu can't be fixes
+Before replace: the
+After replace: tge
+unfiltered votes ['tfe', 'the']
+filtered votes ['the']
+new_word: tge can't be fixes
+Before replace: the
+After replace: tghe
+unfiltered votes ['tge', 'the']
+filtered votes ['the']
+new_word: tghe can't be fixes
+Before replace: the
+After replace: thge
+unfiltered votes ['tge', 'the']
+filtered votes ['the']
+new_word: thge can't be fixes
+Before replace: the
+After replace: thje
+unfiltered votes ['the', 'tje']
+filtered votes ['the']
+new_word: thje can't be fixes
+Before replace: the
+After replace: tje
+unfiltered votes ['the', 'tke']
+filtered votes ['the']
+new_word: tje can't be fixes
+Before replace: the
+After replace: tjhe
+unfiltered votes ['the', 'tje']
+filtered votes ['the']
+new_word: tjhe can't be fixes
+Before replace: last
+After replace: ladt
+unfiltered votes ['lsdt', 'last', 'laft']
+filtered votes ['last']
+new_word: ladt can't be fixes
+Before replace: last
+After replace: ladst
+unfiltered votes ['lsdst', 'last', 'ladt']
+filtered votes ['last']
+new_word: ladst can't be fixes
+Before replace: last
+After replace: lasdt
+unfiltered votes ['lsdt', 'last']
+filtered votes ['last']
+new_word: lasdt can't be fixes
+Before replace: Hey
+After replace: Hey
+unfiltered votes ['Hwy', 'Hry']
+filtered votes ['Hwy']
+new_word: Hey can't be fixes
+rule undetectable or modify looks! new word "Hey" != "Hey" original and will be corrected to Hwy from ['Hwy']
+Before replace: John
+After replace: Jihn
+unfiltered votes ['Juhn', 'John', 'Jign', 'Jijn']
+filtered votes ['John']
+new_word: Jihn can't be fixes
+Before replace: John
+After replace: Jiohn
+unfiltered votes ['Jihn', 'John', 'Jiogn', 'Jiojn']
+filtered votes ['John']
+new_word: Jiohn can't be fixes
+Before replace: John
+After replace: Joihn
+unfiltered votes ['Jihn', 'John', 'Joign', 'Joijn']
+filtered votes ['John']
+new_word: Joihn can't be fixes
+Before replace: John
+After replace: Jphn
+unfiltered votes ['John', 'Jpgn', 'Jpjn']
+filtered votes ['John']
+new_word: Jphn can't be fixes
+Before replace: John
+After replace: Jogn
+unfiltered votes ['Jign', 'Jpgn', 'Jofn', 'John']
+filtered votes ['John']
+new_word: Jogn can't be fixes
+Before replace: John
+After replace: Joghn
+unfiltered votes ['Jighn', 'Jpghn', 'Jogn', 'John']
+filtered votes ['John']
+new_word: Joghn can't be fixes
+Before replace: John
+After replace: Johgn
+unfiltered votes ['Jihgn', 'Jphgn', 'Jogn', 'John']
+filtered votes ['John']
+new_word: Johgn can't be fixes
+Before replace: John
+After replace: Johjn
+unfiltered votes ['Jihjn', 'Jphjn', 'John', 'Jojn']
+filtered votes ['John']
+new_word: Johjn can't be fixes
+Before replace: John
+After replace: Jojn
+unfiltered votes ['Jijn', 'Jpjn', 'John', 'Jokn']
+filtered votes ['John']
+new_word: Jojn can't be fixes
+Before replace: John
+After replace: Jojhn
+unfiltered votes ['Jijhn', 'Jpjhn', 'John', 'Jojn']
+filtered votes ['John']
+new_word: Jojhn can't be fixes
+Before replace: Hey
+After replace: Hey
+unfiltered votes ['Hwy', 'Hry']
+filtered votes ['Hwy']
+new_word: Hey can't be fixes
+rule undetectable or modify looks! new word "Hey" != "Hey" original and will be corrected to Hwy from ['Hwy']
+Before replace: Cena
+After replace: Cerna
+unfiltered votes ['Cena', 'Crna', 'Cerba', 'Cerma']
+filtered votes []
+new_word: Cerna can't be fixes
+rule undetectable or modify looks! new word "Cerna" != "Cena" original and will be corrected to  from []
+Before replace: Cena
+After replace: Cewna
+unfiltered votes ['Cwna', 'Cena', 'Cewba', 'Cewma']
+filtered votes []
+new_word: Cewna can't be fixes
+rule undetectable or modify looks! new word "Cewna" != "Cena" original and will be corrected to  from []
+Before replace: Cena
+After replace: Crna
+unfiltered votes ['Cena', 'Ctna', 'Crba', 'Crma']
+filtered votes []
+new_word: Crna can't be fixes
+rule undetectable or modify looks! new word "Crna" != "Cena" original and will be corrected to  from []
+Before replace: Cena
+After replace: Crena
+unfiltered votes ['Cena', 'Crna', 'Creba', 'Crema']
+filtered votes []
+new_word: Crena can't be fixes
+rule undetectable or modify looks! new word "Crena" != "Cena" original and will be corrected to  from []
+Before replace: Cena
+After replace: Cwna
+unfiltered votes ['Cqna', 'Cena', 'Cwba', 'Cwma']
+filtered votes []
+new_word: Cwna can't be fixes
+rule undetectable or modify looks! new word "Cwna" != "Cena" original and will be corrected to  from []
+Before replace: Cena
+After replace: Cwena
+unfiltered votes ['Cwna', 'Cena', 'Cweba', 'Cwema']
+filtered votes []
+new_word: Cwena can't be fixes
+rule undetectable or modify looks! new word "Cwena" != "Cena" original and will be corrected to  from []
+Before replace: Cena
+After replace: Ceba
+unfiltered votes ['Cwba', 'Crba', 'Ceva', 'Cena']
+filtered votes []
+new_word: Ceba can't be fixes
+rule undetectable or modify looks! new word "Ceba" != "Cena" original and will be corrected to  from []
+Before replace: Cena
+After replace: Cebna
+unfiltered votes ['Cwbna', 'Crbna', 'Ceba', 'Cena']
+filtered votes []
+new_word: Cebna can't be fixes
+rule undetectable or modify looks! new word "Cebna" != "Cena" original and will be corrected to  from []
+Before replace: Cena
+After replace: Cema
+unfiltered votes ['Cwma', 'Crma', 'Cena']
+filtered votes []
+new_word: Cema can't be fixes
+rule undetectable or modify looks! new word "Cema" != "Cena" original and will be corrected to  from []
+Before replace: Cena
+After replace: Cenba
+unfiltered votes ['Cwnba', 'Crnba', 'Ceba', 'Cena']
+filtered votes []
+new_word: Cenba can't be fixes
+rule undetectable or modify looks! new word "Cenba" != "Cena" original and will be corrected to  from []
+Before replace: movie
+After replace: mivie
+unfiltered votes ['muvie', 'mivue', 'movie', 'mivoe', 'micie', 'mibie']
+filtered votes ['movie']
+new_word: mivie can't be fixes
+Before replace: movie
+After replace: miovie
+unfiltered votes ['miovue', 'mivie', 'movie', 'miovoe', 'miocie', 'miobie']
+filtered votes ['movie']
+new_word: miovie can't be fixes
+Before replace: movie
+After replace: moivie
+unfiltered votes ['moivue', 'mivie', 'movie', 'moivoe', 'moicie', 'moibie']
+filtered votes ['movie']
+new_word: moivie can't be fixes
+Before replace: movie
+After replace: mpvie
+unfiltered votes ['mpvue', 'mpvoe', 'movie', 'mpcie', 'mpbie']
+filtered votes ['movie']
+new_word: mpvie can't be fixes
+Before replace: movie
+After replace: mobie
+unfiltered votes ['mobue', 'mibie', 'moboe', 'mpbie', 'movie', 'monie']
+filtered votes ['movie']
+new_word: mobie can't be fixes
+Before replace: movie
+After replace: mobvie
+unfiltered votes ['mobvue', 'mibvie', 'mobvoe', 'mpbvie', 'movie', 'mobie']
+filtered votes ['movie']
+new_word: mobvie can't be fixes
+Before replace: movie
+After replace: mocie
+unfiltered votes ['mocue', 'micie', 'mocoe', 'mpcie', 'moxie', 'movie']
+filtered votes ['moxie', 'movie']
+new_word: mocie can't be fixes
+rule undetectable or modify looks! new word "mocie" != "movie" original and will be corrected to moxie from ['moxie', 'movie']
+Before replace: movie
+After replace: mocvie
+unfiltered votes ['mocvue', 'micvie', 'mocvoe', 'mpcvie', 'mocie', 'movie']
+filtered votes ['movie']
+new_word: mocvie can't be fixes
+Before replace: movie
+After replace: movbie
+unfiltered votes ['movbue', 'mivbie', 'movboe', 'mpvbie', 'movie', 'mobie']
+filtered votes ['movie']
+new_word: movbie can't be fixes
+Before replace: movie
+After replace: movcie
+unfiltered votes ['movcue', 'mivcie', 'movcoe', 'mpvcie', 'mocie', 'movie']
+filtered votes ['movie']
+new_word: movcie can't be fixes
+Before replace: movie
+After replace: movioe
+unfiltered votes ['movie', 'mivioe', 'movoe', 'mpvioe', 'mocioe', 'mobioe']
+filtered votes ['movie']
+new_word: movioe can't be fixes
+Before replace: movie
+After replace: moviue
+unfiltered votes ['movue', 'movie', 'miviue', 'mpviue', 'mociue', 'mobiue']
+filtered votes ['movie']
+new_word: moviue can't be fixes
+Before replace: movie
+After replace: movoe
+unfiltered votes ['mivoe', 'movie', 'mpvoe', 'movpe', 'mocoe', 'moboe']
+filtered votes ['movie']
+new_word: movoe can't be fixes
+Before replace: movie
+After replace: movoie
+unfiltered votes ['movie', 'mivoie', 'movoe', 'mpvoie', 'mocoie', 'moboie']
+filtered votes ['movie']
+new_word: movoie can't be fixes
+Before replace: movie
+After replace: movue
+unfiltered votes ['movye', 'movie', 'mivue', 'mpvue', 'mocue', 'mobue']
+filtered votes ['movie']
+new_word: movue can't be fixes
+Before replace: movie
+After replace: movuie
+unfiltered votes ['movue', 'movie', 'mivuie', 'mpvuie', 'mocuie', 'mobuie']
+filtered votes ['movie']
+new_word: movuie can't be fixes
+
+list(zip(slots,mutations))%%%%%%%%%%%%%%%%%%%%
+(((0, 3), '\\1E\\2', regex.Regex('((?:\\W|^)[A-Z])e([a-z])', flags=regex.V0)), 'HEy, How are you? Did you see the last John Cena movie?')
+(((0, 3), '\\1er\\2', regex.Regex('([^\\Wer])e([^\\Wert])', flags=regex.V0)), 'Hery, How are you? Did you see the last John Cena movie?')
+(((0, 3), '\\1ew\\2', regex.Regex('([^\\Wew])e([^\\Wewq])', flags=regex.V0)), '')
+(((0, 3), '\\1r\\2', regex.Regex('([^\\Wert])e([^\\Wert])', flags=regex.V0)), 'Hry, How are you? Did you see the last John Cena movie?')
+(((0, 3), '\\1re\\2', regex.Regex('([^\\Wert])e([^\\Wer])', flags=regex.V0)), 'Hrey, How are you? Did you see the last John Cena movie?')
+(((0, 3), '\\1w\\2', regex.Regex('([^\\Wewq])e([^\\Wewq])', flags=regex.V0)), '')
+(((0, 3), '\\1we\\2', regex.Regex('([^\\Wewq])e([^\\Wew])', flags=regex.V0)), '')
+(((4, 8), '\\1O\\2', regex.Regex('((?:\\W|^)[A-Z])o([a-z])', flags=regex.V0)), '')
+(((5, 8), '\\1i\\2', regex.Regex('([^\\Woiu])o([^\\Woiu])', flags=regex.V0)), 'Hey, Hiw are you? Did you see the last John Cena movie?')
+(((5, 8), '\\1io\\2', regex.Regex('([^\\Woiu])o([^\\Woi])', flags=regex.V0)), 'Hey, Hiow are you? Did you see the last John Cena movie?')
+(((5, 8), '\\1oi\\2', regex.Regex('([^\\Woi])o([^\\Woiu])', flags=regex.V0)), 'Hey, Hoiw are you? Did you see the last John Cena movie?')
+(((5, 8), '\\1p\\2', regex.Regex('([^\\Wop])o([^\\Wop])', flags=regex.V0)), 'Hey, Hpw are you? Did you see the last John Cena movie?')
+(((9, 12), '\\1rt\\2', regex.Regex('([^\\Wrt])r([^\\Wrty])', flags=regex.V0)), 'Hey, How arte you? Did you see the last John Cena movie?')
+(((9, 12), '\\1t\\2', regex.Regex('([^\\Wrty])r([^\\Wrty])', flags=regex.V0)), '')
+(((9, 12), '\\1tr\\2', regex.Regex('([^\\Wrty])r([^\\Wrt])', flags=regex.V0)), 'Hey, How atre you? Did you see the last John Cena movie?')
+(((13, 16), '\\1io\\2', regex.Regex('([^\\Woiu])o([^\\Woi])', flags=regex.V0)), 'Hey, How are yiou? Did you see the last John Cena movie?')
+(((13, 16), '\\1p\\2', regex.Regex('([^\\Wop])o([^\\Wop])', flags=regex.V0)), 'Hey, How are ypu? Did you see the last John Cena movie?')
+(((17, 21), '\\1I\\2', regex.Regex('((?:\\W|^)[A-Z])i([a-z])', flags=regex.V0)), '')
+(((18, 21), '\\1io\\2', regex.Regex('([^\\Wio])i([^\\Wiop])', flags=regex.V0)), 'Hey, How are you? Diod you see the last John Cena movie?')
+(((18, 21), '\\1iu\\2', regex.Regex('([^\\Wiu])i([^\\Wiuy])', flags=regex.V0)), '')
+(((18, 21), '\\1o\\2', regex.Regex('([^\\Wiop])i([^\\Wiop])', flags=regex.V0)), 'Hey, How are you? Dod you see the last John Cena movie?')
+(((18, 21), '\\1oi\\2', regex.Regex('([^\\Wiop])i([^\\Wio])', flags=regex.V0)), 'Hey, How are you? Doid you see the last John Cena movie?')
+(((18, 21), '\\1u\\2', regex.Regex('([^\\Wiuy])i([^\\Wiuy])', flags=regex.V0)), '')
+(((18, 21), '\\1ui\\2', regex.Regex('([^\\Wiuy])i([^\\Wiu])', flags=regex.V0)), '')
+(((22, 25), '\\1io\\2', regex.Regex('([^\\Woiu])o([^\\Woi])', flags=regex.V0)), 'Hey, How are you? Did yiou see the last John Cena movie?')
+(((22, 25), '\\1p\\2', regex.Regex('([^\\Wop])o([^\\Wop])', flags=regex.V0)), 'Hey, How are you? Did ypu see the last John Cena movie?')
+(((30, 33), '\\1g\\2', regex.Regex('([^\\Whgf])h([^\\Whgf])', flags=regex.V0)), 'Hey, How are you? Did you see tge last John Cena movie?')
+(((30, 33), '\\1gh\\2', regex.Regex('([^\\Whgf])h([^\\Whg])', flags=regex.V0)), 'Hey, How are you? Did you see tghe last John Cena movie?')
+(((30, 33), '\\1hg\\2', regex.Regex('([^\\Whg])h([^\\Whgf])', flags=regex.V0)), 'Hey, How are you? Did you see thge last John Cena movie?')
+(((30, 33), '\\1hj\\2', regex.Regex('([^\\Whj])h([^\\Whjk])', flags=regex.V0)), 'Hey, How are you? Did you see thje last John Cena movie?')
+(((30, 33), '\\1j\\2', regex.Regex('([^\\Whjk])h([^\\Whjk])', flags=regex.V0)), 'Hey, How are you? Did you see tje last John Cena movie?')
+(((30, 33), '\\1jh\\2', regex.Regex('([^\\Whjk])h([^\\Whj])', flags=regex.V0)), 'Hey, How are you? Did you see tjhe last John Cena movie?')
+(((35, 38), '\\1d\\2', regex.Regex('([^\\Wsdf])s([^\\Wsdf])', flags=regex.V0)), 'Hey, How are you? Did you see the ladt John Cena movie?')
+(((35, 38), '\\1ds\\2', regex.Regex('([^\\Wsdf])s([^\\Wsd])', flags=regex.V0)), 'Hey, How are you? Did you see the ladst John Cena movie?')
+(((35, 38), '\\1sd\\2', regex.Regex('([^\\Wsd])s([^\\Wsdf])', flags=regex.V0)), 'Hey, How are you? Did you see the lasdt John Cena movie?')
+(((38, 42), '\\1O\\2', regex.Regex('((?:\\W|^)[A-Z])o([a-z])', flags=regex.V0)), '')
+(((39, 42), '\\1i\\2', regex.Regex('([^\\Woiu])o([^\\Woiu])', flags=regex.V0)), 'Hey, How are you? Did you see the last Jihn Cena movie?')
+(((39, 42), '\\1io\\2', regex.Regex('([^\\Woiu])o([^\\Woi])', flags=regex.V0)), 'Hey, How are you? Did you see the last Jiohn Cena movie?')
+(((39, 42), '\\1oi\\2', regex.Regex('([^\\Woi])o([^\\Woiu])', flags=regex.V0)), 'Hey, How are you? Did you see the last Joihn Cena movie?')
+(((39, 42), '\\1p\\2', regex.Regex('([^\\Wop])o([^\\Wop])', flags=regex.V0)), 'Hey, How are you? Did you see the last Jphn Cena movie?')
+(((40, 43), '\\1g\\2', regex.Regex('([^\\Whgf])h([^\\Whgf])', flags=regex.V0)), 'Hey, How are you? Did you see the last Jogn Cena movie?')
+(((40, 43), '\\1gh\\2', regex.Regex('([^\\Whgf])h([^\\Whg])', flags=regex.V0)), 'Hey, How are you? Did you see the last Joghn Cena movie?')
+(((40, 43), '\\1hg\\2', regex.Regex('([^\\Whg])h([^\\Whgf])', flags=regex.V0)), 'Hey, How are you? Did you see the last Johgn Cena movie?')
+(((40, 43), '\\1hj\\2', regex.Regex('([^\\Whj])h([^\\Whjk])', flags=regex.V0)), 'Hey, How are you? Did you see the last Johjn Cena movie?')
+(((40, 43), '\\1j\\2', regex.Regex('([^\\Whjk])h([^\\Whjk])', flags=regex.V0)), 'Hey, How are you? Did you see the last Jojn Cena movie?')
+(((40, 43), '\\1jh\\2', regex.Regex('([^\\Whjk])h([^\\Whj])', flags=regex.V0)), 'Hey, How are you? Did you see the last Jojhn Cena movie?')
+(((43, 47), '\\1E\\2', regex.Regex('((?:\\W|^)[A-Z])e([a-z])', flags=regex.V0)), '')
+(((44, 47), '\\1er\\2', regex.Regex('([^\\Wer])e([^\\Wert])', flags=regex.V0)), '')
+(((44, 47), '\\1ew\\2', regex.Regex('([^\\Wew])e([^\\Wewq])', flags=regex.V0)), '')
+(((44, 47), '\\1r\\2', regex.Regex('([^\\Wert])e([^\\Wert])', flags=regex.V0)), '')
+(((44, 47), '\\1re\\2', regex.Regex('([^\\Wert])e([^\\Wer])', flags=regex.V0)), '')
+(((44, 47), '\\1w\\2', regex.Regex('([^\\Wewq])e([^\\Wewq])', flags=regex.V0)), '')
+(((44, 47), '\\1we\\2', regex.Regex('([^\\Wewq])e([^\\Wew])', flags=regex.V0)), '')
+(((45, 48), '\\1b\\2', regex.Regex('([^\\Wnbv])n([^\\Wnbv])', flags=regex.V0)), '')
+(((45, 48), '\\1bn\\2', regex.Regex('([^\\Wnbv])n([^\\Wnb])', flags=regex.V0)), '')
+(((45, 48), '\\1m\\2', regex.Regex('([^\\Wnm])n([^\\Wnm])', flags=regex.V0)), '')
+(((45, 48), '\\1nb\\2', regex.Regex('([^\\Wnb])n([^\\Wnbv])', flags=regex.V0)), '')
+(((49, 52), '\\1i\\2', regex.Regex('([^\\Woiu])o([^\\Woiu])', flags=regex.V0)), 'Hey, How are you? Did you see the last John Cena mivie?')
+(((49, 52), '\\1io\\2', regex.Regex('([^\\Woiu])o([^\\Woi])', flags=regex.V0)), 'Hey, How are you? Did you see the last John Cena miovie?')
+(((49, 52), '\\1oi\\2', regex.Regex('([^\\Woi])o([^\\Woiu])', flags=regex.V0)), 'Hey, How are you? Did you see the last John Cena moivie?')
+(((49, 52), '\\1p\\2', regex.Regex('([^\\Wop])o([^\\Wop])', flags=regex.V0)), 'Hey, How are you? Did you see the last John Cena mpvie?')
+(((50, 53), '\\1b\\2', regex.Regex('([^\\Wvbn])v([^\\Wvbn])', flags=regex.V0)), 'Hey, How are you? Did you see the last John Cena mobie?')
+(((50, 53), '\\1bv\\2', regex.Regex('([^\\Wvbn])v([^\\Wvb])', flags=regex.V0)), 'Hey, How are you? Did you see the last John Cena mobvie?')
+(((50, 53), '\\1c\\2', regex.Regex('([^\\Wvcx])v([^\\Wvcx])', flags=regex.V0)), '')
+(((50, 53), '\\1cv\\2', regex.Regex('([^\\Wvcx])v([^\\Wvc])', flags=regex.V0)), 'Hey, How are you? Did you see the last John Cena mocvie?')
+(((50, 53), '\\1vb\\2', regex.Regex('([^\\Wvb])v([^\\Wvbn])', flags=regex.V0)), 'Hey, How are you? Did you see the last John Cena movbie?')
+(((50, 53), '\\1vc\\2', regex.Regex('([^\\Wvc])v([^\\Wvcx])', flags=regex.V0)), 'Hey, How are you? Did you see the last John Cena movcie?')
+(((51, 54), '\\1io\\2', regex.Regex('([^\\Wio])i([^\\Wiop])', flags=regex.V0)), 'Hey, How are you? Did you see the last John Cena movioe?')
+(((51, 54), '\\1iu\\2', regex.Regex('([^\\Wiu])i([^\\Wiuy])', flags=regex.V0)), 'Hey, How are you? Did you see the last John Cena moviue?')
+(((51, 54), '\\1o\\2', regex.Regex('([^\\Wiop])i([^\\Wiop])', flags=regex.V0)), 'Hey, How are you? Did you see the last John Cena movoe?')
+(((51, 54), '\\1oi\\2', regex.Regex('([^\\Wiop])i([^\\Wio])', flags=regex.V0)), 'Hey, How are you? Did you see the last John Cena movoie?')
+(((51, 54), '\\1u\\2', regex.Regex('([^\\Wiuy])i([^\\Wiuy])', flags=regex.V0)), 'Hey, How are you? Did you see the last John Cena movue?')
+(((51, 54), '\\1ui\\2', regex.Regex('([^\\Wiuy])i([^\\Wiu])', flags=regex.V0)), 'Hey, How are you? Did you see the last John Cena movuie?')
+valid_slots: 
+((0, 3), '\\1E\\2', regex.Regex('((?:\\W|^)[A-Z])e([a-z])', flags=regex.V0))
+((0, 3), '\\1er\\2', regex.Regex('([^\\Wer])e([^\\Wert])', flags=regex.V0))
+((0, 3), '\\1r\\2', regex.Regex('([^\\Wert])e([^\\Wert])', flags=regex.V0))
+((0, 3), '\\1re\\2', regex.Regex('([^\\Wert])e([^\\Wer])', flags=regex.V0))
+((5, 8), '\\1i\\2', regex.Regex('([^\\Woiu])o([^\\Woiu])', flags=regex.V0))
+((5, 8), '\\1io\\2', regex.Regex('([^\\Woiu])o([^\\Woi])', flags=regex.V0))
+((5, 8), '\\1oi\\2', regex.Regex('([^\\Woi])o([^\\Woiu])', flags=regex.V0))
+((5, 8), '\\1p\\2', regex.Regex('([^\\Wop])o([^\\Wop])', flags=regex.V0))
+((9, 12), '\\1rt\\2', regex.Regex('([^\\Wrt])r([^\\Wrty])', flags=regex.V0))
+((9, 12), '\\1tr\\2', regex.Regex('([^\\Wrty])r([^\\Wrt])', flags=regex.V0))
+((13, 16), '\\1io\\2', regex.Regex('([^\\Woiu])o([^\\Woi])', flags=regex.V0))
+((13, 16), '\\1p\\2', regex.Regex('([^\\Wop])o([^\\Wop])', flags=regex.V0))
+((18, 21), '\\1io\\2', regex.Regex('([^\\Wio])i([^\\Wiop])', flags=regex.V0))
+((18, 21), '\\1o\\2', regex.Regex('([^\\Wiop])i([^\\Wiop])', flags=regex.V0))
+((18, 21), '\\1oi\\2', regex.Regex('([^\\Wiop])i([^\\Wio])', flags=regex.V0))
+((22, 25), '\\1io\\2', regex.Regex('([^\\Woiu])o([^\\Woi])', flags=regex.V0))
+((22, 25), '\\1p\\2', regex.Regex('([^\\Wop])o([^\\Wop])', flags=regex.V0))
+((30, 33), '\\1g\\2', regex.Regex('([^\\Whgf])h([^\\Whgf])', flags=regex.V0))
+((30, 33), '\\1gh\\2', regex.Regex('([^\\Whgf])h([^\\Whg])', flags=regex.V0))
+((30, 33), '\\1hg\\2', regex.Regex('([^\\Whg])h([^\\Whgf])', flags=regex.V0))
+((30, 33), '\\1hj\\2', regex.Regex('([^\\Whj])h([^\\Whjk])', flags=regex.V0))
+((30, 33), '\\1j\\2', regex.Regex('([^\\Whjk])h([^\\Whjk])', flags=regex.V0))
+((30, 33), '\\1jh\\2', regex.Regex('([^\\Whjk])h([^\\Whj])', flags=regex.V0))
+((35, 38), '\\1d\\2', regex.Regex('([^\\Wsdf])s([^\\Wsdf])', flags=regex.V0))
+((35, 38), '\\1ds\\2', regex.Regex('([^\\Wsdf])s([^\\Wsd])', flags=regex.V0))
+((35, 38), '\\1sd\\2', regex.Regex('([^\\Wsd])s([^\\Wsdf])', flags=regex.V0))
+((39, 42), '\\1i\\2', regex.Regex('([^\\Woiu])o([^\\Woiu])', flags=regex.V0))
+((39, 42), '\\1io\\2', regex.Regex('([^\\Woiu])o([^\\Woi])', flags=regex.V0))
+((39, 42), '\\1oi\\2', regex.Regex('([^\\Woi])o([^\\Woiu])', flags=regex.V0))
+((39, 42), '\\1p\\2', regex.Regex('([^\\Wop])o([^\\Wop])', flags=regex.V0))
+((40, 43), '\\1g\\2', regex.Regex('([^\\Whgf])h([^\\Whgf])', flags=regex.V0))
+((40, 43), '\\1gh\\2', regex.Regex('([^\\Whgf])h([^\\Whg])', flags=regex.V0))
+((40, 43), '\\1hg\\2', regex.Regex('([^\\Whg])h([^\\Whgf])', flags=regex.V0))
+((40, 43), '\\1hj\\2', regex.Regex('([^\\Whj])h([^\\Whjk])', flags=regex.V0))
+((40, 43), '\\1j\\2', regex.Regex('([^\\Whjk])h([^\\Whjk])', flags=regex.V0))
+((40, 43), '\\1jh\\2', regex.Regex('([^\\Whjk])h([^\\Whj])', flags=regex.V0))
+((49, 52), '\\1i\\2', regex.Regex('([^\\Woiu])o([^\\Woiu])', flags=regex.V0))
+((49, 52), '\\1io\\2', regex.Regex('([^\\Woiu])o([^\\Woi])', flags=regex.V0))
+((49, 52), '\\1oi\\2', regex.Regex('([^\\Woi])o([^\\Woiu])', flags=regex.V0))
+((49, 52), '\\1p\\2', regex.Regex('([^\\Wop])o([^\\Wop])', flags=regex.V0))
+((50, 53), '\\1b\\2', regex.Regex('([^\\Wvbn])v([^\\Wvbn])', flags=regex.V0))
+((50, 53), '\\1bv\\2', regex.Regex('([^\\Wvbn])v([^\\Wvb])', flags=regex.V0))
+((50, 53), '\\1cv\\2', regex.Regex('([^\\Wvcx])v([^\\Wvc])', flags=regex.V0))
+((50, 53), '\\1vb\\2', regex.Regex('([^\\Wvb])v([^\\Wvbn])', flags=regex.V0))
+((50, 53), '\\1vc\\2', regex.Regex('([^\\Wvc])v([^\\Wvcx])', flags=regex.V0))
+((51, 54), '\\1io\\2', regex.Regex('([^\\Wio])i([^\\Wiop])', flags=regex.V0))
+((51, 54), '\\1iu\\2', regex.Regex('([^\\Wiu])i([^\\Wiuy])', flags=regex.V0))
+((51, 54), '\\1o\\2', regex.Regex('([^\\Wiop])i([^\\Wiop])', flags=regex.V0))
+((51, 54), '\\1oi\\2', regex.Regex('([^\\Wiop])i([^\\Wio])', flags=regex.V0))
+((51, 54), '\\1u\\2', regex.Regex('([^\\Wiuy])i([^\\Wiuy])', flags=regex.V0))
+((51, 54), '\\1ui\\2', regex.Regex('([^\\Wiuy])i([^\\Wiu])', flags=regex.V0))
+t.spaces = [51]
+t.bits = [5]
+max=51
+len=1
+[0]
+apply: space=0, offset=0, text=Hey, How are you? Did you see the last John Cena movie?
+after encoding [0] Hey, How are you? Did you see the last John Cena movie?
+cnt=0
+diff(text,a_self.text)=[]
+apply: space=0, offset=0, text=Hey, How are you? Did you see the last John Cena movie?
+apply: space=0, offset=1, text=Hey, How are you? Did you see the last John Cena movie?
+Before replace: Hey, How are you? Did you see the last John Cena movie?
+After replace: HEy, How are you? Did you see the last John Cena movie?
+applied: HEy, How are you? Did you see the last John Cena movie?
+apply: space=0, offset=2, text=Hey, How are you? Did you see the last John Cena movie?
+Before replace: Hey, How are you? Did you see the last John Cena movie?
+After replace: Hery, How are you? Did you see the last John Cena movie?
+applied: Hery, How are you? Did you see the last John Cena movie?
+apply: space=0, offset=3, text=Hey, How are you? Did you see the last John Cena movie?
+Before replace: Hey, How are you? Did you see the last John Cena movie?
+After replace: Hry, How are you? Did you see the last John Cena movie?
+applied: Hry, How are you? Did you see the last John Cena movie?
+apply: space=0, offset=4, text=Hey, How are you? Did you see the last John Cena movie?
+Before replace: Hey, How are you? Did you see the last John Cena movie?
+After replace: Hrey, How are you? Did you see the last John Cena movie?
+applied: Hrey, How are you? Did you see the last John Cena movie?
+apply: space=0, offset=5, text=Hey, How are you? Did you see the last John Cena movie?
+Before replace: Hey, How are you? Did you see the last John Cena movie?
+After replace: Hey, Hiw are you? Did you see the last John Cena movie?
+applied: Hey, Hiw are you? Did you see the last John Cena movie?
+apply: space=0, offset=6, text=Hey, How are you? Did you see the last John Cena movie?
+Before replace: Hey, How are you? Did you see the last John Cena movie?
+After replace: Hey, Hiow are you? Did you see the last John Cena movie?
+applied: Hey, Hiow are you? Did you see the last John Cena movie?
+apply: space=0, offset=7, text=Hey, How are you? Did you see the last John Cena movie?
+Before replace: Hey, How are you? Did you see the last John Cena movie?
+After replace: Hey, Hoiw are you? Did you see the last John Cena movie?
+applied: Hey, Hoiw are you? Did you see the last John Cena movie?
+apply: space=0, offset=8, text=Hey, How are you? Did you see the last John Cena movie?
+Before replace: Hey, How are you? Did you see the last John Cena movie?
+After replace: Hey, Hpw are you? Did you see the last John Cena movie?
+applied: Hey, Hpw are you? Did you see the last John Cena movie?
+apply: space=0, offset=9, text=Hey, How are you? Did you see the last John Cena movie?
+Before replace: Hey, How are you? Did you see the last John Cena movie?
+After replace: Hey, How arte you? Did you see the last John Cena movie?
+applied: Hey, How arte you? Did you see the last John Cena movie?
+apply: space=0, offset=10, text=Hey, How are you? Did you see the last John Cena movie?
+Before replace: Hey, How are you? Did you see the last John Cena movie?
+After replace: Hey, How atre you? Did you see the last John Cena movie?
+applied: Hey, How atre you? Did you see the last John Cena movie?
+apply: space=0, offset=11, text=Hey, How are you? Did you see the last John Cena movie?
+Before replace: Hey, How are you? Did you see the last John Cena movie?
+After replace: Hey, How are yiou? Did you see the last John Cena movie?
+applied: Hey, How are yiou? Did you see the last John Cena movie?
+apply: space=0, offset=12, text=Hey, How are you? Did you see the last John Cena movie?
+Before replace: Hey, How are you? Did you see the last John Cena movie?
+After replace: Hey, How are ypu? Did you see the last John Cena movie?
+applied: Hey, How are ypu? Did you see the last John Cena movie?
+apply: space=0, offset=13, text=Hey, How are you? Did you see the last John Cena movie?
+Before replace: Hey, How are you? Did you see the last John Cena movie?
+After replace: Hey, How are you? Diod you see the last John Cena movie?
+applied: Hey, How are you? Diod you see the last John Cena movie?
+apply: space=0, offset=14, text=Hey, How are you? Did you see the last John Cena movie?
+Before replace: Hey, How are you? Did you see the last John Cena movie?
+After replace: Hey, How are you? Dod you see the last John Cena movie?
+applied: Hey, How are you? Dod you see the last John Cena movie?
+apply: space=0, offset=15, text=Hey, How are you? Did you see the last John Cena movie?
+Before replace: Hey, How are you? Did you see the last John Cena movie?
+After replace: Hey, How are you? Doid you see the last John Cena movie?
+applied: Hey, How are you? Doid you see the last John Cena movie?
+apply: space=0, offset=16, text=Hey, How are you? Did you see the last John Cena movie?
+Before replace: Hey, How are you? Did you see the last John Cena movie?
+After replace: Hey, How are you? Did yiou see the last John Cena movie?
+applied: Hey, How are you? Did yiou see the last John Cena movie?
+apply: space=0, offset=17, text=Hey, How are you? Did you see the last John Cena movie?
+Before replace: Hey, How are you? Did you see the last John Cena movie?
+After replace: Hey, How are you? Did ypu see the last John Cena movie?
+applied: Hey, How are you? Did ypu see the last John Cena movie?
+apply: space=0, offset=18, text=Hey, How are you? Did you see the last John Cena movie?
+Before replace: Hey, How are you? Did you see the last John Cena movie?
+After replace: Hey, How are you? Did you see tge last John Cena movie?
+applied: Hey, How are you? Did you see tge last John Cena movie?
+apply: space=0, offset=19, text=Hey, How are you? Did you see the last John Cena movie?
+Before replace: Hey, How are you? Did you see the last John Cena movie?
+After replace: Hey, How are you? Did you see tghe last John Cena movie?
+applied: Hey, How are you? Did you see tghe last John Cena movie?
+apply: space=0, offset=20, text=Hey, How are you? Did you see the last John Cena movie?
+Before replace: Hey, How are you? Did you see the last John Cena movie?
+After replace: Hey, How are you? Did you see thge last John Cena movie?
+applied: Hey, How are you? Did you see thge last John Cena movie?
+apply: space=0, offset=21, text=Hey, How are you? Did you see the last John Cena movie?
+Before replace: Hey, How are you? Did you see the last John Cena movie?
+After replace: Hey, How are you? Did you see thje last John Cena movie?
+applied: Hey, How are you? Did you see thje last John Cena movie?
+apply: space=0, offset=22, text=Hey, How are you? Did you see the last John Cena movie?
+Before replace: Hey, How are you? Did you see the last John Cena movie?
+After replace: Hey, How are you? Did you see tje last John Cena movie?
+applied: Hey, How are you? Did you see tje last John Cena movie?
+apply: space=0, offset=23, text=Hey, How are you? Did you see the last John Cena movie?
+Before replace: Hey, How are you? Did you see the last John Cena movie?
+After replace: Hey, How are you? Did you see tjhe last John Cena movie?
+applied: Hey, How are you? Did you see tjhe last John Cena movie?
+apply: space=0, offset=24, text=Hey, How are you? Did you see the last John Cena movie?
+Before replace: Hey, How are you? Did you see the last John Cena movie?
+After replace: Hey, How are you? Did you see the ladt John Cena movie?
+applied: Hey, How are you? Did you see the ladt John Cena movie?
+apply: space=0, offset=25, text=Hey, How are you? Did you see the last John Cena movie?
+Before replace: Hey, How are you? Did you see the last John Cena movie?
+After replace: Hey, How are you? Did you see the ladst John Cena movie?
+applied: Hey, How are you? Did you see the ladst John Cena movie?
+apply: space=0, offset=26, text=Hey, How are you? Did you see the last John Cena movie?
+Before replace: Hey, How are you? Did you see the last John Cena movie?
+After replace: Hey, How are you? Did you see the lasdt John Cena movie?
+applied: Hey, How are you? Did you see the lasdt John Cena movie?
+apply: space=0, offset=27, text=Hey, How are you? Did you see the last John Cena movie?
+Before replace: Hey, How are you? Did you see the last John Cena movie?
+After replace: Hey, How are you? Did you see the last Jihn Cena movie?
+applied: Hey, How are you? Did you see the last Jihn Cena movie?
+apply: space=0, offset=28, text=Hey, How are you? Did you see the last John Cena movie?
+Before replace: Hey, How are you? Did you see the last John Cena movie?
+After replace: Hey, How are you? Did you see the last Jiohn Cena movie?
+applied: Hey, How are you? Did you see the last Jiohn Cena movie?
+apply: space=0, offset=29, text=Hey, How are you? Did you see the last John Cena movie?
+Before replace: Hey, How are you? Did you see the last John Cena movie?
+After replace: Hey, How are you? Did you see the last Joihn Cena movie?
+applied: Hey, How are you? Did you see the last Joihn Cena movie?
+apply: space=0, offset=30, text=Hey, How are you? Did you see the last John Cena movie?
+Before replace: Hey, How are you? Did you see the last John Cena movie?
+After replace: Hey, How are you? Did you see the last Jphn Cena movie?
+applied: Hey, How are you? Did you see the last Jphn Cena movie?
+apply: space=0, offset=31, text=Hey, How are you? Did you see the last John Cena movie?
+Before replace: Hey, How are you? Did you see the last John Cena movie?
+After replace: Hey, How are you? Did you see the last Jogn Cena movie?
+applied: Hey, How are you? Did you see the last Jogn Cena movie?
+apply: space=0, offset=32, text=Hey, How are you? Did you see the last John Cena movie?
+Before replace: Hey, How are you? Did you see the last John Cena movie?
+After replace: Hey, How are you? Did you see the last Joghn Cena movie?
+applied: Hey, How are you? Did you see the last Joghn Cena movie?
+apply: space=0, offset=33, text=Hey, How are you? Did you see the last John Cena movie?
+Before replace: Hey, How are you? Did you see the last John Cena movie?
+After replace: Hey, How are you? Did you see the last Johgn Cena movie?
+applied: Hey, How are you? Did you see the last Johgn Cena movie?
+apply: space=0, offset=34, text=Hey, How are you? Did you see the last John Cena movie?
+Before replace: Hey, How are you? Did you see the last John Cena movie?
+After replace: Hey, How are you? Did you see the last Johjn Cena movie?
+applied: Hey, How are you? Did you see the last Johjn Cena movie?
+apply: space=0, offset=35, text=Hey, How are you? Did you see the last John Cena movie?
+Before replace: Hey, How are you? Did you see the last John Cena movie?
+After replace: Hey, How are you? Did you see the last Jojn Cena movie?
+applied: Hey, How are you? Did you see the last Jojn Cena movie?
+apply: space=0, offset=36, text=Hey, How are you? Did you see the last John Cena movie?
+Before replace: Hey, How are you? Did you see the last John Cena movie?
+After replace: Hey, How are you? Did you see the last Jojhn Cena movie?
+applied: Hey, How are you? Did you see the last Jojhn Cena movie?
+apply: space=0, offset=37, text=Hey, How are you? Did you see the last John Cena movie?
+Before replace: Hey, How are you? Did you see the last John Cena movie?
+After replace: Hey, How are you? Did you see the last John Cena mivie?
+applied: Hey, How are you? Did you see the last John Cena mivie?
+apply: space=0, offset=38, text=Hey, How are you? Did you see the last John Cena movie?
+Before replace: Hey, How are you? Did you see the last John Cena movie?
+After replace: Hey, How are you? Did you see the last John Cena miovie?
+applied: Hey, How are you? Did you see the last John Cena miovie?
+apply: space=0, offset=39, text=Hey, How are you? Did you see the last John Cena movie?
+Before replace: Hey, How are you? Did you see the last John Cena movie?
+After replace: Hey, How are you? Did you see the last John Cena moivie?
+applied: Hey, How are you? Did you see the last John Cena moivie?
+apply: space=0, offset=40, text=Hey, How are you? Did you see the last John Cena movie?
+Before replace: Hey, How are you? Did you see the last John Cena movie?
+After replace: Hey, How are you? Did you see the last John Cena mpvie?
+applied: Hey, How are you? Did you see the last John Cena mpvie?
+apply: space=0, offset=41, text=Hey, How are you? Did you see the last John Cena movie?
+Before replace: Hey, How are you? Did you see the last John Cena movie?
+After replace: Hey, How are you? Did you see the last John Cena mobie?
+applied: Hey, How are you? Did you see the last John Cena mobie?
+apply: space=0, offset=42, text=Hey, How are you? Did you see the last John Cena movie?
+Before replace: Hey, How are you? Did you see the last John Cena movie?
+After replace: Hey, How are you? Did you see the last John Cena mobvie?
+applied: Hey, How are you? Did you see the last John Cena mobvie?
+apply: space=0, offset=43, text=Hey, How are you? Did you see the last John Cena movie?
+Before replace: Hey, How are you? Did you see the last John Cena movie?
+After replace: Hey, How are you? Did you see the last John Cena mocvie?
+applied: Hey, How are you? Did you see the last John Cena mocvie?
+apply: space=0, offset=44, text=Hey, How are you? Did you see the last John Cena movie?
+Before replace: Hey, How are you? Did you see the last John Cena movie?
+After replace: Hey, How are you? Did you see the last John Cena movbie?
+applied: Hey, How are you? Did you see the last John Cena movbie?
+apply: space=0, offset=45, text=Hey, How are you? Did you see the last John Cena movie?
+Before replace: Hey, How are you? Did you see the last John Cena movie?
+After replace: Hey, How are you? Did you see the last John Cena movcie?
+applied: Hey, How are you? Did you see the last John Cena movcie?
+apply: space=0, offset=46, text=Hey, How are you? Did you see the last John Cena movie?
+Before replace: Hey, How are you? Did you see the last John Cena movie?
+After replace: Hey, How are you? Did you see the last John Cena movioe?
+applied: Hey, How are you? Did you see the last John Cena movioe?
+apply: space=0, offset=47, text=Hey, How are you? Did you see the last John Cena movie?
+Before replace: Hey, How are you? Did you see the last John Cena movie?
+After replace: Hey, How are you? Did you see the last John Cena moviue?
+applied: Hey, How are you? Did you see the last John Cena moviue?
+apply: space=0, offset=48, text=Hey, How are you? Did you see the last John Cena movie?
+Before replace: Hey, How are you? Did you see the last John Cena movie?
+After replace: Hey, How are you? Did you see the last John Cena movoe?
+applied: Hey, How are you? Did you see the last John Cena movoe?
+apply: space=0, offset=49, text=Hey, How are you? Did you see the last John Cena movie?
+Before replace: Hey, How are you? Did you see the last John Cena movie?
+After replace: Hey, How are you? Did you see the last John Cena movoie?
+applied: Hey, How are you? Did you see the last John Cena movoie?
+apply: space=0, offset=50, text=Hey, How are you? Did you see the last John Cena movie?
+Before replace: Hey, How are you? Did you see the last John Cena movie?
+After replace: Hey, How are you? Did you see the last John Cena movue?
+applied: Hey, How are you? Did you see the last John Cena movue?
+chunk is empty values=[0]
+original text candidate "Hey, How are you? Did you see the last John Cena movie?"
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> passed!
+[1]
+apply: space=0, offset=1, text=Hey, How are you? Did you see the last John Cena movie?
+Before replace: Hey, How are you? Did you see the last John Cena movie?
+After replace: HEy, How are you? Did you see the last John Cena movie?
+applied: HEy, How are you? Did you see the last John Cena movie?
+after encoding [1] HEy, How are you? Did you see the last John Cena movie?
+original=
+HEy, How are you? Did you see the last John Cena movie?
+test_self.text=
+Hey, How are you? Did you see the last John Cena movie?
+chunks=[(0, 54)]
+offsets=[0]
+chunks_offsets=[[0]]
+affected_words=['HEy']
+affected_words_corrections=[['Hey', 'Hey']]
+os=[0]
+typo=HEy
+suggestion=Hey
+votes=['Hey', 'Hey']
