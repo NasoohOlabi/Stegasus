@@ -117,7 +117,12 @@ def valid_matches(text:str, slots:List[Tuple[Tuple[int, int], str, re.Pattern]],
       old_word = texas.get(ex_span)
       new_word = apply_match(old_word,(relative_span,repl,regex),verbose)
       new_word_corrections = corrections(new_word,verbose=verbose)
-      new_word_corrections_mode = mode(new_word_corrections)
+      if len(new_word_corrections) > 0:
+         new_word_corrections_mode = mode(new_word_corrections)
+      else:
+         if verbose:
+            print(f'new_word: {new_word} can\'t be fixed')
+         new_word_corrections_mode = ''
       if normal_word(old_word) \
             and not normal_word(new_word) \
             and new_word[0].lower() == old_word[0].lower() \
@@ -129,29 +134,30 @@ def valid_matches(text:str, slots:List[Tuple[Tuple[int, int], str, re.Pattern]],
             print(f'rule undetectable or modify looks! new word "{new_word}" != "{old_word}" original and will be corrected to {new_word_corrections_mode} from {new_word_corrections}')
 
 
-   # Print the list of matches and their mutations if verbose output is enabled
-   if verbose:
-      print('\nlist(zip(slots,mutations))'+('%'*20))
-      for v in list(zip(slots, mutations)):
-         print(v)
 
    # Check for ambiguous and invalid matches
    ambiguous_invalid_matches = [i for i, new_string in enumerate(mutations)
-         if not new_string or new_string in mutations[:i]]
+         if not new_string or new_string in mutations[:i] or normalize(new_string,verbose=verbose) != text]
 
    # Create a list of valid matches
    valid_slots = [elem for i, elem in enumerate(slots) if i not in ambiguous_invalid_matches]
+   
+   # Print the list of matches and their mutations if verbose output is enabled
+   if verbose:
+      print('\n'+('%'*20)+'valid slots!'+('%'*20))
+      for v in list(zip(slots, mutations)):
+         print(v)
 
    return valid_slots
 def valid_rules_scan(text:str,verbose=False):
    proposed_slots = rules_scan(text)
    if verbose:
-     print('proposed_slots: ',proposed_slots)
+      print('proposed_slots: ',proposed_slots)
    valid_slots = valid_matches(text,proposed_slots,verbose=verbose)
    if verbose:
-     print('valid_slots: ')
-     for s in valid_slots:
-       print(s)
+      print('valid_slots: ')
+      for s in valid_slots:
+         print(s)
    return valid_slots
 def chunker(text:str,span_size = 6) -> List[Tuple[int,int]]:
    words = StringSpans(text).words
@@ -159,12 +165,13 @@ def chunker(text:str,span_size = 6) -> List[Tuple[int,int]]:
       return [(0,len(text))]
    chunks = []
    last_start = 0
-   for i in range(span_size,len(words),span_size):
-      chunks.append((last_start,words[i-1][1]))
-      last_start = words[i][0]
-   
+   for i in range(span_size-1,len(words),span_size):
+      chunks.append((last_start,words[i][1]))
+      if i+1<len(words):
+         last_start = words[i+1][0] 
+
    # last word ends with last word
-   chunks[-1][1] = words[-1][1]
+   chunks[-1] = (chunks[-1][0], words[-1][1])
    return chunks
 def word_we_misspelled(word:str,spelling:str,verbose=False):
    uls = count_uppercase_letters(word)
@@ -188,54 +195,48 @@ def spell_word(word:str,verbose=False) -> str:
    spellingOpt = lang_tool.check(word)[0].replacements[0]
    spelling = spellingOpt if spellingOpt is not None else word
    return spelling if word_we_misspelled(word,spelling,verbose) else word 
+def correction_rules_subset(text:str):
+   return [rule for rule in lang_tool.check(text) if rule.category in ['TYPOS','SPELLING','GRAMMAR','TYPOGRAPHY']]
 def normalize(text:str,verbose=False,learn=False):
-   chunks = chunker(text)
-   if verbose:
-      print(f'chunks={chunks}')
+   chunks: List[Tuple[int,int]] = chunker(text) # size = chunks
    to_be_original = text
-   offsets = [x.offset for x in lang_tool.check(text)]
-   if verbose:
-      print(f'offsets={offsets}')
-   chunks_offsets = [
-      [o for o in offsets if chunk_start <= o < chunk_end]
-      for chunk_start,chunk_end in chunks]
-   if verbose:
-      print(f'chunks_offsets={chunks_offsets}')
-   empty_chunks = [False for _ in chunks]
+   offsets: List[int]= [x.offset for x in correction_rules_subset(text)] # size = offsets
+   empty_chunks = [False for _ in chunks] # size = chunks
    text_sss = StringSpans(text)
-   affected_words = [text[s:e] for s,e in text_sss.words if s in offsets]
+   affected_words = [text[s:e] for s,e in text_sss.words if s in offsets] # size = offsets
    if verbose:
-      print(f"affected_words={affected_words}")
-   affected_words_corrections = [corrections(w) for w in affected_words]
+      print(f'text={text}')
+      print(f'chunks={chunks}')
+      print(f'offsets={offsets}')
+   offsets_chunks = [
+      [(o,affected_words[i],corrections(affected_words[i])) for i,o in enumerate(offsets) if chunk_start <= o < chunk_end]
+      for chunk_start,chunk_end in chunks] # size = chunks
    if verbose:
-      print(f"affected_words_corrections={affected_words_corrections}")
-   for i, os in enumerate(chunks_offsets):
-      if verbose:
-         print(f'os={os}')
-      if len(os) > 1:
+      print(f'chunks_offsets={offsets_chunks}')
+   for i, offsets_chunk in enumerate(offsets_chunks):
+      if len(offsets_chunk) > 1:
          if verbose:
-            print(f'len({os})={len(os)} > 1')
+            print(f'len({offsets_chunk})={len(offsets_chunk)} > 1')
          empty_chunks[i] = True
          if learn:
-            for o in os:
-               add_word(affected_words[offsets.index(o)])
-      elif len(os) == 1 and len(affected_words_corrections[offsets.index(os[0])]) == 0:
+            for o,w,cs in offsets_chunk:
+               add_word(w)
+      elif len(offsets_chunk) == 1 and len(offsets_chunk[0][2]) == 0:
          if verbose:
-            print(f'no suggestions for {affected_words[offsets.index(os[0])]} added to dict')
+            print(f'no suggestions for {offsets_chunk[0][1]} added to dict')
          empty_chunks[i] = True
          if learn:
-            add_word(affected_words[offsets.index(os[0])])
-      elif len(os) == 1:
-         j = offsets.index(os[0])
-         cs = affected_words_corrections[j]
+            add_word(offsets_chunk[0][1])
+      elif len(offsets_chunk) == 1:
+         cs = offsets_chunk[0][2]
          if verbose:
-            print(f'typo={affected_words[j]}\nsuggestion={mode(cs)}')
+            print(f'typo={offsets_chunk[0][1]}\nsuggestion={mode(cs)}')
             print(f'votes={cs}')
-         to_be_original = to_be_original.replace(affected_words[j],mode(cs))
+         to_be_original = to_be_original.replace(offsets_chunk[0][1],mode(cs))
       else:
          empty_chunks[i] = True
    
-   return text
+   return to_be_original
 def corrections (typo,verbose=False):
    suggestion = spell_word(typo)
    votes = [suggestion] if string_mutation_distance(suggestion,typo) == 1 and normal_word(suggestion) else []

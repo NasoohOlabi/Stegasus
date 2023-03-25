@@ -21,7 +21,6 @@ class Typo:
    def __post_init__(self):
       if self.text != normalize(self.text,self.verbose):
          raise ValueError("Text isn't spelled correctly")
-
    def apply(self, space: int, offset: int, text: str) -> str:
       if self.verbose:
          print(f"apply: space={space}, offset={offset}, text={text}")
@@ -32,21 +31,17 @@ class Typo:
       if self.verbose:
          print(f"applied: {applied}")
       return applied
-   
    @property
    def slots(self):
       if self._slots is None:
          self._slots = valid_rules_scan(self.text,self.verbose)
       return self._slots
-
    @property
    def length(self) -> int:
       return len(self.slots)
-
    @length.setter
    def length(self, length: int):
       pass
-
    @property
    def spaces(self) -> List[int]:
       if self._spaces is not None:
@@ -65,19 +60,15 @@ class Typo:
                buckets[j] += 1
                break
       return buckets
-
    @spaces.setter
    def spaces(self, value):
       pass
-
    @property
    def bits(self):
       return list(map(int, map(lambda x : log2(x + 1), self.spaces)))
-
    @bits.setter
    def bits(self, bits: int):
       pass
-
    def encode(self, values:List[int]):
       spaces = self.spaces
       if len(values) > len(spaces):
@@ -89,19 +80,17 @@ class Typo:
       for i in range(len(values) - 1, -1, -1):
          result = self.apply(i, values[i], result)
       return result
-
    @staticmethod
    def decode(text:str,verbose=False,test_self=None) -> Tuple[str,List[int]]:
-      original = normalize(text)
+      original = normalize(text,verbose)
       if test_self is not None:
-         if original != test_self.text and verbose:
+         if original != test_self.text:
             print(f'original=\n{original}')
             print(f'test_self.text=\n{test_self.text}')
          assert original == test_self.text
       t = Typo(original)
 
       return original, t._decode(text,test_self)
-   
    def _decode(self, text:str,test=None) -> List[int]:
       a_self = test if test is not None else self
       spaces = a_self.spaces
@@ -127,7 +116,6 @@ class Typo:
             if a_self.verbose:
                print(f'chunk is empty values={values}')
       return  values
-   
    def encode_encoder(self, bytes_str: str) -> Tuple[List[int], str]:
       if not set(bytes_str) <= set('01'):
          raise ValueError(f"bytes_str isn't a bytes string : '{bytes_str}'")

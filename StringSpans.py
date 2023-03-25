@@ -93,7 +93,19 @@ class StringSpans:
       return ss
    def get_words(self):
       return [self.string[start:end] for start,end in self.words]
-   def isw(self):
-      return ((i,start,end,self.words[start:end]) for i,(start,end) in enumerate(self.words))
-   def iws(self):
-      return ((start,end,self.words[start:end]) for (start,end) in self.words)
+   def index_span_text(self):
+      return ((i,start,end,self.string[start:end]) for i, (start,end) in enumerate(self.spans))
+   def index_wordSpan_text(self):
+      return ((i,start,end,self.string[start:end]) for i, (start,end) in enumerate(self.words))
+   def get_span_by_offset(self,offset):
+      span = next(((s,e) for s,e in self.spans if s<=offset<e),None)
+      if span is None:
+         raise ValueError(f'offset={offset} is not in any span')
+      else:
+         return span
+   def get_word_by_offset(self,offset):
+      span = next(((s,e) for s,e in self.words if s<=offset<e),None)
+      if span is None:
+         raise ValueError(f'offset={offset} is not in any word')
+      else:
+         return span
