@@ -10,3 +10,4 @@ Steganography Using Typos. We all make misstakes
 - [X] Increase the test script speed
 - [X] Optimize string manipulations
 - [X] Add Chunks with more than one error each with no suggestions to user dictionary!
+- [X] Pass some tests
