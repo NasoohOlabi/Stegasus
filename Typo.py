@@ -5,7 +5,7 @@ from typing import Callable, Generator, List, Optional, Tuple
 
 import regex as re
 
-from util import *
+from .util import *
 
 
 @dataclass
