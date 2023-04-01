@@ -11,8 +11,8 @@ import regex as re
 from icecream import ic
 from language_tool_python import LanguageTool
 
-from .StringSpans import StringSpans
 from .UDict import add_word, check_word
+from Stegasus.util.StringSpans import StringSpans
 
 # Initialize the LanguageTool tool
 lang_tool = LanguageTool('en-US', config={ 'cacheSize': 1000, 'pipelineCaching': True })
