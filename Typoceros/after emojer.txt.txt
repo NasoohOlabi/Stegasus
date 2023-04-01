@@ -1,0 +1,88 @@
+text=Hi How 🤷 are you 👧
+chunks=[(0, 18)]
+offsets=[]
+chunks_offsets=[[]]
+proposed_slots:  [((2, 6), '\\1O\\2', regex.Regex('((?:\\W|^)[A-Z])o([a-z])', flags=regex.V0)), ((3, 6), '\\1i\\2', regex.Regex('([^\\Woiu])o([^\\Woiu])', flags=regex.V0)), ((3, 6), '\\1io\\2', regex.Regex('([^\\Woiu])o([^\\Woi])', flags=regex.V0)), ((3, 6), '\\1oi\\2', regex.Regex('([^\\Woi])o([^\\Woiu])', flags=regex.V0)), ((3, 6), '\\1p\\2', regex.Regex('([^\\Wop])o([^\\Wop])', flags=regex.V0)), ((9, 12), '\\1rt\\2', regex.Regex('([^\\Wrt])r([^\\Wrty])', flags=regex.V0)), ((9, 12), '\\1t\\2', regex.Regex('([^\\Wrty])r([^\\Wrty])', flags=regex.V0)), ((9, 12), '\\1tr\\2', regex.Regex('([^\\Wrty])r([^\\Wrt])', flags=regex.V0)), ((13, 16), '\\1io\\2', regex.Regex('([^\\Woiu])o([^\\Woi])', flags=regex.V0)), ((13, 16), '\\1p\\2', regex.Regex('([^\\Wop])o([^\\Wop])', flags=regex.V0))]
+Before replace: Hi
+After replace: Hi
+unfiltered votes []
+filtered votes []
+new_word: Hi can't be fixed
+rule undetectable or modify looks! new word "Hi" != "Hi" original and will be corrected to  from []
+Before replace: How
+After replace: Hiw
+unfiltered votes ['Huw', 'How']
+filtered votes ['How']
+Before replace: How
+After replace: Hiow
+unfiltered votes ['Hiw', 'How']
+filtered votes ['How']
+Before replace: How
+After replace: Hoiw
+unfiltered votes ['Hiw', 'How']
+filtered votes ['How']
+Before replace: How
+After replace: Hpw
+unfiltered votes ['How']
+filtered votes ['How']
+Before replace: are
+After replace: arte
+unfiltered votes ['are', 'ate']
+filtered votes ['are', 'ate']
+Before replace: are
+After replace: ate
+unfiltered votes ['are', 'aye']
+filtered votes ['are', 'aye']
+rule undetectable or modify looks! new word "ate" != "are" original and will be corrected to are from ['are', 'aye']
+Before replace: are
+After replace: atre
+unfiltered votes ['are']
+filtered votes ['are']
+Before replace: you
+After replace: yiou
+unfiltered votes ['yiu', 'you']
+filtered votes ['you']
+Before replace: you
+After replace: ypu
+unfiltered votes ['you']
+filtered votes ['you']
+text=Hi Hiw 🤷 are you 👧
+chunks=[(0, 18)]
+offsets=[3]
+chunks_offsets=[[(3, 'Hiw', ['How'])]]
+typo=Hiw
+suggestion=How
+votes=['How']
+text=Hi Hiow 🤷 are you 👧
+chunks=[(0, 19)]
+offsets=[3]
+chunks_offsets=[[(3, 'Hiow', ['How'])]]
+typo=Hiow
+suggestion=How
+votes=['How']
+text=Hi Hoiw 🤷 are you 👧
+chunks=[(0, 19)]
+offsets=[3]
+chunks_offsets=[[(3, 'Hoiw', ['How'])]]
+typo=Hoiw
+suggestion=How
+votes=['How']
+text=Hi Hpw 🤷 are you 👧
+chunks=[(0, 18)]
+offsets=[3]
+chunks_offsets=[[(3, 'Hpw', ['How'])]]
+typo=Hpw
+suggestion=How
+votes=['How']
+text=Hi How 🤷 arte you 👧
+chunks=[(0, 19)]
+offsets=[10]
+text=Hi How 🤷 arte you 👧
+chunks=[(0, 19)]
+offsets=[10]
+text=Hi How 🤷 arte you 👧
+chunks=[(0, 19)]
+offsets=[10]
+text=Hi How 🤷 arte you 👧
+chunks=[(0, 19)]
+offsets=[10]
