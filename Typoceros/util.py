@@ -11,8 +11,9 @@ import regex as re
 from icecream import ic
 from language_tool_python import LanguageTool
 
-from .UDict import add_word, check_word
 from Stegasus.util.StringSpans import StringSpans
+
+from .UDict import add_word, check_word
 
 # Initialize the LanguageTool tool
 lang_tool = LanguageTool('en-US', config={ 'cacheSize': 1000, 'pipelineCaching': True })
@@ -200,17 +201,36 @@ def correction_rules_subset(text:str):
 def normalize(text:str,verbose=False,learn=False):
    chunks: List[Tuple[int,int]] = chunker(text) # size = chunks
    to_be_original = text
-   offsets: List[int]= [x.offset for x in correction_rules_subset(text)] # size = offsets
+   offsets: List[int]= [x.offset for x in correction_rules_subset(text,verbose=verbose)] # size = offsets
    empty_chunks = [False for _ in chunks] # size = chunks
    text_sss = StringSpans(text)
-   affected_words = [text[s:e] for s,e in text_sss.words if s in offsets] # size = offsets
+   affected_words = []
+   for o in offsets:
+      for s,e  in text_sss.words:
+         if s <= o < e:
+            affected_words.append(text[s:e])
    if verbose:
       print(f'text={text}')
       print(f'chunks={chunks}')
       print(f'offsets={offsets}')
-   offsets_chunks = [
-      [(o,affected_words[i],corrections(affected_words[i])) for i,o in enumerate(offsets) if chunk_start <= o < chunk_end]
-      for chunk_start,chunk_end in chunks] # size = chunks
+      print(f'text_sss.words={text_sss.words}')
+      print(f'text_sss.get_words()={text_sss.get_words()}')
+      print(f'affected_words={affected_words}')
+   offsets_chunks = []
+   for chunk_start, chunk_end in chunks:
+      chunk_offsets = []
+      for i, o in enumerate(offsets):
+         if verbose:
+            print(f'iter={i}, o={o}')
+         if chunk_start <= o < chunk_end:
+            affected_word = affected_words[i]
+            affected_word_corrections = corrections(affected_word)
+            chunk_offsets.append((o, affected_word, affected_word_corrections))
+            if verbose:
+               print(f"Added ({o}, {affected_word}, {affected_word_corrections}) to chunk_offsets")
+      offsets_chunks.append(chunk_offsets)
+      if verbose:
+         print(f"Added {chunk_offsets} to offsets_chunks")
    if verbose:
       print(f'chunks_offsets={offsets_chunks}')
    for i, offsets_chunk in enumerate(offsets_chunks):
