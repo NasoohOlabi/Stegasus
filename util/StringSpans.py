@@ -1,11 +1,12 @@
-from typing import Callable, List, Tuple
+from typing import Callable, Generator, List, Tuple, Type
 
 import regex as re
 
 
 class StringSpans:
+   string:str
    def __init__(self, string = None):
-      if string is not None:
+      if isinstance(string,str):
          self.string = string
          self._set_spans(string)
    
@@ -72,9 +73,9 @@ class StringSpans:
       start, end = self.words[word_index]
       
       return self.string[start:end]
-   def get(self,span):
+   def get(self,span) -> str:
       return self.string[span[0]:span[1]]
-   def replace_word_StringSpans(self, word_index: int, replacement: str):
+   def replace_word_StringSpans(self, word_index: int, replacement: str) -> Type['StringSpans']:
       ss = StringSpans()
       ss.string = self.replace_word(word_index, replacement)
       word_start, word_end = self.words[word_index]
@@ -91,19 +92,19 @@ class StringSpans:
       ss.words[word_index] = (word_start,word_start+new_len)
       ss.spans[span_index] = (word_start,word_start+new_len)
       return ss
-   def get_words(self):
+   def get_words(self) -> List[str]:
       return [self.string[start:end] for start,end in self.words]
-   def index_span_text(self):
+   def index_span_text(self) -> Generator[tuple[int, int, int, str], None, None]:
       return ((i,start,end,self.string[start:end]) for i, (start,end) in enumerate(self.spans))
-   def index_wordSpan_text(self):
+   def index_wordSpan_text(self) -> Generator[tuple[int, int, int, str], None, None]:
       return ((i,start,end,self.string[start:end]) for i, (start,end) in enumerate(self.words))
-   def get_span_by_offset(self,offset):
+   def get_span_by_offset(self,offset) -> tuple[int, int]:
       span = next(((s,e) for s,e in self.spans if s<=offset<e),None)
       if span is None:
          raise ValueError(f'offset={offset} is not in any span')
       else:
          return span
-   def get_word_by_offset(self,offset):
+   def get_word_by_offset(self,offset) -> tuple[int, int]:
       span = next(((s,e) for s,e in self.words if s<=offset<e),None)
       if span is None:
          raise ValueError(f'offset={offset} is not in any word')
