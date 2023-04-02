@@ -75,7 +75,7 @@ class StringSpans:
       return self.string[start:end]
    def get(self,span) -> str:
       return self.string[span[0]:span[1]]
-   def replace_word_StringSpans(self, word_index: int, replacement: str) -> Type['StringSpans']:
+   def replace_word_StringSpans(self, word_index: int, replacement: str) -> 'StringSpans':
       ss = StringSpans()
       ss.string = self.replace_word(word_index, replacement)
       word_start, word_end = self.words[word_index]
