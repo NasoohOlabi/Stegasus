@@ -118,7 +118,7 @@ class Emojier:
             print(f'result[:we]="{result[:we]}" result[we:]="{result[we:]}"')  
           result = f'{result[:we]} {emojis}{result[we:]}'  
 
-    return result.strip(), bytes_str
+    return result, bytes_str
 
   @staticmethod
   def eat_back(s:str) -> Generator[str,None,None]:
@@ -128,14 +128,18 @@ class Emojier:
   def decode(input_str: str, verbose=False) -> Tuple[str,str]:
     if verbose:
       print('decoding!')
-    words = [input_str[s:e] for s,e in StringSpans(input_str).non_spaces]
+    wordish = re.compile(r'^[a-z]*$')
+    input_str_ss = StringSpans(input_str)
+    words = [input_str[s:e] for s,e in input_str_ss.non_spaces]
     result = input_str
     bytes_str = ''
+    
+    emoticons_used = []
     for i, word_raw in enumerate(words[:-1]):
-      if word_raw in ALL_EMOJIS:
-        result = result.replace(f' {word_raw}','')
-        continue
       word = word_raw.lower()
+      
+      if wordish.match(word) is None:
+        continue 
 
       is_too_common = word in EMOJIER_COMMON_WORDS
 
@@ -159,6 +163,7 @@ class Emojier:
         for w in Emojier.eat_back(words[i+1]):
           if w in emoji_options:
             index = emoji_options.index(w)
+            emoticons_used.append((w,i+1))
             break
           
         data_extracted = int_to_binary_string(index,bits)
@@ -166,5 +171,10 @@ class Emojier:
           print(f'>>>decoding word:"{words[i]}" next word:"{words[i+1]}" length:"{len(emoji_options)}"')
           print(f'bits:"{bits}" data extracted:"{data_extracted}" index:"{index}"')
         bytes_str += data_extracted
-    return result.strip(), bytes_str
+    for emo,idx in reversed(emoticons_used):
+      s,e = input_str_ss.non_spaces[idx]
+      if emo:
+        result = result[:s-1] + result[s:e].replace(emo,'') + result[e:]
+  
+    return result, bytes_str
 
