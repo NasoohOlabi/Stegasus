@@ -25,7 +25,7 @@ script_path = os.path.abspath(__file__)
 
 ROOT_DIR = os.path.dirname(script_path)
 
-emoticons_file = ROOT_DIR + './emoji-data.json'
+emoticons_file = ROOT_DIR + '/emoji-data.json'
 
 with open(emoticons_file, 'r') as f:
 		emoji_data: Dict[str,Dict[str,List[str]]] = json.load(f)
