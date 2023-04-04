@@ -206,9 +206,20 @@ def normalize(text:str,verbose=False,learn=False):
    text_sss = StringSpans(text)
    affected_words = []
    for o in offsets:
-      for s,e  in text_sss.words:
-         if s <= o < e:
-            affected_words.append(text[s:e])
+      closest_word = None
+      closest_distance = float('inf')
+      for s, e in text_sss.words:
+         if o < s:  # o is to the left of the current word
+               distance = s - o
+         elif o > e:  # o is to the right of the current word
+               distance = o - e
+         else:  # o is inside the current word
+               distance = 0
+         if distance < closest_distance:
+               closest_distance = distance
+               closest_word = text[s:e]
+      affected_words.append(closest_word)
+
    if verbose:
       print(f'text={text}')
       print(f'chunks={chunks}')
@@ -258,6 +269,28 @@ def normalize(text:str,verbose=False,learn=False):
    
    return to_be_original
 def corrections (typo,verbose=False):
+   suggestion = spell_word(typo)
+   votes = [suggestion] if string_mutation_distance(suggestion,typo) == 1 and normal_word(suggestion) else []
+   for regex,repl in FAT_CORRECTION_RULES:
+      matches = ((x.span(), repl, regex) for x in regex.finditer(typo,overlapped=True))
+      for match in matches:
+         votes.append(apply_match(typo,match))
+         
+   for regex,repl in WORD_CORRECTION_RULES:
+      if regex.match(typo) is not None:
+         votes.append(regex.sub(repl,typo))
+
+   for regex,repl in KEYBOARD_CORRECTION_RULES:
+      matches = ((x.span(), repl, regex) for x in regex.finditer(typo,overlapped=True))
+      for match in matches:
+         votes.append(apply_match(typo,match))
+         
+   if verbose:
+      print(f'unfiltered votes {votes}')
+   votes = [v for v in votes if  normal_word(v)]
+   if verbose:
+      print(f'filtered votes {votes}')
+   return votes
    suggestion = spell_word(typo)
    votes = [suggestion] if string_mutation_distance(suggestion,typo) == 1 and normal_word(suggestion) else []
    for regex,repl in FAT_CORRECTION_RULES:
