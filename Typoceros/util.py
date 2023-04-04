@@ -196,7 +196,7 @@ def spell_word(word:str,verbose=False) -> str:
    spellingOpt = lang_tool.check(word)[0].replacements[0]
    spelling = spellingOpt if spellingOpt is not None else word
    return spelling if word_we_misspelled(word,spelling,verbose) else word 
-def correction_rules_subset(text:str):
+def correction_rules_subset(text:str,verbose=False):
    return [rule for rule in lang_tool.check(text) if rule.category in ['TYPOS','SPELLING','GRAMMAR','TYPOGRAPHY']]
 def normalize(text:str,verbose=False,learn=False):
    chunks: List[Tuple[int,int]] = chunker(text) # size = chunks
@@ -258,6 +258,28 @@ def normalize(text:str,verbose=False,learn=False):
    
    return to_be_original
 def corrections (typo,verbose=False):
+   suggestion = spell_word(typo)
+   votes = [suggestion] if string_mutation_distance(suggestion,typo) == 1 and normal_word(suggestion) else []
+   for regex,repl in FAT_CORRECTION_RULES:
+      matches = ((x.span(), repl, regex) for x in regex.finditer(typo,overlapped=True))
+      for match in matches:
+         votes.append(apply_match(typo,match))
+         
+   for regex,repl in WORD_CORRECTION_RULES:
+      if regex.match(typo) is not None:
+         votes.append(regex.sub(repl,typo))
+
+   for regex,repl in KEYBOARD_CORRECTION_RULES:
+      matches = ((x.span(), repl, regex) for x in regex.finditer(typo,overlapped=True))
+      for match in matches:
+         votes.append(apply_match(typo,match))
+         
+   if verbose:
+      print(f'unfiltered votes {votes}')
+   votes = [v for v in votes if  normal_word(v)]
+   if verbose:
+      print(f'filtered votes {votes}')
+   return votes
    suggestion = spell_word(typo)
    votes = [suggestion] if string_mutation_distance(suggestion,typo) == 1 and normal_word(suggestion) else []
    for regex,repl in FAT_CORRECTION_RULES:
