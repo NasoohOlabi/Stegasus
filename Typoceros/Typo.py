@@ -74,7 +74,11 @@ class Typo:
       if len(values) > len(spaces):
          raise ValueError("Can't encode")
       for i in range(len(values)):
-         if values[i] >= spaces[i]:
+         # spaces[i] = 0 means that the chunk has a birth defect
+         # a typo not by us making the chunk unusable and in that case 
+         # values[i] = 0 and the fact that it's an un-fixable typo will
+         # tell the decoder to learn it
+         if values[i] >= spaces[i] and spaces[i] != 0:
             raise ValueError("Won't fit")
       result = self.text
       for i in range(len(values) - 1, -1, -1):
@@ -134,3 +138,5 @@ class Typo:
          else:
             bit_values.append(0)
       return bit_values, remaining_bits
+   def learn(self,text)->None:
+      normalize(text,learn=True,verbose=self.verbose)
