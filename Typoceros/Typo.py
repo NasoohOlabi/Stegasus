@@ -21,6 +21,12 @@ class Typo:
    def __post_init__(self):
       if self.text != normalize(self.text,self.verbose):
          raise ValueError("Text isn't spelled correctly")
+   @staticmethod
+   def isAcceptable(text:str,verbose:bool=False):
+      return text == normalize(text,verbose)
+   @staticmethod
+   def FixText(text:str,verbose=False):
+      return normalize(text,verbose)
    def apply(self, space: int, offset: int, text: str) -> str:
       if self.verbose:
          print(f"apply: space={space}, offset={offset}, text={text}")
@@ -138,5 +144,6 @@ class Typo:
          else:
             bit_values.append(0)
       return bit_values, remaining_bits
-   def learn(self,text)->None:
+   def learn(self,text:str)->None:
+      normalize(text,learn=True,verbose=self.verbose)
       normalize(text,learn=True,verbose=self.verbose)
