@@ -4,7 +4,7 @@ import json
 import os
 import random
 import re
-from math import floor, log2
+from math import ceil, floor, log2
 from typing import Dict, Generator, List, Tuple
 
 from Stegasus.util.StringSpans import StringSpans
@@ -79,13 +79,21 @@ class Emojier:
     return [lst[i] for i in dist]
 
   @staticmethod
-  def encode(input_str: str, bytes_str: str, verbose=False) -> Tuple[str,str]:
+  def encode(input_str: str,
+             bytes_str: str,
+             verbose=False,
+             mask=False,
+             maskStep: int =6,
+             topX=False,
+             X: float=0.15) -> Tuple[str,str]:
     if verbose:
       print('encode:')
     input_str_spans = StringSpans(input_str)
     word_span_n_words = zip(input_str_spans.words, input_str_spans.get_words())
     result = input_str
     acc_offset = 0
+    
+    word_span_n_words_options: List[Tuple[int,str,List[str]]] = []
     for (_,we), word_raw in word_span_n_words:
       word = word_raw.lower()
       is_too_common = word in EMOJIER_COMMON_WORDS
@@ -100,11 +108,23 @@ class Emojier:
             )
           ]
         )
+      if not is_too_common and len(emoji_options)>=2:
+        word_span_n_words_options.append((we,word_raw, emoji_options))
+    
+    if mask:
+      word_span_n_words_options = word_span_n_words_options[::maskStep]
+    if topX:
+      word_span_n_words_options.sort(key=lambda tup : len(tup[2]),reverse=True)
+      taken_elements = ceil(len(word_span_n_words_options) * X) 
+      word_span_n_words_options = word_span_n_words_options[:taken_elements]
+      
+    for we, word_raw, emoji_options in word_span_n_words_options:
+      word = word_raw.lower()
 
       if verbose:
-        print(f"word: {word} \tis_too_common={is_too_common} \nlen: {len(emoji_options)} \temoji_options[:10]: {emoji_options[:10]}")
+        print(f"word: {word} \nlen: {len(emoji_options)} \temoji_options[:10]: {emoji_options[:10]}")
 
-      if not is_too_common and len(emoji_options)>=2:
+      if len(emoji_options)>=2:
         bits = floor(log2(len(emoji_options)))
         taken_bits = bytes_str[:bits]
         ind = int(taken_bits, 2)
@@ -177,4 +197,3 @@ class Emojier:
         result = result[:s-1] + result[s:e].replace(emo,'') + result[e:]
   
     return result, bytes_str
-
