@@ -146,4 +146,3 @@ class Typo:
       return bit_values, remaining_bits
    def learn(self,text:str)->None:
       normalize(text,learn=True,verbose=self.verbose)
-      normalize(text,learn=True,verbose=self.verbose)
