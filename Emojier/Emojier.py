@@ -79,13 +79,16 @@ class Emojier:
     return [lst[i] for i in dist]
 
   @staticmethod
-  def encode(input_str: str,
-             bytes_str: str,
-             verbose=False,
-             mask=False,
-             maskStep: int =6,
-             topX=False,
-             X: float=0.15) -> Tuple[str,str]:
+  def encode(
+        input_str: str,
+        bytes_str: str,
+        verbose=False,
+        mask=True,
+        maskStep: int =6,
+        topX=False,
+        X: float=0.15
+    ) -> Tuple[str,str]:
+    
     if verbose:
       print('encode:')
     input_str_spans = StringSpans(input_str)
@@ -124,19 +127,18 @@ class Emojier:
       if verbose:
         print(f"word: {word} \nlen: {len(emoji_options)} \temoji_options[:10]: {emoji_options[:10]}")
 
-      if len(emoji_options)>=2:
-        bits = floor(log2(len(emoji_options)))
-        taken_bits = bytes_str[:bits]
-        ind = int(taken_bits, 2)
-        bytes_str = bytes_str[bits:]
-        emojis = emoji_options[ind]
-        if len(emojis) > 0:
-          we = we + acc_offset
-          acc_offset += len(emojis) + 1
-          if verbose:
-            print(f'>>>encoding {taken_bits} = {ind} as {emojis}\nwe={we}\tacc_offset={acc_offset}')
-            print(f'result[:we]="{result[:we]}" result[we:]="{result[we:]}"')  
-          result = f'{result[:we]} {emojis}{result[we:]}'  
+      bits = floor(log2(len(emoji_options)))
+      taken_bits = bytes_str[:bits]
+      ind = int(taken_bits, 2)
+      bytes_str = bytes_str[bits:]
+      emojis = emoji_options[ind]
+      if len(emojis) > 0:
+        we = we + acc_offset
+        acc_offset += len(emojis) + 1
+        if verbose:
+          print(f'>>>encoding {taken_bits} = {ind} as {emojis}\nwe={we}\tacc_offset={acc_offset}')
+          print(f'result[:we]="{result[:we]}" result[we:]="{result[we:]}"')  
+        result = f'{result[:we]} {emojis}{result[we:]}'  
 
     return result, bytes_str
 
@@ -145,7 +147,15 @@ class Emojier:
     for i in range(len(s),-1,-1):
       yield s[0:i]
   @staticmethod
-  def decode(input_str: str, verbose=False) -> Tuple[str,str]:
+  def decode(
+            input_str: str,
+            verbose=False,
+            mask: bool =True,
+            maskStep: int =6,
+            topX: bool =False,
+            X: float=0.15
+      ) -> Tuple[str,str]:
+    
     if verbose:
       print('decoding!')
     wordish = re.compile(r'^[a-z]*$')
@@ -155,6 +165,7 @@ class Emojier:
     bytes_str = ''
     
     emoticons_used = []
+    word_span_n_words_options: List[Tuple[int,str,List[str]]] = []
     for i, word_raw in enumerate(words[:-1]):
       word = word_raw.lower()
       
@@ -173,24 +184,36 @@ class Emojier:
             )
           ]
         )
+      if not is_too_common and len(emoji_options) >= 2:
+        word_span_n_words_options.append((i,word_raw,emoji_options))
+
+    if mask:
+      word_span_n_words_options = word_span_n_words_options[::maskStep]
+    if topX:
+      word_span_n_words_options.sort(key=lambda tup : len(tup[2]),reverse=True)
+      taken_elements = ceil(len(word_span_n_words_options) * X) 
+      word_span_n_words_options = word_span_n_words_options[:taken_elements]
+        
+    for i, word_raw, emoji_options in word_span_n_words_options:
+      word = word_raw.lower()
 
       if verbose:
-        print(f"word: {word} \tis_too_common={is_too_common} \nlen: {len(emoji_options)} \temoji_options[:10]: {emoji_options[:10]}")
+        print(f"word: {word} \nlen: {len(emoji_options)} \temoji_options[:10]: {emoji_options[:10]}")
 
-      if not is_too_common and len(emoji_options)>=2:
-        bits = floor(log2(len(emoji_options)))
-        index = 0
-        for w in Emojier.eat_back(words[i+1]):
-          if w in emoji_options:
-            index = emoji_options.index(w)
-            emoticons_used.append((w,i+1))
-            break
-          
-        data_extracted = int_to_binary_string(index,bits)
-        if verbose:
-          print(f'>>>decoding word:"{words[i]}" next word:"{words[i+1]}" length:"{len(emoji_options)}"')
-          print(f'bits:"{bits}" data extracted:"{data_extracted}" index:"{index}"')
-        bytes_str += data_extracted
+      bits = floor(log2(len(emoji_options)))
+      index = 0
+      for w in Emojier.eat_back(words[i+1]):
+        if w in emoji_options:
+          index = emoji_options.index(w)
+          emoticons_used.append((w,i+1))
+          break
+        
+      data_extracted = int_to_binary_string(index,bits)
+      if verbose:
+        print(f'>>>decoding word:"{words[i]}" next word:"{words[i+1]}" length:"{len(emoji_options)}"')
+        print(f'bits:"{bits}" data extracted:"{data_extracted}" index:"{index}"')
+      bytes_str += data_extracted
+
     for emo,idx in reversed(emoticons_used):
       s,e = input_str_ss.non_spaces[idx]
       if emo:
