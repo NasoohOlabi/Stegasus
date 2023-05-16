@@ -101,9 +101,9 @@ def expand_span_to_word(words:List[Tuple[int,int]],span:Tuple[int,int])->Tuple[T
       if start <= ss and se <= end:
          return (start,end),(ss-start,se-start),i
    for i, (start,end) in enumerate(words):
-      if start > ss and se <= end:
+      if ss < start and se <= end:
          return (start,end),(start,se-start),i
-      elif start <= ss and se > end:
+      elif start <= ss and end < se:
          return (start,end),(ss-start,end-start),i
    
    raise ValueError(f'sth is wrong {words} {span}')
@@ -269,50 +269,6 @@ def normalize(text:str,verbose=False,learn=False):
    
    return to_be_original
 def corrections (typo,verbose=False):
-   suggestion = spell_word(typo)
-   votes = [suggestion] if string_mutation_distance(suggestion,typo) == 1 and normal_word(suggestion) else []
-   for regex,repl in FAT_CORRECTION_RULES:
-      matches = ((x.span(), repl, regex) for x in regex.finditer(typo,overlapped=True))
-      for match in matches:
-         votes.append(apply_match(typo,match))
-         
-   for regex,repl in WORD_CORRECTION_RULES:
-      if regex.match(typo) is not None:
-         votes.append(regex.sub(repl,typo))
-
-   for regex,repl in KEYBOARD_CORRECTION_RULES:
-      matches = ((x.span(), repl, regex) for x in regex.finditer(typo,overlapped=True))
-      for match in matches:
-         votes.append(apply_match(typo,match))
-         
-   if verbose:
-      print(f'unfiltered votes {votes}')
-   votes = [v for v in votes if  normal_word(v)]
-   if verbose:
-      print(f'filtered votes {votes}')
-   return votes
-   suggestion = spell_word(typo)
-   votes = [suggestion] if string_mutation_distance(suggestion,typo) == 1 and normal_word(suggestion) else []
-   for regex,repl in FAT_CORRECTION_RULES:
-      matches = ((x.span(), repl, regex) for x in regex.finditer(typo,overlapped=True))
-      for match in matches:
-         votes.append(apply_match(typo,match))
-         
-   for regex,repl in WORD_CORRECTION_RULES:
-      if regex.match(typo) is not None:
-         votes.append(regex.sub(repl,typo))
-
-   for regex,repl in KEYBOARD_CORRECTION_RULES:
-      matches = ((x.span(), repl, regex) for x in regex.finditer(typo,overlapped=True))
-      for match in matches:
-         votes.append(apply_match(typo,match))
-         
-   if verbose:
-      print(f'unfiltered votes {votes}')
-   votes = [v for v in votes if  normal_word(v)]
-   if verbose:
-      print(f'filtered votes {votes}')
-   return votes
    suggestion = spell_word(typo)
    votes = [suggestion] if string_mutation_distance(suggestion,typo) == 1 and normal_word(suggestion) else []
    for regex,repl in FAT_CORRECTION_RULES:

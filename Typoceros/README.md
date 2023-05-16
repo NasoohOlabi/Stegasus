@@ -11,3 +11,6 @@ Steganography Using Typos. We all make misstakes
 - [X] Optimize string manipulations
 - [X] Add Chunks with more than one error each with no suggestions to user dictionary!
 - [X] Pass some tests
+- [ ] Double check non keyboard typos work
+- [ ] migrate to java lang_tool bottle neck
+- [ ] masked stego no name changing!

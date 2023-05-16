@@ -37,6 +37,7 @@ class Typo:
       if self.verbose:
          print(f"applied: {applied}")
       return applied
+   
    @property
    def slots(self):
       if self._slots is None:
@@ -75,6 +76,8 @@ class Typo:
    @bits.setter
    def bits(self, bits: int):
       pass
+   
+   
    def encode(self, values:List[int]):
       spaces = self.spaces
       if len(values) > len(spaces):
@@ -101,6 +104,7 @@ class Typo:
       t = Typo(original)
 
       return original, t._decode(text,test_self)
+      
    def _decode(self, text:str,test=None) -> List[int]:
       a_self = test if test is not None else self
       spaces = a_self.spaces
