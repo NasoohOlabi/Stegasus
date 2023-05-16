@@ -102,7 +102,7 @@ def expand_span_to_word(words:List[Tuple[int,int]],span:Tuple[int,int])->Tuple[T
          return (start,end),(ss-start,se-start),i
    for i, (start,end) in enumerate(words):
       if ss < start and se <= end:
-         return (start,end),(start,se-start),i
+         return (start,end),(0,se-start),i
       elif start <= ss and end < se:
          return (start,end),(ss-start,end-start),i
    
