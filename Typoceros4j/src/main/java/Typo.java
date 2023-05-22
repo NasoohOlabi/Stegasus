@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 public class Typo {
     private String text;
     private int _length;
-    private List<Tuple3<Tuple2<Integer, Integer>, String, Pattern>> _slots = null;
+    private List<Tuple3<Span, String, Pattern>> _slots = null;
     private List<Integer> _spaces = null;
     private boolean verbose;
     public int span_size = 6;
@@ -20,7 +20,7 @@ public class Typo {
         return getSlots().size();
     }
 
-    public List<Tuple3<Tuple2<Integer, Integer>, String, Pattern>> getSlots() throws IOException {
+    public List<Tuple3<Span, String, Pattern>> getSlots() throws IOException {
         if (this._slots == null)
             this._slots = LangProxy.valid_rules_scan(this.text, this.verbose);
         return this._slots;
@@ -31,7 +31,7 @@ public class Typo {
             return _spaces;
         }
 
-        List<Tuple2<Integer, Integer>> sentenceRanges = util.chunk(text,this.span_size);
+        var sentenceRanges = util.chunk(text, this.span_size);
 
         // Initialize an empty list of buckets
         int numBuckets = sentenceRanges.size();
@@ -41,12 +41,12 @@ public class Typo {
         // Iterate through each element range and put it in the corresponding bucket
         for (int i = 0; i < this.getSlots().size(); i++) {
             var slot = this.getSlots().get(i)._1;
-            int start = slot._1;
-            int end = slot._2;
+            int start = slot.start;
+            int end = slot.end;
             for (int j = 0; j < sentenceRanges.size(); j++) {
                 var sentenceRange = sentenceRanges.get(j);
-                int sentStart = sentenceRange._1;
-                int sentEnd = sentenceRange._2;
+                int sentStart = sentenceRange.start;
+                int sentEnd = sentenceRange.end;
                 if (sentStart <= start && start < sentEnd && sentStart < end && end <= sentEnd) {
                     buckets.set(j, buckets.get(j) + 1);
                     break;
@@ -78,7 +78,7 @@ public class Typo {
     }
 
     public boolean isAcceptable(String text, boolean verbose) throws IOException {
-        return text == LangProxy.normalize(text, verbose);
+        return text.equals(LangProxy.normalize(text, verbose));
     }
 
     public String FixText(String text, boolean verbose) throws IOException {
@@ -125,13 +125,16 @@ public class Typo {
         String original = LangProxy.normalize(text, verbose);
         if (verbose)
             System.out.println("original=" + original);
+        Typo t;
         if (test_self != null) {
             if (!original.equals(test_self.text)) {
                 System.out.println("test_self.text=\n" + test_self.text);
             }
             assert original.equals(test_self.text);
+            t = test_self;
+        } else {
+            t = new Typo(original, verbose);
         }
-        Typo t = new Typo(original, verbose);
         return new Tuple2<>(original, t._decode(text, test_self));
     }
 
@@ -141,7 +144,7 @@ public class Typo {
         int cnt = util.diff(text, a_self.text).size();
         if (a_self.verbose) {
             System.out.println("cnt=" + cnt);
-            System.out.println("util.diff('"+text+"','"+a_self.text+"')=" + util.diff(text, a_self.text));
+            System.out.println("util.diff('" + text + "','" + a_self.text + "')=" + util.diff(text, a_self.text));
         }
         List<Integer> values = new ArrayList<>(Collections.nCopies(spaces.size(), 0));
         for (int i = 0; i < spaces.size(); i++) {
@@ -155,7 +158,7 @@ public class Typo {
                     cnt--;
                     break;
                 }
-                values.set(i, j+1);
+                values.set(i, j + 1);
             }
             if (Objects.equals(values.get(i), spaces.get(i))) {
                 values.set(i, 0);
@@ -169,11 +172,11 @@ public class Typo {
 
 
     public Tuple2<List<Integer>, String> encode_encoder(String bytes_str) throws ValueError, IOException {
-        if (!new HashSet<Character>(Arrays.asList('0', '1')).containsAll(new HashSet<Character>(bytes_str.chars().mapToObj(c -> (char) c).collect(Collectors.toList())))) {
+        if (!new HashSet<>(Arrays.asList('0', '1')).containsAll(new HashSet<>(bytes_str.chars().mapToObj(c -> (char) c).collect(Collectors.toList())))) {
             throw new ValueError("bytes_str isn't a bytes string : '" + bytes_str + "'");
         }
         List<Integer> values = this.getBits();
-        List<Integer> bit_values = new ArrayList<Integer>();
+        List<Integer> bit_values = new ArrayList<>();
         String remaining_bits = bytes_str;
         for (int i = 0; i < values.size(); i++) {
             int val = values.get(i);
@@ -190,10 +193,10 @@ public class Typo {
                 bit_values.add(0);
             }
         }
-        return new Tuple2<List<Integer>, String>(bit_values, remaining_bits);
+        return new Tuple2<>(bit_values, remaining_bits);
     }
 
     public void learn(String text) throws IOException {
-        LangProxy.normalize(text, this.verbose,true);
+        LangProxy.normalize(text, this.verbose, true);
     }
 }

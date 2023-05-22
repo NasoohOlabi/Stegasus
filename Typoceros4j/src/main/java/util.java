@@ -36,19 +36,19 @@ public class util {
         return mode;
     }
 
-    public static List<Tuple2<Integer, Integer>> chunk(String text, int span_size) {
+    public static List<Span> chunk(String text, int span_size) {
         var words = Lists.newArrayList(new StringSpans(text).getWords());
-        List<Tuple2<Integer, Integer>> chunks = new ArrayList<>();
+        List<Span> chunks = new ArrayList<>();
         int lastStart = 0;
         if (words.size() < span_size)
-            return List.of(new Tuple2<>(0, text.length()));
+            return List.of(Span.of(0, text.length()));
         for (int i = span_size - 1; i < words.size(); i += span_size) {
-            chunks.add(new Tuple2<>(lastStart, words.get(i)._2));
+            chunks.add(Span.of(lastStart, words.get(i).end));
             if (i + 1 < words.size()) {
-                lastStart = words.get(i + 1)._1;
+                lastStart = words.get(i + 1).start;
             }
         }
-        var lastTuple = new Tuple2<>(chunks.get(chunks.size() - 1)._1, words.get(words.size() - 1)._2);
+        var lastTuple = Span.of(chunks.get(chunks.size() - 1).start, words.get(words.size() - 1).end);
         chunks.set(chunks.size() - 1, lastTuple);
         return chunks;
     }

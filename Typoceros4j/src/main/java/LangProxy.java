@@ -6,14 +6,16 @@ import org.languagetool.rules.RuleMatch;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class LangProxy {
+
+    private final static int INTENTIONAL_TYPO_STR_DIST = 1;
 
     private static final JLanguageTool langTool = new JLanguageTool(new AmericanEnglish());
 
@@ -35,10 +37,13 @@ public class LangProxy {
         return word_we_misspelled(word, spelling, verbose) ? spelling : word;
     }
 
+    public static List<RuleMatch> check(String text) throws IOException {
+        return langTool.check(text);
+    }
+
     public static boolean word_we_misspelled(String word, String spelling, boolean verbose) {
         int uls = util.countUppercaseLetters(word);
-        if (util.stringMutationDistance(spelling, word) == 1
-                && Character.toLowerCase(spelling.charAt(0)) == Character.toLowerCase(word.charAt(0))
+        if (Character.toLowerCase(spelling.charAt(0)) == Character.toLowerCase(word.charAt(0))
                 && Character.toLowerCase(spelling.charAt(spelling.length() - 1)) == Character.toLowerCase(word.charAt(word.length() - 1))
                 && uls == 2
                 && uls < word.length()) {
@@ -65,7 +70,7 @@ public class LangProxy {
         if (verbose) {
             System.out.println("matches=" + matches);
         }
-        List<RuleMatch> subset = new ArrayList<RuleMatch>();
+        var subset = new ArrayList<RuleMatch>();
         for (RuleMatch match : matches) {
             if (List.of("TYPOS", "SPELLING", "GRAMMAR", "TYPOGRAPHY")
                     .contains(match.getRule().getCategory().getId().toString())
@@ -79,15 +84,15 @@ public class LangProxy {
         return subset;
     }
 
-    private static List<String> getAffectecWords(String text, StringSpans text_sss, List<Integer> offsets) {
-        List<String> affected_words = new ArrayList<String>();
+    private static List<String> getAffectedWords(String text, StringSpans text_sss, List<Integer> offsets) {
+        var affected_words = new ArrayList<String>();
         for (int o : offsets) {
             String closest_word = null;
             int closest_distance = Integer.MAX_VALUE;
 
             for (var word : text_sss.getWords()) {
-                int s = word._1;
-                int e = word._2;
+                int s = word.start;
+                int e = word.end;
                 if (o < s) {  // o is to the left of the current word
                     int distance = s - o;
                     if (distance < closest_distance) {
@@ -101,7 +106,6 @@ public class LangProxy {
                         closest_word = text.substring(s, e);
                     }
                 } else {  // o is inside the current word
-                    closest_distance = 0;
                     closest_word = text.substring(s, e);
                     break;
                 }
@@ -111,17 +115,22 @@ public class LangProxy {
         return affected_words;
     }
 
+
     public static String normalize(String text, boolean verbose) throws IOException {
         return normalize(text, verbose, false);
     }
 
     public static String normalize(String text, boolean verbose, boolean learn) throws IOException {
-        List<Tuple2<Integer, Integer>> chunks = util.chunk(text, 6);
+        List<Span> chunks = util.chunk(text, 6);
         String to_be_original = text;
-        var offsets = correction_rules_subset(text, verbose).stream().map(RuleMatch::getFromPos).collect(Collectors.toList());
+        var offsets =
+                correction_rules_subset(text, verbose)
+                        .stream()
+                        .map(RuleMatch::getFromPos)
+                        .collect(Collectors.toList());
         boolean[] empty_chunks = new boolean[chunks.size()];
         StringSpans text_sss = new StringSpans(text);
-        List<String> affected_words = getAffectecWords(text, text_sss, offsets);
+        List<String> affected_words = getAffectedWords(text, text_sss, offsets);
         if (verbose) {
             System.out.println("text=" + text);
             System.out.println("chunks=" + chunks);
@@ -129,17 +138,17 @@ public class LangProxy {
             System.out.println("text_sss.words=" + text_sss.getWords());
             System.out.println("affected_words=" + affected_words);
         }
-        List<List<Tuple3<Integer, String, List<String>>>> offsets_chunks = new ArrayList<List<Tuple3<Integer, String, List<String>>>>();
-        for (Tuple2<Integer, Integer> chunk : chunks) {
-            int chunk_start = chunk._1;
-            int chunk_end = chunk._2;
-            List<Tuple3<Integer, String, List<String>>> chunk_offsets = new ArrayList<Tuple3<Integer, String, List<String>>>();
+        var offsets_chunks = new ArrayList<List<Tuple3<Integer, String, List<String>>>>();
+        for (var chunk : chunks) {
+            int chunk_start = chunk.start;
+            int chunk_end = chunk.end;
+            var chunk_offsets = new ArrayList<Tuple3<Integer, String, List<String>>>();
             for (int i = 0; i < offsets.size(); i++) {
                 int o = offsets.get(i);
                 if (chunk_start <= o && o < chunk_end) {
                     String affected_word = affected_words.get(i);
-                    List<String> affected_word_corrections = corrections(affected_word, verbose);
-                    chunk_offsets.add(new Tuple3<Integer, String, List<String>>(o, affected_word, affected_word_corrections));
+                    List<String> affected_word_corrections = word_corrections(affected_word, verbose);
+                    chunk_offsets.add(new Tuple3<>(o, affected_word, affected_word_corrections));
                     if (verbose) {
                         System.out.println("Added (" + o + ", " + affected_word + ", " + affected_word_corrections + ") to chunk_offsets");
                     }
@@ -154,7 +163,7 @@ public class LangProxy {
             System.out.println("chunks_offsets=" + offsets_chunks);
         }
         for (int i = 0; i < offsets_chunks.size(); i++) {
-            List<Tuple3<Integer, String, List<String>>> offsets_chunk = offsets_chunks.get(i);
+            var offsets_chunk = offsets_chunks.get(i);
             if (offsets_chunk.size() > 1) {
                 if (verbose) {
                     System.out.println("len(" + offsets_chunk + ")=" + offsets_chunk.size() + " > 1");
@@ -168,11 +177,12 @@ public class LangProxy {
                 }
             } else if (offsets_chunk.size() == 1
                     && offsets_chunk.get(0)._3.size() == 0) {
-                if (verbose)
+                if (verbose) {
                     System.out.println(
                             "no suggestions for " +
                                     offsets_chunk.get(0)._2 +
                                     " added to dict");
+                }
                 empty_chunks[i] = true;
                 if (learn)
                     LangProxy.addWord(offsets_chunk.get(0)._2);
@@ -188,7 +198,6 @@ public class LangProxy {
                 to_be_original = to_be_original.replaceAll(
                         offsets_chunk.get(0)._2, util.mode(cs));
             } else {
-
                 empty_chunks[i] = true;
             }
         }
@@ -196,16 +205,99 @@ public class LangProxy {
         return to_be_original;
     }
 
-    public static List<String> corrections(String typo, boolean verbose) throws IOException {
-        String suggestion = spellWord(typo);
-        List<String> votes = new ArrayList<>();
-        if (util.stringMutationDistance(suggestion, typo) == 1 && normal_word(suggestion)) {
-            votes.add(suggestion);
+    private static Optional<RuleMatch> check_pos(Span word, String text, boolean verbose) throws IOException {
+        var check = LangProxy.check(text);
+        if (verbose) {
+            System.out.println("check result(" + word + ", " + text + "): " + check);
         }
+        for (var rule :
+                check) {
+            var ruleSpan = Span.of(rule.getFromPos(), rule.getToPos());
+            if (word.contain(ruleSpan) || word.intersects(ruleSpan)) {
+                return Optional.of(rule);
+            } else if (verbose) {
+                System.out.println(
+                        "rule not related to word " + word + " Rule " + ruleSpan);
+                System.out.println(rule);
+            }
+        }
+        return Optional.empty();
+    }
+
+    private static List<String> getSuggestions(
+            String typo,
+            List<String> libSuggestions) {
+        return libSuggestions
+                .stream()
+                .filter(x -> intentionalTypo(x, typo))
+                .collect(Collectors.toList());
+    }
+
+    private static Stream<String> getSuggestionsStream(
+            String typo,
+            List<String> libSuggestions) {
+        return libSuggestions
+                .stream()
+                .filter(x -> intentionalTypo(x, typo));
+    }
+
+    public static String vote_fix_word(
+            Span word,
+            String text,
+            boolean verbose) throws IOException {
+        List<String> suggestions = new ArrayList<>(10);
+        var context_suggestions = check_pos(word, text, verbose);
+        context_suggestions.ifPresent(ruleMatch ->
+                suggestions.addAll(getSuggestions(word.in(text), ruleMatch
+                        .getSuggestedReplacements())
+                ));
+        if (verbose) {
+            System.out.println("\nvote_fix_word suggestions context: " + suggestions);
+        }
+        suggestions.addAll(word_corrections(
+                word.in(text), verbose));
+        if (verbose) {
+            System.out.println("\nvote_fix_word suggestions context + non: " + suggestions);
+        }
+        suggestions.addAll(
+                suggestions
+                        .stream()
+                        .flatMap((correction) -> {
+                            try {
+                                var result =
+                                        LangProxy.check_pos(word,
+                                                word.swap(text, correction)
+                                                , verbose);
+                                if (result.isPresent()) {
+                                    return getSuggestionsStream(word.in(text),
+                                            result.get().getSuggestedReplacements());
+                                }
+                                return Stream.empty();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                                return Stream.empty();
+                            }
+                        }).collect(Collectors.toList()));
+        if (verbose) {
+            System.out.println("\nvote_fix_word suggestions (context + non) tried out: " + suggestions);
+            System.out.println(suggestions);
+            if (suggestions.size() == 0) {
+                System.out.println("vote_fix_word Out of Suggestions");
+                System.out.println("Suggestions: " + suggestions);
+                System.out.println("Word: " + word);
+                System.out.println("Text: " + text);
+            }
+        }
+        return util.mode(suggestions);
+    }
+
+    public static List<String> word_corrections(String typo, boolean verbose) throws IOException {
+        var suggestion = spellWord(typo);
+        List<String> votes = new ArrayList<>(suggestion);
         for (var rule : Rules.FAT_CORRECTION_RULES) {
             Matcher matcher = rule._1().matcher(typo);
             while (matcher.find()) {
-                var span = new Tuple2<>(matcher.start(), matcher.end());
+                var span = Span.of(matcher.start(), matcher.end());
                 votes.add(applyMatch(typo, rule, span, verbose));
             }
         }
@@ -218,13 +310,15 @@ public class LangProxy {
         for (var rule : Rules.KEYBOARD_CORRECTION_RULES) {
             Matcher matcher = rule._1().matcher(typo);
             while (matcher.find()) {
-                var span = new Tuple2<>(matcher.start(), matcher.end());
+                var span = Span.of(matcher.start(), matcher.end());
                 votes.add(applyMatch(typo, rule, span, verbose));
             }
         }
         if (verbose) {
             System.out.println("unfiltered votes: " + votes);
         }
+        // if correction rules were false negative
+        // so they tried to correct but they were wrong
         votes.removeIf(vote -> {
             try {
                 return !normal_word(vote);
@@ -239,31 +333,25 @@ public class LangProxy {
         return votes;
     }
 
-    public static String spellWord(String word) throws IOException {
+
+    public static boolean intentionalTypo(String word, String typo) {
+        return util.stringMutationDistance(word, typo)
+                <= INTENTIONAL_TYPO_STR_DIST;
+    }
+
+    public static List<String> spellWord(String word) throws IOException {
+        return spellWord(word, 1);
+    }
+
+    public static List<String> spellWord(String word, int maxExpectDistance) throws IOException {
         Timer.startTimer("spellWord " + word);
         List<RuleMatch> result = LangProxy.langTool.check(word);
         Timer.prettyPrint("spellWord " + word);
         if (result.size() > 0) {
-            // TODO:
-            /**
-             * java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
-             *
-             * 	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
-             * 	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
-             * 	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:248)
-             * 	at java.base/java.util.Objects.checkIndex(Objects.java:359)
-             * 	at java.base/java.util.ArrayList.get(ArrayList.java:427)
-             * 	at java.base/java.util.Collections$UnmodifiableList.get(Collections.java:1321)
-             * 	at LangProxy.spellWord(LangProxy.java:247)
-             * 	at LangProxy.corrections(LangProxy.java:200)
-             * 	at LangProxy.valid_matches(LangProxy.java:364)
-             * 	at LangProxy.valid_rules_scan(LangProxy.java:428)
-             * 	at Typo.getSlots(Typo.java:25)
-             * 	at Typo.getSpaces(Typo.java:42)
-             */
-            return result.get(0).getSuggestedReplacements().get(0);
+            return getSuggestions(word,
+                    result.get(0).getSuggestedReplacements());
         }
-        return word;
+        return List.of();
     }
 
     public static boolean normal_word(String word) throws IOException {
@@ -273,34 +361,52 @@ public class LangProxy {
         return result.size() == 0;
     }
 
+    /**
+     * @param text text to replace content in
+     * @param repl replace value to use with regex
+     * @param regex regex to match the part that should be replaced
+     * @param span the exact position of where the match should be
+     * @param verbose print every step of the way
+     * @return text with regex and repl applied to the right position aka span
+     */
     public static String applyMatch(
-            String text, String repl, Pattern regex, Tuple2<Integer, Integer> span, boolean verbose) {
-        if (verbose) {
-            System.out.println("text='" + text + "'");
-            System.out.println("repl='" + repl + "'");
-            System.out.println("regex='" + regex + "'");
-            System.out.println("span='" + span + "'");
-            System.out.println("Before replace: " + text);
+            String text, String repl, Pattern regex, Span span, boolean verbose) {
+        try {
+            if (verbose) {
+                System.out.println("text='" + text + "'");
+                System.out.println("repl='" + repl + "'");
+                System.out.println("regex='" + regex + "'");
+                System.out.println("span='" + span + "'");
+                System.out.println("Before replace: " + text);
+            }
+
+            var replaced_text = regex.matcher(span.in(text)).replaceAll(repl);
+
+            var after_replace_text = span.swap(text, replaced_text);
+            //        if (verbose)
+            //            System.out.println("After replace: "+after_replace_text);
+
+            return after_replace_text;
+        } catch (Exception exp) {
+            System.out.println("Exception in LangProxy.java:389 applyMatch");
+            System.out.println("text:(" + text + ")");
+            System.out.println("repl:(" + repl + ")");
+            System.out.println("regex:(" + regex + ")");
+            System.out.println("span:(" + span + ")");
+            exp.printStackTrace();
+            throw exp;
         }
-
-        var replaced_text = regex.matcher(text.substring(span._1, span._2)).replaceAll(repl);
-
-        var after_replace_text = text.substring(0, span._1) + replaced_text + text.substring(span._2);
-//        if (verbose)
-//            System.out.println("After replace: "+after_replace_text);
-
-        return after_replace_text;
     }
 
     public static String applyMatch(
-            String text, Tuple2<Pattern, String> rule, Tuple2<Integer, Integer> span, boolean verbose) {
+            String text, Tuple2<Pattern, String> rule, Span span, boolean verbose) {
         var repl = rule._2;
         var regex = rule._1;
         return applyMatch(text, repl, regex, span, verbose);
     }
 
     public static String applyMatch(
-            String text, Tuple3<Tuple2<Integer, Integer>, String, Pattern> rule, boolean verbose) {
+            String text, Tuple3<Span, String, Pattern> rule, boolean verbose) {
         var repl = rule._2;
         var regex = rule._3;
         var span = rule._1;
@@ -310,57 +416,9 @@ public class LangProxy {
     public static void addWord(String s) {
     }
 
-    public static Tuple3<Tuple2<Integer, Integer>, Tuple2<Integer, Integer>, Integer> expand_span_to_word(
-            List<Tuple2<Integer, Integer>> words, Tuple2<Integer, Integer> span) {
-        return expand_span_to_word(words, span, false);
-    }
 
-    /**
-     * @param words
-     * @param span
-     * @return <word_span,  relative_span, word_span_idx>
-     */
-    public static Tuple3<Tuple2<Integer, Integer>, Tuple2<Integer, Integer>, Integer> expand_span_to_word(
-            List<Tuple2<Integer, Integer>> words, Tuple2<Integer, Integer> span, boolean verbose) {
-        int ss = span._1;
-        int se = span._2;
-
-        Tuple3<Tuple2<Integer, Integer>, Tuple2<Integer, Integer>, Integer> returnValue = null;
-        for (int i = 0; i < words.size(); i++) {
-            var word = words.get(i);
-            int start = word._1;
-            int end = word._2;
-
-            if (start <= ss && se <= end) {
-                // start ss se end
-                var firstTuple = new Tuple2<>(start, end);
-                var secondTuple = new Tuple2<>(ss - start, se - start);
-                returnValue = new Tuple3<>(firstTuple, secondTuple, i);
-            } else if (ss < start && start < se && se <= end) {
-                // ss start se end
-                var firstTuple = new Tuple2<>(start, end);
-                var secondTuple = new Tuple2<>(0, se - start);
-                if (returnValue == null)
-                    returnValue = new Tuple3<>(firstTuple, secondTuple, i);
-            } else if (start <= ss && ss < end && end < se) {
-                // start ss end se
-                var firstTuple = new Tuple2<>(start, end);
-                var secondTuple = new Tuple2<>(ss - start, end - start);
-                if (returnValue == null)
-                    returnValue = new Tuple3<>(firstTuple, secondTuple, i);
-            }
-        }
-        if (verbose) {
-            System.out.println("expand_span_to_word(" + words + "," + span + ")=" + returnValue + "");
-        }
-        if (returnValue != null)
-            return returnValue;
-        else
-            throw new IllegalArgumentException("Something is wrong");
-    }
-
-    public static List<Tuple3<Tuple2<Integer, Integer>, String, Pattern>>
-    valid_matches(String text, List<Tuple3<Tuple2<Integer, Integer>, String, Pattern>> slots, boolean verbose) throws IOException {
+    public static List<Tuple3<Span, String, Pattern>>
+    valid_matches(String text, List<Tuple3<Span, String, Pattern>> slots, boolean verbose) throws IOException {
         StringSpans texas = new StringSpans(text);
         List<String> mutations = new ArrayList<>(slots.size());
         for (int i = 0; i < slots.size(); i++) {
@@ -371,33 +429,31 @@ public class LangProxy {
             var span = match_result._1;
             String repl = match_result._2;
             Pattern regex = match_result._3;
-            var expanded = expand_span_to_word(texas.getWords(), span);
-            var ex_span = expanded._1;
+            var expanded = texas.expand_span_to_word(span);
+            var wordSpan = expanded._1;
             var relative_span = expanded._2;
-            var ex_span_index = expanded._3;
-            String old_word = texas.get(ex_span);
+            String old_word = wordSpan.in(text);
 
             String new_word = applyMatch(old_word, repl, regex, relative_span, verbose);
-            List<String> new_word_corrections = corrections(new_word, verbose);
-            String new_word_corrections_mode;
-            if (new_word_corrections.size() > 0) {
-                new_word_corrections_mode = util.mode(new_word_corrections);
-            } else {
-                if (verbose) {
-                    System.out.println("new_word: " + new_word + " can't be fixed");
-                }
-                new_word_corrections_mode = "";
-            }
+            var new_word_span = Span.of(wordSpan.start, wordSpan.start + new_word.length());
+
+            String new_word_corrections_mode =
+                    vote_fix_word(
+                            new_word_span,
+                            wordSpan.swap(text, new_word),
+                            verbose);
+            if (verbose)
+                System.out.println("new_word: " + new_word + " can't be fixed");
             if (normal_word(old_word) &&
                     !normal_word(new_word) &&
                     Character.toLowerCase(new_word.charAt(0)) == Character.toLowerCase(old_word.charAt(0)) &&
                     (Character.toLowerCase(new_word.charAt(new_word.length() - 1))
                             == Character.toLowerCase(old_word.charAt(old_word.length() - 1))) &&
                     new_word_corrections_mode.equals(old_word)) {
-                mutations.set(match_index, texas.replace_word(ex_span_index, new_word));
+                mutations.set(match_index, wordSpan.swap(text, new_word));
             } else {
                 if (verbose) {
-                    System.out.println("rule undetectable or modify looks! new word \"" + new_word + "\" != \"" + old_word + "\" original and will be corrected to " + new_word_corrections_mode + " from " + new_word_corrections);
+                    System.out.println("rule undetectable or modify looks! new word \"" + new_word + "\" != \"" + old_word + "\" original and will be corrected to " + new_word_corrections_mode);
                 }
             }
         }
@@ -420,7 +476,7 @@ public class LangProxy {
         if (verbose) {
             System.out.println("ambiguous_invalid_matches=" + ambiguous_invalid_matches);
         }
-        List<Tuple3<Tuple2<Integer, Integer>, String, Pattern>> valid_slots = new ArrayList<>();
+        List<Tuple3<Span, String, Pattern>> valid_slots = new ArrayList<>();
         for (int i = 0; i < slots.size(); i++) {
             if (!ambiguous_invalid_matches.contains(i)) {
                 valid_slots.add(slots.get(i));
@@ -437,12 +493,12 @@ public class LangProxy {
         return valid_slots;
     }
 
-    static List<Tuple3<Tuple2<Integer, Integer>, String, Pattern>> valid_rules_scan(String text, boolean verbose) throws IOException {
-        List<Tuple3<Tuple2<Integer, Integer>, String, Pattern>> proposed_slots = Rules.rules_scan(text);
+    static List<Tuple3<Span, String, Pattern>> valid_rules_scan(String text, boolean verbose) throws IOException {
+        List<Tuple3<Span, String, Pattern>> proposed_slots = Rules.rules_scan(text);
         if (verbose) {
             System.out.println("proposed_slots: " + proposed_slots);
         }
-        List<Tuple3<Tuple2<Integer, Integer>, String, Pattern>> valid_slots = valid_matches(text, proposed_slots, verbose);
+        List<Tuple3<Span, String, Pattern>> valid_slots = valid_matches(text, proposed_slots, verbose);
         if (verbose) {
             System.out.println("valid_slots: ");
             for (var s : valid_slots) {
@@ -451,4 +507,6 @@ public class LangProxy {
         }
         return valid_slots;
     }
+
+
 }

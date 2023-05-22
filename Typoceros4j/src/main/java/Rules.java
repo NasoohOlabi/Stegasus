@@ -42,8 +42,13 @@ public class Rules {
             parseRules("anti.misspelling")
     ).map(Rules::compileFirst).collect(Collectors.toList());
 
+    /**
+     * these include the count rules and long shift rules
+     */
     static List<Tuple2<Pattern, String>> KEYBOARD_CORRECTION_RULES = parseRules("anti.keyboard").map(Rules::compileFirst).collect(Collectors.toList());
-
+    /**
+     * these include only fat rules
+     */
     static List<Tuple2<Pattern, String>> FAT_CORRECTION_RULES = parseRules("fat.keyboard").map(Rules::compileFirst).collect(Collectors.toList());
 
     static List<Tuple2<Pattern, String>> WORD_RULES = Stream.concat(
@@ -53,8 +58,8 @@ public class Rules {
 
     static List<Tuple2<Pattern, String>> KEYBOARD_RULES = parseRules("keyboard").map(Rules::compileFirst).collect(Collectors.toList());
 
-    static List<Tuple3<Tuple2<Integer,Integer>,String,Pattern>> keyboard_rules_scan(String text) {
-        List<Tuple3<Tuple2<Integer,Integer>,String,Pattern>> matches = new ArrayList<>();
+    static List<Tuple3<Span,String,Pattern>> keyboard_rules_scan(String text) {
+        List<Tuple3<Span,String,Pattern>> matches = new ArrayList<>();
         for (var rule : Rules.KEYBOARD_RULES) {
             Pattern regex = rule._1;
             Matcher matcher = regex.matcher(text);
@@ -62,14 +67,14 @@ public class Rules {
                 int start = matcher.start();
                 int end = matcher.end();
                 String replacement = rule._2;
-                matches.add(new Tuple3(new Tuple2(start, end), replacement, regex));
+                matches.add(new Tuple3<>(Span.of(start, end), replacement, regex));
             }
         }
         return matches;
     }
 
-    static List<Tuple3<Tuple2<Integer,Integer>,String,Pattern>> word_rules_scan(String text) {
-        List<Tuple3<Tuple2<Integer,Integer>,String,Pattern>> matches = new ArrayList<>();
+    static List<Tuple3<Span,String,Pattern>> word_rules_scan(String text) {
+        List<Tuple3<Span,String,Pattern>> matches = new ArrayList<>();
         for (var rule : Rules.WORD_RULES) {
             Pattern regex = rule._1;
             Matcher matcher = regex.matcher(text);
@@ -77,17 +82,17 @@ public class Rules {
                 int start = matcher.start();
                 int end = matcher.end();
                 String replacement = rule._2;
-                matches.add(new Tuple3(new Tuple2(start, end), replacement, regex));
+                matches.add(new Tuple3<>(Span.of(start, end), replacement, regex));
             }
         }
         return matches;
     }
 
-    static List<Tuple3<Tuple2<Integer,Integer>,String,Pattern>> rules_scan(String text) {
-        List<Tuple3<Tuple2<Integer,Integer>,String,Pattern>> result = new ArrayList<>();
+    static List<Tuple3<Span,String,Pattern>> rules_scan(String text) {
+        List<Tuple3<Span,String,Pattern>> result = new ArrayList<>();
         result.addAll(word_rules_scan(text));
         result.addAll(keyboard_rules_scan(text));
-        result.sort((a, b) -> (a._1._1 - b._1._1 != 0)?a._1._1 - b._1._1:a._1._2 - b._1._2);
+        result.sort((a, b) -> (a._1.start - b._1.start != 0)?a._1.start - b._1.start:a._1.end - b._1.end);
         return result;
     }
 }
