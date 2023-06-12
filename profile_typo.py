@@ -5,9 +5,9 @@ from .Typoceros import Typo
 
 # Define the function to be profiled
 def my_function():
-	LOONG_TEXT = '''Metaphysical solipsism is a variety of solipsism. Based on a philosophy of subjective idealism, metaphysical solipsists maintain that the self is the only existing reality and that all other realities, including the external world and other persons, are representations of that self, and have no independent existence.[citation needed] There are several versions of metaphysical solipsism, such as Caspar Hare's egocentric presentism (or perspectival realism), in which other people are conscious, but their experiences are simply not present.'''
-	LOONG_TEXT = '''Hi, How are you?'''
-	t = Typo(LOONG_TEXT)
+	LONG_TEXT = '''Metaphysical solipsism is a variety of solipsism. Based on a philosophy of subjective idealism, metaphysical solipsists maintain that the self is the only existing reality and that all other realities, including the external world and other persons, are representations of that self, and have no independent existence.[citation needed] There are several versions of metaphysical solipsism, such as Caspar Hare's egocentric presentism (or perspectival realism), in which other people are conscious, but their experiences are simply not present.'''
+	LONG_TEXT = '''Hi, How are you?'''
+	t = Typo(LONG_TEXT)
 	t.spaces
 	return t
 

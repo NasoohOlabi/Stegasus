@@ -13,14 +13,14 @@ class JavaJarWrapper:
         jar_path = "./Typoceros4j.jar"
         self._process = subprocess.Popen(["java", "-jar", jar_path], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
-    def encode(self, string, bytes):
+    def encode(self, string, bytes_str):
         if self._process.stdin is None:
           raise Exception("Error stdin is not available")
         if self._process.stdout is None:
           raise Exception("Error stdout is not available")
         self._process.stdin.write(b"encode\n")
         self._process.stdin.write(string.encode("utf-8") + b"\n")
-        self._process.stdin.write(bytes.encode("utf-8") + b"\n")
+        self._process.stdin.write(bytes_str.encode("utf-8") + b"\n")
         self._process.stdin.flush()
 
         output = self._process.stdout.readline().decode("utf-8").strip()
@@ -41,3 +41,8 @@ class JavaJarWrapper:
         values = self._process.stdout.readline().decode("utf-8").strip()
 
         return output, values
+
+Typo = JavaJarWrapper()
+r = Typo.encode("hi, how are you?","010101101010001011010")
+
+print(r)

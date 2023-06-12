@@ -1,2 +1,2 @@
+from .Bot import *
 from .Emojier import *
-from .Typoceros import *
