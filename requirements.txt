@@ -134,7 +134,6 @@ python-dateutil==2.8.2
 python-dotenv==0.21.1
 pytweening==1.0.4
 pytz==2022.5
-pywin32==304
 pywinpty==2.0.8
 PyYAML==6.0
 pyzmq==24.0.1
@@ -148,7 +147,6 @@ requests-toolbelt==0.10.1
 scikit-learn==1.1.2
 scipy==1.9.3
 seaborn==0.12.1
-selenium==4.8.0
 Send2Trash==1.8.0
 shapely==2.0.1
 six==1.16.0
@@ -192,4 +190,3 @@ xlrd==2.0.1
 yarg==0.1.9
 yarl==1.9.2
 zeep==4.2.1
-zstandard==0.20.0
