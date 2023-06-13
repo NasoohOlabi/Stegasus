@@ -1,5 +1,35 @@
 # @title Setup Installs Imports
 import nltk
+import spacy
+
+# from .SemanticMasking import extract_pos
+
+
+
+def extract_pos(text):
+    """Extract the start and end positions of verbs, nouns, and adjectives in the given text."""
+    # Load the spaCy English model
+    nlp = spacy.load('en_core_web_sm')
+    
+    # Parse the text with spaCy
+    doc = nlp(text)
+    
+    # Create a dictionary to store the start and end positions of each POS tag
+    # pos_dict = {
+    #     'VERB': [],
+    #     'NOUN': [],
+    #     'ADJ': []
+    # }
+    pos_list = []
+    
+    # Loop through each token in the parsed text
+    for token in doc:
+        if token.pos_ in ['VERB','NOUN','ADJ']:
+            # If the token's POS tag is a verb, noun, or adjective, add its start and end positions to the dictionary
+            # pos_dict[token.pos_]
+            pos_list.append((token.idx, token.idx + len(token)))
+    
+    return sorted(pos_list)
 
 nltk.download('stopwords')
 from dataclasses import dataclass, field
@@ -95,6 +125,13 @@ class MaskedStego:
         tokens: List[str] = self._tokenizer.convert_ids_to_tokens(input_ids)
         offset = mask_interval // 2 + 1
         mask_count = offset
+        # TODO remove mask_interval
+        #   or  handle the case if interval -1
+        #   use [s[i[0],i[1]] for i in extract_pos]
+        #   note that token is a string list to compare is the str
+        #   is in the pos
+        #   maybe use alongside the interval ... idk
+        #   
         for i, token in enumerate(tokens):
             # Skip initial subword
             if i + 1 < length and self._is_subword(tokens[i + 1]): continue
@@ -111,18 +148,6 @@ class MaskedStego:
             output = self._model(input_ids.unsqueeze(0))['logits'][0]
             softmaxed_score = F.softmax(output, dim=1)  # [word_len, vocab_len]
             return softmaxed_score.sort(dim=1, descending=True)
-
-    # def _encode_topk(self, ids: List[int], message: StringIO, bits_per_token: int) -> int:
-    #     k = 2**bits_per_token
-    #     candidates = []
-    #     for id in ids:
-    #         token = self._tokenizer.convert_ids_to_tokens(id)
-    #         if not self._substitutable_single(token):
-    #             continue
-    #         candidates.append(id)
-    #         if len(candidates) >= k:
-    #             break
-    #     return self._block_encode_single(candidates, message)
 
     def _pick_candidates_threshold(self, ids: Tensor, scores: Tensor, threshold: float):
         filtered_ids = ids[scores >= threshold]
