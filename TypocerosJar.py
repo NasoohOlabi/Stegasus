@@ -1,4 +1,6 @@
+import os
 import subprocess
+
 
 class JavaJarWrapper:
     _instance = None
@@ -11,7 +13,13 @@ class JavaJarWrapper:
 
     def _start_jar(self):
         jar_path = "./Typoceros4j.jar"
-        self._process = subprocess.Popen(["java", "-jar", jar_path], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        java_executable = "java"
+        if os.name == "posix":  # Linux system
+            try:
+                java_executable = subprocess.check_output(["which", "java"]).decode("utf-8").strip()
+            except subprocess.CalledProcessError:
+                raise Exception("Java executable not found")
+        self._process = subprocess.Popen([java_executable, "-jar", jar_path], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
     def encode(self, string, bytes_str):
         if self._process.stdin is None:

@@ -7,7 +7,7 @@ import re
 from math import ceil, floor, log2
 from typing import Dict, Generator, List, Tuple
 
-from Stegasus.util.StringSpans import StringSpans
+from .StringSpans import StringSpans
 
 
 def random_bit_stream(length=None):
