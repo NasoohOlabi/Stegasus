@@ -13,3 +13,5 @@ We all make misstakes and roll on the floor laughing 🤣🤣🤣.
 
 - [X] Migrate Typoceros to java to solve the lang_tool bottle neck
 - [ ] Double check masked stego no name changing!
+- [ ] Decode Emojier
+- [ ] use extract_pos masking. issue: emoticons appear after and which doesn't make since!
