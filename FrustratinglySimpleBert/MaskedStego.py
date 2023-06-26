@@ -1,37 +1,3 @@
-# @title Setup Installs Imports
-import nltk
-import spacy
-
-# from .SemanticMasking import extract_pos
-
-
-
-def extract_pos(text):
-  """Extract the start and end positions of verbs, nouns, and adjectives in the given text."""
-  # Load the spaCy English model
-  nlp = spacy.load('en_core_web_sm')
-  
-  # Parse the text with spaCy
-  doc = nlp(text)
-  
-  # Create a dictionary to store the start and end positions of each POS tag
-  # pos_dict = {
-  #   'VERB': [],
-  #   'NOUN': [],
-  #   'ADJ': []
-  # }
-  pos_list = []
-  
-  # Loop through each token in the parsed text
-  for token in doc:
-    if token.pos_ in ['VERB','NOUN','ADJ']:
-      # If the token's POS tag is a verb, noun, or adjective, add its start and end positions to the dictionary
-      # pos_dict[token.pos_]
-      pos_list.append((token.idx, token.idx + len(token)))
-  
-  return sorted(pos_list)
-
-nltk.download('stopwords')
 from dataclasses import dataclass, field
 from io import StringIO
 from typing import List, Tuple, Union
@@ -41,7 +7,7 @@ import torch.nn.functional as F
 from icecream import ic
 from nltk.corpus import stopwords
 from torch import Tensor
-from transformers import BertForMaskedLM, BertTokenizer
+from transformers import BertForMaskedLM, BertTokenizer  # type: ignore
 from transformers.tokenization_utils import PreTrainedTokenizer
 
 # Meta-type for "numeric" things; matches our docs

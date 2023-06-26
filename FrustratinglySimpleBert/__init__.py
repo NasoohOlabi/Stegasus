@@ -1,2 +1,2 @@
 from .MaskedStego import MaskedStego
-from .SemanticMasking import extract_pos
+from ..SemanticMasking.SemanticMaskingg.SemanticMasking import extract_pos
