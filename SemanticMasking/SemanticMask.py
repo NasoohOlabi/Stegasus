@@ -16,10 +16,6 @@ def create_mask(a: List[Tuple[int, int]], b: List[Tuple[int, int]]) -> List[bool
         while j < len(b) and b[j][1] < a[i][0]:
             j += 1
         mask.append(j < len(b) and b[j][0] <= a[i][0] and b[j][1] >= a[i][1])
-        
-    for i in range(1, len(mask)):
-        if mask[i] and mask[i-1]:
-            mask[i-1] = False
     return mask
 
 @dataclass
@@ -59,7 +55,7 @@ def MaskGen(text:str,tokenizer=None):
     tokens = tokenizer.tokenize(text)
 
     start_index = 0
-    token_mask = [False for _ in tokens]
+    token_mask = [token[:2] == '##' for token in tokens]
     token_spans = []
     last_span = 0
     for token in tokens:
