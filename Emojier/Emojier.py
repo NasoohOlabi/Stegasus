@@ -88,10 +88,12 @@ class Emojier:
       pre_text = text[:breakPoint]
       emoji_options = gaussian_order(Emojier._predict(text[:breakPoint]))
       if len(emoji_options) < 2:
-        print(f'pre_text={pre_text},not enough options={emoji_options}')
+        if Emojier.verbose:
+          print(f'pre_text={pre_text},not enough options={emoji_options}')
         continue
       if bytes_str[0] == "0":
-        print(f'pre_text={pre_text},zero start={bytes_str[:5]}')
+        if Emojier.verbose:
+          print(f'pre_text={pre_text},zero start={bytes_str[:5]}')
         encoded_so_far += bytes_str[0]
         bytes_str = bytes_str[1:]
         continue
@@ -110,7 +112,8 @@ class Emojier:
       mult = int(taken_bits, 2)+1
       encoded_so_far += bytes_str[:2]
       bytes_str = bytes_str[2:]
-      print(f'encoded_so_far={encoded_so_far}')
+      if Emojier.verbose:
+        print(f'encoded_so_far={encoded_so_far}')
       if len(emojis) > 0:
         text = f'{text[0:breakPoint]} {mult * emojis}{text[breakPoint:]}'
       if Emojier.verbose:
@@ -140,7 +143,8 @@ class Emojier:
     return text
   @staticmethod
   def decode(text:str):
-    print("#"*20 + "decoding" + "#"*20)
+    if Emojier.verbose:
+      print("#"*20 + "decoding" + "#"*20)
     bytes_str:str = ''
     mask = MaskGen(text)
     ticks = [text[:v] for u,v in mask.NVA_words if text[u:v] not in labels]
@@ -152,7 +156,8 @@ class Emojier:
         print('-'*20 + 'tick' + '-'*20)
       breakPoint = new_ending(pre_text)
       pre_text = text[:breakPoint]
-      print(f'pre_text={pre_text}')
+      if Emojier.verbose:
+        print(f'pre_text={pre_text}')
       emoji_options = gaussian_order(Emojier._predict(text[:breakPoint]))
       emoji = \
           [label for label in labels if text[breakPoint:].startswith(' '+label)][0] \
@@ -173,11 +178,14 @@ class Emojier:
           print(f"word={pre_text},len(emoji_options)={len(emoji_options)},emoji_options={emoji_options},emoji={emoji},len(emoji)={len(emoji)},multi={multi}")
       else:
         if len(emoji_options) < 2:
-          print(f"nothing encoded emoji_options={emoji_options}")
+          if Emojier.verbose:
+            print(f"nothing encoded emoji_options={emoji_options}")
         else:
-          print(f"no emoji = zero emoji_options={emoji_options}")
+          if Emojier.verbose:
+            print(f"no emoji = zero emoji_options={emoji_options}")
           bytes_str += '0'
-      print(f'bytes_str={bytes_str}')
+      if Emojier.verbose:
+        print(f'bytes_str={bytes_str}')
     # remove emojies
     original = text
     for s,e in reversed(emoji_locations):
