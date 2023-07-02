@@ -1,56 +1,59 @@
 import csv
+import itertools
 import re
 import urllib.request
-from itertools import chain, islice
 from math import floor, log2
 from typing import Any, Generator, List
 
 import numpy as np
 import torch
 from icecream import ic
-from scipy.special import softmax
-from transformers import (AutoModelForSequenceClassification, AutoTokenizer,
-                          TFAutoModelForSequenceClassification)
+from scipy.special import softmax  # type: ignore
+from transformers import AutoModelForSequenceClassification  # type: ignore
+from transformers import AutoTokenizer  # type: ignore
+from transformers import TFAutoModelForSequenceClassification  # type: ignore
 
+from SemanticMasking import MaskGen
 
+labels = ['❤', '😍', '📷', '🇺🇸', '☀', '💜', '😉', '💯', '😁', '🎄', '📸', '😜', '😂', '☹️', '😭', '😔', '😡', '💢', '😤', '😳', '🙃', '😩', '😠', '💕', '🙈', '🙄', '🔥', '😊', '😎', '✨', '💙', '😘']
 def pre_texts(string:str)->Generator[str, Any, None]:
   spans = [x.span() for x in re.finditer(r'(\s)+', string)]
   for span in spans:
     yield string[0:span[0]]
   if spans[-1][1] != len(string):
     yield string
-
 def gaussian_order(lst):
-  length = len(lst)
-  max_odd_ind = length - 1 if length % 2 == 0 else length - 2
-  max_even_ind = length - 1 if length % 2 != 0 else length - 2
-  dist = chain(range(max_odd_ind,0,-2),range(0,max_even_ind + 1 , 2))
-  return [lst[i] for i in dist]
-
+    length = len(lst)
+    max_odd_ind = length - 1 if length % 2 == 0 else length - 2
+    max_even_ind = length - 1 if length % 2 != 0 else length - 2
+    dist = itertools.chain(range(max_odd_ind, 0, -2), range(0, max_even_ind + 1, 2))
+    return [lst[i] for i in dist]
+models_to_choose = [
+    "amazon-sagemaker-community/xlm-roberta-en-ru-emoji-v2",
+    "AlekseyDorkin/xlm-roberta-en-ru-emoji"
+]
+BASE_MODEL = models_to_choose[0]
+def load_model():
+    tokenizer = AutoTokenizer.from_pretrained(BASE_MODEL)
+    model = AutoModelForSequenceClassification.from_pretrained(BASE_MODEL)
+    return model, tokenizer
 class Emojier:
   BASE_MODEL = "amazon-sagemaker-community/xlm-roberta-en-ru-emoji-v2"
   model: Any = None
   tokenizer: Any = None
-
-  def setVerbose(self, v: bool):
-    self.verbose = v
-
-  def __init__(self, interval: int):
-    if Emojier.model is None:
-        Emojier.model = AutoModelForSequenceClassification.from_pretrained(Emojier.BASE_MODEL)
-    if Emojier.tokenizer is None:
-        Emojier.tokenizer = AutoTokenizer.from_pretrained(Emojier.BASE_MODEL)
-    self.interval = interval
-    self.verbose = False
-
-  def predict(self, text: str):
+  @staticmethod
+  def setVerbose( v: bool):
+    Emojier.verbose = v
+  @staticmethod
+  def predict( text: str):
     inputs = Emojier.tokenizer(text, return_tensors="pt")
     outputs = Emojier.model(**inputs)
     logits = outputs.logits.detach().numpy()[0]
     predicted_class = logits.argmax()
     return predicted_class
     
-  def preprocess(self,text:str):
+  @staticmethod
+  def preprocess(text:str):
       new_text = []
       for t in text.split(" "):
           t = '@user' if t.startswith('@') and len(t) > 1 else t
@@ -58,46 +61,128 @@ class Emojier:
           new_text.append(t)
       return " ".join(new_text)
     
-  def _predict(self,text:str) -> List[str]:
+  @staticmethod
+  def _predict(text:str) -> List[str]:
     # Preprocess text (username and link placeholders)
-    preprocessed = self.preprocess(text)
+    preprocessed = Emojier.preprocess(text)
     inputs = Emojier.tokenizer(preprocessed, return_tensors="pt")
     preds = Emojier.model(**inputs).logits
     scores = torch.nn.functional.softmax(preds, dim=-1).detach().numpy()
-    # sorted_scores = [float(value) for value in np.sort(scores.squeeze())[::-1]]
+    sorted_scores = [float(value) for value in np.sort(scores.squeeze())[::-1]]
     ranking = np.argsort(scores)
     ranking = ranking.squeeze()[::-1]
     emojis = [Emojier.model.config.id2label[i] for i in ranking]
-    # return dict(zip(emojis, sorted_scores))
-    return list(filter(lambda x : x != '🇺🇸',emojis))
+    return [emo for emo, score in zip(emojis, sorted_scores) if emo != '🇺🇸' and score > 0.02]
   
-  def encode(self,text:str,bytes_str:str):
-    ticks = islice(pre_texts(text), 0, None, self.interval)
+  @staticmethod
+  def encode(text:str,bytes_str:str):
+    mask = MaskGen(text)
+    encoded_so_far = ''
+    ticks = [text[:v] for u,v in mask.NVA_words]
     original_length = len(text)
     new_ending = lambda x : (len(text) - original_length) + len(x)
     for pre_text in ticks:
+      if Emojier.verbose:
+        print('-'*20 + 'tick' + '-'*20)
       breakPoint = new_ending(pre_text)
-      emoji_options = gaussian_order(self._predict(text[:breakPoint]))
-
+      pre_text = text[:breakPoint]
+      emoji_options = gaussian_order(Emojier._predict(text[:breakPoint]))
+      if len(emoji_options) < 2:
+        print(f'pre_text={pre_text},not enough options={emoji_options}')
+        continue
       if bytes_str[0] == "0":
+        print(f'pre_text={pre_text},zero start={bytes_str[:5]}')
+        encoded_so_far += bytes_str[0]
         bytes_str = bytes_str[1:]
         continue
-      if self.verbose:
+      encoded_so_far += bytes_str[0]
+      bytes_str = bytes_str[1:] # discard the one
+      if Emojier.verbose:
         print(f"word: {pre_text} \nlen: {len(emoji_options)} \temoji_options: {emoji_options}")
-
       bits = floor(log2(len(emoji_options)))
       taken_bits = bytes_str[:bits]
       ind = int(taken_bits, 2)
+      encoded_so_far += bytes_str[:bits]
       bytes_str = bytes_str[bits:]
       emojis = emoji_options[ind]
-
       # Mutliplicity
       taken_bits = bytes_str[:2]
       mult = int(taken_bits, 2)+1
+      encoded_so_far += bytes_str[:2]
       bytes_str = bytes_str[2:]
-      
+      print(f'encoded_so_far={encoded_so_far}')
       if len(emojis) > 0:
         text = f'{text[0:breakPoint]} {mult * emojis}{text[breakPoint:]}'
-      if self.verbose:
+      if Emojier.verbose:
         print(f'>>>encoding {taken_bits} = {ind} as {emojis}\nencoded text={text}')
     return text, bytes_str
+  @staticmethod
+  def int_to_binary_string(n: int, length: int) -> str:
+    binary_str = bin(n)[2:]  # convert to binary string, remove '0b' prefix
+    padded_str = binary_str.rjust(length, '0')  # pad with zeros to length
+    return padded_str
+  @staticmethod
+  def cntPrefix(string:str, prefix:str):
+    for i in range(4,0,-1):
+      # if Emojier.verbose:
+      #   print(f"string={string[:len(prefix*i)]},prefix*i={prefix*i},string.startswith(prefix * i)={string.startswith(prefix * i)}",end='|')
+      if string.startswith(prefix * i):
+        # print('')
+        return i
+    # print('')
+    return 0
+  @staticmethod
+  def strip(text:str):
+    for label in labels:
+      text = text.replace(' '+label,'')
+    for label in labels:
+      text = text.replace(label,'')
+    return text
+  @staticmethod
+  def decode(text:str):
+    print("#"*20 + "decoding" + "#"*20)
+    bytes_str:str = ''
+    mask = MaskGen(text)
+    ticks = [text[:v] for u,v in mask.NVA_words if text[u:v] not in labels]
+    original_length = len(text)
+    new_ending = lambda x : (len(text) - original_length) + len(x)
+    emoji_locations = []
+    for pre_text in ticks:
+      if Emojier.verbose:
+        print('-'*20 + 'tick' + '-'*20)
+      breakPoint = new_ending(pre_text)
+      pre_text = text[:breakPoint]
+      print(f'pre_text={pre_text}')
+      emoji_options = gaussian_order(Emojier._predict(text[:breakPoint]))
+      emoji = \
+          [label for label in labels if text[breakPoint:].startswith(' '+label)][0] \
+            if any((text[breakPoint:].startswith(' '+label) for label in labels)) \
+              else None
+      if emoji is not None:
+        bytes_str += '1' # emoji exist
+        bits = floor(log2(len(emoji_options)))
+        idx = emoji_options.index(emoji)
+        bytes_str += Emojier.int_to_binary_string(idx,bits)
+        # Multiplicity
+        # if Emojier.verbose:
+        #   print('counting multiplicity')
+        multi = Emojier.cntPrefix(text[breakPoint+1:],emoji)
+        bytes_str += Emojier.int_to_binary_string(multi-1,2)
+        emoji_locations.append((breakPoint, breakPoint + 1 + len(emoji)*multi))
+        if Emojier.verbose:
+          print(f"word={pre_text},len(emoji_options)={len(emoji_options)},emoji_options={emoji_options},emoji={emoji},len(emoji)={len(emoji)},multi={multi}")
+      else:
+        if len(emoji_options) < 2:
+          print(f"nothing encoded emoji_options={emoji_options}")
+        else:
+          print(f"no emoji = zero emoji_options={emoji_options}")
+          bytes_str += '0'
+      print(f'bytes_str={bytes_str}')
+    # remove emojies
+    original = text
+    for s,e in reversed(emoji_locations):
+      original = original[:s] + original[e:]
+    return original, bytes_str
+  
+Emojier.model, Emojier.tokenizer = load_model()
+Emojier.verbose = False
