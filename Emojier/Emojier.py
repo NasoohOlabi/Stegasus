@@ -43,7 +43,7 @@ class Emojier:
   tokenizer: Any = None
   @staticmethod
   def setVerbose( v: bool):
-    Emojier.verbose = v
+    verbose = v
   @staticmethod
   def predict( text: str):
     inputs = Emojier.tokenizer(text, return_tensors="pt")
@@ -75,31 +75,31 @@ class Emojier:
     return [emo for emo, score in zip(emojis, sorted_scores) if emo != '🇺🇸' and score > 0.02]
   
   @staticmethod
-  def encode(text:str,bytes_str:str):
+  def encode(text:str,bytes_str:str,verbose=False):
     mask = MaskGen(text)
     encoded_so_far = ''
     ticks = [text[:v] for u,v in mask.NVA_words]
     original_length = len(text)
     new_ending = lambda x : (len(text) - original_length) + len(x)
     for pre_text in ticks:
-      if Emojier.verbose:
+      if verbose:
         print('-'*20 + 'tick' + '-'*20)
       breakPoint = new_ending(pre_text)
       pre_text = text[:breakPoint]
       emoji_options = gaussian_order(Emojier._predict(text[:breakPoint]))
       if len(emoji_options) < 2:
-        if Emojier.verbose:
+        if verbose:
           print(f'pre_text={pre_text},not enough options={emoji_options}')
         continue
       if bytes_str[0] == "0":
-        if Emojier.verbose:
+        if verbose:
           print(f'pre_text={pre_text},zero start={bytes_str[:5]}')
         encoded_so_far += bytes_str[0]
         bytes_str = bytes_str[1:]
         continue
       encoded_so_far += bytes_str[0]
       bytes_str = bytes_str[1:] # discard the one
-      if Emojier.verbose:
+      if verbose:
         print(f"word: {pre_text} \nlen: {len(emoji_options)} \temoji_options: {emoji_options}")
       bits = floor(log2(len(emoji_options)))
       taken_bits = bytes_str[:bits]
@@ -112,11 +112,11 @@ class Emojier:
       mult = int(taken_bits, 2)+1
       encoded_so_far += bytes_str[:2]
       bytes_str = bytes_str[2:]
-      if Emojier.verbose:
+      if verbose:
         print(f'encoded_so_far={encoded_so_far}')
       if len(emojis) > 0:
         text = f'{text[0:breakPoint]} {mult * emojis}{text[breakPoint:]}'
-      if Emojier.verbose:
+      if verbose:
         print(f'>>>encoding {taken_bits} = {ind} as {emojis}\nencoded text={text}')
     return text, bytes_str
   @staticmethod
@@ -127,7 +127,7 @@ class Emojier:
   @staticmethod
   def cntPrefix(string:str, prefix:str):
     for i in range(4,0,-1):
-      # if Emojier.verbose:
+      # if verbose:
       #   print(f"string={string[:len(prefix*i)]},prefix*i={prefix*i},string.startswith(prefix * i)={string.startswith(prefix * i)}",end='|')
       if string.startswith(prefix * i):
         # print('')
@@ -142,8 +142,8 @@ class Emojier:
       text = text.replace(label,'')
     return text
   @staticmethod
-  def decode(text:str):
-    if Emojier.verbose:
+  def decode(text:str,verbose=False):
+    if verbose:
       print("#"*20 + "decoding" + "#"*20)
     bytes_str:str = ''
     mask = MaskGen(text)
@@ -152,11 +152,11 @@ class Emojier:
     new_ending = lambda x : (len(text) - original_length) + len(x)
     emoji_locations = []
     for pre_text in ticks:
-      if Emojier.verbose:
+      if verbose:
         print('-'*20 + 'tick' + '-'*20)
       breakPoint = new_ending(pre_text)
       pre_text = text[:breakPoint]
-      if Emojier.verbose:
+      if verbose:
         print(f'pre_text={pre_text}')
       emoji_options = gaussian_order(Emojier._predict(text[:breakPoint]))
       emoji = \
@@ -169,22 +169,22 @@ class Emojier:
         idx = emoji_options.index(emoji)
         bytes_str += Emojier.int_to_binary_string(idx,bits)
         # Multiplicity
-        # if Emojier.verbose:
+        # if verbose:
         #   print('counting multiplicity')
         multi = Emojier.cntPrefix(text[breakPoint+1:],emoji)
         bytes_str += Emojier.int_to_binary_string(multi-1,2)
         emoji_locations.append((breakPoint, breakPoint + 1 + len(emoji)*multi))
-        if Emojier.verbose:
+        if verbose:
           print(f"word={pre_text},len(emoji_options)={len(emoji_options)},emoji_options={emoji_options},emoji={emoji},len(emoji)={len(emoji)},multi={multi}")
       else:
         if len(emoji_options) < 2:
-          if Emojier.verbose:
+          if verbose:
             print(f"nothing encoded emoji_options={emoji_options}")
         else:
-          if Emojier.verbose:
+          if verbose:
             print(f"no emoji = zero emoji_options={emoji_options}")
           bytes_str += '0'
-      if Emojier.verbose:
+      if verbose:
         print(f'bytes_str={bytes_str}')
     # remove emojies
     original = text
@@ -193,4 +193,3 @@ class Emojier:
     return original, bytes_str
   
 Emojier.model, Emojier.tokenizer = load_model()
-Emojier.verbose = False
