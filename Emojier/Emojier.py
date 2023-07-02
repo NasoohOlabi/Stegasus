@@ -147,7 +147,8 @@ class Emojier:
       print("#"*20 + "decoding" + "#"*20)
     bytes_str:str = ''
     mask = MaskGen(text)
-    ticks = [text[:v] for u,v in mask.NVA_words if text[u:v] not in labels]
+    # ticks = [text[:v] for u,v in mask.NVA_words if text[u:v] not in labels]
+    ticks = [text[:v] for u,v in mask.NVA_words if not any((label in text[u:v] for label in labels))]
     original_length = len(text)
     new_ending = lambda x : (len(text) - original_length) + len(x)
     emoji_locations = []
