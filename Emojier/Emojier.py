@@ -41,6 +41,8 @@ class Emojier:
   BASE_MODEL = "amazon-sagemaker-community/xlm-roberta-en-ru-emoji-v2"
   model: Any = None
   tokenizer: Any = None
+  multiplicityBits = 1
+  TopFPercent = 0.2
   @staticmethod
   def setVerbose( v: bool):
     verbose = v
@@ -72,7 +74,7 @@ class Emojier:
     ranking = np.argsort(scores)
     ranking = ranking.squeeze()[::-1]
     emojis = [Emojier.model.config.id2label[i] for i in ranking]
-    return [emo for emo, score in zip(emojis, sorted_scores) if emo != '🇺🇸' and score > 0.02]
+    return [emo for emo, score in zip(emojis, sorted_scores) if emo != '🇺🇸' and score > Emojier.TopFPercent]
   
   @staticmethod
   def encode(text:str,bytes_str:str,verbose=False):
@@ -108,10 +110,10 @@ class Emojier:
       bytes_str = bytes_str[bits:]
       emojis = emoji_options[ind]
       # Mutliplicity
-      taken_bits = bytes_str[:2]
+      taken_bits = bytes_str[:Emojier.multiplicityBits]
       mult = int(taken_bits, 2)+1
-      encoded_so_far += bytes_str[:2]
-      bytes_str = bytes_str[2:]
+      encoded_so_far += bytes_str[:Emojier.multiplicityBits]
+      bytes_str = bytes_str[Emojier.multiplicityBits:]
       if verbose:
         print(f'encoded_so_far={encoded_so_far}')
       if len(emojis) > 0:
@@ -173,7 +175,7 @@ class Emojier:
         # if verbose:
         #   print('counting multiplicity')
         multi = Emojier.cntPrefix(text[breakPoint+1:],emoji)
-        bytes_str += Emojier.int_to_binary_string(multi-1,2)
+        bytes_str += Emojier.int_to_binary_string(multi-1,Emojier.multiplicityBits)
         emoji_locations.append((breakPoint, breakPoint + 1 + len(emoji)*multi))
         if verbose:
           print(f"word={pre_text},len(emoji_options)={len(emoji_options)},emoji_options={emoji_options},emoji={emoji},len(emoji)={len(emoji)},multi={multi}")
