@@ -40,7 +40,7 @@ class JavaJarWrapper:
       self._start_jar()
       return self.encode(string, bytes_str)
 
-  def spell(self, string, bytes_str):
+  def spell(self, string):
     try:
       if self._process.stdin is None:
         raise Exception("Error stdin is not available")
@@ -55,7 +55,7 @@ class JavaJarWrapper:
       return output
     except BrokenPipeError:
       self._start_jar()
-      return self.encode(string, bytes_str)
+      return self.spell(string)
     
   def decode(self, string):
     try:
