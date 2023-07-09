@@ -1,0 +1,46 @@
+Bob's ratio=20%
+Bob's payload size=272bits
+--------------------------------------------------
+ratio=21
+original text= Yes, I do in fact like tv dramas.  Hugh Laurie is worth every penny, he's that good of an actor.
+encoded text=Yes, I do in films like ta dramas. Evern Laurie is worth 😂😂 every penny, he's tgat good of an actor.
+--------------------------------------------------
+ratio=21
+original text= Amen, to that always go where the pretty girls are located.  I read somewhere that Jon Hamm taught drama at his old high school.
+encoded text=Amen, to that always comes where the pretty giorls are fiound 💯💯. I read somewhere that Ben Hamm taught drama at his old high school.
+--------------------------------------------------
+ratio=18
+original text= He must have been a darn good teacher. Lol
+encoded text=He must have been a dartn bad teacher. Lol
+--------------------------------------------------
+ratio=15
+original text= No, I didn't know that about her.  I know Elton John chose her as his son's godmother, though.
+encoded text=No, I didn't kmow that about her. I believe Elton John claimed her as his son's godmother, though.
+--------------------------------------------------
+ratio=25
+original text= Well, that would be different, for sure.  Do you know that she acts in movies, too?
+encoded text=Well, that must be different, for sure 😍😍. Do you beieve that she acts 😉 in movies, too?
+--------------------------------------------------
+ratio=25
+original text= Oh, me too.  It was a very good performance.   You know her name came from a predictive text glitch that kept changing radio to lady?
+encoded text=Oh, me too. It was a very convincing performance. Yiou know her nickname 😉 came frim a predictive text glitch 😉😉 that involves changing radio to TV?
+--------------------------------------------------
+ratio=25
+original text= I know, what luck.  Bad mistake on Def Jam records, they missed a big star. I bet they kick themselves about that mistake.
+encoded text=I know, what choixce. Bad mistake on Def Jam records, they missed a gold star. I bet they killed themselves about tghat mistake 😡.
+--------------------------------------------------
+ratio=19
+original text= I know there are like nearly half million people that go to that every year.
+encoded text=I know there are still nearly half million pewople that go 😊😊 to that every year.
+--------------------------------------------------
+ratio=16
+original text= I know right, probably takes a lot of money.  I just don't have that much time to devote to watching movies.Lol  On a side note do you know Jim Carrey doesn't make dramas any more because his belief system prevents him from playing in movies that don't project positivity?
+encoded text=I know right, probabkly takes a lot of money. I just don't have that much time to devoyte to watching Mr. Lol On a siode note do you think Jim Carrey doesn't make movies abny more because his belief system prevented him from playing in movies that don't require positivirty?
+--------------------------------------------------
+ratio=22
+original text= Well, I'm sure he's so famous, he picks and chooses what he wants to do, anyway.
+encoded text=Well, I'm surprised he's so famous, he picks and uses what he wabnts 😂😂 to do, anyway.
+--------------------------------------------------
+ratio=23
+original text= Yeah, I think the family blamed him for that.  So sad.  Well, it's been nice chatting with you, I need to get ready for work.  I'll talk to you later, friend.
+encoded text=Yeah, I knew the family blsmed him for that. So much. Well, it's been nice 😊😊 working wiyh you, I need to get home for work. I'll talk to you later, fruend 😊😊.

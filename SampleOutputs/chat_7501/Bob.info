@@ -1,0 +1,42 @@
+Bob's ratio=20%
+Bob's payload size=140bits
+--------------------------------------------------
+ratio=20
+original text=I used to.  Nowadays travel has gotten too cramped and unpleasant for me.  Do you like to travel?
+encoded text=I used to. Road travel has gotten too difficult and unoleasant for me. Do you like to fly?
+--------------------------------------------------
+ratio=22
+original text=Whew, that thing goes fast.  Not sure if I'd be riding it.
+encoded text=Whew, that thing mobved fast. Not sure if I'd be seeing it.
+--------------------------------------------------
+ratio=15
+original text= Actually, I've been to Japan a few times on business, back when I traveled frequently and that's true, all their roads are tolls. 
+encoded text=Actually, I've been to town a few tmes on business, especially when I traveled freqiently and that's true, all their roads are tolls.
+--------------------------------------------------
+ratio=30
+original text=In Maine?
+encoded text=In Maune?
+--------------------------------------------------
+ratio=28
+original text=I've been there once, it was a few years back and it's quite odd not to hear and see cars moving about.  It's awfully quaint.
+encoded text=I've been there once, it was a few years 😂 back and it's quite odd ☹️☹️ not to look and see cars driofting ☀☀ about. It's awfully quaint ❤❤.
+--------------------------------------------------
+ratio=10
+original text=No, I didn't know that.  I've never been to Iceland.  Have you?
+encoded text=No, I didn't know thst. I've never been to Iceland. Have you?
+--------------------------------------------------
+ratio=18
+original text=I don't think I'd like it there, too cold and I would not sit cramped up on a flight just to travel between their cities.  lol
+encoded text=I don't think I'd prefder it there, too cold and I would not get cramped up on a flight just to travel 😔 between their cioties. lol
+--------------------------------------------------
+ratio=24
+original text=Is he the explorer that founded Detroit?
+encoded text=Is he the explorer tjat took Detroit?
+--------------------------------------------------
+ratio=16
+original text=Yes, it is!
+encoded text=YEs, it is!
+--------------------------------------------------
+ratio=20
+original text=That makes sense to me!
+encoded text=That makes sernse to me!
