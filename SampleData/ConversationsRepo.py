@@ -1,4 +1,5 @@
 import os
+import random
 
 import pandas as pd
 
@@ -6,12 +7,14 @@ import pandas as pd
 class ConversationsRepo:
   ConversationsCount = 8628
   @staticmethod
-  def get(i: int):
+  def get(i: int|None = None):
     """gets a chat from the Sample data
 
     Args:
         i (int): The number of the conversation [1, 8628]
     """
+    if i is None:
+      i = random.randint(1,ConversationsRepo.ConversationsCount)
     if i < 1 or i > ConversationsRepo.ConversationsCount:
       raise ValueError(i)
     
