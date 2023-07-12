@@ -9,6 +9,8 @@ We all make misstakes and roll on the floor laughing 🤣🤣🤣.
 
  Still in early dev
 
+ [Report Paper](https://docs.google.com/document/d/12p-etkNhbgijaJc5Wds4g9J6etcsgQcYH39K8qP0Kz4/edit?usp=sharing) also in early writing 😅
+
 ## Still in Development
 
 - [X] Migrate Typoceros to java to solve the lang_tool bottle neck
