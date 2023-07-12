@@ -24,4 +24,3 @@ We all make misstakes and roll on the floor laughing 🤣🤣🤣.
   - [ ] Pick low
   - [ ] Try on a large chat dataset.
   - [ ] benchmark without compression.
-  - [ ]
