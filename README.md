@@ -9,7 +9,13 @@ We all make misstakes and roll on the floor laughing 🤣🤣🤣.
 
  Still in early dev
 
- [Report Paper](https://docs.google.com/document/d/12p-etkNhbgijaJc5Wds4g9J6etcsgQcYH39K8qP0Kz4/edit?usp=sharing) also in early writing 😅
+## Links
+
+ [Report Paper](https://docs.google.com/document/d/12p-etkNhbgijaJc5Wds4g9J6etcsgQcYH39K8qP0Kz4/edit?usp=sharing) also almost 50% is done
+
+ [Report Slides](https://docs.google.com/presentation/d/1jGV2UGp9pTdRHHqymk1Tppx5bz2L-U-Dt_y0wYrc2ts/edit?usp=sharing) Reflects current work!
+
+ [Typoceros](https://github.com/NasoohOlabi/Typoceros) The Typo Engine.
 
 ## Still in Development
 
