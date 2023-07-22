@@ -1,6 +1,6 @@
 # Stegasus
 
-[![Open In Colab](ColabBadge.svg)](https://colab.research.google.com/github/NasoohOlabi/Stegasus/blob/main/Stegasus.ipynb)
+[![Open In Colab](https://raw.githubusercontent.com/NasoohOlabi/Stegasus/f26a918876e2561fc45f7a90c4fa0386ab76608b/ColabBadge.svg)](https://colab.research.google.com/github/NasoohOlabi/Stegasus/blob/main/Stegasus.ipynb)
 
 A Multi-Phase Steganography Engine Using Typos, Synonyms and Emoticons.
 We all make misstakes and roll on the floor laughing 🤣🤣🤣.
