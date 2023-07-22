@@ -9,12 +9,13 @@ import numpy as np
 import torch
 from icecream import ic
 from scipy.special import softmax  # type: ignore
-from StringSpans import StringSpans
 from transformers import AutoModelForSequenceClassification  # type: ignore
 from transformers import AutoTokenizer  # type: ignore
 from transformers import TFAutoModelForSequenceClassification  # type: ignore
 
 from SemanticMasking import MaskGen
+
+from .StringSpans import StringSpans
 
 labels = ['❤', '😍', '📷', '🇺🇸', '☀', '💜', '😉', '💯', '😁', '🎄', '📸', '😜', '😂', '☹️', '😭', '😔', '😡', '💢', '😤', '😳', '🙃', '😩', '😠', '💕', '🙈', '🙄', '🔥', '😊', '😎', '✨', '💙', '😘']
 def pre_texts(string:str)->Generator[str, Any, None]:
