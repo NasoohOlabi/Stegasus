@@ -23,7 +23,7 @@ We all make misstakes and roll on the floor laughing 🤣🤣🤣.
 - [X] Double check masked stego no name changing!
 - [X] Decode Emojier
 - [X] use extract_pos masking. issue: emoticons appear after and which doesn't make since!
-- [ ] Try make Emoji multiplicity reach 3.
+- [X] Try make Emoji multiplicity reach 3.
 - [ ] Try add 👍 Emoji since it's missing in labels.
 - [ ] add setting to activate Emojier on %25 percent of the time instead of %50 present.
 - [ ] Benchmarks and Demo.
@@ -32,3 +32,4 @@ We all make misstakes and roll on the floor laughing 🤣🤣🤣.
   - [ ] Pick low
   - [ ] Try on a large chat dataset.
   - [ ] benchmark without compression.
+- [ ] first layer should be chat aware!
