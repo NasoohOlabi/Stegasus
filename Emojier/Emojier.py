@@ -18,6 +18,41 @@ from SemanticMasking import MaskGen
 from .StringSpans import StringSpans
 
 labels = ['❤', '😍', '📷', '🇺🇸', '☀', '💜', '😉', '💯', '😁', '🎄', '📸', '😜', '😂', '☹️', '😭', '😔', '😡', '💢', '😤', '😳', '🙃', '😩', '😠', '💕', '🙈', '🙄', '🔥', '😊', '😎', '✨', '💙', '😘']
+
+augmentation_map = {'❤': ['💓', '💖', '💗', '💘', '💞', '💟'],
+ '😍': ['😻', '🥰','🤩'],
+ '📷': ['🎥', '📹', '🎞️', '📽️'],
+ '☀': ['🌞', '🌅', '🌄', '🌤️', '🌻', '🌼'],
+ '💜': ['❤️', '🤎', '🖤', '🤍'],
+ '😉': ['😏', '😋', '😼', '😌', '😬'],
+ '💯': ['👌'],
+ '😁': ['😀', '😃', '😆', '😄', '😅', '😸'],
+ '🎄': ['🎅', '🤶', '🎁', '🌟', '🌲'],
+ '📸': [],
+ '😜': ['😝', '😛'],
+ '😂': ['🤣', '😹'],
+ '☹️': ['🙁', '😞', '😖'],
+ '😭': ['😢', '😥', '😪', '😓'],
+ '😔': ['😟', '😕'],
+ '😡': ['😣', '👿'],
+ '💢': ['💥', '💨', '💣', '💫'],
+ '😤': ['😒'],
+ '😳': ['😮', '😯', '😲', '🙀', '😱'],
+ '🙃': [],
+ '😩': ['😫'],
+ '😠': ['😾'],
+ '💕': ['💔'],
+ '🙈': ['🙉', '🙊', '🐵', '🐒', '🐾'],
+ '🙄': ['😑', '🤨','😐'],
+ '🔥': ['🌋', '🚒'],
+ '😊': ['🙂'],
+ '😎': ['🕶️', '🍻'],
+ '✨': ['🔮', '🎉'],
+ '💙': ['💚', '💛', '🧡'],
+ '😘': ['😗', '😚', '😙']}
+
+augmented_labels = list(augmentation_map.keys()) + [e for l in augmentation_map.values() for e in l]
+
 def pre_texts(string:str)->Generator[str, Any, None]:
   spans = [x.span() for x in re.finditer(r'(\s)+', string)]
   for span in spans:
@@ -43,8 +78,8 @@ class Emojier:
   BASE_MODEL = "amazon-sagemaker-community/xlm-roberta-en-ru-emoji-v2"
   model: Any = None
   tokenizer: Any = None
-  multiplicityBits = 1
-  TopFPercent = 0.15
+  multiplicity = 3
+  TopFPercent = 0.1
   verbose = False
   @staticmethod
   def predict( text: str):
@@ -62,7 +97,15 @@ class Emojier:
           t = 'http' if t.startswith('http') else t
           new_text.append(t)
       return " ".join(new_text)
-    
+  @staticmethod
+  def _augment(emoticons:List[str]) -> List[str]:
+    augmented = []
+    for e in emoticons:
+      augmented.append(e)
+      for x in augmentation_map[e]:
+        augmented.append(x)
+    Emojier.log(f"_augment({emoticons}) = {augmented}")
+    return augmented
   @staticmethod
   def _predict(text:str) -> List[str]:
     # Preprocess text (username and link placeholders)
@@ -75,16 +118,21 @@ class Emojier:
     ranking = ranking.squeeze()[::-1]
     emojis = [Emojier.model.config.id2label[i] for i in ranking]
     emoticons = [emo for emo, score in zip(emojis, sorted_scores) if emo != '🇺🇸' and score > Emojier.TopFPercent]
-    return Emojier.addMultiplicities(emoticons)
+    return Emojier.addMultiplicities(
+        Emojier._augment(
+          emoticons
+        )
+      )
   @staticmethod
   def addMultiplicities(emoticons: List[str]):
     new_emoticons = []
     for emo in emoticons:
-      for i in range(1,Emojier.multiplicityBits+2):
+      for i in range(1,Emojier.multiplicity+1):
         new_emoticons.append(emo * i)
     return new_emoticons
   @staticmethod
   def encode(text:str,bytes_str:str):
+    Emojier.info(f"encode({text}, {bytes_str})")
     mask = MaskGen(text)
     encoded_so_far = ''
     ss = StringSpans(text)
@@ -118,6 +166,7 @@ class Emojier:
       Emojier.log('E>'+f'encoded_so_far={encoded_so_far}')
       if len(emoji) > 0:
         text = f'{text[0:breakPoint]} {emoji}{text[breakPoint:]}'
+    Emojier.info(f"encoded {encoded_so_far} as: {text}")
     return text, bytes_str
   @staticmethod
   def int_to_binary_string(n: int, length: int) -> str:
@@ -137,21 +186,25 @@ class Emojier:
   def log(string:str):
     if Emojier.verbose:
       print(string)
-    with open('Emojier.log','a') as f:
+    with open('Emojier.log','a', encoding='utf-8') as f:
       f.write(string+'\n') 
-      
+  @staticmethod
+  def info(string:str):
+    if Emojier.verbose:
+      print(string)
+    with open('Emojier.info','a', encoding='utf-8') as f:
+      f.write(string+'\n') 
   @staticmethod
   def strip(text:str):
-    for label in labels:
+    for label in augmented_labels:
       text = text.replace(' '+label,'')
-    for label in labels:
+    for label in augmented_labels:
       text = text.replace(label,'')
     return text
   @staticmethod
   def decode(encoded_text:str):
     text = encoded_text
-    for label in labels:
-      text = text.replace(' '+label,'').replace(label,'')
+    text = Emojier.strip(text)
     clear_text = text
     mask = MaskGen(text)
     decoded_so_far = ''
@@ -188,5 +241,5 @@ class Emojier:
       Emojier.log('D>'+f"word={text[u:v]},range={(0,breakPoint)},len({emoji})={len(emoji)},{len(emoji_options)}=len({emoji_options})")
       Emojier.log('D>'+f'decoded_so_far={decoded_so_far}')
     return clear_text, decoded_so_far  
-  
+    
 Emojier.model, Emojier.tokenizer = load_model()

@@ -1,0 +1,39 @@
+encode( Have you ever read a wrinkle in time?, 10110011000100110111010111001000100101)
+encoded 101100 as:  Have you ever read 🎉🎉 a wrinkle in time?
+encode( I have not. What is it about?, 010101001111001101010110111011)
+encoded 0 as:  I have not. What is it about?
+encode( It is a fantasy where the main hero is a little girl. Apparently publishers were not a fan when it was first being sent out for publication. , 1000100000101111111000110010001010101011011011111100111110101001010010010101011111011011001101000101001010001000110101110011000111110010000010)
+encoded 10001000001011111110001100100 as:  It is a fantasy 😪😪 where the main hero is a little girl. Apparently publishers ☹️☹️☹️ were not a fan 😔 when it was first being sent ☹️ out for publication. 
+encode( Interesting. There is a university where you can study science fiction and fantasy literature with a concentration in Tolkien studies., 010111110100110101110110100001101110011000111110110000010011011000010011110100110010010101111100101010101111010110110101100010011010100)
+encoded 01011111010011010111011010000 as:  Interesting. There is a university 😃😃 where you can study 😆😆😆 science 😬 fiction 😏😏😏 and fantasy literature with a concentration in Tolkien studies.
+encode( That would be an amazing class! I think there is so much to be learned from those great books. , 011001010110000111100101110001010011110011101000110110000111001111010011101000010011011000011010)
+encoded 011001010110000111100 as:  That would be an amazing class 😍! I think there is 🔮🔮🔮 so much to be learned from those great books 💓💓💓. 
+encode( I think so too. Jim Henson created The Dark Crystal with the idea that it was unhealthy for children never to be afraid., 0100000110100110101110111001011110111101010100110001011101101110011011110001111110111110001010100101101101110001110010001)
+encoded 0100000110100110101110111 as:  I think so too. Jim Henson created 🤩🤩 The Dark Crystal with the idea that it was unhealthy 🙁🙁 for children 😞 never to be afraid ☹️☹️.
+encode( Hmm I could see that being true. If children have no fear then they are liable to get into anything. Healthy fear isn't a bad thing. , 10100110001100110010000011001101010111011111111001100101001110111010101010101001000011111001000001110011100100101010000101110110001101)
+encoded 1010011000110011001000001100110101 as:  Hmm I could see 😁😁😁 that being true 😄😄😄. If children have no fear 😆😆😆 then they are liable to get into anything. Healthy fear isn't a bad 😕😕 thing ☹️. 
+encode( I agree. Do you like Walt Disney?, 0010010001001111000101110011100011)
+encoded 00 as:  I agree. Do you like Walt Disney?
+encode( I like some of their stuff. A few things are a bit underhandedly political for my taste but most is good. You?, 001111110000110011100111001000111110001100100000010000011011000100010110010011110010010110001000000101101011101)
+encoded 0011111100001100111001110010001111100 as:  I like some of their stuff. A few 😊 things 💯 are a bit 😞😞 underhandedly political 💢💢💢 for my taste 😒😒 but most ☹️ is good. You?
+encode( Yep, I like Walt Disney. The Disney channel doesn't accept outside ads. Did you know that?, 1011111011011110000110001010111010111011000111110000001110101111011101100101000101011001011)
+encoded 1011111011011110000 as:  Yep, I like 😃😃 Walt Disney. The Disney channel 💓 doesn't accept 😊😊 outside ads. Did you know that?
+encode( I didn't know that. Makes sense though because then they can direct traffic toward their products and shows. , 01101000001111010010001101000011101101110101001001001010100111011010100101100010100110101000100010011110110000)
+encoded 01101000001111010 as:  I didn't know that. Makes 🙂🙂 sense though because then they can direct traffic toward their products 😋😋😋 and shows. 
+encode( Yep I agree. Walt Disney and Salvador Dali once collaborated on a short film., 100111101010011000001000010010001010000000100110100001000011001110101100101111)
+encoded 10011110101001100000 as:  Yep I agree 🤣🤣🤣. Walt Disney and Salvador Dali once collaborated 😊😊 on a short 💗💗💗 film 💟💟💟.
+encode( That is awesome. i think my favorie disney film would have to be either big hero 6 or the incredibles. , 01001000111011011010111011111100101111111001111001010110011000111000100110011110011100011000011101110001)
+encoded 010010001110110110101110111 as:  That is awesome. i think 😍😍😍 my favorie disney film would have 😍😍😍 to be either big 🎉🎉 hero ✨✨ 6 or the incredibles 🔮🔮🔮. 
+encode( Yea those are both good ones. Disney makes $1,110 per second., 11101000101000101111110000101000110011011101000000011011000110)
+encoded 1110100 as:  Yea those are both good 😊 ones. Disney makes $1,110 per second.
+encode( Wow that is just a insane amount of money. Hopefully they are doing some good work with all that cash. , 00010100010000000011010111111011111010111001101100111101110000111001111111101011010010000100101100011001)
+encoded 000101000100000 as:  Wow that is just a insane amount of money. Hopefully they are doing 😆😆 some good 😹😹 work with all that cash. 
+encode( I bet they are. Walt Disney was fired from his job at a local newspaper for not being creative enough., 0010100110111100100011011000010000110110010111100110010000010110010010111000110111001110100001101110011)
+encoded 001010011011110 as:  I bet they are. Walt Disney was fired from his job 🤣 at a local newspaper 😂😂😂 for not being creative 🤣🤣 enough.
+encode( That seems very strange but I guess the times where different on what people considered entertainment. , 10010101010000100110010010011001011111001110001111110100101110000101011100101101010010011000000100000001)
+encoded 10010101010000100110 as:  That seems 😆😆 very strange but I guess 😊 the times where different on what people considered 😂😂😂 entertainment. 
+encode( Do you use Google?, 0001000111101010101)
+encoded 0 as:  Do you use Google?
+encode( I do use it quite a bit. Gmail is great. Do you like it?, 101110110101111011110110100011011010101110011011100010101)
+encoded 101110110101111011 as:  I do use 😀😀😀 it quite a bit. Gmail is great 😊😊. Do you like 😏😏 it?
+encode( I love Google. I pretty much use it daily., 0100100010001110011001000001010001101001100)
