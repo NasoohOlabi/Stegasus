@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 from scipy.interpolate import CubicSpline
 
-df = pd.read_csv('Engine benchmark.tsv', sep='\t')
+df = pd.read_csv('benchmark.tsv', sep='\t')
 df_sorted = df.sort_values('cover size')  # Sort the data based on 'cover size'
 
 
