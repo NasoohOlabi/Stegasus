@@ -11,6 +11,3 @@ pandas>=1.5.1
 scipy>=1.9.3
 spacy>=3.5.0
 torch>=1.0.0
-pandas>=2.0.3
-scipy>=1.11.1
-spacy>=3.6.0
