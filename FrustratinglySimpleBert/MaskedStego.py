@@ -2,6 +2,7 @@ from dataclasses import dataclass, field
 from io import StringIO
 from typing import List, Tuple, Union
 
+import nltk
 import torch
 import torch.nn.functional as F
 from icecream import ic
@@ -9,6 +10,8 @@ from nltk.corpus import stopwords
 from torch import Tensor
 from transformers import BertForMaskedLM, BertTokenizer  # type: ignore
 from transformers.tokenization_utils import PreTrainedTokenizer
+
+nltk.download('stopwords')
 
 # Meta-type for "numeric" things; matches our docs
 Number = Union[int, float, bool]
