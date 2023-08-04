@@ -14,13 +14,18 @@ def int_to_binary_string(n: int, length: int):
   
 from FrustratinglySimpleBert import MaskedStego
 
+print ('\nSetting up Masked Stego\n')
+
 masked_stego = MaskedStego()
 
+print ('\nSetting up Masked Stego Completed\n')
 
 from TypocerosJar import JavaJarWrapper
 
+print ('\nSetting up Typoceros\n')
 Typo = JavaJarWrapper()
 
+print ('\nSetting up Typoceros Completed\n')
 
 
 #@title Pipe
