@@ -33,3 +33,4 @@ We all make misstakes and roll on the floor laughing 🤣🤣🤣.
   - [ ] Try on a large chat dataset.
   - [ ] benchmark without compression.
 - [ ] first layer should be chat aware!
+- [ ] package it
