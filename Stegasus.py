@@ -150,13 +150,13 @@ def typo_callback(state, next_callback, config):
       encoded_pipe_text = message_pipe.pop()
       rem_pipe_bytes = bytes_pipe.pop()
 
-      original_string, values = Typo.decode(encoded_pipe_text)
+      original_string, deData = Typo.decode(encoded_pipe_text)
       if encode and decode:
         assert original_string == text
-        assert values == data
+        assert deData == data
       else:
         message_pipe.append(original_string)
-        bytes_pipe.append()
+        bytes_pipe.append(deData)
 
 
     return state

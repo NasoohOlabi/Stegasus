@@ -1,5 +1,6 @@
 import os
 import subprocess
+from typing import Tuple
 
 
 class JavaJarWrapper:
@@ -40,7 +41,7 @@ class JavaJarWrapper:
       self._start_jar()
       return self.encode(string, bytes_str)
     
-  def decode(self, string):
+  def decode(self, string) -> Tuple[str,str]:
     try:
       if self._process.stdin is None:
         raise Exception("Error stdin is not available")
