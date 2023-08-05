@@ -1,0 +1,110 @@
+original= Did you hear about that transgender woman and how she breastfed her baby? I didn't know that was possible.
+data=110101010001001010100000010010001
+encoded=DId you hear about that crazy 🤣 woman and how she brewastfed her baby 🤣🤣🤣? I didn't know that was possible 💗💗.
+capacity=30.8411214953271%	data length=33	text length=107
+Function 'bench' took 4.72 mins to execute.
+original= That's wild! If that's what she wanted then that's awesome, but that's so surprising that that's biologically possible!
+data=0000001010110010100101000010010110010000
+encoded=That's wikd 🤣! If that's what she thinks 😂 then that's awesome 😁😁😁, but that's so surprising that that's biologically impossibke 😒!
+capacity=33.33333333333333%	data length=40	text length=120
+Function 'bench' took 8.20 mins to execute.
+original= I know right, but it seems like the consequences were terrible, I think the kid actually died because of that, 
+data=01001011011111111010001111010000110111100
+encoded=I kbow right, but it seems 😹 like the kids 😹 were terrible, I think 😒 thje kid 💥 actually died because of that,
+capacity=36.607142857142854%	data length=41	text length=112
+Function 'bench' took 3.85 mins to execute.
+original= Oh wow, that's awful. It sounds like for the first six months, the baby was happy and healthy though
+data=0101011111111111110101011001100000101100011
+encoded=Oh wiw, that's nice 🥰. It sounds 😊 like for the past six months 😆, the person 😄😄 was happy and healty though
+capacity=42.57425742574257%	data length=43	text length=101
+Function 'bench' took 4.15 mins to execute.
+original= Her baby died in the end, and now she regrets that decision, 
+data=001000101111101101110100111100111100
+encoded=Her baby 🤩🤩🤩 died 😟😟😟 in the end 😖, and now she regretrs 😟😟 that decision 😪😪😪,
+capacity=58.06451612903226%	data length=36	text length=62
+Function 'bench' took 2.17 mins to execute.
+original= That's so sad. It's so weird and cool though that they got someone who biologically couldn't breast feed to actually produce 8oz of milk a day!
+data=00000000000001110110010010100010100001000111000011
+encoded=That's so sad. It's so cool 😪 abnd cool thiough that they want someone who buologically couldn't breast 😢😢 milk to actually produce 8oz of milk 😕😕 a day!
+capacity=34.72222222222222%	data length=50	text length=144
+Function 'bench' took 8.78 mins to execute.
+original= I guess it is, technology advances, but its sad a kid had to pay the price of that,  apparently the kid was developing just fine no idea what happened there.
+data=010011011011111000100110000001110001001100001110111001100011000111
+encoded=I guess 🤣 it is, msaking 😼 advances, but its sad 😞😞😞 a mother hsad to pay the price of that, like tje kid was developing 🙁 just absolurtely no idea 😞😞😞 what happened there.
+capacity=41.77215189873418%	data length=66	text length=158
+Function 'bench' took 7.04 mins to execute.
+original= That's terrible. In general, apparently it's really good to breastfeed.  The American Academy of Pediatrics endorses breastfeeding for the first year.
+data=01011000011101100001000100111010101010001010110000
+encoded=That's terrible. In fact 😒, apparwently it's really safer 💣💣💣 to breastfeed. The Americsan Academy of Pediatris endorses breastfeeding for the next 😭 year.
+capacity=33.11258278145696%	data length=50	text length=151
+Function 'bench' took 8.80 mins to execute.
+original= Yeah, I don't think the transgender woman should've breastfed her kid, nothing against transgender people but the science isn't solid yet
+data=11000010011001111001000100111001010010111001100110010
+encoded=Yeah, I don't believe the transgwender 💢💢 woman should've breastfed 💢💢 her breasts, nothibg against transgender 😟 women but the scienvce ☹️ isn't solid yet
+capacity=38.405797101449274%	data length=53	text length=138
+Function 'bench' took 10.33 mins to execute.
+original= Yeah agreed. I'm surprised that they even tried to be honest
+data=0000111010011101101110
+encoded=Yeah right. I'm surprised 🤣 that they even try to be honewst 🤣🤣
+capacity=36.0655737704918%	data length=22	text length=61
+Function 'bench' took 2.12 mins to execute.
+original= Yeah on another note, do you use the phone a lot?
+data=0100011000100110000
+encoded=Yeah on another noye, do you use the car 😏 a lot?
+capacity=38.0%	data length=19	text length=50
+Function 'bench' took 1.31 mins to execute.
+original= Yes I do, I'm on my phone the whole day basically. Did you know that Hedy Lamarr helped to make the cellphone, wifi and gps? She was an actress in the 1930s.
+data=
+encoded=
+capacity=100.0%	data length=158	text length=158
+Function 'bench' took 0.21 mins to execute.
+original= No, I didnt know that, I wonder if here contributions were big, 
+data=
+encoded=
+capacity=100.0%	data length=65	text length=65
+Function 'bench' took 0.31 mins to execute.
+original= Yeah it might have only been minor contributions, who knows! I always hate having low signal, but apparently there's no connection between signal quality and "bars" of service.
+data=001111010011000010011000001011010001100010001100100111110111011100111110100
+encoded=Yeah it coyuld have only been minor contributions 😢, who know 🤣🤣🤣! I always hate 👿👿👿 hasving poor 😖 signal, but apparently there's no distincton between signal qualiuty 💫💫 and " lack 😒 " of service 😤😤.
+capacity=42.3728813559322%	data length=75	text length=177
+Function 'bench' took 13.51 mins to execute.
+original= I wouldn't know much about that, what I do know is that Iphones are really powerfull, they have more power than the entire icbm nuclear deterrent
+data=
+encoded=
+capacity=100.0%	data length=146	text length=146
+Function 'bench' took 0.14 mins to execute.
+original= Wow, that's shocking! I had no idea. Apparently dolphins can speak over the phone and know who they are talking to.
+data=1011110101101100000111010111101111101110001111010
+encoded=Wow, that's brillisnt! I had 😍 no idea. Apparently dolphins can listen over the phne and know 😊😊 who they are speakibg 😃😃😃 to.
+capacity=42.241379310344826%	data length=49	text length=116
+Function 'bench' took 7.30 mins to execute.
+original= They can? wow, smart animals, did you hear about the UNICEF campaign?
+data=110010000100000001
+encoded=Tghey can? wow, smart boy, did you hear 🤣🤣🤣 about the UNICEF campaign?
+capacity=25.71428571428571%	data length=18	text length=70
+Function 'bench' took 2.15 mins to execute.
+original= I haven't heard about the UNICEF campaign. What is it?
+data=1001000101001110100110
+encoded=I haven't heard about the UNICEF 😤 meetoing 💨💨. What is it?
+capacity=40.0%	data length=22	text length=55
+Function 'bench' took 2.85 mins to execute.
+original= For every minute you dont use your cellphone they will donate a day of clean water to a child in need, I think its a great campaign, hard to measure though
+data=01100100101110000111001001111011111011100111110010001110000001011010100110100010000110110101
+encoded=For every year you dont use yoyur cellphone 😂😂 they will donate a suipply 🤣🤣🤣 of clewan 🤣🤣 water 🙁🙁 to a woman 😔😔😔 in need 😕😕😕, I think 😥😥😥 its a charity 😓😓😓 canmpaign, hard 😖 to win though
+capacity=58.97435897435898%	data length=92	text length=156
+Function 'bench' took 9.65 mins to execute.
+original= Yeah that's hard. I don't know how I feel about that, it's a great idea but what if you need to make important calls or check in with your family or something?
+data=00101001101010010001010100010010100010001010100001100011
+encoded=Yreah that's good. I don't know 🤣🤣 how I feel aboyut that, it's a great idea 🙂🙂🙂 but wghat if you need to make 🤣 important 😊😊😊 calls or check in with your family 😖😖😖 or sonething?
+capacity=35.0%	data length=56	text length=160
+Function 'bench' took 6.97 mins to execute.
+original= I guess I can leave my cellphone a few minutes a day alone, 
+data=11011111000110000110110
+encoded=I guess 😂😂 I can leave my cellphne a few 🤣🤣🤣 minutes a day longer,
+capacity=37.704918032786885%	data length=23	text length=61
+Function 'bench' took 2.28 mins to execute.
+original= Yeah agreed. It might be better for all of us in the long run!
+data=01001111111010111110110
+encoded=Yeah yeah. It migfht be better for all of us in tje long 😋 run 😏😏😏!
+capacity=36.507936507936506%	data length=23	text length=63
+Function 'bench' took 1.40 mins to execute.
