@@ -18,3 +18,7 @@ encode(hi, what kind of shoes do you like?, 0011010010001111111011101110101011)
 encoded 0011010 as: hi, what kind of shoes do you like 😊😊😊?
 encode(Hi! Do you want the NBA?, 101110111001101000100101)
 encoded 101110 as: Hi! Do you want 😻 the NBA?
+encode(hi, how are you?, 10101010010101)
+encoded  as: hi, how are you?
+encode(Hi! Do you know poetry?, 1001011111000011010111)
+encoded 100101111100 as: Hi! Do you know 😋😋 poetry ❤❤❤?
