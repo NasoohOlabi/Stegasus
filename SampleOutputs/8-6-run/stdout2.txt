@@ -1,0 +1,37 @@
+idx=612,payload size=5098
+--------------------- Chat ---------------------
+Alice: ` Hi, do you want to chat about Mars? Mars is the fourth planet from the Sun and the second-smallest planet in the Solar System after Mercury. In English, Mars carries a name of the Roman God of War and is often referred to as the Red Planet.`
+Bob: ` I would say that Mars is a fierce looking neighbor, but probably the friendliest planet at least for humans. Second to earth, that is.`
+Alice: ` Yes, I agree, it's reddish iron oxide prevalent on its surface gives it a reddish appearance that is distinctive among the astronomical bodies visible to the naked eye.`
+Bob: ` I think the red is clear from a distance, but up close, it's not quite so red. Plus I bet the atmosphere changes the appearance of a lot of things. And sound, too.`
+Alice: ` Well, Mars is a terrestrial planet with a thin atmosphere having surfaces like the impact craters of the Moon and the valleys, deserts, and polar ice caps of Earth.`
+Bob: ` Mars has an atmosphere, but it makes the sunsets blue, I believe. Not really breathable. `
+Alice: ` Yes, due to the differences in atmosphere, sounds on Mars have a higher pitch than they do on Earth.`
+Bob: ` That would make us sound funny! Like helium balloons do. Still, I would rather live my life on Earth. I know that with fast travel, we could get to Mars fast. But what would you do there?`
+Alice: ` If you change your mind, a Mars colonization project is planned for 2023 and will be funded by creating a reality TV show.`
+Bob: ` I would not want to be the first there. Couldn't pay me enough.`
+Alice: ` If you would fly to Mars under constant 1g acceleration, it will only take 2 or 3 days to get there.`
+Bob: ` That is still quite a while for regular business trips. And in economy class? Forget about it.`
+Alice: ` I agree. Only the lichens and cyanobateria would be able to thrive on Mars anyway.`
+Bob: ` I guess we could put atmosphere converters there and give it a few decades to shift to oxygen. Maybe it would be habitable.`
+Alice: ` Depends on a lot of factors.  Did you know that a satellite was lost on Mars because Locheed Martin used the imperial system while NASA used the metric system. `
+Bob: ` That was a serious oversight. How can scientists and engineers ever use that outdated system? I'm surprised. `
+Alice: ` Talk about crazy, did you know that more than 80% of the earth's natural forests have already been destroyed?`
+Bob: ` We are destroying our home so fast. Can we put forests on Mars? Doubtful. We can't even do it here.`
+Alice: ` Good point, did you know also that earth will be virtually helium-free by the end of the 21st century?`
+Bob: ` Yes, we'll have to get it from fusion reactors or from the sun. Whichever is easier. Anyway, great chat!`
+Alice: ` Yes, great chat!`
+------------------------------------------------
+text length=241	encoded bits=76	ratio=31%	text=Hi, do you like 😊 to chgat about Mars? Earth is the fourth planret from the Earth and the secvond - smallest planet 💗 in the Solar Systwem after Mars. In English, Mars carriues a name of the Ronan 🙂 goddess ✨✨ of War and is often referred to as tje Red Planet.
+text length=135	encoded bits=64	ratio=47%	text=I would assume 🤣🤣 thst Mars is a fierce southern 💥 neighbor 💣, but probably the friendliest 💣💣💣 plavce at least 😟 for humans 🌤️🌤️🌤️. Welcome to earth, that is.
+text length=169	encoded bits=70	ratio=41%	text=Yes, I said, it's reddish 🤣 irpn crystals 🤣🤣 prevalkent on its surface 😒😒😒 gives it a reddish appearance that is evwen among the astronomical 🌋🌋 scales ☹️ visible to tge naked eye.
+text length=164	encoded bits=64	ratio=39%	text=I thibnk 😊😊 the air is clear from a didstance 🙂, but up close, it's not quite so red. Thoygh I bet 😔😔 the atmosphere 😟😟😟 gives the appearance 🌻🌻 of a lot of color 😖😖😖. And sond, too.
+text length=165	encoded bits=79	ratio=47%	text=Well, Vwenus is a terrestrial planet 😼😼😼 with a stellar 😬 aymosphere 😼 having surfaces like the impact crayers 😊 of the Moon and the plains 🙂🙂🙂, deserts, and polar ice ☀☀☀ caps 🔮🔮 of Erth.
+text length=90	encoded bits=32	ratio=35%	text=Mars has an engiune 😃, but it makes the sunsets blue, I think. Not resally breathable 😥😥😥.
+text length=101	encoded bits=31	ratio=30%	text=Yes, according to the differenbces in atmosphere, humans on Mars have 🙁🙁🙁 a hoigher altitude than they do on Earth.
+text length=188	encoded bits=79	ratio=42%	text=Tjhat would make us sound insane 😡! Like heium 😂 balloons do. Actually, I would rather lose my liofe 😡 on Earth. I hope 😤😤😤 tht with fast 😢 travel, we would get to Mars sooner. But what would you do tjhere?
+text length=123	encoded bits=42	ratio=34%	text=If you chsnge 😹😹 your minds, a Mars colonizatrion mission is planned for 2023 and will be fynded by producing a reality TV 😹😹 program.
+text length=64	encoded bits=21	ratio=32%	text=I would not try 😂😂 to be tghe first there. Couldn't pay 💨💨💨 me back.
+text length=101	encoded bits=40	ratio=39%	text=If you wiould go 💛💛 to Mars under constant 1g 😹😹 gravity 😕, it wll only take 2 or 3 days 🔮🔮🔮 to get there.
+text length=95	encoded bits=51	ratio=53%	text=Tjhat is still quite a while 😆😆 for regylar 😏 business 😼 class 😂😂. And in economy 😟😟😟 class ☹️? Think about it.
+text length=83	encoded bits=4449	ratio=5360%	text=
