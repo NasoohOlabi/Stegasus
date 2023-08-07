@@ -1,5 +1,6 @@
 import csv
 import itertools
+import os
 import re
 import urllib.request
 from math import floor, log2
@@ -13,9 +14,11 @@ from transformers import AutoModelForSequenceClassification  # type: ignore
 from transformers import AutoTokenizer  # type: ignore
 from transformers import TFAutoModelForSequenceClassification  # type: ignore
 
-from SemanticMasking import MaskGen
-
+from ..SemanticMasking import MaskGen
 from .StringSpans import StringSpans
+
+script_directory = os.path.dirname(os.path.abspath(__file__))
+
 
 labels = ['❤', '😍', '📷', '🇺🇸', '☀', '💜', '😉', '💯', '😁', '🎄', '📸', '😜', '😂', '☹️', '😭', '😔', '😡', '💢', '😤', '😳', '🙃', '😩', '😠', '💕', '🙈', '🙄', '🔥', '😊', '😎', '✨', '💙', '😘']
 
@@ -25,7 +28,7 @@ augmentation_map = {'❤': ['💓', '💖', '💗', '💘', '💞', '💟'],
  '☀': ['🌞', '🌅', '🌄', '🌤️', '🌻', '🌼'],
  '💜': ['❤️', '🤎', '🖤', '🤍'],
  '😉': ['😏', '😋', '😼', '😌', '😬'],
- '💯': ['👌'],
+ '💯': ['👌','👍','👍🏻','👍🏼','👍🏽','👍🏾','👍🏿'],
  '😁': ['😀', '😃', '😆', '😄', '😅', '😸'],
  '🎄': ['🎅', '🤶', '🎁', '🌟', '🌲'],
  '📸': [],
@@ -186,13 +189,15 @@ class Emojier:
   def log(string:str):
     if Emojier.verbose:
       print(string)
-    with open('Emojier.log','a', encoding='utf-8') as f:
+    logfile = os.path.join(script_directory, 'Emojier.log')
+    with open(logfile,'a', encoding='utf-8') as f:
       f.write(string+'\n') 
   @staticmethod
   def info(string:str):
     if Emojier.verbose:
       print(string)
-    with open('Emojier.info','a', encoding='utf-8') as f:
+    infoFile = os.path.join(script_directory, 'Emojier.info')
+    with open(infoFile,'a', encoding='utf-8') as f:
       f.write(string+'\n') 
   @staticmethod
   def strip(text:str):
