@@ -13,7 +13,9 @@ class JavaJarWrapper:
     return cls._instance
 
   def _start_jar(self):
-    jar_path = "./Typoceros4j.jar"
+    script_directory = os.path.dirname(os.path.abspath(__file__))
+    jar_path = os.path.join(script_directory, 'Typoceros4j.jar')
+
     java_executable = "java"
     if os.name == "posix":  # Linux system
       try:
