@@ -139,7 +139,8 @@ def typo_callback(state, next_callback, config):
     if pipe_verbose:
       print(state)
     if encode:
-
+      x = Typo.echo(text)
+      assert x == text
       encoded_text, rem = Typo.encode(text,data)
 
       message_pipe.append(encoded_text)

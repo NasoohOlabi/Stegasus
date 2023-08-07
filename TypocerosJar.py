@@ -44,7 +44,7 @@ class JavaJarWrapper:
     except BrokenPipeError:
       self._start_jar()
       return self.encode(string, bytes_str)
-  def echo(self, string, bytes_str):
+  def echo(self, string):
     string = JavaJarWrapper.to64(string)
     try:
       if self._process.stdin is None:
@@ -60,7 +60,7 @@ class JavaJarWrapper:
       return JavaJarWrapper.from64(output)
     except BrokenPipeError:
       self._start_jar()
-      return self.encode(string, bytes_str)
+      return self.echo(string)
     
   def decode(self, string) -> Tuple[str,str]:
     string = JavaJarWrapper.to64(string)
@@ -93,6 +93,6 @@ class JavaJarWrapper:
     
 if __name__ == '__main__':
   Typo = JavaJarWrapper()
-  r = Typo.echo("It's been interesting 😎 seeing a project 🙂 with a junior backend starting after a few 👍🏻👍🏻 months here.","010101101010001011010")
+  r = Typo.echo("It's been interesting 😎 seeing a project 🙂 with a junior backend starting after a few 👍🏻👍🏻 months here.")
 
   print(r)
