@@ -180,9 +180,9 @@ def StegasusEncode(text,bytes_str):
   callbacks = [bert_callback, emojer_callback,typo_callback]
   p = pipe(callbacks, {"verbose": False,"pipe_verbose": False,"encode":True,"decode":False,"test":False})
   mq, bq = p(initial_state)
-  bits = bytes_str[:-len(bq)]
+  bits = len(bytes_str) - len(bq)
   with open('stats.tsv','a') as f:
-    f.write(f'encoded\t{bits}\t{len(bits)}\tin\t{len(text)}\t{len(bits)/len(text)}\n')
+    f.write(f'encoded\t{bits}\tin\t{len(text)}\t{bits/len(text)}\n')
   return (mq[-1],bq[-1])
 def StegasusDecode(text):
   initial_state = [[text],['']]
