@@ -23,74 +23,91 @@ class JavaJarWrapper:
         java_executable = subprocess.check_output(["which", "java"]).decode("utf-8").strip()
       except subprocess.CalledProcessError:
         raise Exception("Java executable not found")
+
+    # Check if the JAR file is valid
+    if not os.path.isfile(jar_path):
+      raise Exception("Invalid JAR file")
+
     self._process = subprocess.Popen([java_executable, "-jar", jar_path], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+
+  def getProcess(self):
+    if self._process and self._process.poll() is None:
+      return self._process
+    else:
+      self._start_jar()
+      return self._process
 
   def encode(self, string, bytes_str):
     string = JavaJarWrapper.to64(string)
     try:
-      if self._process.stdin is None:
+      process = self.getProcess()
+      if process.stdin is None:
         raise Exception("Error stdin is not available")
-      if self._process.stdout is None:
+      if process.stdout is None:
         raise Exception("Error stdout is not available")
-      self._process.stdin.write(b"encode\n")
-      self._process.stdin.write(string.encode("utf-8") + b"\n")
-      self._process.stdin.write(bytes_str.encode("utf-8") + b"\n")
-      self._process.stdin.flush()
+      process.stdin.write(b"encode\n")
+      process.stdin.write(string.encode("utf-8") + b"\n")
+      process.stdin.write(bytes_str.encode("utf-8") + b"\n")
+      process.stdin.flush()
 
-      output = self._process.stdout.readline().decode("utf-8").strip()
-      remaining_bytes = self._process.stdout.readline().decode("utf-8").strip()
+      output = process.stdout.readline().decode("utf-8").strip()
+      remaining_bytes = process.stdout.readline().decode("utf-8").strip()
 
       return JavaJarWrapper.from64(output), remaining_bytes
     except BrokenPipeError:
       self._start_jar()
       return self.encode(string, bytes_str)
+
   def echo(self, string):
     string = JavaJarWrapper.to64(string)
     try:
-      if self._process.stdin is None:
+      process = self.getProcess()
+      if process.stdin is None:
         raise Exception("Error stdin is not available")
-      if self._process.stdout is None:
+      if process.stdout is None:
         raise Exception("Error stdout is not available")
-      self._process.stdin.write(b"echo\n")
-      self._process.stdin.write(string.encode("utf-8") + b"\n")
-      self._process.stdin.flush()
+      process.stdin.write(b"echo\n")
+      process.stdin.write(string.encode("utf-8") + b"\n")
+      process.stdin.flush()
 
-      output = self._process.stdout.readline().decode("utf-8").strip()
+      output = process.stdout.readline().decode("utf-8").strip()
 
       return JavaJarWrapper.from64(output)
     except BrokenPipeError:
       self._start_jar()
       return self.echo(string)
-    
-  def decode(self, string) -> Tuple[str,str]:
+
+  def decode(self, string) -> Tuple[str, str]:
     string = JavaJarWrapper.to64(string)
     try:
-      if self._process.stdin is None:
+      process = self.getProcess()
+      if process.stdin is None:
         raise Exception("Error stdin is not available")
-      if self._process.stdout is None:
+      if process.stdout is None:
         raise Exception("Error stdout is not available")
-      self._process.stdin.write(b"decode\n")
-      self._process.stdin.write(string.encode("utf-8") + b"\n")
-      self._process.stdin.flush()
+      process.stdin.write(b"decode\n")
+      process.stdin.write(string.encode("utf-8") + b"\n")
+      process.stdin.flush()
 
-      output = self._process.stdout.readline().decode("utf-8").strip()
-      values = self._process.stdout.readline().decode("utf-8").strip()
+      output = process.stdout.readline().decode("utf-8").strip()
+      values = process.stdout.readline().decode("utf-8").strip()
 
       return JavaJarWrapper.from64(output), values
     except BrokenPipeError:
       self._start_jar()
       return self.decode(string)
-  
+
   @staticmethod
-  def to64(s:str):
-    b = base64.b64encode(bytes(s, 'utf-8')) # bytes
-    return b.decode('utf-8') # convert bytes to string
+  def to64(s: str):
+    b = base64.b64encode(bytes(s, 'utf-8'))  # bytes
+    return b.decode('utf-8')  # convert bytes to string
+
   @staticmethod
   def from64(s: str):
-      b = base64.b64decode(bytes(s, 'utf-8'))
-      return b.decode('utf-8')
+    b = base64.b64decode(bytes(s, 'utf-8'))
+    return b.decode('utf-8')
 
-    
+
 if __name__ == '__main__':
   Typo = JavaJarWrapper()
   r = Typo.echo("It's been interesting 😎 seeing a project 🙂 with a junior backend starting after a few 👍🏻👍🏻 months here.")
