@@ -1,4 +1,5 @@
 #@title random_bit_stream
+import json
 import random
 
 
@@ -180,9 +181,24 @@ def StegasusEncode(text,bytes_str):
   callbacks = [bert_callback, emojer_callback,typo_callback]
   p = pipe(callbacks, {"verbose": False,"pipe_verbose": False,"encode":True,"decode":False,"test":False})
   mq, bq = p(initial_state)
-  bits = len(bytes_str) - len(bq)
+  bits = len(bytes_str) - len(bq[-1])
   with open('stats.tsv','a') as f:
     f.write(f'encoded\t{bits}\tin\t{len(text)}\t{bits/len(text)}\n')
+  with open('steps.log','a') as f:
+    f.write(f'text={json.dumps(mq)}\n')
+    f.write(f'bits={json.dumps([len(b) for b in bq])}\n')
+  with open('pie.log','a') as f:
+    previous_layers_bits = 0
+    layers_bits = []
+    for b in bq:
+      len_rem_after_layer = len(b)
+      layer_bits = bits - (len_rem_after_layer - previous_layers_bits)
+      previous_layers_bits += layer_bits
+      layers_bits.append(layer_bits)
+    layers_ratios = [b / bits for b in layers_bits]
+    f.write(f'layers_bits={json.dumps(layers_bits)}\n')
+    f.write(f'layers_ratios={json.dumps(layers_ratios)}\n')
+  
   return (mq[-1],bq[-1])
 def StegasusDecode(text):
   initial_state = [[text],['']]
