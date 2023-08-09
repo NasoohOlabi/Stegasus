@@ -183,7 +183,7 @@ def StegasusEncode(text,bytes_str):
   mq, bq = p(initial_state)
   bits = len(bytes_str) - len(bq[-1])
   with open('stats.tsv','a') as f:
-    f.write(f'encoded\t{bits}\tin\t{len(text)}\t{bits/len(text)}\n')
+    f.write(f'{bits}\t{len(text)}\t{bits/len(text)}\n')
   with open('steps.log','a') as f:
     f.write(f'text={json.dumps(mq)}\n')
     f.write(f'bits={json.dumps([len(b) for b in bq])}\n')
@@ -191,14 +191,16 @@ def StegasusEncode(text,bytes_str):
     previous_layers_bits = 0
     layers_bits = []
     for b in bq:
-      len_rem_after_layer = len(b)
-      layer_bits = bits - (len_rem_after_layer - previous_layers_bits)
+      bit_so_far = len(bytes_str) - len(b)
+      layer_bits = bit_so_far - previous_layers_bits
       previous_layers_bits += layer_bits
-      layers_bits.append(layer_bits)
+      if layer_bits != 0:
+        layers_bits.append(layer_bits)
     layers_ratios = [b / bits for b in layers_bits]
-    f.write(f'layers_bits={json.dumps(layers_bits)}\n')
-    f.write(f'layers_ratios={json.dumps(layers_ratios)}\n')
-  
+    layers_bits_str = '\t'.join(layers_bits)
+    layers_ratios_str = '\t'.join(layers_ratios)
+    f.write(f"{layers_bits_str}\t{layers_ratios_str}\n")
+    
   return (mq[-1],bq[-1])
 def StegasusDecode(text):
   initial_state = [[text],['']]
