@@ -183,7 +183,7 @@ def StegasusEncode(text,bytes_str):
   mq, bq = p(initial_state)
   bits = len(bytes_str) - len(bq[-1])
   with open('stats.tsv','a') as f:
-    f.write(f'{bits}\t{len(text)}\t{bits/len(text)}\n')
+    f.write(f'{bits}\t{len(text)}\t{round(100*(bits/len(text)))}\n')
   with open('steps.log','a') as f:
     f.write(f'text={json.dumps(mq)}\n')
     f.write(f'bits={json.dumps([len(b) for b in bq])}\n')
