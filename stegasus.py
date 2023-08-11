@@ -175,6 +175,8 @@ callbacks = [bert_callback, emojer_callback,typo_callback]
 
 # print(mq[-1],bq[-1])
 
+with open('stats.tsv','a') as f:
+  f.write(f'bits\tcover size\tcapacity\n')
 
 def StegasusEncode(text,bytes_str):
   initial_state = [[text],[bytes_str]]
@@ -187,7 +189,7 @@ def StegasusEncode(text,bytes_str):
   with open('steps.log','a') as f:
     f.write(f'text={json.dumps(mq)}\n')
     f.write(f'bits={json.dumps([len(b) for b in bq])}\n')
-  with open('pie.log','a') as f:
+  with open('pie.tsv','a') as f:
     previous_layers_bits = 0
     layers_bits = []
     for b in bq:
@@ -197,8 +199,8 @@ def StegasusEncode(text,bytes_str):
       if layer_bits != 0:
         layers_bits.append(layer_bits)
     layers_ratios = [b / bits for b in layers_bits]
-    layers_bits_str = '\t'.join(layers_bits)
-    layers_ratios_str = '\t'.join(layers_ratios)
+    layers_bits_str = '\t'.join(map(str,layers_bits))
+    layers_ratios_str = '\t'.join(map(str,layers_ratios))
     f.write(f"{layers_bits_str}\t{layers_ratios_str}\n")
     
   return (mq[-1],bq[-1])
