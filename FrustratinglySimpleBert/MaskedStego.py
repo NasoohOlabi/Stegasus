@@ -84,7 +84,11 @@ class MaskedStego:
     return ''.join(decoded_message)
 
   def _preprocess_text(self, sentence: str, mask_interval: int) -> "PreprocessedText":
-    encoded_ids = self._tokenizer([sentence], return_tensors='pt').input_ids[0]
+    try:
+      encoded_ids = self._tokenizer([sentence], return_tensors='pt').input_ids[0]
+    except Exception as exp:
+      ic(sentence)
+      raise exp
     masked_ids = self._mask(encoded_ids.clone(), mask_interval)
     sorted_score, indices = self._predict(masked_ids)
     return PreprocessedText(input_ids=encoded_ids,masked_ids=masked_ids,sorted_output=(sorted_score,indices))
