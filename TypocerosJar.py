@@ -51,7 +51,9 @@ class JavaJarWrapper:
       process.stdin.flush()
 
       output = process.stdout.readline().decode("utf-8").strip()
+      self.log(output)
       remaining_bytes = process.stdout.readline().decode("utf-8").strip()
+      self.log(remaining_bytes)
 
       return JavaJarWrapper.from64(output), remaining_bytes
     except BrokenPipeError:
@@ -71,6 +73,7 @@ class JavaJarWrapper:
       process.stdin.flush()
 
       output = process.stdout.readline().decode("utf-8").strip()
+      self.log(output)
 
       return JavaJarWrapper.from64(output)
     except BrokenPipeError:
@@ -90,7 +93,9 @@ class JavaJarWrapper:
       process.stdin.flush()
 
       output = process.stdout.readline().decode("utf-8").strip()
+      self.log(output)
       values = process.stdout.readline().decode("utf-8").strip()
+      self.log(values)
 
       return JavaJarWrapper.from64(output), values
     except BrokenPipeError:
@@ -106,7 +111,10 @@ class JavaJarWrapper:
   def from64(s: str):
     b = base64.b64decode(bytes(s, 'utf-8'))
     return b.decode('utf-8')
-
+  
+  def log(self,s:str):
+    with open('Typoceros/wrapper.log','a') as o:
+      o.write(s+'\n')
 
 if __name__ == '__main__':
   Typo = JavaJarWrapper()
