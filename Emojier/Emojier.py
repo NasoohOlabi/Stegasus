@@ -139,7 +139,7 @@ class Emojier:
     mask = MaskGen(text)
     encoded_so_far = ''
     ss = StringSpans(text)
-    ticks = [(text[:v],(u,v)) for u,v in mask.NVA_words if (u,v) in ss.words]
+    ticks = [(text[:v],(u,v)) for i,(u,v) in enumerate(mask.NVA_words) if (u,v) in ss.words and i%2==0]
     original_length = len(text)
     curr_offset = lambda : (len(text) - original_length)
     new_ending = lambda x : curr_offset() + len(x)
@@ -214,7 +214,7 @@ class Emojier:
     mask = MaskGen(text)
     decoded_so_far = ''
     ss = StringSpans(text)
-    ticks = [(text[:v],(u,v)) for u,v in mask.NVA_words if (u,v) in ss.words]
+    ticks = [(text[:v],(u,v)) for i,(u,v) in enumerate(mask.NVA_words) if (u,v) in ss.words and i%2==0]
     original_length = len(text)
     curr_offset = lambda : (len(text) - original_length)
     new_ending = lambda x : curr_offset() + len(x)
