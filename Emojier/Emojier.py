@@ -13,7 +13,8 @@ from transformers import AutoModelForSequenceClassification  # type: ignore
 from transformers import AutoTokenizer  # type: ignore
 from transformers import TFAutoModelForSequenceClassification  # type: ignore
 
-from ..SemanticMasking import MaskGen
+from SemanticMasking import MaskGen
+
 from .StringSpans import StringSpans
 
 script_directory = os.path.dirname(os.path.abspath(__file__))
