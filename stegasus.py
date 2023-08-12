@@ -101,7 +101,8 @@ def emojer_callback(state, next_callback, config):
     decode = config['decode']
 
     if encode:
-      encoded_text,rem = Emojier.encode(text,data)
+      emo = Emojier(text)
+      encoded_text,rem = emo.encode(data)
       message_pipe.append(encoded_text)
       bytes_pipe.append(rem)
 
@@ -114,7 +115,8 @@ def emojer_callback(state, next_callback, config):
       encoded_pipe_text = message_pipe.pop()
       rem_pipe_bytes = bytes_pipe.pop()
 
-      original_text, deData = Emojier.decode(encoded_pipe_text)
+      emo = Emojier(encoded_pipe_text)
+      original_text, deData = emo.decode(encoded_pipe_text)
       deData += rem_pipe_bytes
       if encode and decode:
         assert deData == bytes_pipe[-1]
