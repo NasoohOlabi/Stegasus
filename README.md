@@ -8,18 +8,6 @@ We all make misstakes and roll on the floor laughing 🤣🤣🤣.
 ## Notes
 
  Still in early dev...
- (*Imports still buggy*) for example
- this works sometime
-
- ```python
- from SemanticMask import
- ```
-
- and sometimes it doesn't and this works sometime
-
- ```python
- from .SemanticMask import
- ```
 
 ## Links
 
