@@ -13,7 +13,7 @@ def int_to_binary_string(n: int, length: int):
     padded_str = binary_str.rjust(length, '0')  # pad with zeros to length
     return padded_str
   
-from .FrustratinglySimpleBert import MaskedStego
+from FrustratinglySimpleBert import MaskedStego
 
 print ('\nSetting up Masked Stego\n')
 
@@ -21,7 +21,7 @@ masked_stego = MaskedStego()
 
 print ('\nSetting up Masked Stego Completed\n')
 
-from .TypocerosJar import JavaJarWrapper
+from TypocerosJar import JavaJarWrapper
 
 print ('\nSetting up Typoceros\n')
 Typo = JavaJarWrapper()
@@ -34,7 +34,7 @@ print ('\nSetting up Typoceros Completed\n')
 #@title Pipe
 from typing import Any, Callable, Dict, List
 
-from .Emojier import Emojier
+from Emojier import Emojier
 
 
 def pipe(callbacks: List[Callable], config: Dict[str, Any]={}, index=0):
