@@ -77,11 +77,13 @@ def load_model():
     tokenizer = AutoTokenizer.from_pretrained(BASE_MODEL)
     model = AutoModelForSequenceClassification.from_pretrained(BASE_MODEL)
     return model, tokenizer
+  
+MODEL, TOKENIZER = load_model()
 
 class Emojier:
   BASE_MODEL = "amazon-sagemaker-community/xlm-roberta-en-ru-emoji-v2"
-  model: Any = None
-  tokenizer: Any = None
+  model: Any = MODEL
+  tokenizer: Any = TOKENIZER
   multiplicity = 3
   TopFPercent = 0.1
   verbose = False
@@ -108,7 +110,7 @@ class Emojier:
       pre_text = text[:breakPoint]
       Emojier.log('Slots>'+'-'*20 + 'tick' + '-'*20 + pre_text)
       emoji_options = gaussian_order(Emojier._predict(text[:breakPoint]))
-      if len(emoji_options) < 2:
+      if len(emoji_options) == 0:
         Emojier.log('Slots>'+f'word={text[u:v]},range={(0,breakPoint)},not enough options={emoji_options}')
         continue
       
@@ -271,21 +273,21 @@ class Emojier:
 
     for i,value in enumerate(values):
       if value >= spaces[i] and spaces[i] != 0:
-          raise ValueError("Won't fit");
-        
+          raise ValueError("Won't fit")
 
     result = self.text;
     for i in range(len(values)-1,-1,-1):
       if values[i] != 0:
         breakPoint, emoji = self.getSlot(i, values[i])
         result = f'{result[0:breakPoint]} {emoji}{result[breakPoint:]}'
-        
     return result
     
   def encode(self,bytes_str:str):
     values, rem = self.encode_encoder(bytes_str)
     Emojier.info(f"encode({self.text}, {bytes_str}),values={values},rem={rem}")
-    return self._encode(values), rem
+    encoded = self._encode(values)
+    Emojier.log(f'encoded={encoded}')
+    return encoded, rem
   
   @staticmethod
   def int_to_binary_string(n: int, length: int) -> str:
@@ -322,7 +324,7 @@ class Emojier:
     for label in augmented_labels:
       text = text.replace(label,'')
     return text
-  def first_unequal(self,a:str,b:str) -> int|float:
+  def first_unequal(self,a:str,b:str) -> float:
     for i, (x,y) in enumerate(zip(a,b)):
       if x != y:
         return i
@@ -354,5 +356,5 @@ class Emojier:
     clear_text = text
     emo = Emojier(text,span_size)
     return clear_text , emo._decode(encoded_text)
-    
-Emojier.model, Emojier.tokenizer = load_model()
+
+
