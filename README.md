@@ -25,8 +25,7 @@ We all make misstakes and roll on the floor laughing 🤣🤣🤣.
 - [X] use extract_pos masking. issue: emoticons appear after and which doesn't make since!
 - [X] Try make Emoji multiplicity reach 3.
 - [X] Try add 👍 Emoji since it's missing in labels.
-- [ ] help Emojier after you shot it in the head with the last commit cutting ticks in half
-- [ ] add setting to activate Emojier on %25 percent of the time instead of %50 present.
+- [X] help Emojier after you shot it in the head with the last commit cutting ticks in half
 - [ ] Benchmarks and Demo.
   - [ ] Tune Emojier and Typoceros on high capacity then low capacity.
   - [ ] Try each setting on the same chat.
