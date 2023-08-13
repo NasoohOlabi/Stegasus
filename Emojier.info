@@ -22,3 +22,393 @@ encode(hi, how are you?, 10101010010101)
 encoded  as: hi, how are you?
 encode(Hi! Do you know poetry?, 1001011111000011010111)
 encoded 100101111100 as: Hi! Do you know 😋😋 poetry ❤❤❤?
+getSlots(hi, how are you?)
+detected 0 slots in: hi, how are you?
+encode(hi, how are you?, 10101010010101),values=[],rem=10101010010101
+getSlots(hi, how are you?)
+detected 0 slots in: hi, how are you?
+decode values=[]
+getSlots(Do you pay special attention to the Emmys, or any awards?)
+detected 4 slots in: Do you pay special attention to the Emmys, or any awards?
+encode(Do you pay special attention to the Emmys, or any awards?, 01010111111110000101111110000001010001010000110000100),values=[43],rem=1111110000101111110000001010001010000110000100
+getSlots(Not really, do you?)
+detected 1 slots in: Not really, do you?
+encode(Not really, do you?, 111110000010111000111),values=[7],rem=110000010111000111
+getSlots(Not really, I don't even watch too much TV now, not aware of what is going on. Like these awards show are a kind of back slapping and even congratulation.)
+detected 10 slots in: Not really, I don't even watch too much TV now, not aware of what is going on. Like these awards show are a kind of back slapping and even congratulation.
+encode(Not really, I don't even watch too much TV now, not aware of what is going on. Like these awards show are a kind of back slapping and even congratulation., 001100100001011001011110110110011010010011101101011101010101101010001001101011011000011011010111100111101101111100101001001100011100010011100110000011011),values=[12, 133],rem=1001011110110110011010010011101101011101010101101010001001101011011000011011010111100111101101111100101001001100011100010011100110000011011
+getSlots(Yeah I understand. I think its cool that George lucas wife or ex never won an oscar for film editing star wars when he has won zero, what a shame)
+detected 12 slots in: Yeah I understand. I think its cool that George lucas wife or ex never won an oscar for film editing star wars when he has won zero, what a shame
+encode(Yeah I understand. I think its cool that George lucas wife or ex never won an oscar for film editing star wars when he has won zero, what a shame, 01111011111000110011001101010001010100011110011010011001000100101001111111100000111011010111110100010010000110110101100111000101101010111),values=[61, 60, 25],rem=1001101010001010100011110011010011001000100101001111111100000111011010111110100010010000110110101100111000101101010111
+getSlots(hi, how are you?)
+detected 0 slots in: hi, how are you?
+encode(hi, how are you?, 10101010010101),values=[],rem=10101010010101
+getSlots(hi, how are you?)
+detected 0 slots in: hi, how are you?
+decode values=[]
+getSlots(Hi, how are you?)
+detected 0 slots in: Hi, how are you?
+encode(Hi, how are you?, 10110100110011100),values=[],rem=10110100110011100
+getSlots(Hi there, I am sorry! How are you?)
+detected 1 slots in: Hi there, I am sorry! How are you?
+encode(Hi there, I am sorry! How are you?, 1000000111011011101111101000111),values=[4],rem=0000111011011101111101000111
+getSlots(I am well. Do you know anything about last year's super bowl and greased spoon?)
+detected 7 slots in: I am well. Do you know anything about last year's super bowl and greased spoon?
+encode(I am well. Do you know anything about last year's super bowl and greased spoon?, 1011111111001111110110010000100011011101110000110011000000100010101101101),values=[95, 14],rem=01111110110010000100011011101110000110011000000100010101101101
+getSlots(I did hear about that! Municipal staffers in Philly were actually calling themselves the " frisco Cops " because they were out greasing the pole poles so that fans wouldn't go climbing up them. Are you a fan of the game?)
+detected 12 slots in: I did hear about that! Municipal staffers in Philly were actually calling themselves the " frisco Cops " because they were out greasing the pole poles so that fans wouldn't go climbing up them. Are you a fan of the game?
+encode(I did hear about that! Municipal staffers in Philly were actually calling themselves the " frisco Cops " because they were out greasing the pole poles so that fans wouldn't go climbing up them. Are you a fan of the game?, 1110000000111000110101010000011110010111010010110001110111110000110000010001100100010110000110100100111011011001111111001011010100111100111011111010101010011101010100011010110011100110111110101111011000001100101111),values=[56, 3, 17],rem=10101010000011110010111010010110001110111110000110000010001100100010110000110100100111011011001111111001011010100111100111011111010101010011101010100011010110011100110111110101111011000001100101111
+getSlots(I am not but I am a fan of baseball and that's funny. Cops know their toys are so ridiculous that they pregrease poles...)
+detected 9 slots in: I am not but I am a fan of baseball and that's funny. Cops know their toys are so ridiculous that they pregrease poles...
+encode(I am not but I am a fan of baseball and that's funny. Cops know their toys are so ridiculous that they pregrease poles..., 110101000111010101010111010111110011111111100100110100011011011111001110010000001110101000111010001011111001000110),values=[53, 7],rem=010101010111010111110011111111100100110100011011011111001110010000001110101000111010001011111001000110
+getSlots(I can't believe how good their fans are! In 1998 there 60 fistfights in one Monday Night Football match against the 49ers.)
+detected 5 slots in: I can't believe how good their fans are! In 1998 there 60 fistfights in one Monday Night Football match against the 49ers.
+encode(I can't believe how good their fans are! In 1998 there 60 fistfights in one Monday Night Football match against the 49ers., 10110101000110010101100011000000011110010000000110001001011110101100010101000110100001100111101111110011001010011001),values=[45],rem=01000110010101100011000000011110010000000110001001011110101100010101000110100001100111101111110011001010011001
+getSlots(Yeah, they are the only baseball team with a jail in their garage. Well, their old ones...)
+detected 7 slots in: Yeah, they are the only baseball team with a jail in their garage. Well, their old ones...
+encode(Yeah, they are the only baseball team with a jail in their garage. Well, their old ones..., 000110001100000101000110100110111111011111111001110111110010110101100101010101001011100111),values=[6, 3],rem=00000101000110100110111111011111111001110111110010110101100101010101001011100111
+getSlots(Apparently its so strong that there was a Minneapolis ticket seller that was warning Vikings players to remove any sort of restriction if their team were to beat Philly at Minnesota.)
+detected 11 slots in: Apparently its so strong that there was a Minneapolis ticket seller that was warning Vikings players to remove any sort of restriction if their team were to beat Philly at Minnesota.
+encode(Apparently its so strong that there was a Minneapolis ticket seller that was warning Vikings players to remove any sort of restriction if their team were to beat Philly at Minnesota., 00110101000010101001000001010001111010111100000111100110011111111110001100110111001010100111100000111000010010101011110110100101100111010001110001001000000),values=[13, 33, 5],rem=001000001010001111010111100000111100110011111111110001100110111001010100111100000111000010010101011110110100101100111010001110001001000000
+getSlots(I remember in the 80i, they throw snowballs at Santa Claus. At SANTA CLAUS!!!!)
+detected 3 slots in: I remember in the 80i, they throw snowballs at Santa Claus. At SANTA CLAUS!!!!
+encode(I remember in the 80i, they throw snowballs at Santa Claus. At SANTA CLAUS!!!!, 100111101111001101000101110010000111010011100111100001101100010101000100001100),values=[19],rem=1101111001101000101110010000111010011100111100001101100010101000100001100
+getSlots(They definitely would like it! Speaking of general football facts, did you learn that the University of how's locker room for the opposing team is actually completely pink? Hilarious!)
+detected 12 slots in: They definitely would like it! Speaking of general football facts, did you learn that the University of how's locker room for the opposing team is actually completely pink? Hilarious!
+encode(They definitely would like it! Speaking of general football facts, did you learn that the University of how's locker room for the opposing team is actually completely pink? Hilarious!, 10001101110100011100000100011010111101110100101000011001011010010000100010000100000100010001010001100101100111110101101110001000100010001001100101000110011001100010100001100101),values=[141, 209, 48],rem=0100011010111101110100101000011001011010010000100010000100000100010001010001100101100111110101101110001000100010001001100101000110011001100010100001100101
+getSlots(Can you imagine a crowd so dedicated that cops ask Minnesota fans to take off their colors if they win for their club...)
+detected 10 slots in: Can you imagine a crowd so dedicated that cops ask Minnesota fans to take off their colors if they win for their club...
+encode(Can you imagine a crowd so dedicated that cops ask Minnesota fans to take off their colors if they win for their club..., 001000000011010100110110111110010100111010011010011001111100110011100111101101101010100101001011110101011110101110),values=[8, 1],rem=1010100110110111110010100111010011010011001111100110011100111101101101010100101001011110101011110101110
+getSlots(No kidding! People on social media Facebook compared it to a Mad Men movie.)
+detected 7 slots in: No kidding! People on social media Facebook compared it to a Mad Men movie.
+encode(No kidding! People on social media Facebook compared it to a Mad Men movie., 1110101111111100010001001110101001111001100001111010101110010101011010010),values=[29, 7],rem=1111100010001001110101001111001100001111010101110010101011010010
+getSlots(OK, Im totally making fun of Philly now but earn the right to come around and make fun of them more. Can you imagine they beat my Bears in the Finals this year?)
+detected 10 slots in: OK, Im totally making fun of Philly now but earn the right to come around and make fun of them more. Can you imagine they beat my Bears in the Finals this year?
+encode(OK, Im totally making fun of Philly now but earn the right to come around and make fun of them more. Can you imagine they beat my Bears in the Finals this year?, 010110110001011100001000010101111010011110010110111011100110101000010110101110001100011011000000111000001011111000111010000001001011001100101011010),values=[45, 139],rem=100001000010101111010011110010110111011100110101000010110101110001100011011000000111000001011111000111010000001001011001100101011010
+getSlots(Haha by the sounds of it there are a lot of people who are not a fan of Philly. I don't understand a lot of about football, but something I have never understood is why in college they call what we would call soccer, football.)
+detected 14 slots in: Haha by the sounds of it there are a lot of people who are not a fan of Philly. I don't understand a lot of about football, but something I have never understood is why in college they call what we would call soccer, football.
+encode(Haha by the sounds of it there are a lot of people who are not a fan of Philly. I don't understand a lot of about football, but something I have never understood is why in college they call what we would call soccer, football., 0011100100111011011010001101001011000010011010100111111000110000001011111101000110101110111101111010101011101001000111111001101100100110111000100001000110100001101010011010111100111011101111001001000111111000000010101),values=[7, 9, 27],rem=011010001101001011000010011010100111111000110000001011111101000110101110111101111010101011101001000111111001101100100110111000100001000110100001101010011010111100111011101111001001000111111000000010101
+getSlots(That's an interesting thought. I think they had it first hand. If we throw our ball more accurately, or run, shouldn't ours be oblongball or randall?)
+detected 12 slots in: That's an interesting thought. I think they had it first hand. If we throw our ball more accurately, or run, shouldn't ours be oblongball or randall?
+encode(That's an interesting thought. I think they had it first hand. If we throw our ball more accurately, or run, shouldn't ours be oblongball or randall?, 11100100000010011100011111100010101011110111010001101110111011101010000110110111010001111110011001000111111111110000111010011000100101100010),values=[114, 2, 28],rem=011111100010101011110111010001101110111011101010000110110111010001111110011001000111111111110000111010011000100101100010
+getSlots(Yes, yes! I've often wondered how cricket gained so much in football, and so quickly too. In the 1960is top bowlers often made twice as much as the top football team of that time.)
+detected 13 slots in: Yes, yes! I've often wondered how cricket gained so much in football, and so quickly too. In the 1960is top bowlers often made twice as much as the top football team of that time.
+encode(Yes, yes! I've often wondered how cricket gained so much in football, and so quickly too. In the 1960is top bowlers often made twice as much as the top football team of that time., 00100111111111111000111001011001100101110110000100000101000010111100111110010101010010000100011101000100001001001101011000000101111100110011011111100101110101011101000001101000),values=[19, 63, 60],rem=0111001011001100101110110000100000101000010111100111110010101010010000100011101000100001001001101011000000101111100110011011111100101110101011101000001101000
+getSlots(With scores approaching 222 - 0, it would be hard to get many people see it.)
+detected 7 slots in: With scores approaching 222 - 0, it would be hard to get many people see it.
+encode(With scores approaching 222 - 0, it would be hard to get many people see it., 111010110100000100111110010010000101000101011000010100010001100100001),values=[117, 80],rem=0100111110010010000101000101011000010100010001100100001
+getSlots(Ya, I am glad that was a painful game to win! You can't help but be amazed at what some of these players are making in their contracts now anyway.)
+detected 9 slots in: Ya, I am glad that was a painful game to win! You can't help but be amazed at what some of these players are making in their contracts now anyway.
+encode(Ya, I am glad that was a painful game to win! You can't help but be amazed at what some of these players are making in their contracts now anyway., 1000111100000001110011001101101001110101010100001100110010100111001001110100110010000000010011000111100010111001011101110110000100101000011000),values=[71, 128],rem=1110011001101101001110101010100001100110010100111001001110100110010000000010011000111100010111001011101110110000100101000011000
+getSlots(I am not sure that I would take that money knowing what some of them are going through now. Plus their home health care is not enough.)
+detected 9 slots in: I am not sure that I would take that money knowing what some of them are going through now. Plus their home health care is not enough.
+encode(I am not sure that I would take that money knowing what some of them are going through now. Plus their home health care is not enough., 1111110011010001110000111011011011000010011100111001101111100000100110101110010010111110011110000010010001010101011101011100000100),values=[126, 52],rem=01110000111011011011000010011100111001101111100000100110101110010010111110011110000010010001010101011101011100000100
+getSlots(I learned later that Judge Judy receives $ 123, 000 per episode. She's usually right behind Lebron even for the highest paid program. Talk about a wicked idea!)
+detected 9 slots in: I learned later that Judge Judy receives $ 123, 000 per episode. She's usually right behind Lebron even for the highest paid program. Talk about a wicked idea!
+encode(I learned later that Judge Judy receives $ 123, 000 per episode. She's usually right behind Lebron even for the highest paid program. Talk about a wicked idea!, 10000111101111111011110101100011110111011101010001100001000011010110100111001010001010111110110111111110111101110000100110000100010000110001011111110),values=[67, 111],rem=111011110101100011110111011101010001100001000011010110100111001010001010111110110111111110111101110000100110000100010000110001011111110
+getSlots(That is a lot of stuff! Nice chatting with you!)
+detected 4 slots in: That is a lot of stuff! Nice chatting with you!
+encode(That is a lot of stuff! Nice chatting with you!, 101010010111001101000110100110101100111110011),values=[169],rem=0111001101000110100110101100111110011
+getSlots(do you shop sometimes?)
+detected 1 slots in: do you shop sometimes?
+encode(do you shop sometimes?, 000100000000101110),values=[2],rem=0000000101110
+getSlots(I love it, I mean on AMazon and you?)
+detected 2 slots in: I love it, I mean on AMazon and you?
+encode(I love it, I mean on AMazon and you?, 001000101010000000110001010011000),values=[8],rem=101010000000110001010011000
+getSlots(Me too. Did you know somebody built a clock on a wall?)
+detected 4 slots in: Me too. Did you know somebody built a clock on a wall?
+encode(Me too. Did you know somebody built a clock on a wall?, 000001010110010110111011011101100100101001100100111),values=[2],rem=10110010110111011011101100100101001100100111
+getSlots(Hi. Are you a fan of the Patriots American Football team?)
+detected 2 slots in: Hi. Are you a fan of the Patriots American Football team?
+encode(Hi. Are you a fan of the Patriots American Football team?, 101101010101011011101011111100000001111001010010001111101),values=[45],rem=010101011011101011111100000001111001010010001111101
+getSlots(I had no idea that Taylor Swift and Katy actually had beef, but I'm glad they're enjoying it.)
+detected 5 slots in: I had no idea that Taylor Swift and Katy actually had beef, but I'm glad they're enjoying it.
+encode(I had no idea that Taylor Swift and Katy actually had beef, but I'm glad they're enjoying it., 110000110011101001000100010110111101010000111100110000100101111111111011111100010000),values=[97],rem=10011101001000100010110111101010000111100110000100101111111111011111100010000
+getSlots(The president often has an important job)
+detected 3 slots in: The president often has an important job
+encode(The president often has an important job, 01001101111011100101000101101011011111),values=[19],rem=01111011100101000101101011011111
+getSlots(hi, how are you?)
+detected 0 slots in: hi, how are you?
+encode(hi, how are you?, 10101010010101),values=[],rem=10101010010101
+getSlots(hi, how are you?)
+detected 0 slots in: hi, how are you?
+decode values=[]
+getSlots(hi, do you know much about presidents?)
+detected 3 slots in: hi, do you know much about presidents?
+encode(hi, do you know much about presidents?, 01011010101110100100110111111011100110),values=[22],rem=10101110100100110111111011100110
+getSlots(I've heard that the next three wealthiest presidents are jak, Davis and Jefferson. I think that has to work for inflation though.)
+detected 9 slots in: I've heard that the next three wealthiest presidents are jak, Davis and Jefferson. I think that has to work for inflation though.
+encode(I've heard that the next three wealthiest presidents are jak, Davis and Jefferson. I think that has to work for inflation though., 01100101001001100000101011100010001001101100011111001011011010111101110111101110010100111001011111100000000111100010001010100010),values=[25, 18],rem=01100000101011100010001001101100011111001011011010111101110111101110010100111001011111100000000111100010001010100010
+getSlots(yeah, but also a lot of money that they had. the kind of zimbabwe is called Banana)
+detected 6 slots in: yeah, but also a lot of money that they had. the kind of zimbabwe is called Banana
+encode(yeah, but also a lot of money that they had. the kind of zimbabwe is called Banana, 01010100101000000001010110000001101100110100000011001010001011011001101001101010001010),values=[21, 1],rem=01000000001010110000001101100110100000011001010001011011001101001101010001010
+getSlots(I would get rich staying in the guest house of the president! The guest house is larger than the White House.)
+detected 9 slots in: I would get rich staying in the guest house of the president! The guest house is larger than the White House.
+encode(I would get rich staying in the guest house of the president! The guest house is larger than the White House., 1110000100110011011111111111101101110101100110000000000110101100001111100111111010000010010110010011110),values=[112, 153],rem=1011111111111101101110101100110000000000110101100001111100111111010000010010110010011110
+getSlots(yeah they still get a lot of attention. the president of indonesia on the other hand is a movie star)
+detected 8 slots in: yeah they still get a lot of attention. the president of indonesia on the other hand is a movie star
+encode(yeah they still get a lot of attention. the president of indonesia on the other hand is a movie star, 001011010000000110001010100111000101000111101010110011011001110110110110100110011101101),values=[5, 80],rem=000110001010100111000101000111101010110011011001110110110110100110011101101
+getSlots(Yeah, I guess he released 3 pop albums while in office. Hopefully that wasn't on the taxpayer's dime!)
+detected 6 slots in: Yeah, I guess he released 3 pop albums while in office. Hopefully that wasn't on the taxpayer's dime!
+encode(Yeah, I guess he released 3 pop albums while in office. Hopefully that wasn't on the taxpayer's dime!, 11100010010000111000111001110101010101010011000100001111111001011110110001001001101101010011000011),values=[56, 36],rem=00111000111001110101010101010011000100001111111001011110110001001001101101010011000011
+getSlots(I hope so too and I seriously wonder if they were any good)
+detected 3 slots in: I hope so too and I seriously wonder if they were any good
+encode(I hope so too and I seriously wonder if they were any good, 11101101000101100110010100101100110000010110011110101),values=[59],rem=01000101100110010100101100110000010110011110101
+getSlots(I wonder too. I know at least a few years since the runner up became vice president in Indonesia. We used to have that system too, until 1805.)
+detected 12 slots in: I wonder too. I know at least a few years since the runner up became vice president in Indonesia. We used to have that system too, until 1805.
+encode(I wonder too. I know at least a few years since the runner up became vice president in Indonesia. We used to have that system too, until 1805., 00000100011100101000010010011000001010101010100001100011111101110001101011101111010111110010111111001110000111000110101110011011000111000),values=[2, 28, 80],rem=10010011000001010101010100001100011111101110001101011101111010111110010111111001110000111000110101110011011000111000
+getSlots(Yeah. do you play concerts?)
+detected 2 slots in: Yeah. do you play concerts?
+encode(Yeah. do you play concerts?, 011110110011100101110001000),values=[30],rem=110011100101110001000
+getSlots(Nah, I was invited to a Hanson concert by my boyfriend many years back. You?)
+detected 5 slots in: Nah, I was invited to a Hanson concert by my boyfriend many years back. You?
+encode(Nah, I was invited to a Hanson concert by my boyfriend many years back. You?, 0100000011010011100001100001110000010110000111000100001101100111001),values=[8],rem=00011010011100001100001110000010110000111000100001101100111001
+getSlots(Yeah I see them sometimes. Do you know the Ramones?)
+detected 2 slots in: Yeah I see them sometimes. Do you know the Ramones?
+encode(Yeah I see them sometimes. Do you know the Ramones?, 11101111011010011010000011110110000001011011000101),values=[29],rem=111011010011010000011110110000001011011000101
+getSlots(I have never lied to them. I do know that they toured Japan nonstop for 20 years)
+detected 4 slots in: I have never lied to them. I do know that they toured Japan nonstop for 20 years
+encode(I have never lied to them. I do know that they toured Japan nonstop for 20 years, 001101100101011101001110100001101100110111001111000011101000100011011010000110101),values=[13],rem=100101011101001110100001101100110111001111000011101000100011011010000110101
+getSlots(yeah and in that period they held 2263 concerts)
+detected 3 slots in: yeah and in that period they held 2263 concerts
+encode(yeah and in that period they held 2263 concerts, 1010011010110100111111111001110000110001011),values=[83],rem=010110100111111111001110000110001011
+getSlots(That is a lot! They may have had good concern! Creed, however, was sued for having a really bad concert.)
+detected 8 slots in: That is a lot! They may have had good concern! Creed, however, was sued for having a really bad concert.
+encode(That is a lot! They may have had good concern! Creed, however, was sued for having a really bad concert., 011011011100001001000011001000000001000111101100110101010001010100011011000011111100001000100101100110),values=[54, 112],rem=1001000011001000000001000111101100110101010001010100011011000011111100001000100101100110
+getSlots(Wonder how they manage that. pink floyd recorded a track without an audience at an outdoor theatre)
+detected 8 slots in: Wonder how they manage that. pink floyd recorded a track without an audience at an outdoor theatre
+encode(Wonder how they manage that. pink floyd recorded a track without an audience at an outdoor theatre, 00000000100010001111111000100111100011000011001100001111110100001111111111101010111110000000),values=[0, 2],rem=0010001111111000100111100011000011001100001111110100001111111111101010111110000000
+getSlots(Sounds real cool. In croatian there is an ancient ancient amphitheater that's still used as a concert venue.)
+detected 11 slots in: Sounds real cool. In croatian there is an ancient ancient amphitheater that's still used as a concert venue.
+encode(Sounds real cool. In croatian there is an ancient ancient amphitheater that's still used as a concert venue., 11000100000011100001010101010100111000101110110111100111001111101011110100011101100101001001011100111),values=[49, 0, 7],rem=00001010101010100111000101110110111100111001111101011110100011101100101001001011100111
+getSlots(I would get to attend a concert there, something really cool)
+detected 4 slots in: I would get to attend a concert there, something really cool
+encode(I would get to attend a concert there, something really cool, 01110010111010101000101011001000010100111001101111001100),values=[28],rem=10111010101000101011001000010100111001101111001100
+getSlots(Yeah, that would actually make me sing in the concert. I do like to travel to restaurants where there is a live CD player playing.)
+detected 11 slots in: Yeah, that would actually make me sing in the concert. I do like to travel to restaurants where there is a live CD player playing.
+encode(Yeah, that would actually make me sing in the concert. I do like to travel to restaurants where there is a live CD player playing., 1111111000110010001001001100100110110111001011001100000011001011101011101000110111000010111110010101010000111100100101100000001),values=[127, 12, 17],rem=001001100100110110111001011001100000011001011101011101000110111000010111110010101010000111100100101100000001
+getSlots(I love the song. did you know)
+detected 3 slots in: I love the song. did you know
+encode(I love the song. did you know, 101001011010111010111101000101),values=[82],rem=11010111010111101000101
+getSlots(A group of climbers came to the top of Britain's highest mountain and found a rock. I wonder who put it there. It must be cool to listen to music up there or to play the piano!)
+detected 15 slots in: A group of climbers came to the top of Britain's highest mountain and found a rock. I wonder who put it there. It must be cool to listen to music up there or to play the piano!
+encode(A group of climbers came to the top of Britain's highest mountain and found a rock. I wonder who put it there. It must be cool to listen to music up there or to play the piano!, 1100011001001010001010001111011010101110010111010110100101110001000000001111110111010110101100100110100011011100111100001101100100100101101111000001100111110110010111111),values=[99, 9, 34],rem=10001111011010101110010111010110100101110001000000001111110111010110101100100110100011011100111100001101100100100101101111000001100111110110010111111
+getSlots(wow that is amazing. com chat)
+detected 3 slots in: wow that is amazing. com chat
+encode(wow that is amazing. com chat, 00011001011010100011111110000),values=[6],rem=01011010100011111110000
+getSlots(Hey what do you think about Tom Cruise?)
+detected 1 slots in: Hey what do you think about Tom Cruise?
+encode(Hey what do you think about Tom Cruise?, 10010010011111100100000001000100100010),values=[36],rem=10011111100100000001000100100010
+getSlots(He is one of my greatest actors of all time?)
+detected 3 slots in: He is one of my greatest actors of all time?
+encode(He is one of my greatest actors of all time?, 1110001010101100001001010111011100001011001),values=[113],rem=010101100001001010111011100001011001
+getSlots(I agree I think he's really awesome! And well he does a lot of charity stuff too which is very nice of him)
+detected 8 slots in: I agree I think he's really awesome! And well he does a lot of charity stuff too which is very nice of him
+encode(I agree I think he's really awesome! And well he does a lot of charity stuff too which is very nice of him, 0011111010100000000100101111011000001001001000011110101011010111101100100000101111101011011110000110010000),values=[15, 42],rem=0000000100101111011000001001001000011110101011010111101100100000101111101011011110000110010000
+getSlots(I agree with you. He is really awesome. What is your favorite Tom Cruise movie?)
+detected 4 slots in: I agree with you. He is really awesome. What is your favorite Tom Cruise movie?
+encode(I agree with you. He is really awesome. What is your favorite Tom Cruise movie?, 001010000100001111110010110111010011000011101000000101100010110101010101000),values=[10],rem=000100001111110010110111010011000011101000000101100010110101010101000
+getSlots(Well I never liked him in Top Secret. But he's in a lot of other good restaurants like Mission Impossible. What do you think?)
+detected 6 slots in: Well I never liked him in Top Secret. But he's in a lot of other good restaurants like Mission Impossible. What do you think?
+encode(Well I never liked him in Top Secret. But he's in a lot of other good restaurants like Mission Impossible. What do you think?, 1001111101011101101101010011101110001100011101010010110110001111010010011001010010101110110110010001110101010),values=[79, 43],rem=101101101010011101110001100011101010010110110001111010010011001010010101110110110010001110101010
+getSlots(I liked him in Top Gun as well and also in Rain Man.)
+detected 1 slots in: I liked him in Top Gun as well and also in Rain Man.
+encode(I liked him in Top Gun as well and also in Rain Man., 000110111001010011001111110110111111100111001110000),values=[0],rem=0110111001010011001111110110111111100111001110000
+getSlots(Are layman is good. It's possible that Seinfeld has a net worth that is more than Tom Hanks and Tom Cruise share, because I guarantee that those two stars are already loaded LOL)
+detected 11 slots in: Are layman is good. It's possible that Seinfeld has a net worth that is more than Tom Hanks and Tom Cruise share, because I guarantee that those two stars are already loaded LOL
+encode(Are layman is good. It's possible that Seinfeld has a net worth that is more than Tom Hanks and Tom Cruise share, because I guarantee that those two stars are already loaded LOL, 1111001010110010011011011001011001011100011000110100110000100001011100011010010111100101011000010110001010011001011110101000011111010101010110111001010110011100011100011),values=[121, 44, 38],rem=11011001011001011100011000110100110000100001011100011010010111100101011000010110001010011001011110101000011111010101010110111001010110011100011100011
+getSlots(Rain Dance is very good movie and director Dustin Hoffman was in this movie as well. I didn't about this regarding infield. Look!!!)
+detected 7 slots in: Rain Dance is very good movie and director Dustin Hoffman was in this movie as well. I didn't about this regarding infield. Look!!!
+encode(Rain Dance is very good movie and director Dustin Hoffman was in this movie as well. I didn't about this regarding infield. Look!!!, 1101000011100110111100000100111010100111001001001111010111110011011101100000100100010000110110010100001010100100100001),values=[104, 14],rem=0110111100000100111010100111001001001111010111110011011101100000100100010000110110010100001010100100100001
+getSlots(Yeah that is true. It's also shocking that though Cruise spent decades learning Japanese in order to be in the movie The Last Samurai, I simply did not like that movie)
+detected 9 slots in: Yeah that is true. It's also shocking that though Cruise spent decades learning Japanese in order to be in the movie The Last Samurai, I simply did not like that movie
+encode(Yeah that is true. It's also shocking that though Cruise spent decades learning Japanese in order to be in the movie The Last Samurai, I simply did not like that movie, 111010110011001000011100010000000100110001100101111111111100101010010010100010110111001100100101101110100000010000010001000000110001100011001111000001111011100),values=[117, 76],rem=1000011100010000000100110001100101111111111100101010010010100010110111001100100101101110100000010000010001000000110001100011001111000001111011100
+getSlots(I didn't like that one either. Do you when Tom Cruise started his movie marathon?)
+detected 5 slots in: I didn't like that one either. Do you when Tom Cruise started his movie marathon?
+encode(I didn't like that one either. Do you when Tom Cruise started his movie marathon?, 00101010100101100100110000100100101100011011011111101101110111010011010111),values=[5],rem=010100101100100110000100100101100011011011111101101110111010011010111
+getSlots(I think you remembered when he was only 19 years old huh? It was a 1981, do you remember what movie that was?)
+detected 6 slots in: I think you remembered when he was only 19 years old huh? It was a 1981, do you remember what movie that was?
+encode(I think you remembered when he was only 19 years old huh? It was a 1981, do you remember what movie that was?, 101011001110010101111110100011000111011111001000010000000110001001100001100010110011001100001011010111001),values=[86, 3],rem=10010101111110100011000111011111001000010000000110001001100001100010110011001100001011010111001
+getSlots(Yes in fact I do, it was the movie Endless Love.)
+detected 3 slots in: Yes in fact I do, it was the movie Endless Love.
+encode(Yes in fact I do, it was the movie Endless Love., 00011100100101001000100011001110011011011011001),values=[14],rem=0100101001000100011001110011011011011001
+getSlots(Yep you've changed. I also like the really risky business, opened out in 1983 and has that classic scene of Tom Cruise in his underwear haha)
+detected 10 slots in: Yep you've changed. I also like the really risky business, opened out in 1983 and has that classic scene of Tom Cruise in his underwear haha
+encode(Yep you've changed. I also like the really risky business, opened out in 1983 and has that classic scene of Tom Cruise in his underwear haha, 10011111110010100010110010111001000101110110110101101100010101110010101100110010100000000000111101010000111110101000000110111101),values=[159, 202],rem=0010110010111001000101110110110101101100010101110010101100110010100000000000111101010000111110101000000110111101
+getSlots(That was funny. Oh Ha!!! Do you know by any chance for which movie did he win the Golden Globe Award for Worst Actor?)
+detected 6 slots in: That was funny. Oh Ha!!! Do you know by any chance for which movie did he win the Golden Globe Award for Worst Actor?
+encode(That was funny. Oh Ha!!! Do you know by any chance for which movie did he win the Golden Globe Award for Worst Actor?, 010011001100001111100110010011010100000111101010000010010111110111011111100100011100001011101011000110000000100001),values=[9, 4],rem=1100001111100110010011010100000111101010000010010111110111011111100100011100001011101011000110000000100001
+getSlots(I think it was the child born on the 4the of July? Wasn't that popular in 1989? I know that you said you loved the movie Rain Man and that did win best picture)
+detected 9 slots in: I think it was the child born on the 4the of July? Wasn't that popular in 1989? I know that you said you loved the movie Rain Man and that did win best picture
+encode(I think it was the child born on the 4the of July? Wasn't that popular in 1989? I know that you said you loved the movie Rain Man and that did win best picture, 1000100110000010010110010111100000001111110010111010000010110110100100011111111001100011001100110100111001001011010001010111110111001001100010111),values=[68, 24],rem=0010010110010111100000001111110010111010000010110110100100011111111001100011001100110100111001001011010001010111110111001001100010111
+getSlots(you've correct for both of the names that you just mentioned. Earlier you said that he does a lot of charity stuff. Do you happen to know which charity charity is he involved in?)
+detected 13 slots in: you've correct for both of the names that you just mentioned. Earlier you said that he does a lot of charity stuff. Do you happen to know which charity charity is he involved in?
+encode(you've correct for both of the names that you just mentioned. Earlier you said that he does a lot of charity stuff. Do you happen to know which charity charity is he involved in?, 001010111100000111101110100110110010110011110001111101000011011111010011110011101001101001010011010001011110001000110010111111010101100001101010101001010010001000011000110011111),values=[10, 60, 7],rem=101110100110110010110011110001111101000011011111010011110011101001101001010011010001011110001000110010111111010101100001101010101001010010001000011000110011111
+getSlots(No I don't know what the charity is called. But I do know he talks with Christopher mccoy who is a director, do you know what the charity is called?)
+detected 9 slots in: No I don't know what the charity is called. But I do know he talks with Christopher mccoy who is a director, do you know what the charity is called?
+encode(No I don't know what the charity is called. But I do know he talks with Christopher mccoy who is a director, do you know what the charity is called?, 11000010011001110101000000000011011100001001110111111000001011100001010001100011001100001010101000011001101000101101100100010001101100000001000001),values=[48, 153],rem=110101000000000011011100001001110111111000001011100001010001100011001100001010101000011001101000101101100100010001101100000001000001
+getSlots(I read something that he is involved in for the end of motion smoothing. Do you know what motion smoothing is?)
+detected 8 slots in: I read something that he is involved in for the end of motion smoothing. Do you know what motion smoothing is?
+encode(I read something that he is involved in for the end of motion smoothing. Do you know what motion smoothing is?, 000010001010110100010111100111010001010011000100010110110011010001100001111000111000010110011010101011111111),values=[2, 5],rem=0110100010111100111010001010011000100010110110011010001100001111000111000010110011010101011111111
+getSlots(I think it has nothing to do with framerate. They want to increase the frames rate and movies which makes them look smoother, but I think it made the movies look better, like they were shot on VHS video, what do you think?)
+detected 20 slots in: I think it has nothing to do with framerate. They want to increase the frames rate and movies which makes them look smoother, but I think it made the movies look better, like they were shot on VHS video, what do you think?
+encode(I think it has nothing to do with framerate. They want to increase the frames rate and movies which makes them look smoother, but I think it made the movies look better, like they were shot on VHS video, what do you think?, 1101111000100110000110000110100010011011010110110010101101111011111011111100010101001101001101101010001100110011010111000011100111011110100111000111110011101100001010110110101100001010100000110110111011110011110000010),values=[111, 9, 134, 13],rem=00010011011010110110010101101111011111011111100010101001101001101101010001100110011010111000011100111011110100111000111110011101100001010110110101100001010100000110110111011110011110000010
+getSlots(I agree with you. I'm not impressed but I believe it will make the show look like a better opera than an actual opera with this frame rate.)
+detected 12 slots in: I agree with you. I'm not impressed but I believe it will make the show look like a better opera than an actual opera with this frame rate.
+encode(I agree with you. I'm not impressed but I believe it will make the show look like a better opera than an actual opera with this frame rate., 100101010110001011111011110000000100111100100111101011011001110101000101001000111111101011010100110000001100010010011110000),values=[74, 88, 47],rem=1011110000000100111100100111101011011001110101000101001000111111101011010100110000001100010010011110000
+getSlots(Yeah I know when motion smoothing is enabled on tis by accident, I always change it on my real tis, it is funny to me that Christopher Columbus actually wrote a note to to manufacturers to tell them not to do this haha)
+detected 16 slots in: Yeah I know when motion smoothing is enabled on tis by accident, I always change it on my real tis, it is funny to me that Christopher Columbus actually wrote a note to to manufacturers to tell them not to do this haha
+encode(Yeah I know when motion smoothing is enabled on tis by accident, I always change it on my real tis, it is funny to me that Christopher Columbus actually wrote a note to to manufacturers to tell them not to do this haha, 110011101110001001100001101101101011100000111001101110011001111000011000111111010100000000110001110010001010100111110101001111010110111111000000110001111011100111001100101111111101010100111101101100111101111111),values=[25, 27, 137, 8],rem=01101101101011100000111001101110011001111000011000111111010100000000110001110010001010100111110101001111010110111111000000110001111011100111001100101111111101010100111101101100111101111111
+getSlots(Hello, how are you? Do you know the president?)
+detected 2 slots in: Hello, how are you? Do you know the president?
+encode(Hello, how are you? Do you know the president?, 10110110100011110100000110110100100011001010),values=[45],rem=10100011110100000110110100100011001010
+getSlots(Hey how are you? So we're trying to get political parties? I don't like the current administration. Not that I would have liked Bill Clinton either. How about yourself?)
+detected 8 slots in: Hey how are you? So we're trying to get political parties? I don't like the current administration. Not that I would have liked Bill Clinton either. How about yourself?
+encode(Hey how are you? So we're trying to get political parties? I don't like the current administration. Not that I would have liked Bill Clinton either. How about yourself?, 1010100100110101100010100001000111110111000000011001000110101011101011111110101111111101011011110110000000100110110100000100111001101111101110001000110),values=[169, 26],rem=1100010100001000111110111000000011001000110101011101011111110101111111101011011110110000000100110110100000100111001101111101110001000110
+getSlots(I do not have much knowledge about the topic. The president showed up, and we must chat about the money or we get the spanking and then the gas. I don't want the gas again. Thanks. Got a different person for us?)
+detected 17 slots in: I do not have much knowledge about the topic. The president showed up, and we must chat about the money or we get the spanking and then the gas. I don't want the gas again. Thanks. Got a different person for us?
+encode(I do not have much knowledge about the topic. The president showed up, and we must chat about the money or we get the spanking and then the gas. I don't want the gas again. Thanks. Got a different person for us?, 010010011011000001011010100010001111011100001010100111001010101000010010010111011011111101010110100110000100101111111101111100101100010111010100011001010111110110010110100001110011101000101010100110001000001),values=[36, 108, 11, 10],rem=0010001111011100001010100111001010101000010010010111011011111101010110100110000100101111111101111100101100010111010100011001010111110110010110100001110011101000101010100110001000001
+getSlots(In 2020? I hope so. I have no idea who. I'd prefer somebody that votes a Democrat or Republican.)
+detected 4 slots in: In 2020? I hope so. I have no idea who. I'd prefer somebody that votes a Democrat or Republican.
+encode(In 2020? I hope so. I have no idea who. I'd prefer somebody that votes a Democrat or Republican., 11011101101000111100101010001011000111110000010100011110101100011000001011110100110010001110110),values=[110],rem=1101000111100101010001011000111110000010100011110101100011000001011110100110010001110110
+getSlots(I would suggest a different party too but it is too much to hope for. I think that people are made simple to guide people into choosing what is not in their best interest)
+detected 14 slots in: I would suggest a different party too but it is too much to hope for. I think that people are made simple to guide people into choosing what is not in their best interest
+encode(I would suggest a different party too but it is too much to hope for. I think that people are made simple to guide people into choosing what is not in their best interest, 000011011111110110010110110110001110110001010011100010100000011110100011100010000101011010100010101111110011111110001010101010110010101110000101100101011001000001),values=[3, 63, 89],rem=0110110110001110110001010011100010100000011110100011100010000101011010100010101111110011111110001010101010110010101110000101100101011001000001
+getSlots(I agree. I think that goes for politics in general. Did you know Nevada is the only place to have a " none of these candidates " legislative option for presidential electors?)
+detected 12 slots in: I agree. I think that goes for politics in general. Did you know Nevada is the only place to have a " none of these candidates " legislative option for presidential electors?
+encode(I agree. I think that goes for politics in general. Did you know Nevada is the only place to have a " none of these candidates " legislative option for presidential electors?, 1011001000000101100110010000000101010111011000110100110110011011110000011001000000110010000000110010111110010010010001011000001110111000111010000001010110111110),values=[44, 129, 12],rem=110010000000101010111011000110100110110011011110000011001000000110010000000110010111110010010010001011000001110111000111010000001010110111110
+getSlots(I think that choice should be on every ballet. I would run as a candidate named " none of these candidates " and then I could get elected.)
+detected 7 slots in: I think that choice should be on every ballet. I would run as a candidate named " none of these candidates " and then I could get elected.
+encode(I think that choice should be on every ballet. I would run as a candidate named " none of these candidates " and then I could get elected., 00100010101110100000001100000000010001000100110110010110110100110000001011111000101110010001101010000111110010011101011101100111101000),values=[8, 43],rem=10100000001100000000010001000100110110010110110100110000001011111000101110010001101010000111110010011101011101100111101000
+getSlots(Haha. I would like to see what percentage of that population picks that option. Probably increases every single cycle.)
+detected 9 slots in: Haha. I would like to see what percentage of that population picks that option. Probably increases every single cycle.
+encode(Haha. I would like to see what percentage of that population picks that option. Probably increases every single cycle., 010001100100101101010100011010010101010100011011001000010111101010101111010111111110100000100011011111100100000),values=[8, 50],rem=0101101010100011010010101010100011011001000010111101010101111010111111110100000100011011111100100000
+getSlots(I think that others want to register their discontent. They don't know what to do. How can we get good enough to run?)
+detected 10 slots in: I think that others want to register their discontent. They don't know what to do. How can we get good enough to run?
+encode(I think that others want to register their discontent. They don't know what to do. How can we get good enough to run?, 110110111100111110110001101101000010100101010101111110100010100011111111110101111010100000100010010010101010000000),values=[54, 243],rem=1110110001101101000010100101010101111110100010100011111111110101111010100000100010010010101010000000
+getSlots(You have to get us out of politics. I don't know if we'll ever see that happen. I really think it would happen if more people with scientific skills ran.)
+detected 13 slots in: You have to get us out of politics. I don't know if we'll ever see that happen. I really think it would happen if more people with scientific skills ran.
+encode(You have to get us out of politics. I don't know if we'll ever see that happen. I really think it would happen if more people with scientific skills ran., 1011111000001011000011011001101000000011000100111100101110110010011101110011111101000111111100010100011101010100011111100110110100100110010001101110),values=[95, 2, 97],rem=1011001101000000011000100111100101110110010011101110011111101000111111100010100011101010100011111100110110100100110010001101110
+getSlots(Scientists really have little interest in humans. Too messy and illogical. Corrupt. Difficult to reason through.)
+detected 10 slots in: Scientists really have little interest in humans. Too messy and illogical. Corrupt. Difficult to reason through.
+encode(Scientists really have little interest in humans. Too messy and illogical. Corrupt. Difficult to reason through., 0001100000010001101100010110010111010101110000000111110001001010111101010000110000110101010111010001101000011000),values=[12, 4],rem=01101100010110010111010101110000000111110001001010111101010000110000110101010111010001101000011000
+getSlots(Yeah. Maybe we did get do. Ben means lol. I guess that the types of person with a background that makes it through)
+detected 9 slots in: Yeah. Maybe we did get do. Ben means lol. I guess that the types of person with a background that makes it through
+encode(Yeah. Maybe we did get do. Ben means lol. I guess that the types of person with a background that makes it through, 10101100000110010110010011100011110111011000000101110000101101111100011000111100100000000111100110110000101010100),values=[43, 0],rem=110010110010011100011110111011000000101110000101101111100011000111100100000000111100110110000101010100
+getSlots(I wish there were some way to change these things. Did you realize that Trump is not the richest man?)
+detected 8 slots in: I wish there were some way to change these things. Did you realize that Trump is not the richest man?
+encode(I wish there were some way to change these things. Did you realize that Trump is not the richest man?, 110110100110101010110111110001001011111101100110101010111001010100100001001011000111001101001100000),values=[109, 13],rem=01010110111110001001011111101100110101010111001010100100001001011000111001101001100000
+getSlots(I actually hope that's incorrect. Unfortunately, Trump is the richest president in my company.)
+detected 5 slots in: I actually hope that's incorrect. Unfortunately, Trump is the richest president in my company.
+encode(I actually hope that's incorrect. Unfortunately, Trump is the richest president in my company., 1000010101001100011100111011100101111110001000111011010110101011010010010000100101110101110),values=[133],rem=01001100011100111011100101111110001000111011010110101011010010010000100101110101110
+getSlots(I think that the money must be adjusted for years and such. I do not know how much leverage Trump has though.)
+detected 9 slots in: I think that the money must be adjusted for years and such. I do not know how much leverage Trump has though.
+encode(I think that the money must be adjusted for years and such. I do not know how much leverage Trump has though., 000110001111110110001101010111010001111100110000000010001001010110010100111010010011110110001110100011011),values=[12, 63],rem=0110001101010111010001111100110000000010001001010110010100111010010011110110001110100011011
+getSlots(Well Washington and Jefferson for example, I imagine even at their peak inflation when adjusted for inflation is worse than Trump. Then Jefferson goes broke and Washington gets in debt after their residencies.)
+detected 12 slots in: Well Washington and Jefferson for example, I imagine even at their peak inflation when adjusted for inflation is worse than Trump. Then Jefferson goes broke and Washington gets in debt after their residencies.
+encode(Well Washington and Jefferson for example, I imagine even at their peak inflation when adjusted for inflation is worse than Trump. Then Jefferson goes broke and Washington gets in debt after their residencies., 011100001000101100010101101010100010110001101010011011111000100010011000100000111001000010001001110010001101011011101011111000001000100001010001111001011110010011110111011011110111001010111),values=[56, 34, 49],rem=0101101010100010110001101010011011111000100010011000100000111001000010001001110010001101011011101011111000001000100001010001111001011110010011110111011011110111001010111
+getSlots(I guess after their residencies they must have had less. But I think it must be during the presidency. jak got advice from his dad.)
+detected 9 slots in: I guess after their residencies they must have had less. But I think it must be during the presidency. jak got advice from his dad.
+encode(I guess after their residencies they must have had less. But I think it must be during the presidency. jak got advice from his dad., 001011001100000110000110110100011110110111100000110110100100110001111011101000101100001000111101000010101111101000000010110101),values=[11, 24],rem=00110000110110100011110110111100000110110100100110001111011101000101100001000111101000010101111101000000010110101
+getSlots(Yeah the guy's got rich from Prohibition. I'm pretty sure the family really came from bootlegging. I could be counted on this.)
+detected 7 slots in: Yeah the guy's got rich from Prohibition. I'm pretty sure the family really came from bootlegging. I could be counted on this.
+encode(Yeah the guy's got rich from Prohibition. I'm pretty sure the family really came from bootlegging. I could be counted on this., 001110111110010100011110110101011010110000000010101111010011111010110100111111000001001100010000110011010101010111001001),values=[14, 15],rem=10010100011110110101011010110000000010101111010011111010110100111111000001001100010000110011010101010111001001
+getSlots(I think you are correct. Joe i. ran the rum. jak took the privilege. Anyway great chat, amigo!)
+detected 9 slots in: I think you are correct. Joe i. ran the rum. jak took the privilege. Anyway great chat, amigo!
+encode(I think you are correct. Joe i. ran the rum. jak took the privilege. Anyway great chat, amigo!, 010111000100010101101110110110000011010101010011001010000110110101111010110100111001011100),values=[23, 8],rem=10101101110110110000011010101010011001010000110110101111010110100111001011100
+getSlots(jak certainly did deserve the privilege, as did the rest of the table. Nice chatting with you.)
+detected 7 slots in: jak certainly did deserve the privilege, as did the rest of the table. Nice chatting with you.
+encode(jak certainly did deserve the privilege, as did the rest of the table. Nice chatting with you., 00000110111010000001001101100000001110111000100110011010111000100010101000010101001001),values=[3, 29],rem=0000001001101100000001110111000100110011010111000100010101000010101001001
+getSlots(Nice idea!)
+detected 2 slots in: Nice idea!
+encode(Nice idea!, 101000111),values=[20],rem=0111
+getSlots(Take everything!)
+detected 1 slots in: Take everything!
+encode(Take everything!, 001101100),values=[6],rem=1100
+getSlots(Good night! Glad we have wow or the World Wide Web so that we can chat with each other back on the internet!)
+detected 9 slots in: Good night! Glad we have wow or the World Wide Web so that we can chat with each other back on the internet!
+encode(Good night! Glad we have wow or the World Wide Web so that we can chat with each other back on the internet!, 0010000011110001011001010010000001101001010010111011001100011111101001001110001100101111011110000011111111),values=[8, 30],rem=001011001010010000001101001010010111011001100011111101001001110001100101111011110000011111111
+getSlots(Indeed! It's so ubiquitous you can actually get service on it. Oh!)
+detected 3 slots in: Indeed! It's so ubiquitous you can actually get service on it. Oh!
+encode(Indeed! It's so ubiquitous you can actually get service on it. Oh!, 10010011010001011011100111100011000110010000000000000000000001),values=[73],rem=1010001011011100111100011000110010000000000000000000001
+getSlots(True! It might be slow at 3i, but it works. It's obvious that the library at Alexandria has a second copy on the internet, in case it burns!)
+detected 11 slots in: True! It might be slow at 3i, but it works. It's obvious that the library at Alexandria has a second copy on the internet, in case it burns!
+encode(True! It might be slow at 3i, but it works. It's obvious that the library at Alexandria has a second copy on the internet, in case it burns!, 0001101000101000000010011101001011100110111000100011010111110000000101000111110101110010011010110111111010111110000110101110011),values=[13, 20, 0],rem=10011101001011100110111000100011010111110000000101000111110101110010011010110111111010111110000110101110011
+getSlots(They would love what it's like to have things cut down. I wonder if they save all the points of service that we all ignore when signing up for something or buying one?)
+detected 11 slots in: They would love what it's like to have things cut down. I wonder if they save all the points of service that we all ignore when signing up for something or buying one?
+encode(They would love what it's like to have things cut down. I wonder if they save all the points of service that we all ignore when signing up for something or buying one?, 011100100010111001001100101010101010010001100101011101000001101011011110100100001011111100011101100000010000000100001110100100010110001111111000100011110101001),values=[57, 11, 36],rem=1100101010101010010001100101011101000001101011011110100100001011111100011101100000010000000100001110100100010110001111111000100011110101001
+getSlots(Probably for the authors sake! I must confess I never read them. I wonder if they have a book on the cure for the nervous clicking that can cause exposure to novel activities?)
+detected 14 slots in: Probably for the authors sake! I must confess I never read them. I wonder if they have a book on the cure for the nervous clicking that can cause exposure to novel activities?
+encode(Probably for the authors sake! I must confess I never read them. I wonder if they have a book on the cure for the nervous clicking that can cause exposure to novel activities?, 10011000101000000001001000110111000011100100100001110100000100011111101000101000010101110101101011101111001000000001101000111110100101001011111010101111101001011010000),values=[152, 160, 9],rem=000110111000011100100100001110100000100011111101000101000010101110101101011101111001000000001101000111110100101001011111010101111101001011010000
+getSlots(I might hate it if they do. You a Disney fan?)
+detected 3 slots in: I might hate it if they do. You a Disney fan?
+encode(I might hate it if they do. You a Disney fan?, 1111001011001011010100011000110000110001110),values=[60],rem=1011001011010100011000110000110001110
+getSlots(I've enjoyed reading Disney and I like to accompany my grandkids to some Disney movies. My grandchildren watched Bill Nye the TV guy when they were young. He was the art consultant for Flubber movie!)
+detected 14 slots in: I've enjoyed reading Disney and I like to accompany my grandkids to some Disney movies. My grandchildren watched Bill Nye the TV guy when they were young. He was the art consultant for Flubber movie!
+encode(I've enjoyed reading Disney and I like to accompany my grandkids to some Disney movies. My grandchildren watched Bill Nye the TV guy when they were young. He was the art consultant for Flubber movie!, 11011110001111110110101000001001101101001011001111111101101111010101100001110010010111000110110100000000100001000111110001000000111100100000011100010111110101011111101100010011001011),values=[27, 49, 31],rem=0110101000001001101101001011001111111101101111010101100001110010010111000110110100000000100001000111110001000000111100100000011100010111110101011111101100010011001011
+getSlots(Hard to say where they've come since 1923. From computer drawn animation to a 55, 000 pound supercomputer on Big Hero 6.)
+detected 7 slots in: Hard to say where they've come since 1923. From computer drawn animation to a 55, 000 pound supercomputer on Big Hero 6.
+encode(Hard to say where they've come since 1923. From computer drawn animation to a 55, 000 pound supercomputer on Big Hero 6., 0110110000111101100011111101010000000001111111011000110010000100000101110010010101100011101011011000011000110110),values=[27, 3],rem=1101100011111101010000000001111111011000110010000100000101110010010101100011101011011000011000110110
+getSlots(Yes it's a massive leap forward from the old technology for sure. I love the Wall - e movie. I didn't know the name come from Walter Elias Disney, did you?)
+detected 11 slots in: Yes it's a massive leap forward from the old technology for sure. I love the Wall - e movie. I didn't know the name come from Walter Elias Disney, did you?
+encode(Yes it's a massive leap forward from the old technology for sure. I love the Wall - e movie. I didn't know the name come from Walter Elias Disney, did you?, 00110101011101011010101111100001010110011010110000000111000011010001011111110000110101111000101011001010110001011110011011011101001101001100111001),values=[26, 186, 26],rem=101111100001010110011010110000000111000011010001011111110000110101111000101011001010110001011110011011011101001101001100111001
+getSlots(I didn't but that's pretty ridiculous. I didn't realize Minnie Mouse was good for anything either until recently.)
+detected 3 slots in: I didn't but that's pretty ridiculous. I didn't realize Minnie Mouse was good for anything either until recently.
+encode(I didn't but that's pretty ridiculous. I didn't realize Minnie Mouse was good for anything either until recently., 00110010101011100010001101100101001011100001010011001100111011000011011010111101011101101011001000100),values=[3],rem=0010101011100010001101100101001011100001010011001100111011000011011010111101011101101011001000100
+getSlots(I think I saw that one time but I think I forget since we just started here Minnie Mouse. We are enjoying the pilar and Disney Incredible movies. But we haven't seen the next one yet.)
+detected 12 slots in: I think I saw that one time but I think I forget since we just started here Minnie Mouse. We are enjoying the pilar and Disney Incredible movies. But we haven't seen the next one yet.
+encode(I think I saw that one time but I think I forget since we just started here Minnie Mouse. We are enjoying the pilar and Disney Incredible movies. But we haven't seen the next one yet., 0110101000100001001111001000000010111011001010011101011010111000111000110100010010010000110100001011101001001000100000001000100110111110010000010011001010010011011100110011010),values=[26, 68, 2],rem=01111001000000010111011001010011101011010111000111000110100010010010000110100001011101001001000100000001000100110111110010000010011001010010011011100110011010
+getSlots(Oh, it's terrible. It was a little scary for my imagination. Edna, the designer, was introduced by the director.)
+detected 7 slots in: Oh, it's terrible. It was a little scary for my imagination. Edna, the designer, was introduced by the director.
+encode(Oh, it's terrible. It was a little scary for my imagination. Edna, the designer, was introduced by the director., 0110100010101010010101001101000001000110011100100011001011101101101000010111000010101011001),values=[52, 21],rem=010010101001101000001000110011100100011001011101101101000010111000010101011001
+getSlots(That's really nice. I bet that kind of thing doesn't happen very often. I'm surprised to see that they brought back Nelson, Hunter, Hunter and Jackson to do their roles again for the first movie. It's good to have the family.)
+detected 15 slots in: That's really nice. I bet that kind of thing doesn't happen very often. I'm surprised to see that they brought back Nelson, Hunter, Hunter and Jackson to do their roles again for the first movie. It's good to have the family.
+encode(That's really nice. I bet that kind of thing doesn't happen very often. I'm surprised to see that they brought back Nelson, Hunter, Hunter and Jackson to do their roles again for the first movie. It's good to have the family., 11000101011101001001010000010011101110001101100100100100001101010000111111101100001100100110011011011000001010101001100100011000001111011101110010001111001100100010010010001010011000111000111001100110010101101110111000),values=[197, 58, 18],rem=10000010011101110001101100100100100001101010000111111101100001100100110011011011000001010101001100100011000001111011101110010001111001100100010010010001010011000111000111001100110010101101110111000
+getSlots(Yeah, it wouldn't have been the same. Speaking vowels is an interesting thing. She's not normally an actor.)
+detected 6 slots in: Yeah, it wouldn't have been the same. Speaking vowels is an interesting thing. She's not normally an actor.
+encode(Yeah, it wouldn't have been the same. Speaking vowels is an interesting thing. She's not normally an actor., 000111110001010111100100101010001110111010001100001010111010100101011110011111001110000011011001111),values=[3, 14],rem=001010111100100101010001110111010001100001010111010100101011110011111001110000011011001111
+getSlots(Right, so the sequel has several different genres that are out of the norm. That's good. I also heard of the video game version of the movie since it was 13 years before the sequel. My friends and grandkids play video game but I've not heard them talk about it.)
+detected 21 slots in: Right, so the sequel has several different genres that are out of the norm. That's good. I also heard of the video game version of the movie since it was 13 years before the sequel. My friends and grandkids play video game but I've not heard them talk about it.
+encode(Right, so the sequel has several different genres that are out of the norm. That's good. I also heard of the video game version of the movie since it was 13 years before the sequel. My friends and grandkids play video game but I've not heard them talk about it., 1000001010110011010101011001000011100111111110110101000001000000011000110001011100001111111111011110010100001001001011111111110110111100100011001011011001110001100110101111101100100010111001011111101101011111000100110011001010000111100001000010110),values=[130, 89, 170, 100, 7],rem=00111111110110101000001000000011000110001011100001111111111011110010100001001001011111111110110111100100011001011011001110001100110101111101100100010111001011111101101011111000100110011001010000111100001000010110
+getSlots(Yeah, I didn't know there was a game set so far earlier either. I'm amazed it took them this long to develop a sequel. The first version was in 2004.)
+detected 11 slots in: Yeah, I didn't know there was a game set so far earlier either. I'm amazed it took them this long to develop a sequel. The first version was in 2004.
+encode(Yeah, I didn't know there was a game set so far earlier either. I'm amazed it took them this long to develop a sequel. The first version was in 2004., 1010011010100010011101110100011011100010111100001000100011000110001010101111011001011100000001110100110110111111000100011101101111101110101101),values=[166, 162, 14],rem=1110100011011100010111100001000100011000110001010101111011001011100000001110100110110111111000100011101101111101110101101
+getSlots(I guess I didn't realize that the setting for the movies is the 1960is. I knew it wasn't the current time but didn't follow up on the clues as to the time period.)
+detected 11 slots in: I guess I didn't realize that the setting for the movies is the 1960is. I knew it wasn't the current time but didn't follow up on the clues as to the time period.
+encode(I guess I didn't realize that the setting for the movies is the 1960is. I knew it wasn't the current time but didn't follow up on the clues as to the time period., 010110101101010010000000011111011011000100011011101010101001101001100000100110110101001000111101000100001011100011000100000000010011000010110011110101),values=[11, 45, 9],rem=0000000011111011011000100011011101010101001101001100000100110110101001000111101000100001011100011000100000000010011000010110011110101
+getSlots(Yeah, it made sense I guess. The essence of everything is really very'60i.)
+detected 4 slots in: Yeah, it made sense I guess. The essence of everything is really very'60i.
+encode(Yeah, it made sense I guess. The essence of everything is really very'60i., 11100011101000001001100111101010111110000001100000001101110101011101101),values=[113],rem=1101000001001100111101010111110000001100000001101110101011101101
+getSlots(I liked the character in the movie too. I think it was directed by the same person as the first time, Michael Giacchino.)
+detected 9 slots in: I liked the character in the movie too. I think it was directed by the same person as the first time, Michael Giacchino.
+encode(I liked the character in the movie too. I think it was directed by the same person as the first time, Michael Giacchino., 0000011110000000010110000100011101001101000111001001110011111100000100011011010010111100000010000110111),values=[1, 112],rem=000010110000100011101001101000111001001110011111100000100011011010010111100000010000110111
+getSlots(Yeah, very good, and all under the Disney umbrella.)
+detected 2 slots in: Yeah, very good, and all under the Disney umbrella.
+encode(Yeah, very good, and all under the Disney umbrella., 1011010110101010111011101100000111001011110010111011),values=[45],rem=0110101010111011101100000111001011110010111011
+getSlots(It was great reading to you! I hope you have a good and well day!)
+detected 7 slots in: It was great reading to you! I hope you have a good and well day!
+encode(It was great reading to you! I hope you have a good and well day!, 10100101010100011101101000110011111100011110010101111110000100100),values=[82, 10],rem=100011101101000110011111100011110010101111110000100100
+getSlots(You to.)
+detected 0 slots in: You to.
+encode(You to., 10010000),values=[],rem=10010000
+getSlots(bye)
+detected 0 slots in: bye
+encode(bye, 0010),values=[],rem=0010
+getSlots(Hi are you into magic? Did you know you can see 5 times with the naked eye? 6 if you have perfect vision and are in a really bad sky.)
+detected 11 slots in: Hi are you into magic? Did you know you can see 5 times with the naked eye? 6 if you have perfect vision and are in a really bad sky.
+encode(Hi are you into magic? Did you know you can see 5 times with the naked eye? 6 if you have perfect vision and are in a really bad sky., 1110100011001100001101111110010101001111110111000111011100011100111011111110000110110011011000100011011000001001000110111100001010),values=[116, 25, 16],rem=1101111110010101001111110111000111011100011100111011111110000110110011011000100011011000001001000110111100001010
+getSlots(No I did not know that, which time?)
+detected 2 slots in: No I did not know that, which time?
+encode(No I did not know that, which time?, 1100100101111001001011111011111111010),values=[50],rem=0101111001001011111011111111010
+getSlots(Mercury, Saturn, Mars, Jupiter, Neptune, and maybe Uranus. Only Neptune you needed optical aid to detect in the night sky.)
+detected 6 slots in: Mercury, Saturn, Mars, Jupiter, Neptune, and maybe Uranus. Only Neptune you needed optical aid to detect in the night sky.
+encode(Mercury, Saturn, Mars, Jupiter, Neptune, and maybe Uranus. Only Neptune you needed optical aid to detect in the night sky., 11000100101101000111111111111111011111100110001100001000000110000010011110111011101000000010111110101111010),values=[196, 22],rem=1000111111111111111011111100110001100001000000110000010011110111011101000000010111110101111010
+getSlots(Oh, that is wonderful, Jupiter is special, no one will be able to visit this place because of its radiation.)
+detected 7 slots in: Oh, that is wonderful, Jupiter is special, no one will be able to visit this place because of its radiation.
+encode(Oh, that is wonderful, Jupiter is special, no one will be able to visit this place because of its radiation., 010001001010101000100111010110111110011101110011101100000111111000010101101000111111011110101111001000101101),values=[17, 2],rem=10101000100111010110111110011101110011101100000111111000010101101000111111011110101111001000101101
+getSlots(Shielding technology will work. The moons have a lot of scientific research. A big chunk of nasa's budget is going towards a manned mission. Ganymede is so large that if it orbited the Moon it would be considered a moon.)
+detected 17 slots in: Shielding technology will work. The moons have a lot of scientific research. A big chunk of nasa's budget is going towards a manned mission. Ganymede is so large that if it orbited the Moon it would be considered a moon.
+encode(Shielding technology will work. The moons have a lot of scientific research. A big chunk of nasa's budget is going towards a manned mission. Ganymede is so large that if it orbited the Moon it would be considered a moon., 10100011000010001010111110101011001111111110101010110110000111110100110100101010000111111000000111000100111010001110011101011100011111011010100001000001000011010011111100110001100001000101001111101111000101011),values=[163, 8, 87, 53],rem=011001111111110101010110110000111110100110100101010000111111000000111000100111010001110011101011100011111011010100001000001000011010011111100110001100001000101001111101111000101011
+getSlots(Other celestial spheres were once considered as planet. pluto is the most prominent, but there is also Ceres, dallas, Juno and Mercury.)
+detected 7 slots in: Other celestial spheres were once considered as planet. pluto is the most prominent, but there is also Ceres, dallas, Juno and Mercury.
+encode(Other celestial spheres were once considered as planet. pluto is the most prominent, but there is also Ceres, dallas, Juno and Mercury., 011001000100100011101101110001011100110110001111001011111101011001011001011111101101010000110011100011110110100011001101),values=[25, 1],rem=00100011101101110001011100110110001111001011111101011001011001011111101101010000110011100011110110100011001101

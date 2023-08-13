@@ -1,6 +1,8 @@
 #@title random_bit_stream
+#@title Pipe
 import json
 import random
+from typing import Any, Callable, Dict, List
 
 
 def random_bit_stream(length=None):
@@ -31,8 +33,6 @@ print(Typo.encode('hi, how are you?','10101001011111'))
 print ('\nSetting up Typoceros Completed\n')
 
 
-#@title Pipe
-from typing import Any, Callable, Dict, List
 
 from Emojier import Emojier
 
@@ -177,8 +177,8 @@ callbacks = [bert_callback, emojer_callback,typo_callback]
 
 # print(mq[-1],bq[-1])
 
-with open('stats.tsv','a') as f:
-  f.write(f'bits\tcover size\tcapacity\n')
+with open('stats2.tsv','a') as f:
+  f.write(f'bits\tcover size\tcapacity\tfsb bits\temo bits\ttypo bits\tfsb capacity\temo capacity\ttypo capacity\tfsb share\temo share\ttypo share\n')
 
 def StegasusEncode(text,bytes_str):
   initial_state = [[text],[bytes_str]]
@@ -186,12 +186,10 @@ def StegasusEncode(text,bytes_str):
   p = pipe(callbacks, {"verbose": False,"pipe_verbose": False,"encode":True,"decode":False,"test":False})
   mq, bq = p(initial_state)
   bits = len(bytes_str) - len(bq[-1])
-  with open('stats.tsv','a') as f:
-    f.write(f'{bits}\t{len(text)}\t{round(100*(bits/len(text)))}\n')
   with open('steps.log','a') as f:
     f.write(f'text={json.dumps(mq)}\n')
     f.write(f'bits={json.dumps([len(b) for b in bq])}\n')
-  with open('pie.tsv','a') as f:
+  with open('stats2.tsv','a') as f:
     previous_layers_bits = 0
     layers_bits = []
     for b in bq:
@@ -200,10 +198,12 @@ def StegasusEncode(text,bytes_str):
       previous_layers_bits += layer_bits
       if layer_bits != 0:
         layers_bits.append(layer_bits)
-    layers_ratios = [b / bits for b in layers_bits]
+    layers_shares = [round((100*b) / bits) for b in layers_bits]
+    layers_capacities = [round((b*100) / len(text)) for b in layers_bits]
     layers_bits_str = '\t'.join(map(str,layers_bits))
-    layers_ratios_str = '\t'.join(map(str,layers_ratios))
-    f.write(f"{layers_bits_str}\t{layers_ratios_str}\n")
+    layers_shares_str = '\t'.join(map(str,layers_shares))
+    layers_capacities_str = '\t'.join(map(str,layers_capacities))
+    f.write(f"{bits}\t{len(text)}\t{round((100*bits)/len(text))}{layers_bits_str}\t{layers_capacities_str}\t{layers_shares_str}\n")
     
   return (mq[-1],bq[-1])
 def StegasusDecode(text):
