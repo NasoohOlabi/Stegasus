@@ -7,7 +7,7 @@ We all make misstakes and roll on the floor laughing 🤣🤣🤣.
 
 ## Notes
 
- Still in early dev...
+ Almost stable.
 
 ## Links
 
