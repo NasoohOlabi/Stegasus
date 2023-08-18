@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>String Alternator</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				height: 100vh;
+				margin: 0;
+				background-color: #fff;
+			}
+			#output {
+				font-size: 24px;
+				text-align: center;
+				margin-bottom: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div
+			style="
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+			"
+		>
+			<div id="stringLaps" style="display: block">String laps</div>
+			<div id="output">Initial Text</div>
+			<div id="buttons">
+				<button id="startButton">Start</button>
+				<button id="stopButton">Stop</button>
+			</div>
+		</div>
+		<script>
+			const strings = ["the vote should be mandatory. then people would see the power of the ballot.", "the viote should be mandatory. then people would see the power of the ballot.", "the voite should be mandatory. then people would see the power of the ballot.", "the vpte should be mandatory. then people would see the power of the ballot.", "the vte should be mandatory. then people would see the power of the ballot.", "the vorte should be mandatory. then people would see the power of the ballot.", "the voyte should be mandatory. then people would see the power of the ballot.", "the votye should be mandatory. then people would see the power of the ballot.", "the voye should be mandatory. then people would see the power of the ballot.", "the vote sghould be mandatory. then people would see the power of the ballot.", "the vote shgould be mandatory. then people would see the power of the ballot.", "the vote sgould be mandatory. then people would see the power of the ballot.", "the vote sjhould be mandatory. then people would see the power of the ballot.", "the vote shjould be mandatory. then people would see the power of the ballot.", "the vote sjould be mandatory. then people would see the power of the ballot.", "the vote sould be mandatory. then people would see the power of the ballot.", "the vote shiould be mandatory. then people would see the power of the ballot.", "the vote shpuld be mandatory. then people would see the power of the ballot.", "the vote shuld be mandatory. then people would see the power of the ballot.", "the vote shoyuld be mandatory. then people would see the power of the ballot.", "the vote shouyld be mandatory. then people would see the power of the ballot.", "the vote shoyld be mandatory. then people would see the power of the ballot.", "the vote shouild be mandatory. then people would see the power of the ballot.", "the vote shold be mandatory. then people would see the power of the ballot.", "the vote shoukld be mandatory. then people would see the power of the ballot.", "the vote shoulkd be mandatory. then people would see the power of the ballot.", "the vote shoukd be mandatory. then people would see the power of the ballot.", "the vote should be msandatory. then people would see the power of the ballot.", "the vote should be masndatory. then people would see the power of the ballot.", "the vote should be msndatory. then people would see the power of the ballot.", "the vote should be mndatory. then people would see the power of the ballot.", "the vote should be mabndatory. then people would see the power of the ballot.", "the vote should be manbdatory. then people would see the power of the ballot.", "the vote should be mabdatory. then people would see the power of the ballot.", "the vote should be mamdatory. then people would see the power of the ballot.", "the vote should be madatory. then people would see the power of the ballot.", "the vote should be mansdatory. then people would see the power of the ballot.", "the vote should be manfdatory. then people would see the power of the ballot.", "the vote should be mandfatory. then people would see the power of the ballot.", "the vote should be manfatory. then people would see the power of the ballot.", "the vote should be manatory. then people would see the power of the ballot.", "the vote should be mandastory. then people would see the power of the ballot.", "the vote should be mandtory. then people would see the power of the ballot.", "the vote should be mandartory. then people would see the power of the ballot.", "the vote should be mandatrory. then people would see the power of the ballot.", "the vote should be mandarory. then people would see the power of the ballot.", "the vote should be mandaytory. then people would see the power of the ballot.", "the vote should be mandatyory. then people would see the power of the ballot.", "the vote should be mandayory. then people would see the power of the ballot.", "the vote should be mandaory. then people would see the power of the ballot.", "the vote should be mandatiory. then people would see the power of the ballot.", "the vote should be mandatoiry. then people would see the power of the ballot.", "the vote should be mandatiry. then people would see the power of the ballot.", "the vote should be mandatpry. then people would see the power of the ballot.", "the vote should be mandatry. then people would see the power of the ballot.", "the vote should be mandatoery. then people would see the power of the ballot.", "the vote should be mandatorey. then people would see the power of the ballot.", "the vote should be mandatoey. then people would see the power of the ballot.", "the vote should be mandatotry. then people would see the power of the ballot.", "the vote should be mandatoy. then people would see the power of the ballot.", "the vote should be mandatory. then pweople would see the power of the ballot.", "the vote should be mandatory. then pewople would see the power of the ballot.", "the vote should be mandatory. then pwople would see the power of the ballot.", "the vote should be mandatory. then preople would see the power of the ballot.", "the vote should be mandatory. then perople would see the power of the ballot.", "the vote should be mandatory. then pople would see the power of the ballot.", "the vote should be mandatory. then peiople would see the power of the ballot.", "the vote should be mandatory. then peoiple would see the power of the ballot.", "the vote should be mandatory. then peiple would see the power of the ballot.", "the vote should be mandatory. then peple would see the power of the ballot.", "the vote should be mandatory. then peopkle would see the power of the ballot.", "the vote should be mandatory. then peoplke would see the power of the ballot.", "the vote should be mandatory. then peopke would see the power of the ballot.", "the vote should be mandatory. then peope would see the power of the ballot.", "the vote should be mandatory. then people wiould see the power of the ballot.", "the vote should be mandatory. then people wpuld see the power of the ballot.", "the vote should be mandatory. then people wuld see the power of the ballot.", "the vote should be mandatory. then people woyuld see the power of the ballot.", "the vote should be mandatory. then people wouyld see the power of the ballot.", "the vote should be mandatory. then people woyld see the power of the ballot.", "the vote should be mandatory. then people wouild see the power of the ballot.", "the vote should be mandatory. then people woukld see the power of the ballot.", "the vote should be mandatory. then people woulkd see the power of the ballot.", "the vote should be mandatory. then people woukd see the power of the ballot.", "the vote should be mandatory. then people would see tghe power of the ballot.", "the vote should be mandatory. then people would see thge power of the ballot.", "the vote should be mandatory. then people would see tge power of the ballot.", "the vote should be mandatory. then people would see tjhe power of the ballot.", "the vote should be mandatory. then people would see thje power of the ballot.", "the vote should be mandatory. then people would see tje power of the ballot.", "the vote should be mandatory. then people would see the piower of the ballot.", "the vote should be mandatory. then people would see the poiwer of the ballot.", "the vote should be mandatory. then people would see the pwer of the ballot.", "the vote should be mandatory. then people would see the poqer of the ballot.", "the vote should be mandatory. then people would see the powr of the ballot.", "the vote should be mandatory. then people would see the power of tghe ballot.", "the vote should be mandatory. then people would see the power of thge ballot.", "the vote should be mandatory. then people would see the power of tge ballot.", "the vote should be mandatory. then people would see the power of tjhe ballot.", "the vote should be mandatory. then people would see the power of thje ballot.", "the vote should be mandatory. then people would see the power of tje ballot.", "the vote should be mandatory. then people would see the power of the bsallot.", "the vote should be mandatory. then people would see the power of the basllot.", "the vote should be mandatory. then people would see the power of the bsllot.", "the vote should be mandatory. then people would see the power of the bllot.", "the vote should be mandatory. then people would see the power of the balot.", "the vote should be mandatory. then people would see the power of the balliot.", "the vote should be mandatory. then people would see the power of the balloit.", "the vote should be mandatory. then people would see the power of the ballit.", "the vote should be mandatory. then people would see the power of the ballpt."];
+
+			const outputElement = document.getElementById("output");
+			const startButton = document.getElementById("startButton");
+			const stopButton = document.getElementById("stopButton");
+			const stringLaps = document.getElementById("stringLaps");
+
+			let currentIndex = 0;
+			var intervalId;
+
+			function updateText() {
+				outputElement.textContent = strings[currentIndex];
+				currentIndex = (currentIndex + 1) % strings.length;
+			}
+
+			function startAlternating() {
+				stringLaps.style.display = "none"; // Hide the "String laps" text
+				document.getElementById("buttons").style.display = "none"; // Hide the buttons
+				// intervalId = setInterval(updateText, 300);
+				setTimeout(() => {
+					clearInterval(intervalId);
+					stringLaps.style.display = "none"; // Hide the "String laps" text
+					document.getElementById("buttons").style.display = "none"; // Hide the buttons
+					intervalId = setInterval(updateText, 300);
+				}, 6000); // Start animation after a 2-second delay
+			}
+
+			function stopAlternating() {
+				clearInterval(intervalId);
+				stringLaps.style.display = "block"; // Show the "String laps" text
+				document.getElementById("buttons").style.display = "flex"; // Show the buttons
+			}
+
+			startButton.addEventListener("click", startAlternating);
+			stopButton.addEventListener("click", stopAlternating);
+
+			updateText(); // Initial update
+		</script>
+	</body>
+</html>

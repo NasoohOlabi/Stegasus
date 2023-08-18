@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>String Alternator</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				height: 100vh;
+				margin: 0;
+				background-color: #fff;
+			}
+			#output {
+				font-size: 24px;
+				text-align: center;
+				margin-bottom: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div
+			style="
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+			"
+		>
+			<div id="stringLaps" style="display: block">String laps</div>
+			<div id="output">Initial Text</div>
+			<div id="buttons">
+				<button id="startButton">Start</button>
+				<button id="stopButton">Stop</button>
+			</div>
+		</div>
+		<script>
+			const strings = ["That is crazy, can anyone even understand that?", "THat is crazy, can anyone even understand that?", "Tghat is crazy, can anyone even understand that?", "Thgat is crazy, can anyone even understand that?", "Tgat is crazy, can anyone even understand that?", "Tjhat is crazy, can anyone even understand that?", "Thjat is crazy, can anyone even understand that?", "Tjat is crazy, can anyone even understand that?", "Thsat is crazy, can anyone even understand that?", "Thast is crazy, can anyone even understand that?", "Thst is crazy, can anyone even understand that?", "Tht is crazy, can anyone even understand that?", "That is cerazy, can anyone even understand that?", "That is creazy, can anyone even understand that?", "That is ceazy, can anyone even understand that?", "That is ctrazy, can anyone even understand that?", "That is crtazy, can anyone even understand that?", "That is ctazy, can anyone even understand that?", "That is cazy, can anyone even understand that?", "That is crsazy, can anyone even understand that?", "That is craszy, can anyone even understand that?", "That is crszy, can anyone even understand that?", "That is crzy, can anyone even understand that?", "That is craxzy, can anyone even understand that?", "That is crazxy, can anyone even understand that?", "That is craxy, can anyone even understand that?", "That is crazy, csan anyone even understand that?", "That is crazy, casn anyone even understand that?", "That is crazy, csn anyone even understand that?", "That is crazy, can abnyone even understand that?", "That is crazy, can anbyone even understand that?", "That is crazy, can abyone even understand that?", "That is crazy, can amyone even understand that?", "That is crazy, can ayone even understand that?", "That is crazy, can antyone even understand that?", "That is crazy, can anytone even understand that?", "That is crazy, can antone even understand that?", "That is crazy, can anuyone even understand that?", "That is crazy, can anyuone even understand that?", "That is crazy, can anuone even understand that?", "That is crazy, can anone even understand that?", "That is crazy, can anyione even understand that?", "That is crazy, can anyoine even understand that?", "That is crazy, can anyine even understand that?", "That is crazy, can anypne even understand that?", "That is crazy, can anyne even understand that?", "That is crazy, can anyobne even understand that?", "That is crazy, can anyonbe even understand that?", "That is crazy, can anyobe even understand that?", "That is crazy, can anyome even understand that?", "That is crazy, can anyoe even understand that?", "That is crazy, can anyone ecven understand that?", "That is crazy, can anyone evcen understand that?", "That is crazy, can anyone ecen understand that?", "That is crazy, can anyone ebven understand that?", "That is crazy, can anyone evben understand that?", "That is crazy, can anyone eben understand that?", "That is crazy, can anyone een understand that?", "That is crazy, can anyone evwen understand that?", "That is crazy, can anyone evewn understand that?", "That is crazy, can anyone evwn understand that?", "That is crazy, can anyone evren understand that?", "That is crazy, can anyone evern understand that?", "That is crazy, can anyone evrn understand that?", "That is crazy, can anyone evn understand that?", "That is crazy, can anyone even ubnderstand that?", "That is crazy, can anyone even unbderstand that?", "That is crazy, can anyone even ubderstand that?", "That is crazy, can anyone even umderstand that?", "That is crazy, can anyone even uderstand that?", "That is crazy, can anyone even unsderstand that?", "That is crazy, can anyone even undserstand that?", "That is crazy, can anyone even unserstand that?", "That is crazy, can anyone even unfderstand that?", "That is crazy, can anyone even undferstand that?", "That is crazy, can anyone even unferstand that?", "That is crazy, can anyone even unerstand that?", "That is crazy, can anyone even undwerstand that?", "That is crazy, can anyone even undewrstand that?", "That is crazy, can anyone even undwrstand that?", "That is crazy, can anyone even undrstand that?", "That is crazy, can anyone even undetrstand that?", "That is crazy, can anyone even undertstand that?", "That is crazy, can anyone even undetstand that?", "That is crazy, can anyone even undestand that?", "That is crazy, can anyone even underatand that?", "That is crazy, can anyone even underdstand that?", "That is crazy, can anyone even undersdtand that?", "That is crazy, can anyone even underdtand that?", "That is crazy, can anyone even undertand that?", "That is crazy, can anyone even undersrtand that?", "That is crazy, can anyone even understrand that?", "That is crazy, can anyone even undersrand that?", "That is crazy, can anyone even undersytand that?", "That is crazy, can anyone even understyand that?", "That is crazy, can anyone even undersyand that?", "That is crazy, can anyone even undersand that?", "That is crazy, can anyone even understsand that?", "That is crazy, can anyone even understasnd that?", "That is crazy, can anyone even understnd that?", "That is crazy, can anyone even understabnd that?", "That is crazy, can anyone even understanbd that?", "That is crazy, can anyone even understabd that?", "That is crazy, can anyone even understamd that?", "That is crazy, can anyone even understad that?", "That is crazy, can anyone even understand tghat?", "That is crazy, can anyone even understand thgat?", "That is crazy, can anyone even understand tgat?", "That is crazy, can anyone even understand tjhat?", "That is crazy, can anyone even understand thjat?", "That is crazy, can anyone even understand tjat?", "That is crazy, can anyone even understand thsat?", "That is crazy, can anyone even understand thast?", "That is crazy, can anyone even understand thst?", "That is crazy, can anyone even understand tht?"];
+
+			const outputElement = document.getElementById("output");
+			const startButton = document.getElementById("startButton");
+			const stopButton = document.getElementById("stopButton");
+			const stringLaps = document.getElementById("stringLaps");
+
+			let currentIndex = 0;
+			var intervalId;
+
+			function updateText() {
+				outputElement.textContent = strings[currentIndex];
+				currentIndex = (currentIndex + 1) % strings.length;
+			}
+
+			function startAlternating() {
+				stringLaps.style.display = "none"; // Hide the "String laps" text
+				document.getElementById("buttons").style.display = "none"; // Hide the buttons
+				// intervalId = setInterval(updateText, 300);
+				setTimeout(() => {
+					clearInterval(intervalId);
+					stringLaps.style.display = "none"; // Hide the "String laps" text
+					document.getElementById("buttons").style.display = "none"; // Hide the buttons
+					intervalId = setInterval(updateText, 300);
+				}, 6000); // Start animation after a 2-second delay
+			}
+
+			function stopAlternating() {
+				clearInterval(intervalId);
+				stringLaps.style.display = "block"; // Show the "String laps" text
+				document.getElementById("buttons").style.display = "flex"; // Show the buttons
+			}
+
+			startButton.addEventListener("click", startAlternating);
+			stopButton.addEventListener("click", stopAlternating);
+
+			updateText(); // Initial update
+		</script>
+	</body>
+</html>

@@ -222,3 +222,165 @@ encode( Hi, 000),values=[0],rem=000
 getSlots( Hi)
 detected 1 slots in:  Hi
 decode values=[0]
+getSlots( Trump is a character)
+detected 1 slots in:  Trump is a character
+encode( Trump is a character, 011100000100011011011),values=[7],rem=00000100011011011
+getSlots( Trump is a character)
+detected 1 slots in:  Trump is a character
+decode values=[7]
+getSlots( Hi. How do you feel about the rise of threats against public  figures on social media?)
+detected 7 slots in:  Hi. How do you feel about the rise of threats against public  figures on social media?
+encode( Hi. How do you feel about the rise of threats against public  figures on social media?, 110110000100001100100010100101110000000110101001110111011011110000110111000011101010111),values=[108, 8],rem=01100100010100101110000000110101001110111011011110000110111000011101010111
+getSlots( Hi. How do you feel about the rise of threats against public  figures on social media?)
+detected 7 slots in:  Hi. How do you feel about the rise of threats against public  figures on social media?
+decode values=[108, 8]
+getSlots( I feel bad about it, there are many wackos in social media)
+detected 7 slots in:  I feel bad about it, there are many wackos in social media
+encode( I feel bad about it, there are many wackos in social media, 10110011100111010100010110101100001100101011000000111000011),values=[89, 51],rem=1010100010110101100001100101011000000111000011
+getSlots( I feel bad about it, there are many wackos in social media)
+detected 7 slots in:  I feel bad about it, there are many wackos in social media
+decode values=[89, 51]
+getSlots( Agree. Did you know fly congressman Carlos curbed forgave a 19 yr. old kid who threatened to kill him recently? Do you think that was wise?)
+detected 13 slots in:  Agree. Did you know fly congressman Carlos curbed forgave a 19 yr. old kid who threatened to kill him recently? Do you think that was wise?
+encode( Agree. Did you know fly congressman Carlos curbed forgave a 19 yr. old kid who threatened to kill him recently? Do you think that was wise?, 00000110100001111010010110001100001010011111110101001011010011110010111111010010011011110100010010100011001100100001001111001011110100011101),values=[3, 16, 122],rem=010110001100001010011111110101001011010011110010111111010010011011110100010010100011001100100001001111001011110100011101
+getSlots( Agree. Did you know fly congressman Carlos curbed forgave a 19 yr. old kid who threatened to kill him recently? Do you think that was wise?)
+detected 13 slots in:  Agree. Did you know fly congressman Carlos curbed forgave a 19 yr. old kid who threatened to kill him recently? Do you think that was wise?
+decode values=[3, 16, 122]
+getSlots( I dont think thats wise at all if something does happen to him then he will face consequences even if his not guilty, he will be the prime suspect)
+detected 8 slots in:  I dont think thats wise at all if something does happen to him then he will face consequences even if his not guilty, he will be the prime suspect
+encode( I dont think thats wise at all if something does happen to him then he will face consequences even if his not guilty, he will be the prime suspect, 001111110111011101010111110001000010001000111110011001000000001011110001010001100001111110100010101011011001110101010001001111010111100000111010111),values=[31, 46],rem=11101010111110001000010001000111110011001000000001011110001010001100001111110100010101011011001110101010001001111010111100000111010111
+getSlots( I dont think thats wise at all if something does happen to him then he will face consequences even if his not guilty, he will be the prime suspect)
+detected 8 slots in:  I dont think thats wise at all if something does happen to him then he will face consequences even if his not guilty, he will be the prime suspect
+decode values=[31, 46]
+getSlots( Yes, the boy is still under investigation in fly, but curbed met i/him and kid apologized. Police also verified that kid was "not a dangerous threat". But you never know, do you?)
+detected 14 slots in:  Yes, the boy is still under investigation in fly, but curbed met i/him and kid apologized. Police also verified that kid was "not a dangerous threat". But you never know, do you?
+encode( Yes, the boy is still under investigation in fly, but curbed met i/him and kid apologized. Police also verified that kid was "not a dangerous threat". But you never know, do you?, 10000110101011000001000101011100110011011011111100111001100111101110010011010111011101111101011000110111001100011010101000110100011101001101101101001110111100101010111001110010100),values=[134, 172, 8],rem=101011100110011011011111100111001100111101110010011010111011101111101011000110111001100011010101000110100011101001101101101001110111100101010111001110010100
+getSlots( Yes, the boy is still under investigation in fly, but curbed met i/him and kid apologized. Police also verified that kid was "not a dangerous threat". But you never know, do you?)
+detected 14 slots in:  Yes, the boy is still under investigation in fly, but curbed met i/him and kid apologized. Police also verified that kid was "not a dangerous threat". But you never know, do you?
+decode values=[134, 172, 8]
+getSlots( I wouldnt want to be in the radar of the police, its kind of disturbing how 4 accounts like his comment, the must hate Carlos curbed)
+detected 9 slots in:  I wouldnt want to be in the radar of the police, its kind of disturbing how 4 accounts like his comment, the must hate Carlos curbed
+encode( I wouldnt want to be in the radar of the police, its kind of disturbing how 4 accounts like his comment, the must hate Carlos curbed, 1100100011011011110001010100111110011101100000101100111011001101111100000111001001001010101001100011101011000110001001101011011000011),values=[100, 27],rem=011110001010100111110011101100000101100111011001101111100000111001001001010101001100011101011000110001001101011011000011
+getSlots( I wouldnt want to be in the radar of the police, its kind of disturbing how 4 accounts like his comment, the must hate Carlos curbed)
+detected 9 slots in:  I wouldnt want to be in the radar of the police, its kind of disturbing how 4 accounts like his comment, the must hate Carlos curbed
+decode values=[100, 27]
+getSlots( Right. US has been divided before, over civil rights, Vietnam...But today's nasty, negative vibe seems - worse. What do you think?)
+detected 10 slots in:  Right. US has been divided before, over civil rights, Vietnam...But today's nasty, negative vibe seems - worse. What do you think?
+encode( Right. US has been divided before, over civil rights, Vietnam...But today's nasty, negative vibe seems - worse. What do you think?, 00110001110011110011001101111110110111010010111011011110011011100101000011110011010111110000111000101100010000101111011100010100010),values=[24, 115],rem=110011001101111110110111010010111011011110011011100101000011110011010111110000111000101100010000101111011100010100010
+getSlots( Right. US has been divided before, over civil rights, Vietnam...But today's nasty, negative vibe seems - worse. What do you think?)
+detected 10 slots in:  Right. US has been divided before, over civil rights, Vietnam...But today's nasty, negative vibe seems - worse. What do you think?
+decode values=[24, 115]
+getSlots( I think we are in a dark time, school shootings, the government is a circus so yeah, we are going thou dark times indeed)
+detected 11 slots in:  I think we are in a dark time, school shootings, the government is a circus so yeah, we are going thou dark times indeed
+encode( I think we are in a dark time, school shootings, the government is a circus so yeah, we are going thou dark times indeed, 0100010111111010000101101110100010001101010100110011100010011000010110100000010110000010111101010101001111010111011011110),values=[34, 126, 33],rem=01101110100010001101010100110011100010011000010110100000010110000010111101010101001111010111011011110
+getSlots( I think we are in a dark time, school shootings, the government is a circus so yeah, we are going thou dark times indeed)
+detected 11 slots in:  I think we are in a dark time, school shootings, the government is a circus so yeah, we are going thou dark times indeed
+decode values=[34, 126, 33]
+getSlots( Appreciate your honesty. Hard to understand, as congressman said. "...why it is someone would...express themselves with so much hate." )
+detected 8 slots in:  Appreciate your honesty. Hard to understand, as congressman said. "...why it is someone would...express themselves with so much hate." 
+encode( Appreciate your honesty. Hard to understand, as congressman said. "...why it is someone would...express themselves with so much hate." , 1011101000101110101111100101101011001101010101000110111100100110010110101000000011100001101101110101101011100010110011101011001011101011),values=[186, 23],rem=0101111100101101011001101010101000110111100100110010110101000000011100001101101110101101011100010110011101011001011101011
+getSlots( Appreciate your honesty. Hard to understand, as congressman said. "...why it is someone would...express themselves with so much hate." )
+detected 8 slots in:  Appreciate your honesty. Hard to understand, as congressman said. "...why it is someone would...express themselves with so much hate." 
+decode values=[186, 23]
+getSlots( Its curious but at the same time he received the threat authorities intercepted more than a dozen explosive devices)
+detected 11 slots in:  Its curious but at the same time he received the threat authorities intercepted more than a dozen explosive devices
+encode( Its curious but at the same time he received the threat authorities intercepted more than a dozen explosive devices, 00111101111111111110101011011110111010101001110000011101110011101011000111101010100100110001011111110110101000001011),values=[30, 127, 31],rem=0101011011110111010101001110000011101110011101011000111101010100100110001011111110110101000001011
+getSlots( Its curious but at the same time he received the threat authorities intercepted more than a dozen explosive devices)
+detected 11 slots in:  Its curious but at the same time he received the threat authorities intercepted more than a dozen explosive devices
+decode values=[30, 127, 31]
+getSlots( Heard about that - all were sent to prominent Democrats and critics of Trump, I think. Talk about silencing the opposition! )
+detected 8 slots in:  Heard about that - all were sent to prominent Democrats and critics of Trump, I think. Talk about silencing the opposition! 
+encode( Heard about that - all were sent to prominent Democrats and critics of Trump, I think. Talk about silencing the opposition! , 01001001001111010100001100110011101001111111000000100010010110100011110001000101100111010010010011010000100001011010011100011),values=[18, 19],rem=11010100001100110011101001111111000000100010010110100011110001000101100111010010010011010000100001011010011100011
+getSlots( Heard about that - all were sent to prominent Democrats and critics of Trump, I think. Talk about silencing the opposition! )
+detected 8 slots in:  Heard about that - all were sent to prominent Democrats and critics of Trump, I think. Talk about silencing the opposition! 
+decode values=[18, 19]
+getSlots( Yup so changing the topic a bit do you know how to play the guitar?)
+detected 6 slots in:  Yup so changing the topic a bit do you know how to play the guitar?
+encode( Yup so changing the topic a bit do you know how to play the guitar?, 00010010110110000100111110001111010100001101000111011001110100010011),values=[18, 54],rem=000100111110001111010100001101000111011001110100010011
+getSlots( Yup so changing the topic a bit do you know how to play the guitar?)
+detected 6 slots in:  Yup so changing the topic a bit do you know how to play the guitar?
+decode values=[18, 54]
+getSlots( I wish. Like Eric clayton, in my dreams! Have you got a favorite rock guitarist?)
+detected 6 slots in:  I wish. Like Eric clayton, in my dreams! Have you got a favorite rock guitarist?
+encode( I wish. Like Eric clayton, in my dreams! Have you got a favorite rock guitarist?, 011101100111110101101010111100110011100100110101110111000011000111010000001011000),values=[59, 7],rem=110101101010111100110011100100110101110111000011000111010000001011000
+getSlots( I wish. Like Eric clayton, in my dreams! Have you got a favorite rock guitarist?)
+detected 6 slots in:  I wish. Like Eric clayton, in my dreams! Have you got a favorite rock guitarist?
+decode values=[59, 7]
+getSlots( Mine has to be Brian May from Queen do you know who he is?)
+detected 2 slots in:  Mine has to be Brian May from Queen do you know who he is?
+encode( Mine has to be Brian May from Queen do you know who he is?, 01111010001010111011000000001100111101001110100001101110110),values=[30],rem=10001010111011000000001100111101001110100001101110110
+getSlots( Mine has to be Brian May from Queen do you know who he is?)
+detected 2 slots in:  Mine has to be Brian May from Queen do you know who he is?
+decode values=[30]
+getSlots( Yes. Bohemian Rhapsody and so much more. Did you know May has a university degree in astrophysics??)
+detected 7 slots in:  Yes. Bohemian Rhapsody and so much more. Did you know May has a university degree in astrophysics??
+encode( Yes. Bohemian Rhapsody and so much more. Did you know May has a university degree in astrophysics??, 0000011110010111011001101011111001110010011110001010010111100101000010001000011100011100001010100111),values=[3, 50],rem=111011001101011111001110010011110001010010111100101000010001000011100011100001010100111
+getSlots( Yes. Bohemian Rhapsody and so much more. Did you know May has a university degree in astrophysics??)
+detected 7 slots in:  Yes. Bohemian Rhapsody and so much more. Did you know May has a university degree in astrophysics??
+decode values=[3, 50]
+getSlots( I did know that another cool fact is that he built his guitar from parts from an old fireplace and his moms knitting needle)
+detected 10 slots in:  I did know that another cool fact is that he built his guitar from parts from an old fireplace and his moms knitting needle
+encode( I did know that another cool fact is that he built his guitar from parts from an old fireplace and his moms knitting needle, 1011111011101100001110110011101010110000001111110001010110101000111100000000101111110110101110011110100010111001000001010110),values=[95, 29],rem=100001110110011101010110000001111110001010110101000111100000000101111110110101110011110100010111001000001010110
+getSlots( I did know that another cool fact is that he built his guitar from parts from an old fireplace and his moms knitting needle)
+detected 10 slots in:  I did know that another cool fact is that he built his guitar from parts from an old fireplace and his moms knitting needle
+decode values=[95, 29]
+getSlots( That I didn't know! Do you prefer to listen to an electric guitar or an old-fashioned acoustic guitar?)
+detected 7 slots in:  That I didn't know! Do you prefer to listen to an electric guitar or an old-fashioned acoustic guitar?
+encode( That I didn't know! Do you prefer to listen to an electric guitar or an old-fashioned acoustic guitar?, 1001111100111100011011010100111000111000111101110111110001000001010000110110011010101010000101001110110),values=[159, 15],rem=00011011010100111000111000111101110111110001000001010000110110011010101010000101001110110
+getSlots( That I didn't know! Do you prefer to listen to an electric guitar or an old-fashioned acoustic guitar?)
+detected 7 slots in:  That I didn't know! Do you prefer to listen to an electric guitar or an old-fashioned acoustic guitar?
+decode values=[159, 15]
+getSlots( I like acoustic guitar better, the sound is just more natural, acoustic cover of songs are my favorite ones)
+detected 10 slots in:  I like acoustic guitar better, the sound is just more natural, acoustic cover of songs are my favorite ones
+encode( I like acoustic guitar better, the sound is just more natural, acoustic cover of songs are my favorite ones, 101011000100011010101010000000001011111101001000101011001111101101010100010000010100100000001000101100111011),values=[86, 8],rem=11010101010000000001011111101001000101011001111101101010100010000010100100000001000101100111011
+getSlots( I like acoustic guitar better, the sound is just more natural, acoustic cover of songs are my favorite ones)
+detected 10 slots in:  I like acoustic guitar better, the sound is just more natural, acoustic cover of songs are my favorite ones
+decode values=[86, 8]
+getSlots( Yes, can be a soothing, natural sound. Speaking of stringed instruments (sort of), do you play piano?)
+detected 8 slots in:  Yes, can be a soothing, natural sound. Speaking of stringed instruments (sort of), do you play piano?
+encode( Yes, can be a soothing, natural sound. Speaking of stringed instruments (sort of), do you play piano?, 100100100100000110001001001001111101101100101001010100000000000010001100000000001000101100010100010101),values=[36, 36],rem=000110001001001001111101101100101001010100000000000010001100000000001000101100010100010101
+getSlots( Yes, can be a soothing, natural sound. Speaking of stringed instruments (sort of), do you play piano?)
+detected 8 slots in:  Yes, can be a soothing, natural sound. Speaking of stringed instruments (sort of), do you play piano?
+decode values=[36, 36]
+getSlots( I dont play it but I love the instrument, do you?)
+detected 4 slots in:  I dont play it but I love the instrument, do you?
+encode( I dont play it but I love the instrument, do you?, 10001110101000100101010100010000000011011100011010),values=[71],rem=0101000100101010100010000000011011100011010
+getSlots( I dont play it but I love the instrument, do you?)
+detected 4 slots in:  I dont play it but I love the instrument, do you?
+decode values=[71]
+getSlots( Lessons as a kid - can't play decently today. Not a fan of auto/electric/electronic piano so much. You?)
+detected 8 slots in:  Lessons as a kid - can't play decently today. Not a fan of auto/electric/electronic piano so much. You?
+encode( Lessons as a kid - can't play decently today. Not a fan of auto/electric/electronic piano so much. You?, 01101111000001110010111011100101101110001011011010010111000010101010001011010111111100111010010101111011),values=[27, 48],rem=01110010111011100101101110001011011010010111000010101010001011010111111100111010010101111011
+getSlots( Lessons as a kid - can't play decently today. Not a fan of auto/electric/electronic piano so much. You?)
+detected 8 slots in:  Lessons as a kid - can't play decently today. Not a fan of auto/electric/electronic piano so much. You?
+decode values=[27, 48]
+getSlots( Not a fan either, steam pianos were pretty nice I dont think they exist anymore)
+detected 6 slots in:  Not a fan either, steam pianos were pretty nice I dont think they exist anymore
+encode( Not a fan either, steam pianos were pretty nice I dont think they exist anymore, 00100110000010101011100010001011000011000001110101111101101011001001110101110001),values=[19, 0],rem=10101011100010001011000011000001110101111101101011001001110101110001
+getSlots( Not a fan either, steam pianos were pretty nice I dont think they exist anymore)
+detected 6 slots in:  Not a fan either, steam pianos were pretty nice I dont think they exist anymore
+decode values=[19, 0]
+getSlots( Never heard of them. Did you know that Freddy Mercury used same piano to record i. Rhapsody as Paul mccarthy used to record, Hey, Jude?)
+detected 10 slots in:  Never heard of them. Did you know that Freddy Mercury used same piano to record i. Rhapsody as Paul mccarthy used to record, Hey, Jude?
+encode( Never heard of them. Did you know that Freddy Mercury used same piano to record i. Rhapsody as Paul mccarthy used to record, Hey, Jude?, 0000100100001010001000011000100101101001010101011001111110100111001110010100101110011101110011011001111001110011111010010111010001101110),values=[2, 16],rem=1010001000011000100101101001010101011001111110100111001110010100101110011101110011011001111001110011111010010111010001101110
+getSlots( Never heard of them. Did you know that Freddy Mercury used same piano to record i. Rhapsody as Paul mccarthy used to record, Hey, Jude?)
+detected 10 slots in:  Never heard of them. Did you know that Freddy Mercury used same piano to record i. Rhapsody as Paul mccarthy used to record, Hey, Jude?
+decode values=[2, 16]
+getSlots( I dint know that, that piano must have magical powers lol,)
+detected 7 slots in:  I dint know that, that piano must have magical powers lol,
+encode( I dint know that, that piano must have magical powers lol,, 00110100110101100101111111001010010100010011111010001000100),values=[6, 9],rem=10101100101111111001010010100010011111010001000100
+getSlots( I dint know that, that piano must have magical powers lol,)
+detected 7 slots in:  I dint know that, that piano must have magical powers lol,
+decode values=[6, 9]
+getSlots( Well said. Thanks a lot for chatting. Enjoy some music you love today! Cheers!!)
+detected 9 slots in:  Well said. Thanks a lot for chatting. Enjoy some music you love today! Cheers!!
+encode( Well said. Thanks a lot for chatting. Enjoy some music you love today! Cheers!!, 00001001100111110101110011000101011111110010101100001111001001111011110010101000),values=[1, 6],rem=0111110101110011000101011111110010101100001111001001111011110010101000
+getSlots( Well said. Thanks a lot for chatting. Enjoy some music you love today! Cheers!!)
+detected 9 slots in:  Well said. Thanks a lot for chatting. Enjoy some music you love today! Cheers!!
+decode values=[1, 6]
+getSlots( Hi! I've often wondered if there ever existed a being like Bigfoot. They've said Virginia is a serious hotspot, at least according 6o Daniel benefit with the East Coast Bigfoot Researchers Organization. )
+detected 9 slots in:  Hi! I've often wondered if there ever existed a being like Bigfoot. They've said Virginia is a serious hotspot, at least according 6o Daniel benefit with the East Coast Bigfoot Researchers Organization. 
+encode( Hi! I've often wondered if there ever existed a being like Bigfoot. They've said Virginia is a serious hotspot, at least according 6o Daniel benefit with the East Coast Bigfoot Researchers Organization. , 011110110000100000110100100110110111111110011100100011011000110011001010010100001000111110101011011100110001100110010110000011011010001010010101001010111111010000000101011011100011101001110000101010111000),values=[30, 97],rem=00000110100100110110111111110011100100011011000110011001010010100001000111110101011011100110001100110010110000011011010001010010101001010111111010000000101011011100011101001110000101010111000
+getSlots( Hi! I've often wondered if there ever existed a being like Bigfoot. They've said Virginia is a serious hotspot, at least according 6o Daniel benefit with the East Coast Bigfoot Researchers Organization. )
+detected 9 slots in:  Hi! I've often wondered if there ever existed a being like Bigfoot. They've said Virginia is a serious hotspot, at least according 6o Daniel benefit with the East Coast Bigfoot Researchers Organization. 
+decode values=[30, 97]

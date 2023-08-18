@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>String Alternator</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				height: 100vh;
+				margin: 0;
+				background-color: #fff;
+			}
+			#output {
+				font-size: 24px;
+				text-align: center;
+				margin-bottom: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div
+			style="
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+			"
+		>
+			<div id="stringLaps" style="display: block">String laps</div>
+			<div id="output">Initial Text</div>
+			<div id="buttons">
+				<button id="startButton">Start</button>
+				<button id="stopButton">Stop</button>
+			</div>
+		</div>
+		<script>
+			const strings = ["What do you think of Serena Williams?", "WHat do you think of Serena Williams?", "Wghat do you think of Serena Williams?", "Whgat do you think of Serena Williams?", "Wgat do you think of Serena Williams?", "Wjhat do you think of Serena Williams?", "Whjat do you think of Serena Williams?", "Wjat do you think of Serena Williams?", "Wat do you think of Serena Williams?", "Whsat do you think of Serena Williams?", "Whast do you think of Serena Williams?", "What do yiou think of Serena Williams?", "What do ypu think of Serena Williams?", "What do yu think of Serena Williams?", "What do you tghink of Serena Williams?", "What do you thgink of Serena Williams?", "What do you tgink of Serena Williams?", "What do you tjhink of Serena Williams?", "What do you thjink of Serena Williams?", "What do you tjink of Serena Williams?", "What do you tink of Serena Williams?", "What do you thuink of Serena Williams?", "What do you thiunk of Serena Williams?", "What do you thoink of Serena Williams?", "What do you thionk of Serena Williams?", "What do you thonk of Serena Williams?", "What do you thnk of Serena Williams?", "What do you thibnk of Serena Williams?", "What do you thinbk of Serena Williams?", "What do you thibk of Serena Williams?", "What do you thimk of Serena Williams?", "What do you thik of Serena Williams?", "What do you think of SErena Williams?", "What do you think of Swerena Williams?", "What do you think of Sewrena Williams?", "What do you think of Swrena Williams?", "What do you think of Srena Williams?", "What do you think of Setrena Williams?", "What do you think of Sertena Williams?", "What do you think of Setena Williams?", "What do you think of Seena Williams?", "What do you think of Serna Williams?", "What do you think of Serebna Williams?", "What do you think of Serenba Williams?", "What do you think of Sereba Williams?", "What do you think of Serema Williams?", "What do you think of Serea Williams?", "What do you think of Serena WIlliams?", "What do you think of Serena Wuilliams?", "What do you think of Serena Wiulliams?", "What do you think of Serena Wulliams?", "What do you think of Serena Woilliams?", "What do you think of Serena Wiolliams?", "What do you think of Serena Wolliams?", "What do you think of Serena Wlliams?", "What do you think of Serena Wiliams?", "What do you think of Serena Willuiams?", "What do you think of Serena Williuams?", "What do you think of Serena Willuams?", "What do you think of Serena Willoiams?", "What do you think of Serena Willioams?", "What do you think of Serena Willoams?", "What do you think of Serena Willams?", "What do you think of Serena Willisams?", "What do you think of Serena Williasms?", "What do you think of Serena Willisms?", "What do you think of Serena Willims?", "What do you think of Serena Willianms?", "What do you think of Serena Williamns?", "What do you think of Serena Willians?", "What do you think of Serena Willias?"];
+
+			const outputElement = document.getElementById("output");
+			const startButton = document.getElementById("startButton");
+			const stopButton = document.getElementById("stopButton");
+			const stringLaps = document.getElementById("stringLaps");
+
+			let currentIndex = 0;
+			var intervalId;
+
+			function updateText() {
+				outputElement.textContent = strings[currentIndex];
+				currentIndex = (currentIndex + 1) % strings.length;
+			}
+
+			function startAlternating() {
+				stringLaps.style.display = "none"; // Hide the "String laps" text
+				document.getElementById("buttons").style.display = "none"; // Hide the buttons
+				// intervalId = setInterval(updateText, 300);
+				setTimeout(() => {
+					clearInterval(intervalId);
+					stringLaps.style.display = "none"; // Hide the "String laps" text
+					document.getElementById("buttons").style.display = "none"; // Hide the buttons
+					intervalId = setInterval(updateText, 300);
+				}, 6000); // Start animation after a 2-second delay
+			}
+
+			function stopAlternating() {
+				clearInterval(intervalId);
+				stringLaps.style.display = "block"; // Show the "String laps" text
+				document.getElementById("buttons").style.display = "flex"; // Show the buttons
+			}
+
+			startButton.addEventListener("click", startAlternating);
+			stopButton.addEventListener("click", stopAlternating);
+
+			updateText(); // Initial update
+		</script>
+	</body>
+</html>

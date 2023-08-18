@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>String Alternator</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				height: 100vh;
+				margin: 0;
+				background-color: #fff;
+			}
+			#output {
+				font-size: 24px;
+				text-align: center;
+				margin-bottom: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div
+			style="
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+			"
+		>
+			<div id="stringLaps" style="display: block">String laps</div>
+			<div id="output">Initial Text</div>
+			<div id="buttons">
+				<button id="startButton">Start</button>
+				<button id="stopButton">Stop</button>
+			</div>
+		</div>
+		<script>
+			const strings = ["I bet they were dropping Big Mac lines like crazy!", "I bwet they were dropping Big Mac lines like crazy!", "I bewt they were dropping Big Mac lines like crazy!", "I bwt they were dropping Big Mac lines like crazy!", "I bet tghey were dropping Big Mac lines like crazy!", "I bet thgey were dropping Big Mac lines like crazy!", "I bet tgey were dropping Big Mac lines like crazy!", "I bet tjhey were dropping Big Mac lines like crazy!", "I bet thjey were dropping Big Mac lines like crazy!", "I bet tjey were dropping Big Mac lines like crazy!", "I bet tey were dropping Big Mac lines like crazy!", "I bet thwey were dropping Big Mac lines like crazy!", "I bet thewy were dropping Big Mac lines like crazy!", "I bet thwy were dropping Big Mac lines like crazy!", "I bet threy were dropping Big Mac lines like crazy!", "I bet thry were dropping Big Mac lines like crazy!", "I bet they wetre dropping Big Mac lines like crazy!", "I bet they werte dropping Big Mac lines like crazy!", "I bet they wete dropping Big Mac lines like crazy!", "I bet they were deropping Big Mac lines like crazy!", "I bet they were dreopping Big Mac lines like crazy!", "I bet they were deopping Big Mac lines like crazy!", "I bet they were dtropping Big Mac lines like crazy!", "I bet they were drtopping Big Mac lines like crazy!", "I bet they were dtopping Big Mac lines like crazy!", "I bet they were dopping Big Mac lines like crazy!", "I bet they were driopping Big Mac lines like crazy!", "I bet they were droppuing Big Mac lines like crazy!", "I bet they were droppiung Big Mac lines like crazy!", "I bet they were droppung Big Mac lines like crazy!", "I bet they were droppiong Big Mac lines like crazy!", "I bet they were droppng Big Mac lines like crazy!", "I bet they were droppibng Big Mac lines like crazy!", "I bet they were droppinbg Big Mac lines like crazy!", "I bet they were droppibg Big Mac lines like crazy!", "I bet they were droppimg Big Mac lines like crazy!", "I bet they were droppig Big Mac lines like crazy!", "I bet they were dropping BIg Mac lines like crazy!", "I bet they were dropping Buig Mac lines like crazy!", "I bet they were dropping Biug Mac lines like crazy!", "I bet they were dropping Boig Mac lines like crazy!", "I bet they were dropping Big MAc lines like crazy!", "I bet they were dropping Big Msac lines like crazy!", "I bet they were dropping Big Mac liunes like crazy!", "I bet they were dropping Big Mac loines like crazy!", "I bet they were dropping Big Mac libnes like crazy!", "I bet they were dropping Big Mac linbes like crazy!", "I bet they were dropping Big Mac linwes like crazy!", "I bet they were dropping Big Mac linews like crazy!", "I bet they were dropping Big Mac linws like crazy!", "I bet they were dropping Big Mac linres like crazy!", "I bet they were dropping Big Mac lines luike crazy!", "I bet they were dropping Big Mac lines liuke crazy!", "I bet they were dropping Big Mac lines luke crazy!", "I bet they were dropping Big Mac lines loike crazy!", "I bet they were dropping Big Mac lines lioke crazy!", "I bet they were dropping Big Mac lines loke crazy!", "I bet they were dropping Big Mac lines lke crazy!", "I bet they were dropping Big Mac lines lijke crazy!", "I bet they were dropping Big Mac lines likje crazy!", "I bet they were dropping Big Mac lines lije crazy!", "I bet they were dropping Big Mac lines like cerazy!", "I bet they were dropping Big Mac lines like creazy!", "I bet they were dropping Big Mac lines like ceazy!", "I bet they were dropping Big Mac lines like ctrazy!", "I bet they were dropping Big Mac lines like crtazy!", "I bet they were dropping Big Mac lines like ctazy!", "I bet they were dropping Big Mac lines like cazy!", "I bet they were dropping Big Mac lines like crsazy!", "I bet they were dropping Big Mac lines like craszy!", "I bet they were dropping Big Mac lines like crszy!", "I bet they were dropping Big Mac lines like crzy!", "I bet they were dropping Big Mac lines like craxzy!", "I bet they were dropping Big Mac lines like crazxy!", "I bet they were dropping Big Mac lines like craxy!"];
+
+			const outputElement = document.getElementById("output");
+			const startButton = document.getElementById("startButton");
+			const stopButton = document.getElementById("stopButton");
+			const stringLaps = document.getElementById("stringLaps");
+
+			let currentIndex = 0;
+			var intervalId;
+
+			function updateText() {
+				outputElement.textContent = strings[currentIndex];
+				currentIndex = (currentIndex + 1) % strings.length;
+			}
+
+			function startAlternating() {
+				stringLaps.style.display = "none"; // Hide the "String laps" text
+				document.getElementById("buttons").style.display = "none"; // Hide the buttons
+				// intervalId = setInterval(updateText, 300);
+				setTimeout(() => {
+					clearInterval(intervalId);
+					stringLaps.style.display = "none"; // Hide the "String laps" text
+					document.getElementById("buttons").style.display = "none"; // Hide the buttons
+					intervalId = setInterval(updateText, 300);
+				}, 6000); // Start animation after a 2-second delay
+			}
+
+			function stopAlternating() {
+				clearInterval(intervalId);
+				stringLaps.style.display = "block"; // Show the "String laps" text
+				document.getElementById("buttons").style.display = "flex"; // Show the buttons
+			}
+
+			startButton.addEventListener("click", startAlternating);
+			stopButton.addEventListener("click", stopAlternating);
+
+			updateText(); // Initial update
+		</script>
+	</body>
+</html>

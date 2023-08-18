@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>String Alternator</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				height: 100vh;
+				margin: 0;
+				background-color: #fff;
+			}
+			#output {
+				font-size: 24px;
+				text-align: center;
+				margin-bottom: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div
+			style="
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+			"
+		>
+			<div id="stringLaps" style="display: block">String laps</div>
+			<div id="output">Initial Text</div>
+			<div id="buttons">
+				<button id="startButton">Start</button>
+				<button id="stopButton">Stop</button>
+			</div>
+		</div>
+		<script>
+			const strings = ["She co-owns the dolphins and was a pro at 13!  Wow, she is really incredible.", "SHe co-owns the dolphins and was a pro at 13!  Wow, she is really incredible.", "Sghe co-owns the dolphins and was a pro at 13!  Wow, she is really incredible.", "Shge co-owns the dolphins and was a pro at 13!  Wow, she is really incredible.", "Sjhe co-owns the dolphins and was a pro at 13!  Wow, she is really incredible.", "Shje co-owns the dolphins and was a pro at 13!  Wow, she is really incredible.", "Sje co-owns the dolphins and was a pro at 13!  Wow, she is really incredible.", "She co-owns tghe dolphins and was a pro at 13!  Wow, she is really incredible.", "She co-owns thge dolphins and was a pro at 13!  Wow, she is really incredible.", "She co-owns tge dolphins and was a pro at 13!  Wow, she is really incredible.", "She co-owns tjhe dolphins and was a pro at 13!  Wow, she is really incredible.", "She co-owns thje dolphins and was a pro at 13!  Wow, she is really incredible.", "She co-owns tje dolphins and was a pro at 13!  Wow, she is really incredible.", "She co-owns the diolphins and was a pro at 13!  Wow, she is really incredible.", "She co-owns the doilphins and was a pro at 13!  Wow, she is really incredible.", "She co-owns the dilphins and was a pro at 13!  Wow, she is really incredible.", "She co-owns the dplphins and was a pro at 13!  Wow, she is really incredible.", "She co-owns the dlphins and was a pro at 13!  Wow, she is really incredible.", "She co-owns the doklphins and was a pro at 13!  Wow, she is really incredible.", "She co-owns the dolkphins and was a pro at 13!  Wow, she is really incredible.", "She co-owns the dokphins and was a pro at 13!  Wow, she is really incredible.", "She co-owns the dophins and was a pro at 13!  Wow, she is really incredible.", "She co-owns the dolophins and was a pro at 13!  Wow, she is really incredible.", "She co-owns the dolpohins and was a pro at 13!  Wow, she is really incredible.", "She co-owns the dolhins and was a pro at 13!  Wow, she is really incredible.", "She co-owns the dolpghins and was a pro at 13!  Wow, she is really incredible.", "She co-owns the dolphgins and was a pro at 13!  Wow, she is really incredible.", "She co-owns the dolpgins and was a pro at 13!  Wow, she is really incredible.", "She co-owns the dolpjhins and was a pro at 13!  Wow, she is really incredible.", "She co-owns the dolphjins and was a pro at 13!  Wow, she is really incredible.", "She co-owns the dolpjins and was a pro at 13!  Wow, she is really incredible.", "She co-owns the dolpins and was a pro at 13!  Wow, she is really incredible.", "She co-owns the dolphuins and was a pro at 13!  Wow, she is really incredible.", "She co-owns the dolphiuns and was a pro at 13!  Wow, she is really incredible.", "She co-owns the dolphuns and was a pro at 13!  Wow, she is really incredible.", "She co-owns the dolphoins and was a pro at 13!  Wow, she is really incredible.", "She co-owns the dolphions and was a pro at 13!  Wow, she is really incredible.", "She co-owns the dolphons and was a pro at 13!  Wow, she is really incredible.", "She co-owns the dolphns and was a pro at 13!  Wow, she is really incredible.", "She co-owns the dolphibns and was a pro at 13!  Wow, she is really incredible.", "She co-owns the dolphinbs and was a pro at 13!  Wow, she is really incredible.", "She co-owns the dolphibs and was a pro at 13!  Wow, she is really incredible.", "She co-owns the dolphims and was a pro at 13!  Wow, she is really incredible.", "She co-owns the dolphis and was a pro at 13!  Wow, she is really incredible.", "She co-owns the dolphins abnd was a pro at 13!  Wow, she is really incredible.", "She co-owns the dolphins anbd was a pro at 13!  Wow, she is really incredible.", "She co-owns the dolphins and ws a pro at 13!  Wow, she is really incredible.", "She co-owns the dolphins and was a pero at 13!  Wow, she is really incredible.", "She co-owns the dolphins and was a preo at 13!  Wow, she is really incredible.", "She co-owns the dolphins and was a ptro at 13!  Wow, she is really incredible.", "She co-owns the dolphins and was a prto at 13!  Wow, she is really incredible.", "She co-owns the dolphins and was a pto at 13!  Wow, she is really incredible.", "She co-owns the dolphins and was a pro at 13!  WOw, she is really incredible.", "She co-owns the dolphins and was a pro at 13!  Woiw, she is really incredible.", "She co-owns the dolphins and was a pro at 13!  Wiw, she is really incredible.", "She co-owns the dolphins and was a pro at 13!  Wpw, she is really incredible.", "She co-owns the dolphins and was a pro at 13!  Ww, she is really incredible.", "She co-owns the dolphins and was a pro at 13!  Wow, sghe is really incredible.", "She co-owns the dolphins and was a pro at 13!  Wow, shge is really incredible.", "She co-owns the dolphins and was a pro at 13!  Wow, sjhe is really incredible.", "She co-owns the dolphins and was a pro at 13!  Wow, shje is really incredible.", "She co-owns the dolphins and was a pro at 13!  Wow, sje is really incredible.", "She co-owns the dolphins and was a pro at 13!  Wow, she is rweally incredible.", "She co-owns the dolphins and was a pro at 13!  Wow, she is rewally incredible.", "She co-owns the dolphins and was a pro at 13!  Wow, she is rwally incredible.", "She co-owns the dolphins and was a pro at 13!  Wow, she is resally incredible.", "She co-owns the dolphins and was a pro at 13!  Wow, she is reaslly incredible.", "She co-owns the dolphins and was a pro at 13!  Wow, she is reslly incredible.", "She co-owns the dolphins and was a pro at 13!  Wow, she is relly incredible.", "She co-owns the dolphins and was a pro at 13!  Wow, she is really ibncredible.", "She co-owns the dolphins and was a pro at 13!  Wow, she is really inbcredible.", "She co-owns the dolphins and was a pro at 13!  Wow, she is really ibcredible.", "She co-owns the dolphins and was a pro at 13!  Wow, she is really imcredible.", "She co-owns the dolphins and was a pro at 13!  Wow, she is really icredible.", "She co-owns the dolphins and was a pro at 13!  Wow, she is really inxcredible.", "She co-owns the dolphins and was a pro at 13!  Wow, she is really incxredible.", "She co-owns the dolphins and was a pro at 13!  Wow, she is really inxredible.", "She co-owns the dolphins and was a pro at 13!  Wow, she is really invcredible.", "She co-owns the dolphins and was a pro at 13!  Wow, she is really incvredible.", "She co-owns the dolphins and was a pro at 13!  Wow, she is really invredible.", "She co-owns the dolphins and was a pro at 13!  Wow, she is really inctredible.", "She co-owns the dolphins and was a pro at 13!  Wow, she is really incrtedible.", "She co-owns the dolphins and was a pro at 13!  Wow, she is really inctedible.", "She co-owns the dolphins and was a pro at 13!  Wow, she is really incedible.", "She co-owns the dolphins and was a pro at 13!  Wow, she is really incrwedible.", "She co-owns the dolphins and was a pro at 13!  Wow, she is really increwdible.", "She co-owns the dolphins and was a pro at 13!  Wow, she is really incrwdible.", "She co-owns the dolphins and was a pro at 13!  Wow, she is really incrdible.", "She co-owns the dolphins and was a pro at 13!  Wow, she is really incresdible.", "She co-owns the dolphins and was a pro at 13!  Wow, she is really incredsible.", "She co-owns the dolphins and was a pro at 13!  Wow, she is really incresible.", "She co-owns the dolphins and was a pro at 13!  Wow, she is really increfdible.", "She co-owns the dolphins and was a pro at 13!  Wow, she is really incredfible.", "She co-owns the dolphins and was a pro at 13!  Wow, she is really increfible.", "She co-owns the dolphins and was a pro at 13!  Wow, she is really increible.", "She co-owns the dolphins and was a pro at 13!  Wow, she is really increduible.", "She co-owns the dolphins and was a pro at 13!  Wow, she is really incrediuble.", "She co-owns the dolphins and was a pro at 13!  Wow, she is really increduble.", "She co-owns the dolphins and was a pro at 13!  Wow, she is really incredoible.", "She co-owns the dolphins and was a pro at 13!  Wow, she is really incredioble.", "She co-owns the dolphins and was a pro at 13!  Wow, she is really incredoble.", "She co-owns the dolphins and was a pro at 13!  Wow, she is really incredble.", "She co-owns the dolphins and was a pro at 13!  Wow, she is really incredivble.", "She co-owns the dolphins and was a pro at 13!  Wow, she is really incredibvle.", "She co-owns the dolphins and was a pro at 13!  Wow, she is really incredivle.", "She co-owns the dolphins and was a pro at 13!  Wow, she is really incredinble.", "She co-owns the dolphins and was a pro at 13!  Wow, she is really incredibnle.", "She co-owns the dolphins and was a pro at 13!  Wow, she is really incredinle.", "She co-owns the dolphins and was a pro at 13!  Wow, she is really incredile.", "She co-owns the dolphins and was a pro at 13!  Wow, she is really incredibkle.", "She co-owns the dolphins and was a pro at 13!  Wow, she is really incrediblke.", "She co-owns the dolphins and was a pro at 13!  Wow, she is really incredibke.", "She co-owns the dolphins and was a pro at 13!  Wow, she is really incredibe."];
+
+			const outputElement = document.getElementById("output");
+			const startButton = document.getElementById("startButton");
+			const stopButton = document.getElementById("stopButton");
+			const stringLaps = document.getElementById("stringLaps");
+
+			let currentIndex = 0;
+			var intervalId;
+
+			function updateText() {
+				outputElement.textContent = strings[currentIndex];
+				currentIndex = (currentIndex + 1) % strings.length;
+			}
+
+			function startAlternating() {
+				stringLaps.style.display = "none"; // Hide the "String laps" text
+				document.getElementById("buttons").style.display = "none"; // Hide the buttons
+				// intervalId = setInterval(updateText, 300);
+				setTimeout(() => {
+					clearInterval(intervalId);
+					stringLaps.style.display = "none"; // Hide the "String laps" text
+					document.getElementById("buttons").style.display = "none"; // Hide the buttons
+					intervalId = setInterval(updateText, 300);
+				}, 6000); // Start animation after a 2-second delay
+			}
+
+			function stopAlternating() {
+				clearInterval(intervalId);
+				stringLaps.style.display = "block"; // Show the "String laps" text
+				document.getElementById("buttons").style.display = "flex"; // Show the buttons
+			}
+
+			startButton.addEventListener("click", startAlternating);
+			stopButton.addEventListener("click", stopAlternating);
+
+			updateText(); // Initial update
+		</script>
+	</body>
+</html>

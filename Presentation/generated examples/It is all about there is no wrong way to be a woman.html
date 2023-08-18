@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>String Alternator</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				height: 100vh;
+				margin: 0;
+				background-color: #fff;
+			}
+			#output {
+				font-size: 24px;
+				text-align: center;
+				margin-bottom: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div
+			style="
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+			"
+		>
+			<div id="stringLaps" style="display: block">String laps</div>
+			<div id="output">Initial Text</div>
+			<div id="buttons">
+				<button id="startButton">Start</button>
+				<button id="stopButton">Stop</button>
+			</div>
+		</div>
+		<script>
+			const strings = ["It is all about there is no wrong way to be a woman.", "It is all avbout there is no wrong way to be a woman.", "It is all abvout there is no wrong way to be a woman.", "It is all avout there is no wrong way to be a woman.", "It is all anbout there is no wrong way to be a woman.", "It is all abnout there is no wrong way to be a woman.", "It is all anout there is no wrong way to be a woman.", "It is all aout there is no wrong way to be a woman.", "It is all abiout there is no wrong way to be a woman.", "It is all abput there is no wrong way to be a woman.", "It is all aboyut there is no wrong way to be a woman.", "It is all abouit there is no wrong way to be a woman.", "It is all about tghere is no wrong way to be a woman.", "It is all about thgere is no wrong way to be a woman.", "It is all about tgere is no wrong way to be a woman.", "It is all about tjhere is no wrong way to be a woman.", "It is all about thjere is no wrong way to be a woman.", "It is all about tjere is no wrong way to be a woman.", "It is all about thwere is no wrong way to be a woman.", "It is all about thewre is no wrong way to be a woman.", "It is all about thwre is no wrong way to be a woman.", "It is all about thetre is no wrong way to be a woman.", "It is all about therte is no wrong way to be a woman.", "It is all about thete is no wrong way to be a woman.", "It is all about there is no wreong way to be a woman.", "It is all about there is no wtrong way to be a woman.", "It is all about there is no wrtong way to be a woman.", "It is all about there is no wtong way to be a woman.", "It is all about there is no wrpng way to be a woman.", "It is all about there is no wrobng way to be a woman.", "It is all about there is no wronbg way to be a woman.", "It is all about there is no wrobg way to be a woman.", "It is all about there is no wromg way to be a woman.", "It is all about there is no wrog way to be a woman.", "It is all about there is no wrong wsay to be a woman.", "It is all about there is no wrong wsy to be a woman.", "It is all about there is no wrong way to be a wioman.", "It is all about there is no wrong way to be a woiman.", "It is all about there is no wrong way to be a wiman.", "It is all about there is no wrong way to be a wpman.", "It is all about there is no wrong way to be a wman.", "It is all about there is no wrong way to be a wonman.", "It is all about there is no wrong way to be a womnan.", "It is all about there is no wrong way to be a wonan.", "It is all about there is no wrong way to be a woan.", "It is all about there is no wrong way to be a womsan.", "It is all about there is no wrong way to be a womasn.", "It is all about there is no wrong way to be a womsn.", "It is all about there is no wrong way to be a womn."];
+
+			const outputElement = document.getElementById("output");
+			const startButton = document.getElementById("startButton");
+			const stopButton = document.getElementById("stopButton");
+			const stringLaps = document.getElementById("stringLaps");
+
+			let currentIndex = 0;
+			var intervalId;
+
+			function updateText() {
+				outputElement.textContent = strings[currentIndex];
+				currentIndex = (currentIndex + 1) % strings.length;
+			}
+
+			function startAlternating() {
+				stringLaps.style.display = "none"; // Hide the "String laps" text
+				document.getElementById("buttons").style.display = "none"; // Hide the buttons
+				// intervalId = setInterval(updateText, 300);
+				setTimeout(() => {
+					clearInterval(intervalId);
+					stringLaps.style.display = "none"; // Hide the "String laps" text
+					document.getElementById("buttons").style.display = "none"; // Hide the buttons
+					intervalId = setInterval(updateText, 300);
+				}, 6000); // Start animation after a 2-second delay
+			}
+
+			function stopAlternating() {
+				clearInterval(intervalId);
+				stringLaps.style.display = "block"; // Show the "String laps" text
+				document.getElementById("buttons").style.display = "flex"; // Show the buttons
+			}
+
+			startButton.addEventListener("click", startAlternating);
+			stopButton.addEventListener("click", stopAlternating);
+
+			updateText(); // Initial update
+		</script>
+	</body>
+</html>

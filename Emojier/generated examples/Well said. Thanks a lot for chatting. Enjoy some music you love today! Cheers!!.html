@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>String Alternator</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				height: 100vh;
+				margin: 0;
+				background-color: #fff;
+			}
+			#output {
+				font-size: 24px;
+				text-align: center;
+				margin-bottom: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div
+			style="
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+			"
+		>
+			<div id="stringLaps" style="display: block">String laps</div>
+			<div id="output">Initial Text</div>
+			<div id="buttons">
+				<button id="startButton">Start</button>
+				<button id="stopButton">Stop</button>
+			</div>
+		</div>
+		<script>
+			const strings = [" Well said. Thanks a lot for chatting. Enjoy some music you love today! Cheers!!", " Well said \ud83d\udc4c\ud83d\udc4c\ud83d\udc4c. Thanks a lot for chatting. Enjoy some music you love today! Cheers!!", " Well said \ud83d\udc4c. Thanks a lot for chatting. Enjoy some music you love today! Cheers!!", " Well said \ud83d\udcaf\ud83d\udcaf. Thanks a lot for chatting. Enjoy some music you love today! Cheers!!", " Well said \ud83d\ude42\ud83d\ude42\ud83d\ude42. Thanks a lot for chatting. Enjoy some music you love today! Cheers!!", " Well said \ud83d\ude42. Thanks a lot for chatting. Enjoy some music you love today! Cheers!!", " Well said \ud83d\ude0a\ud83d\ude0a. Thanks a lot for chatting. Enjoy some music you love today! Cheers!!", " Well said \ud83d\ude0a. Thanks a lot for chatting. Enjoy some music you love today! Cheers!!", " Well said \ud83d\ude0a\ud83d\ude0a\ud83d\ude0a. Thanks a lot for chatting. Enjoy some music you love today! Cheers!!", " Well said \ud83d\ude42\ud83d\ude42. Thanks a lot for chatting. Enjoy some music you love today! Cheers!!", " Well said \ud83d\udcaf. Thanks a lot for chatting. Enjoy some music you love today! Cheers!!", " Well said \ud83d\udcaf\ud83d\udcaf\ud83d\udcaf. Thanks a lot for chatting. Enjoy some music you love today! Cheers!!", " Well said \ud83d\udc4c\ud83d\udc4c. Thanks a lot for chatting. Enjoy some music you love today! Cheers!!", " Well said. Thanks \ud83d\ude42\ud83d\ude42\ud83d\ude42 a lot for chatting. Enjoy some music you love today! Cheers!!", " Well said. Thanks \ud83d\ude42 a lot for chatting. Enjoy some music you love today! Cheers!!", " Well said. Thanks \ud83d\ude0a\ud83d\ude0a a lot for chatting. Enjoy some music you love today! Cheers!!", " Well said. Thanks \ud83d\ude0a a lot for chatting. Enjoy some music you love today! Cheers!!", " Well said. Thanks \ud83d\ude0a\ud83d\ude0a\ud83d\ude0a a lot for chatting. Enjoy some music you love today! Cheers!!", " Well said. Thanks \ud83d\ude42\ud83d\ude42 a lot for chatting. Enjoy some music you love today! Cheers!!", " Well said. Thanks a lot \ud83d\ude42\ud83d\ude42\ud83d\ude42 for chatting. Enjoy some music you love today! Cheers!!", " Well said. Thanks a lot \ud83d\ude42 for chatting. Enjoy some music you love today! Cheers!!", " Well said. Thanks a lot \ud83d\ude0a\ud83d\ude0a for chatting. Enjoy some music you love today! Cheers!!", " Well said. Thanks a lot \ud83d\ude0a for chatting. Enjoy some music you love today! Cheers!!", " Well said. Thanks a lot \ud83d\ude0a\ud83d\ude0a\ud83d\ude0a for chatting. Enjoy some music you love today! Cheers!!", " Well said. Thanks a lot \ud83d\ude42\ud83d\ude42 for chatting. Enjoy some music you love today! Cheers!!", " Well said. Thanks a lot for chatting \ud83d\ude19\ud83d\ude19\ud83d\ude19. Enjoy some music you love today! Cheers!!", " Well said. Thanks a lot for chatting \ud83d\ude19. Enjoy some music you love today! Cheers!!", " Well said. Thanks a lot for chatting \ud83d\ude1a\ud83d\ude1a. Enjoy some music you love today! Cheers!!", " Well said. Thanks a lot for chatting \ud83d\ude17\ud83d\ude17\ud83d\ude17. Enjoy some music you love today! Cheers!!", " Well said. Thanks a lot for chatting \ud83d\ude17. Enjoy some music you love today! Cheers!!", " Well said. Thanks a lot for chatting \ud83d\ude18\ud83d\ude18. Enjoy some music you love today! Cheers!!", " Well said. Thanks a lot for chatting \ud83d\ude42\ud83d\ude42\ud83d\ude42. Enjoy some music you love today! Cheers!!", " Well said. Thanks a lot for chatting \ud83d\ude42. Enjoy some music you love today! Cheers!!", " Well said. Thanks a lot for chatting \ud83d\ude0a\ud83d\ude0a. Enjoy some music you love today! Cheers!!", " Well said. Thanks a lot for chatting \ud83d\ude0a. Enjoy some music you love today! Cheers!!", " Well said. Thanks a lot for chatting \ud83d\ude0a\ud83d\ude0a\ud83d\ude0a. Enjoy some music you love today! Cheers!!", " Well said. Thanks a lot for chatting \ud83d\ude42\ud83d\ude42. Enjoy some music you love today! Cheers!!", " Well said. Thanks a lot for chatting \ud83d\ude18. Enjoy some music you love today! Cheers!!", " Well said. Thanks a lot for chatting \ud83d\ude18\ud83d\ude18\ud83d\ude18. Enjoy some music you love today! Cheers!!", " Well said. Thanks a lot for chatting \ud83d\ude17\ud83d\ude17. Enjoy some music you love today! Cheers!!", " Well said. Thanks a lot for chatting \ud83d\ude1a. Enjoy some music you love today! Cheers!!", " Well said. Thanks a lot for chatting \ud83d\ude1a\ud83d\ude1a\ud83d\ude1a. Enjoy some music you love today! Cheers!!", " Well said. Thanks a lot for chatting \ud83d\ude19\ud83d\ude19. Enjoy some music you love today! Cheers!!", " Well said. Thanks a lot for chatting. Enjoy \ud83d\ude19\ud83d\ude19\ud83d\ude19 some music you love today! Cheers!!", " Well said. Thanks a lot for chatting. Enjoy \ud83d\ude19 some music you love today! Cheers!!", " Well said. Thanks a lot for chatting. Enjoy \ud83d\ude1a\ud83d\ude1a some music you love today! Cheers!!", " Well said. Thanks a lot for chatting. Enjoy \ud83d\ude17\ud83d\ude17\ud83d\ude17 some music you love today! Cheers!!", " Well said. Thanks a lot for chatting. Enjoy \ud83d\ude17 some music you love today! Cheers!!", " Well said. Thanks a lot for chatting. Enjoy \ud83d\ude18\ud83d\ude18 some music you love today! Cheers!!", " Well said. Thanks a lot for chatting. Enjoy \ud83d\ude42\ud83d\ude42\ud83d\ude42 some music you love today! Cheers!!", " Well said. Thanks a lot for chatting. Enjoy \ud83d\ude42 some music you love today! Cheers!!", " Well said. Thanks a lot for chatting. Enjoy \ud83d\ude0a\ud83d\ude0a some music you love today! Cheers!!", " Well said. Thanks a lot for chatting. Enjoy \ud83d\ude0a some music you love today! Cheers!!", " Well said. Thanks a lot for chatting. Enjoy \ud83d\ude0a\ud83d\ude0a\ud83d\ude0a some music you love today! Cheers!!", " Well said. Thanks a lot for chatting. Enjoy \ud83d\ude42\ud83d\ude42 some music you love today! Cheers!!", " Well said. Thanks a lot for chatting. Enjoy \ud83d\ude18 some music you love today! Cheers!!", " Well said. Thanks a lot for chatting. Enjoy \ud83d\ude18\ud83d\ude18\ud83d\ude18 some music you love today! Cheers!!", " Well said. Thanks a lot for chatting. Enjoy \ud83d\ude17\ud83d\ude17 some music you love today! Cheers!!", " Well said. Thanks a lot for chatting. Enjoy \ud83d\ude1a some music you love today! Cheers!!", " Well said. Thanks a lot for chatting. Enjoy \ud83d\ude1a\ud83d\ude1a\ud83d\ude1a some music you love today! Cheers!!", " Well said. Thanks a lot for chatting. Enjoy \ud83d\ude19\ud83d\ude19 some music you love today! Cheers!!", " Well said. Thanks a lot for chatting. Enjoy some music \ud83d\ude42\ud83d\ude42\ud83d\ude42 you love today! Cheers!!", " Well said. Thanks a lot for chatting. Enjoy some music \ud83d\ude42 you love today! Cheers!!", " Well said. Thanks a lot for chatting. Enjoy some music \ud83d\ude0a\ud83d\ude0a you love today! Cheers!!", " Well said. Thanks a lot for chatting. Enjoy some music \ud83d\ude0a you love today! Cheers!!", " Well said. Thanks a lot for chatting. Enjoy some music \ud83d\ude0a\ud83d\ude0a\ud83d\ude0a you love today! Cheers!!", " Well said. Thanks a lot for chatting. Enjoy some music \ud83d\ude42\ud83d\ude42 you love today! Cheers!!", " Well said. Thanks a lot for chatting. Enjoy some music you love \ud83d\ude42\ud83d\ude42\ud83d\ude42 today! Cheers!!", " Well said. Thanks a lot for chatting. Enjoy some music you love \ud83d\ude42 today! Cheers!!", " Well said. Thanks a lot for chatting. Enjoy some music you love \ud83d\ude0a\ud83d\ude0a today! Cheers!!", " Well said. Thanks a lot for chatting. Enjoy some music you love \ud83d\ude0a today! Cheers!!", " Well said. Thanks a lot for chatting. Enjoy some music you love \ud83d\ude0a\ud83d\ude0a\ud83d\ude0a today! Cheers!!", " Well said. Thanks a lot for chatting. Enjoy some music you love \ud83d\ude42\ud83d\ude42 today! Cheers!!", " Well said. Thanks a lot for chatting. Enjoy some music you love today \ud83d\ude19\ud83d\ude19\ud83d\ude19! Cheers!!", " Well said. Thanks a lot for chatting. Enjoy some music you love today \ud83d\ude19! Cheers!!", " Well said. Thanks a lot for chatting. Enjoy some music you love today \ud83d\ude1a\ud83d\ude1a! Cheers!!", " Well said. Thanks a lot for chatting. Enjoy some music you love today \ud83d\ude17\ud83d\ude17\ud83d\ude17! Cheers!!", " Well said. Thanks a lot for chatting. Enjoy some music you love today \ud83d\ude17! Cheers!!", " Well said. Thanks a lot for chatting. Enjoy some music you love today \ud83d\ude18\ud83d\ude18! Cheers!!", " Well said. Thanks a lot for chatting. Enjoy some music you love today \ud83d\ude42\ud83d\ude42\ud83d\ude42! Cheers!!", " Well said. Thanks a lot for chatting. Enjoy some music you love today \ud83d\ude42! Cheers!!", " Well said. Thanks a lot for chatting. Enjoy some music you love today \ud83d\ude0a\ud83d\ude0a! Cheers!!", " Well said. Thanks a lot for chatting. Enjoy some music you love today \ud83d\ude0a! Cheers!!", " Well said. Thanks a lot for chatting. Enjoy some music you love today \ud83d\ude0a\ud83d\ude0a\ud83d\ude0a! Cheers!!", " Well said. Thanks a lot for chatting. Enjoy some music you love today \ud83d\ude42\ud83d\ude42! Cheers!!", " Well said. Thanks a lot for chatting. Enjoy some music you love today \ud83d\ude18! Cheers!!", " Well said. Thanks a lot for chatting. Enjoy some music you love today \ud83d\ude18\ud83d\ude18\ud83d\ude18! Cheers!!", " Well said. Thanks a lot for chatting. Enjoy some music you love today \ud83d\ude17\ud83d\ude17! Cheers!!", " Well said. Thanks a lot for chatting. Enjoy some music you love today \ud83d\ude1a! Cheers!!", " Well said. Thanks a lot for chatting. Enjoy some music you love today \ud83d\ude1a\ud83d\ude1a\ud83d\ude1a! Cheers!!", " Well said. Thanks a lot for chatting. Enjoy some music you love today \ud83d\ude19\ud83d\ude19! Cheers!!", " Well said. Thanks a lot for chatting. Enjoy some music you love today! Cheers \ud83d\ude19\ud83d\ude19\ud83d\ude19!!", " Well said. Thanks a lot for chatting. Enjoy some music you love today! Cheers \ud83d\ude19!!", " Well said. Thanks a lot for chatting. Enjoy some music you love today! Cheers \ud83d\ude1a\ud83d\ude1a!!", " Well said. Thanks a lot for chatting. Enjoy some music you love today! Cheers \ud83d\ude17\ud83d\ude17\ud83d\ude17!!", " Well said. Thanks a lot for chatting. Enjoy some music you love today! Cheers \ud83d\ude17!!", " Well said. Thanks a lot for chatting. Enjoy some music you love today! Cheers \ud83d\ude18\ud83d\ude18!!", " Well said. Thanks a lot for chatting. Enjoy some music you love today! Cheers \ud83d\ude42\ud83d\ude42\ud83d\ude42!!", " Well said. Thanks a lot for chatting. Enjoy some music you love today! Cheers \ud83d\ude42!!", " Well said. Thanks a lot for chatting. Enjoy some music you love today! Cheers \ud83d\ude0a\ud83d\ude0a!!", " Well said. Thanks a lot for chatting. Enjoy some music you love today! Cheers \ud83d\ude0a!!", " Well said. Thanks a lot for chatting. Enjoy some music you love today! Cheers \ud83d\ude0a\ud83d\ude0a\ud83d\ude0a!!", " Well said. Thanks a lot for chatting. Enjoy some music you love today! Cheers \ud83d\ude42\ud83d\ude42!!", " Well said. Thanks a lot for chatting. Enjoy some music you love today! Cheers \ud83d\ude18!!", " Well said. Thanks a lot for chatting. Enjoy some music you love today! Cheers \ud83d\ude18\ud83d\ude18\ud83d\ude18!!", " Well said. Thanks a lot for chatting. Enjoy some music you love today! Cheers \ud83d\ude17\ud83d\ude17!!", " Well said. Thanks a lot for chatting. Enjoy some music you love today! Cheers \ud83d\ude1a!!", " Well said. Thanks a lot for chatting. Enjoy some music you love today! Cheers \ud83d\ude1a\ud83d\ude1a\ud83d\ude1a!!", " Well said. Thanks a lot for chatting. Enjoy some music you love today! Cheers \ud83d\ude19\ud83d\ude19!!"];
+
+			const outputElement = document.getElementById("output");
+			const startButton = document.getElementById("startButton");
+			const stopButton = document.getElementById("stopButton");
+			const stringLaps = document.getElementById("stringLaps");
+
+			let currentIndex = 0;
+			var intervalId;
+
+			function updateText() {
+				outputElement.textContent = strings[currentIndex];
+				currentIndex = (currentIndex + 1) % strings.length;
+			}
+
+			function startAlternating() {
+				stringLaps.style.display = "none"; // Hide the "String laps" text
+				document.getElementById("buttons").style.display = "none"; // Hide the buttons
+				// intervalId = setInterval(updateText, 300);
+				setTimeout(() => {
+					clearInterval(intervalId);
+					stringLaps.style.display = "none"; // Hide the "String laps" text
+					document.getElementById("buttons").style.display = "none"; // Hide the buttons
+					intervalId = setInterval(updateText, 300);
+				}, 6000); // Start animation after a 2-second delay
+			}
+
+			function stopAlternating() {
+				clearInterval(intervalId);
+				stringLaps.style.display = "block"; // Show the "String laps" text
+				document.getElementById("buttons").style.display = "flex"; // Show the buttons
+			}
+
+			startButton.addEventListener("click", startAlternating);
+			stopButton.addEventListener("click", stopAlternating);
+
+			updateText(); // Initial update
+		</script>
+	</body>
+</html>

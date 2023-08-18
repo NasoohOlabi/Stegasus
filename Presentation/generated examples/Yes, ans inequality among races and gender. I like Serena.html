@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>String Alternator</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				height: 100vh;
+				margin: 0;
+				background-color: #fff;
+			}
+			#output {
+				font-size: 24px;
+				text-align: center;
+				margin-bottom: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div
+			style="
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+			"
+		>
+			<div id="stringLaps" style="display: block">String laps</div>
+			<div id="output">Initial Text</div>
+			<div id="buttons">
+				<button id="startButton">Start</button>
+				<button id="stopButton">Stop</button>
+			</div>
+		</div>
+		<script>
+			const strings = ["Yes, ans inequality among races and gender. I like Serena.", "YEs, ans inequality among races and gender. I like Serena.", "Ywes, ans inequality among races and gender. I like Serena.", "Ys, ans inequality among races and gender. I like Serena.", "Yes, ans ibnequality among races and gender. I like Serena.", "Yes, ans inbequality among races and gender. I like Serena.", "Yes, ans ibequality among races and gender. I like Serena.", "Yes, ans imequality among races and gender. I like Serena.", "Yes, ans iequality among races and gender. I like Serena.", "Yes, ans inwequality among races and gender. I like Serena.", "Yes, ans inrequality among races and gender. I like Serena.", "Yes, ans inerquality among races and gender. I like Serena.", "Yes, ans inrquality among races and gender. I like Serena.", "Yes, ans inquality among races and gender. I like Serena.", "Yes, ans ineqwuality among races and gender. I like Serena.", "Yes, ans ineuality among races and gender. I like Serena.", "Yes, ans ineqyuality among races and gender. I like Serena.", "Yes, ans inequyality among races and gender. I like Serena.", "Yes, ans ineqyality among races and gender. I like Serena.", "Yes, ans ineqiuality among races and gender. I like Serena.", "Yes, ans inequiality among races and gender. I like Serena.", "Yes, ans ineqiality among races and gender. I like Serena.", "Yes, ans ineqality among races and gender. I like Serena.", "Yes, ans inequsality among races and gender. I like Serena.", "Yes, ans inequaslity among races and gender. I like Serena.", "Yes, ans inequslity among races and gender. I like Serena.", "Yes, ans inequlity among races and gender. I like Serena.", "Yes, ans inequaklity among races and gender. I like Serena.", "Yes, ans inequalkity among races and gender. I like Serena.", "Yes, ans inequakity among races and gender. I like Serena.", "Yes, ans inequaity among races and gender. I like Serena.", "Yes, ans inequaluity among races and gender. I like Serena.", "Yes, ans inequaliuty among races and gender. I like Serena.", "Yes, ans inequaluty among races and gender. I like Serena.", "Yes, ans inequaloity among races and gender. I like Serena.", "Yes, ans inequalioty among races and gender. I like Serena.", "Yes, ans inequaloty among races and gender. I like Serena.", "Yes, ans inequalty among races and gender. I like Serena.", "Yes, ans inequalirty among races and gender. I like Serena.", "Yes, ans inequalitry among races and gender. I like Serena.", "Yes, ans inequaliry among races and gender. I like Serena.", "Yes, ans inequaliy among races and gender. I like Serena.", "Yes, ans inequality anmong races and gender. I like Serena.", "Yes, ans inequality amnong races and gender. I like Serena.", "Yes, ans inequality anong races and gender. I like Serena.", "Yes, ans inequality amiong races and gender. I like Serena.", "Yes, ans inequality amoing races and gender. I like Serena.", "Yes, ans inequality amng races and gender. I like Serena.", "Yes, ans inequality amobng races and gender. I like Serena.", "Yes, ans inequality amonbg races and gender. I like Serena.", "Yes, ans inequality amobg races and gender. I like Serena.", "Yes, ans inequality amog races and gender. I like Serena.", "Yes, ans inequality among rsaces and gender. I like Serena.", "Yes, ans inequality among rasces and gender. I like Serena.", "Yes, ans inequality among rsces and gender. I like Serena.", "Yes, ans inequality among raxces and gender. I like Serena.", "Yes, ans inequality among racxes and gender. I like Serena.", "Yes, ans inequality among raxes and gender. I like Serena.", "Yes, ans inequality among racwes and gender. I like Serena.", "Yes, ans inequality among racews and gender. I like Serena.", "Yes, ans inequality among racws and gender. I like Serena.", "Yes, ans inequality among racres and gender. I like Serena.", "Yes, ans inequality among racs and gender. I like Serena.", "Yes, ans inequality among races abnd gender. I like Serena.", "Yes, ans inequality among races anbd gender. I like Serena.", "Yes, ans inequality among races and gwender. I like Serena.", "Yes, ans inequality among races and gewnder. I like Serena.", "Yes, ans inequality among races and gwnder. I like Serena.", "Yes, ans inequality among races and grender. I like Serena.", "Yes, ans inequality among races and gernder. I like Serena.", "Yes, ans inequality among races and gebnder. I like Serena.", "Yes, ans inequality among races and genbder. I like Serena.", "Yes, ans inequality among races and gebder. I like Serena.", "Yes, ans inequality among races and gemder. I like Serena.", "Yes, ans inequality among races and geder. I like Serena.", "Yes, ans inequality among races and gensder. I like Serena.", "Yes, ans inequality among races and gendser. I like Serena.", "Yes, ans inequality among races and genser. I like Serena.", "Yes, ans inequality among races and genfder. I like Serena.", "Yes, ans inequality among races and gendfer. I like Serena.", "Yes, ans inequality among races and genfer. I like Serena.", "Yes, ans inequality among races and gener. I like Serena.", "Yes, ans inequality among races and gendwer. I like Serena.", "Yes, ans inequality among races and gendewr. I like Serena.", "Yes, ans inequality among races and gendwr. I like Serena.", "Yes, ans inequality among races and gendr. I like Serena.", "Yes, ans inequality among races and gender. I luike Serena.", "Yes, ans inequality among races and gender. I liuke Serena.", "Yes, ans inequality among races and gender. I luke Serena.", "Yes, ans inequality among races and gender. I loike Serena.", "Yes, ans inequality among races and gender. I lioke Serena.", "Yes, ans inequality among races and gender. I loke Serena.", "Yes, ans inequality among races and gender. I lke Serena.", "Yes, ans inequality among races and gender. I lijke Serena.", "Yes, ans inequality among races and gender. I likje Serena.", "Yes, ans inequality among races and gender. I lije Serena.", "Yes, ans inequality among races and gender. I like SErena.", "Yes, ans inequality among races and gender. I like Swerena.", "Yes, ans inequality among races and gender. I like Sewrena.", "Yes, ans inequality among races and gender. I like Swrena.", "Yes, ans inequality among races and gender. I like Srena.", "Yes, ans inequality among races and gender. I like Setrena.", "Yes, ans inequality among races and gender. I like Sertena.", "Yes, ans inequality among races and gender. I like Setena.", "Yes, ans inequality among races and gender. I like Serna.", "Yes, ans inequality among races and gender. I like Serebna.", "Yes, ans inequality among races and gender. I like Serenba.", "Yes, ans inequality among races and gender. I like Sereba.", "Yes, ans inequality among races and gender. I like Serema.", "Yes, ans inequality among races and gender. I like Serea."];
+
+			const outputElement = document.getElementById("output");
+			const startButton = document.getElementById("startButton");
+			const stopButton = document.getElementById("stopButton");
+			const stringLaps = document.getElementById("stringLaps");
+
+			let currentIndex = 0;
+			var intervalId;
+
+			function updateText() {
+				outputElement.textContent = strings[currentIndex];
+				currentIndex = (currentIndex + 1) % strings.length;
+			}
+
+			function startAlternating() {
+				stringLaps.style.display = "none"; // Hide the "String laps" text
+				document.getElementById("buttons").style.display = "none"; // Hide the buttons
+				// intervalId = setInterval(updateText, 300);
+				setTimeout(() => {
+					clearInterval(intervalId);
+					stringLaps.style.display = "none"; // Hide the "String laps" text
+					document.getElementById("buttons").style.display = "none"; // Hide the buttons
+					intervalId = setInterval(updateText, 300);
+				}, 6000); // Start animation after a 2-second delay
+			}
+
+			function stopAlternating() {
+				clearInterval(intervalId);
+				stringLaps.style.display = "block"; // Show the "String laps" text
+				document.getElementById("buttons").style.display = "flex"; // Show the buttons
+			}
+
+			startButton.addEventListener("click", startAlternating);
+			stopButton.addEventListener("click", stopAlternating);
+
+			updateText(); // Initial update
+		</script>
+	</body>
+</html>

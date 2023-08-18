@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>String Alternator</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				height: 100vh;
+				margin: 0;
+				background-color: #fff;
+			}
+			#output {
+				font-size: 24px;
+				text-align: center;
+				margin-bottom: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div
+			style="
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+			"
+		>
+			<div id="stringLaps" style="display: block">String laps</div>
+			<div id="output">Initial Text</div>
+			<div id="buttons">
+				<button id="startButton">Start</button>
+				<button id="stopButton">Stop</button>
+			</div>
+		</div>
+		<script>
+			const strings = ["I think it has been great for the country. people have come to realize the power of the vote.", "I tghink it has been great for the country. people have come to realize the power of the vote.", "I thgink it has been great for the country. people have come to realize the power of the vote.", "I tgink it has been great for the country. people have come to realize the power of the vote.", "I tjhink it has been great for the country. people have come to realize the power of the vote.", "I thjink it has been great for the country. people have come to realize the power of the vote.", "I tjink it has been great for the country. people have come to realize the power of the vote.", "I tink it has been great for the country. people have come to realize the power of the vote.", "I thuink it has been great for the country. people have come to realize the power of the vote.", "I thiunk it has been great for the country. people have come to realize the power of the vote.", "I thoink it has been great for the country. people have come to realize the power of the vote.", "I thionk it has been great for the country. people have come to realize the power of the vote.", "I thonk it has been great for the country. people have come to realize the power of the vote.", "I thibnk it has been great for the country. people have come to realize the power of the vote.", "I thinbk it has been great for the country. people have come to realize the power of the vote.", "I thibk it has been great for the country. people have come to realize the power of the vote.", "I thimk it has been great for the country. people have come to realize the power of the vote.", "I thik it has been great for the country. people have come to realize the power of the vote.", "I think it has been gtreat for the country. people have come to realize the power of the vote.", "I think it has been grteat for the country. people have come to realize the power of the vote.", "I think it has been gteat for the country. people have come to realize the power of the vote.", "I think it has been geat for the country. people have come to realize the power of the vote.", "I think it has been grweat for the country. people have come to realize the power of the vote.", "I think it has been grewat for the country. people have come to realize the power of the vote.", "I think it has been grwat for the country. people have come to realize the power of the vote.", "I think it has been gresat for the country. people have come to realize the power of the vote.", "I think it has been greast for the country. people have come to realize the power of the vote.", "I think it has been grest for the country. people have come to realize the power of the vote.", "I think it has been gret for the country. people have come to realize the power of the vote.", "I think it has been great fior the country. people have come to realize the power of the vote.", "I think it has been great foir the country. people have come to realize the power of the vote.", "I think it has been great fpr the country. people have come to realize the power of the vote.", "I think it has been great for tghe country. people have come to realize the power of the vote.", "I think it has been great for thge country. people have come to realize the power of the vote.", "I think it has been great for tge country. people have come to realize the power of the vote.", "I think it has been great for tjhe country. people have come to realize the power of the vote.", "I think it has been great for thje country. people have come to realize the power of the vote.", "I think it has been great for tje country. people have come to realize the power of the vote.", "I think it has been great for the ciountry. people have come to realize the power of the vote.", "I think it has been great for the cpuntry. people have come to realize the power of the vote.", "I think it has been great for the cuntry. people have come to realize the power of the vote.", "I think it has been great for the coyuntry. people have come to realize the power of the vote.", "I think it has been great for the couyntry. people have come to realize the power of the vote.", "I think it has been great for the coyntry. people have come to realize the power of the vote.", "I think it has been great for the couintry. people have come to realize the power of the vote.", "I think it has been great for the contry. people have come to realize the power of the vote.", "I think it has been great for the coubntry. people have come to realize the power of the vote.", "I think it has been great for the counbtry. people have come to realize the power of the vote.", "I think it has been great for the coubtry. people have come to realize the power of the vote.", "I think it has been great for the coumtry. people have come to realize the power of the vote.", "I think it has been great for the coutry. people have come to realize the power of the vote.", "I think it has been great for the counytry. people have come to realize the power of the vote.", "I think it has been great for the countyry. people have come to realize the power of the vote.", "I think it has been great for the counyry. people have come to realize the power of the vote.", "I think it has been great for the counry. people have come to realize the power of the vote.", "I think it has been great for the countery. people have come to realize the power of the vote.", "I think it has been great for the countrey. people have come to realize the power of the vote.", "I think it has been great for the countey. people have come to realize the power of the vote.", "I think it has been great for the country. people hsave come to realize the power of the vote.", "I think it has been great for the country. people hasve come to realize the power of the vote.", "I think it has been great for the country. people hsve come to realize the power of the vote.", "I think it has been great for the country. people hacve come to realize the power of the vote.", "I think it has been great for the country. people havce come to realize the power of the vote.", "I think it has been great for the country. people hace come to realize the power of the vote.", "I think it has been great for the country. people habve come to realize the power of the vote.", "I think it has been great for the country. people havbe come to realize the power of the vote.", "I think it has been great for the country. people habe come to realize the power of the vote.", "I think it has been great for the country. people have ciome to realize the power of the vote.", "I think it has been great for the country. people have coime to realize the power of the vote.", "I think it has been great for the country. people have cpme to realize the power of the vote.", "I think it has been great for the country. people have conme to realize the power of the vote.", "I think it has been great for the country. people have comne to realize the power of the vote.", "I think it has been great for the country. people have come to rwealize the power of the vote.", "I think it has been great for the country. people have come to rewalize the power of the vote.", "I think it has been great for the country. people have come to rwalize the power of the vote.", "I think it has been great for the country. people have come to ralize the power of the vote.", "I think it has been great for the country. people have come to resalize the power of the vote.", "I think it has been great for the country. people have come to reaslize the power of the vote.", "I think it has been great for the country. people have come to reslize the power of the vote.", "I think it has been great for the country. people have come to relize the power of the vote.", "I think it has been great for the country. people have come to reaklize the power of the vote.", "I think it has been great for the country. people have come to realkize the power of the vote.", "I think it has been great for the country. people have come to reakize the power of the vote.", "I think it has been great for the country. people have come to realuize the power of the vote.", "I think it has been great for the country. people have come to realiuze the power of the vote.", "I think it has been great for the country. people have come to realuze the power of the vote.", "I think it has been great for the country. people have come to realoize the power of the vote.", "I think it has been great for the country. people have come to realioze the power of the vote.", "I think it has been great for the country. people have come to realoze the power of the vote.", "I think it has been great for the country. people have come to realze the power of the vote.", "I think it has been great for the country. people have come to realixze the power of the vote.", "I think it has been great for the country. people have come to realizxe the power of the vote.", "I think it has been great for the country. people have come to realixe the power of the vote.", "I think it has been great for the country. people have come to realie the power of the vote.", "I think it has been great for the country. people have come to realize tghe power of the vote.", "I think it has been great for the country. people have come to realize thge power of the vote.", "I think it has been great for the country. people have come to realize tge power of the vote.", "I think it has been great for the country. people have come to realize tjhe power of the vote.", "I think it has been great for the country. people have come to realize thje power of the vote.", "I think it has been great for the country. people have come to realize tje power of the vote.", "I think it has been great for the country. people have come to realize the piower of the vote.", "I think it has been great for the country. people have come to realize the poiwer of the vote.", "I think it has been great for the country. people have come to realize the pwer of the vote.", "I think it has been great for the country. people have come to realize the poqer of the vote.", "I think it has been great for the country. people have come to realize the powr of the vote.", "I think it has been great for the country. people have come to realize the power of tghe vote.", "I think it has been great for the country. people have come to realize the power of thge vote.", "I think it has been great for the country. people have come to realize the power of tge vote.", "I think it has been great for the country. people have come to realize the power of tjhe vote.", "I think it has been great for the country. people have come to realize the power of thje vote.", "I think it has been great for the country. people have come to realize the power of tje vote.", "I think it has been great for the country. people have come to realize the power of the viote.", "I think it has been great for the country. people have come to realize the power of the voite.", "I think it has been great for the country. people have come to realize the power of the vpte.", "I think it has been great for the country. people have come to realize the power of the vte.", "I think it has been great for the country. people have come to realize the power of the vorte.", "I think it has been great for the country. people have come to realize the power of the voyte.", "I think it has been great for the country. people have come to realize the power of the votye.", "I think it has been great for the country. people have come to realize the power of the voye."];
+
+			const outputElement = document.getElementById("output");
+			const startButton = document.getElementById("startButton");
+			const stopButton = document.getElementById("stopButton");
+			const stringLaps = document.getElementById("stringLaps");
+
+			let currentIndex = 0;
+			var intervalId;
+
+			function updateText() {
+				outputElement.textContent = strings[currentIndex];
+				currentIndex = (currentIndex + 1) % strings.length;
+			}
+
+			function startAlternating() {
+				stringLaps.style.display = "none"; // Hide the "String laps" text
+				document.getElementById("buttons").style.display = "none"; // Hide the buttons
+				// intervalId = setInterval(updateText, 300);
+				setTimeout(() => {
+					clearInterval(intervalId);
+					stringLaps.style.display = "none"; // Hide the "String laps" text
+					document.getElementById("buttons").style.display = "none"; // Hide the buttons
+					intervalId = setInterval(updateText, 300);
+				}, 6000); // Start animation after a 2-second delay
+			}
+
+			function stopAlternating() {
+				clearInterval(intervalId);
+				stringLaps.style.display = "block"; // Show the "String laps" text
+				document.getElementById("buttons").style.display = "flex"; // Show the buttons
+			}
+
+			startButton.addEventListener("click", startAlternating);
+			stopButton.addEventListener("click", stopAlternating);
+
+			updateText(); // Initial update
+		</script>
+	</body>
+</html>

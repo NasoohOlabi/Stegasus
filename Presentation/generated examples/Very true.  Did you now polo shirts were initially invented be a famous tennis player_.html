@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>String Alternator</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				height: 100vh;
+				margin: 0;
+				background-color: #fff;
+			}
+			#output {
+				font-size: 24px;
+				text-align: center;
+				margin-bottom: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div
+			style="
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+			"
+		>
+			<div id="stringLaps" style="display: block">String laps</div>
+			<div id="output">Initial Text</div>
+			<div id="buttons">
+				<button id="startButton">Start</button>
+				<button id="stopButton">Stop</button>
+			</div>
+		</div>
+		<script>
+			const strings = ["Very true.  Did you now polo shirts were initially invented be a famous tennis player?", "VEry true.  Did you now polo shirts were initially invented be a famous tennis player?", "Vwery true.  Did you now polo shirts were initially invented be a famous tennis player?", "Vewry true.  Did you now polo shirts were initially invented be a famous tennis player?", "Vwry true.  Did you now polo shirts were initially invented be a famous tennis player?", "Vey true.  Did you now polo shirts were initially invented be a famous tennis player?", "Very terue.  Did you now polo shirts were initially invented be a famous tennis player?", "Very treue.  Did you now polo shirts were initially invented be a famous tennis player?", "Very teue.  Did you now polo shirts were initially invented be a famous tennis player?", "Very tryue.  Did you now polo shirts were initially invented be a famous tennis player?", "Very truye.  Did you now polo shirts were initially invented be a famous tennis player?", "Very trye.  Did you now polo shirts were initially invented be a famous tennis player?", "Very truie.  Did you now polo shirts were initially invented be a famous tennis player?", "Very true.  DId you now polo shirts were initially invented be a famous tennis player?", "Very true.  Diod you now polo shirts were initially invented be a famous tennis player?", "Very true.  Did yiou now polo shirts were initially invented be a famous tennis player?", "Very true.  Did ypu now polo shirts were initially invented be a famous tennis player?", "Very true.  Did yu now polo shirts were initially invented be a famous tennis player?", "Very true.  Did you niow polo shirts were initially invented be a famous tennis player?", "Very true.  Did you noiw polo shirts were initially invented be a famous tennis player?", "Very true.  Did you niw polo shirts were initially invented be a famous tennis player?", "Very true.  Did you npw polo shirts were initially invented be a famous tennis player?", "Very true.  Did you now piolo shirts were initially invented be a famous tennis player?", "Very true.  Did you now poilo shirts were initially invented be a famous tennis player?", "Very true.  Did you now pilo shirts were initially invented be a famous tennis player?", "Very true.  Did you now plo shirts were initially invented be a famous tennis player?", "Very true.  Did you now poklo shirts were initially invented be a famous tennis player?", "Very true.  Did you now polko shirts were initially invented be a famous tennis player?", "Very true.  Did you now poko shirts were initially invented be a famous tennis player?", "Very true.  Did you now polo sghirts were initially invented be a famous tennis player?", "Very true.  Did you now polo shgirts were initially invented be a famous tennis player?", "Very true.  Did you now polo sgirts were initially invented be a famous tennis player?", "Very true.  Did you now polo sjhirts were initially invented be a famous tennis player?", "Very true.  Did you now polo shjirts were initially invented be a famous tennis player?", "Very true.  Did you now polo sirts were initially invented be a famous tennis player?", "Very true.  Did you now polo shuirts were initially invented be a famous tennis player?", "Very true.  Did you now polo shiurts were initially invented be a famous tennis player?", "Very true.  Did you now polo shurts were initially invented be a famous tennis player?", "Very true.  Did you now polo shoirts were initially invented be a famous tennis player?", "Very true.  Did you now polo shiorts were initially invented be a famous tennis player?", "Very true.  Did you now polo shrts were initially invented be a famous tennis player?", "Very true.  Did you now polo shierts were initially invented be a famous tennis player?", "Very true.  Did you now polo shirets were initially invented be a famous tennis player?", "Very true.  Did you now polo shiets were initially invented be a famous tennis player?", "Very true.  Did you now polo shiryts were initially invented be a famous tennis player?", "Very true.  Did you now polo shirtys were initially invented be a famous tennis player?", "Very true.  Did you now polo shirys were initially invented be a famous tennis player?", "Very true.  Did you now polo shirts wetre initially invented be a famous tennis player?", "Very true.  Did you now polo shirts werte initially invented be a famous tennis player?", "Very true.  Did you now polo shirts wete initially invented be a famous tennis player?", "Very true.  Did you now polo shirts were ibnitially invented be a famous tennis player?", "Very true.  Did you now polo shirts were inbitially invented be a famous tennis player?", "Very true.  Did you now polo shirts were ibitially invented be a famous tennis player?", "Very true.  Did you now polo shirts were imitially invented be a famous tennis player?", "Very true.  Did you now polo shirts were iitially invented be a famous tennis player?", "Very true.  Did you now polo shirts were inuitially invented be a famous tennis player?", "Very true.  Did you now polo shirts were iniutially invented be a famous tennis player?", "Very true.  Did you now polo shirts were inutially invented be a famous tennis player?", "Very true.  Did you now polo shirts were inoitially invented be a famous tennis player?", "Very true.  Did you now polo shirts were iniotially invented be a famous tennis player?", "Very true.  Did you now polo shirts were inotially invented be a famous tennis player?", "Very true.  Did you now polo shirts were intially invented be a famous tennis player?", "Very true.  Did you now polo shirts were inirtially invented be a famous tennis player?", "Very true.  Did you now polo shirts were initrially invented be a famous tennis player?", "Very true.  Did you now polo shirts were inirially invented be a famous tennis player?", "Very true.  Did you now polo shirts were iniytially invented be a famous tennis player?", "Very true.  Did you now polo shirts were inityially invented be a famous tennis player?", "Very true.  Did you now polo shirts were iniyially invented be a famous tennis player?", "Very true.  Did you now polo shirts were iniially invented be a famous tennis player?", "Very true.  Did you now polo shirts were initally invented be a famous tennis player?", "Very true.  Did you now polo shirts were initisally invented be a famous tennis player?", "Very true.  Did you now polo shirts were initiaslly invented be a famous tennis player?", "Very true.  Did you now polo shirts were initislly invented be a famous tennis player?", "Very true.  Did you now polo shirts were initilly invented be a famous tennis player?", "Very true.  Did you now polo shirts were initialy invented be a famous tennis player?", "Very true.  Did you now polo shirts were initially ibnvented be a famous tennis player?", "Very true.  Did you now polo shirts were initially imvented be a famous tennis player?", "Very true.  Did you now polo shirts were initially ivented be a famous tennis player?", "Very true.  Did you now polo shirts were initially invbented be a famous tennis player?", "Very true.  Did you now polo shirts were initially invwented be a famous tennis player?", "Very true.  Did you now polo shirts were initially invewnted be a famous tennis player?", "Very true.  Did you now polo shirts were initially invwnted be a famous tennis player?", "Very true.  Did you now polo shirts were initially invrented be a famous tennis player?", "Very true.  Did you now polo shirts were initially invernted be a famous tennis player?", "Very true.  Did you now polo shirts were initially invrnted be a famous tennis player?", "Very true.  Did you now polo shirts were initially invnted be a famous tennis player?", "Very true.  Did you now polo shirts were initially invebnted be a famous tennis player?", "Very true.  Did you now polo shirts were initially invenbted be a famous tennis player?", "Very true.  Did you now polo shirts were initially invebted be a famous tennis player?", "Very true.  Did you now polo shirts were initially invemted be a famous tennis player?", "Very true.  Did you now polo shirts were initially invenrted be a famous tennis player?", "Very true.  Did you now polo shirts were initially invenyted be a famous tennis player?", "Very true.  Did you now polo shirts were initially inventyed be a famous tennis player?", "Very true.  Did you now polo shirts were initially invenyed be a famous tennis player?", "Very true.  Did you now polo shirts were initially invened be a famous tennis player?", "Very true.  Did you now polo shirts were initially inventwed be a famous tennis player?", "Very true.  Did you now polo shirts were initially inventewd be a famous tennis player?", "Very true.  Did you now polo shirts were initially inventwd be a famous tennis player?", "Very true.  Did you now polo shirts were initially inventerd be a famous tennis player?", "Very true.  Did you now polo shirts were initially inventd be a famous tennis player?", "Very true.  Did you now polo shirts were initially invented be a fsamous tennis player?", "Very true.  Did you now polo shirts were initially invented be a fasmous tennis player?", "Very true.  Did you now polo shirts were initially invented be a fsmous tennis player?", "Very true.  Did you now polo shirts were initially invented be a fmous tennis player?", "Very true.  Did you now polo shirts were initially invented be a fanmous tennis player?", "Very true.  Did you now polo shirts were initially invented be a famnous tennis player?", "Very true.  Did you now polo shirts were initially invented be a fanous tennis player?", "Very true.  Did you now polo shirts were initially invented be a faous tennis player?", "Very true.  Did you now polo shirts were initially invented be a famious tennis player?", "Very true.  Did you now polo shirts were initially invented be a fampus tennis player?", "Very true.  Did you now polo shirts were initially invented be a famus tennis player?", "Very true.  Did you now polo shirts were initially invented be a famoyus tennis player?", "Very true.  Did you now polo shirts were initially invented be a famouys tennis player?", "Very true.  Did you now polo shirts were initially invented be a famoys tennis player?", "Very true.  Did you now polo shirts were initially invented be a famouis tennis player?", "Very true.  Did you now polo shirts were initially invented be a famos tennis player?", "Very true.  Did you now polo shirts were initially invented be a famous twennis player?", "Very true.  Did you now polo shirts were initially invented be a famous tewnnis player?", "Very true.  Did you now polo shirts were initially invented be a famous twnnis player?", "Very true.  Did you now polo shirts were initially invented be a famous ternnis player?", "Very true.  Did you now polo shirts were initially invented be a famous tnnis player?", "Very true.  Did you now polo shirts were initially invented be a famous tenis player?", "Very true.  Did you now polo shirts were initially invented be a famous tenis player?", "Very true.  Did you now polo shirts were initially invented be a famous tennuis player?", "Very true.  Did you now polo shirts were initially invented be a famous tennius player?", "Very true.  Did you now polo shirts were initially invented be a famous tennus player?", "Very true.  Did you now polo shirts were initially invented be a famous tennois player?", "Very true.  Did you now polo shirts were initially invented be a famous tennios player?", "Very true.  Did you now polo shirts were initially invented be a famous tennos player?", "Very true.  Did you now polo shirts were initially invented be a famous tennis pklayer?", "Very true.  Did you now polo shirts were initially invented be a famous tennis plkayer?", "Very true.  Did you now polo shirts were initially invented be a famous tennis pkayer?", "Very true.  Did you now polo shirts were initially invented be a famous tennis plsayer?", "Very true.  Did you now polo shirts were initially invented be a famous tennis plsyer?", "Very true.  Did you now polo shirts were initially invented be a famous tennis plyer?", "Very true.  Did you now polo shirts were initially invented be a famous tennis platyer?", "Very true.  Did you now polo shirts were initially invented be a famous tennis playter?", "Very true.  Did you now polo shirts were initially invented be a famous tennis plauyer?", "Very true.  Did you now polo shirts were initially invented be a famous tennis playuer?", "Very true.  Did you now polo shirts were initially invented be a famous tennis plauer?", "Very true.  Did you now polo shirts were initially invented be a famous tennis playwer?", "Very true.  Did you now polo shirts were initially invented be a famous tennis playewr?", "Very true.  Did you now polo shirts were initially invented be a famous tennis playwr?", "Very true.  Did you now polo shirts were initially invented be a famous tennis playr?"];
+
+			const outputElement = document.getElementById("output");
+			const startButton = document.getElementById("startButton");
+			const stopButton = document.getElementById("stopButton");
+			const stringLaps = document.getElementById("stringLaps");
+
+			let currentIndex = 0;
+			var intervalId;
+
+			function updateText() {
+				outputElement.textContent = strings[currentIndex];
+				currentIndex = (currentIndex + 1) % strings.length;
+			}
+
+			function startAlternating() {
+				stringLaps.style.display = "none"; // Hide the "String laps" text
+				document.getElementById("buttons").style.display = "none"; // Hide the buttons
+				// intervalId = setInterval(updateText, 300);
+				setTimeout(() => {
+					clearInterval(intervalId);
+					stringLaps.style.display = "none"; // Hide the "String laps" text
+					document.getElementById("buttons").style.display = "none"; // Hide the buttons
+					intervalId = setInterval(updateText, 300);
+				}, 6000); // Start animation after a 2-second delay
+			}
+
+			function stopAlternating() {
+				clearInterval(intervalId);
+				stringLaps.style.display = "block"; // Show the "String laps" text
+				document.getElementById("buttons").style.display = "flex"; // Show the buttons
+			}
+
+			startButton.addEventListener("click", startAlternating);
+			stopButton.addEventListener("click", stopAlternating);
+
+			updateText(); // Initial update
+		</script>
+	</body>
+</html>

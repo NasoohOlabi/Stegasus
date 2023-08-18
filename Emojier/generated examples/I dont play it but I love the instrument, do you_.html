@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>String Alternator</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				height: 100vh;
+				margin: 0;
+				background-color: #fff;
+			}
+			#output {
+				font-size: 24px;
+				text-align: center;
+				margin-bottom: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div
+			style="
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+			"
+		>
+			<div id="stringLaps" style="display: block">String laps</div>
+			<div id="output">Initial Text</div>
+			<div id="buttons">
+				<button id="startButton">Start</button>
+				<button id="stopButton">Stop</button>
+			</div>
+		</div>
+		<script>
+			const strings = [" I dont play it but I love the instrument, do you?", " I dont play \ud83d\ude42\ud83d\ude42 it but I love the instrument, do you?", " I dont play \ud83d\ude0a\ud83d\ude0a\ud83d\ude0a it but I love the instrument, do you?", " I dont play \ud83d\ude0a it but I love the instrument, do you?", " I dont play \ud83d\ude39\ud83d\ude39 it but I love the instrument, do you?", " I dont play \ud83e\udd23\ud83e\udd23\ud83e\udd23 it but I love the instrument, do you?", " I dont play \ud83e\udd23 it but I love the instrument, do you?", " I dont play \ud83d\ude02\ud83d\ude02 it but I love the instrument, do you?", " I dont play \ud83d\ude02 it but I love the instrument, do you?", " I dont play \ud83d\ude02\ud83d\ude02\ud83d\ude02 it but I love the instrument, do you?", " I dont play \ud83e\udd23\ud83e\udd23 it but I love the instrument, do you?", " I dont play \ud83d\ude39 it but I love the instrument, do you?", " I dont play \ud83d\ude39\ud83d\ude39\ud83d\ude39 it but I love the instrument, do you?", " I dont play \ud83d\ude0a\ud83d\ude0a it but I love the instrument, do you?", " I dont play \ud83d\ude42 it but I love the instrument, do you?", " I dont play \ud83d\ude42\ud83d\ude42\ud83d\ude42 it but I love the instrument, do you?", " I dont play it but I love \ud83d\ude42\ud83d\ude42 the instrument, do you?", " I dont play it but I love \ud83d\ude0a\ud83d\ude0a\ud83d\ude0a the instrument, do you?", " I dont play it but I love \ud83d\ude0a the instrument, do you?", " I dont play it but I love \ud83e\udd29\ud83e\udd29 the instrument, do you?", " I dont play it but I love \ud83e\udd70\ud83e\udd70\ud83e\udd70 the instrument, do you?", " I dont play it but I love \ud83e\udd70 the instrument, do you?", " I dont play it but I love \ud83d\ude3b\ud83d\ude3b the instrument, do you?", " I dont play it but I love \ud83d\ude0d\ud83d\ude0d\ud83d\ude0d the instrument, do you?", " I dont play it but I love \ud83d\ude0d the instrument, do you?", " I dont play it but I love \ud83d\udc9f\ud83d\udc9f the instrument, do you?", " I dont play it but I love \ud83d\udc9e\ud83d\udc9e\ud83d\udc9e the instrument, do you?", " I dont play it but I love \ud83d\udc9e the instrument, do you?", " I dont play it but I love \ud83d\udc98\ud83d\udc98 the instrument, do you?", " I dont play it but I love \ud83d\udc97\ud83d\udc97\ud83d\udc97 the instrument, do you?", " I dont play it but I love \ud83d\udc97 the instrument, do you?", " I dont play it but I love \ud83d\udc96\ud83d\udc96 the instrument, do you?", " I dont play it but I love \ud83d\udc93\ud83d\udc93\ud83d\udc93 the instrument, do you?", " I dont play it but I love \ud83d\udc93 the instrument, do you?", " I dont play it but I love \u2764\u2764 the instrument, do you?", " I dont play it but I love \u2764 the instrument, do you?", " I dont play it but I love \u2764\u2764\u2764 the instrument, do you?", " I dont play it but I love \ud83d\udc93\ud83d\udc93 the instrument, do you?", " I dont play it but I love \ud83d\udc96 the instrument, do you?", " I dont play it but I love \ud83d\udc96\ud83d\udc96\ud83d\udc96 the instrument, do you?", " I dont play it but I love \ud83d\udc97\ud83d\udc97 the instrument, do you?", " I dont play it but I love \ud83d\udc98 the instrument, do you?", " I dont play it but I love \ud83d\udc98\ud83d\udc98\ud83d\udc98 the instrument, do you?", " I dont play it but I love \ud83d\udc9e\ud83d\udc9e the instrument, do you?", " I dont play it but I love \ud83d\udc9f the instrument, do you?", " I dont play it but I love \ud83d\udc9f\ud83d\udc9f\ud83d\udc9f the instrument, do you?", " I dont play it but I love \ud83d\ude0d\ud83d\ude0d the instrument, do you?", " I dont play it but I love \ud83d\ude3b the instrument, do you?", " I dont play it but I love \ud83d\ude3b\ud83d\ude3b\ud83d\ude3b the instrument, do you?", " I dont play it but I love \ud83e\udd70\ud83e\udd70 the instrument, do you?", " I dont play it but I love \ud83e\udd29 the instrument, do you?", " I dont play it but I love \ud83e\udd29\ud83e\udd29\ud83e\udd29 the instrument, do you?", " I dont play it but I love \ud83d\ude0a\ud83d\ude0a the instrument, do you?", " I dont play it but I love \ud83d\ude42 the instrument, do you?", " I dont play it but I love \ud83d\ude42\ud83d\ude42\ud83d\ude42 the instrument, do you?", " I dont play it but I love the instrument \ud83d\udc9f\ud83d\udc9f, do you?", " I dont play it but I love the instrument \ud83d\udc9e\ud83d\udc9e\ud83d\udc9e, do you?", " I dont play it but I love the instrument \ud83d\udc9e, do you?", " I dont play it but I love the instrument \ud83d\udc98\ud83d\udc98, do you?", " I dont play it but I love the instrument \ud83d\udc97\ud83d\udc97\ud83d\udc97, do you?", " I dont play it but I love the instrument \ud83d\udc97, do you?", " I dont play it but I love the instrument \ud83d\udc96\ud83d\udc96, do you?", " I dont play it but I love the instrument \ud83d\udc93\ud83d\udc93\ud83d\udc93, do you?", " I dont play it but I love the instrument \ud83d\udc93, do you?", " I dont play it but I love the instrument \u2764\u2764, do you?", " I dont play it but I love the instrument \ud83d\ude42\ud83d\ude42\ud83d\ude42, do you?", " I dont play it but I love the instrument \ud83d\ude42, do you?", " I dont play it but I love the instrument \ud83d\ude0a\ud83d\ude0a, do you?", " I dont play it but I love the instrument \ud83d\ude0a, do you?", " I dont play it but I love the instrument \ud83d\ude0a\ud83d\ude0a\ud83d\ude0a, do you?", " I dont play it but I love the instrument \ud83d\ude42\ud83d\ude42, do you?", " I dont play it but I love the instrument \u2764, do you?", " I dont play it but I love the instrument \u2764\u2764\u2764, do you?", " I dont play it but I love the instrument \ud83d\udc93\ud83d\udc93, do you?", " I dont play it but I love the instrument \ud83d\udc96, do you?", " I dont play it but I love the instrument \ud83d\udc96\ud83d\udc96\ud83d\udc96, do you?", " I dont play it but I love the instrument \ud83d\udc97\ud83d\udc97, do you?", " I dont play it but I love the instrument \ud83d\udc98, do you?", " I dont play it but I love the instrument \ud83d\udc98\ud83d\udc98\ud83d\udc98, do you?", " I dont play it but I love the instrument \ud83d\udc9e\ud83d\udc9e, do you?", " I dont play it but I love the instrument \ud83d\udc9f, do you?", " I dont play it but I love the instrument \ud83d\udc9f\ud83d\udc9f\ud83d\udc9f, do you?", " I dont play it but I love the instrument, do \ud83d\ude42\ud83d\ude42 you?", " I dont play it but I love the instrument, do \ud83d\ude0a\ud83d\ude0a\ud83d\ude0a you?", " I dont play it but I love the instrument, do \ud83d\ude0a you?", " I dont play it but I love the instrument, do \ud83d\udc9f\ud83d\udc9f you?", " I dont play it but I love the instrument, do \ud83d\udc9e\ud83d\udc9e\ud83d\udc9e you?", " I dont play it but I love the instrument, do \ud83d\udc9e you?", " I dont play it but I love the instrument, do \ud83d\udc98\ud83d\udc98 you?", " I dont play it but I love the instrument, do \ud83d\udc97\ud83d\udc97\ud83d\udc97 you?", " I dont play it but I love the instrument, do \ud83d\udc97 you?", " I dont play it but I love the instrument, do \ud83d\udc96\ud83d\udc96 you?", " I dont play it but I love the instrument, do \ud83d\udc93\ud83d\udc93\ud83d\udc93 you?", " I dont play it but I love the instrument, do \ud83d\udc93 you?", " I dont play it but I love the instrument, do \u2764\u2764 you?", " I dont play it but I love the instrument, do \u2764 you?", " I dont play it but I love the instrument, do \u2764\u2764\u2764 you?", " I dont play it but I love the instrument, do \ud83d\udc93\ud83d\udc93 you?", " I dont play it but I love the instrument, do \ud83d\udc96 you?", " I dont play it but I love the instrument, do \ud83d\udc96\ud83d\udc96\ud83d\udc96 you?", " I dont play it but I love the instrument, do \ud83d\udc97\ud83d\udc97 you?", " I dont play it but I love the instrument, do \ud83d\udc98 you?", " I dont play it but I love the instrument, do \ud83d\udc98\ud83d\udc98\ud83d\udc98 you?", " I dont play it but I love the instrument, do \ud83d\udc9e\ud83d\udc9e you?", " I dont play it but I love the instrument, do \ud83d\udc9f you?", " I dont play it but I love the instrument, do \ud83d\udc9f\ud83d\udc9f\ud83d\udc9f you?", " I dont play it but I love the instrument, do \ud83d\ude0a\ud83d\ude0a you?", " I dont play it but I love the instrument, do \ud83d\ude42 you?", " I dont play it but I love the instrument, do \ud83d\ude42\ud83d\ude42\ud83d\ude42 you?"];
+
+			const outputElement = document.getElementById("output");
+			const startButton = document.getElementById("startButton");
+			const stopButton = document.getElementById("stopButton");
+			const stringLaps = document.getElementById("stringLaps");
+
+			let currentIndex = 0;
+			var intervalId;
+
+			function updateText() {
+				outputElement.textContent = strings[currentIndex];
+				currentIndex = (currentIndex + 1) % strings.length;
+			}
+
+			function startAlternating() {
+				stringLaps.style.display = "none"; // Hide the "String laps" text
+				document.getElementById("buttons").style.display = "none"; // Hide the buttons
+				// intervalId = setInterval(updateText, 300);
+				setTimeout(() => {
+					clearInterval(intervalId);
+					stringLaps.style.display = "none"; // Hide the "String laps" text
+					document.getElementById("buttons").style.display = "none"; // Hide the buttons
+					intervalId = setInterval(updateText, 300);
+				}, 6000); // Start animation after a 2-second delay
+			}
+
+			function stopAlternating() {
+				clearInterval(intervalId);
+				stringLaps.style.display = "block"; // Show the "String laps" text
+				document.getElementById("buttons").style.display = "flex"; // Show the buttons
+			}
+
+			startButton.addEventListener("click", startAlternating);
+			stopButton.addEventListener("click", stopAlternating);
+
+			updateText(); // Initial update
+		</script>
+	</body>
+</html>

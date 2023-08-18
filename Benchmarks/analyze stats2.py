@@ -24,12 +24,9 @@ def draw_cap(y_column,name):
 	x = df_sorted[x_column]
 	y = df_sorted[y_column]
 
-	coefficients = np.polyfit(np.log(x), y, 1)
-	x_new = np.linspace(min(x), max(x), 100) # type: ignore
-	y_new = np.polyval(coefficients, np.log(x_new))
-
-	mean_bits = np.mean(df_sorted['bits'])
-	std_bits = np.std(df_sorted['bits'])
+	
+	mean_bits = np.mean(df_sorted[y_column.replace('capacity','bits')])
+	std_bits = np.std(df_sorted[y_column.replace('capacity','bits')])
 	mean_x = np.mean(x)
 	std_x = np.std(x)
 	mean_y = np.mean(y)
@@ -37,7 +34,6 @@ def draw_cap(y_column,name):
 
 	plt.title(name)
 	plt.scatter(x, y, label='Samples')
-	plt.plot(x_new, y_new, color='red', label='Tendency')
 	plt.grid(True)
 	plt.xlabel(x_column)
 	plt.ylabel('Capacity')
@@ -50,33 +46,54 @@ def draw_cap(y_column,name):
 	print(f'Mean Ratio: {mean_y:.2f}\nStd Ratio: {std_y:.2f}')
 
 	plt.show()
-	plt.savefig(y_column)
+	# plt.savefig(y_column)
+
+import matplotlib.pyplot as plt
 
 draw_cap('capacity','Stegasus')
+print('#'*30)
 draw_cap('typo capacity','Typoceros')
+print('#'*30)
 draw_cap('emo capacity','Emojier')
+print('#'*30)
 draw_cap('fsb capacity','Frustratingly Simple Bert')
+print('#'*30)
 
-# Calculate average shares and store data for pie chart
-avg_share_fsb = np.mean(df['fsb share'])
-avg_share_typo = np.mean(df['typo share'])
-avg_share_emo = np.mean(df['emo share'])
 
-share_data['fsb'].append(avg_share_fsb)
-share_data['typo'].append(avg_share_typo)
-share_data['emo'].append(avg_share_emo)
+# import numpy as np
 
-# Create the pie chart
-labels = ['fsb', 'typo', 'emo']
-average_shares = [
-np.mean(share_data['fsb']),
-np.mean(share_data['typo']),
-np.mean(share_data['emo'])
-]
+# # Calculate average shares and store data for pie chart
+# avg_share_fsb = np.mean(df['fsb share'])
+# avg_share_typo = np.mean(df['typo share'])
+# avg_share_emo = np.mean(df['emo share'])
 
-plt.title('Average Share Distribution')
-plt.pie(average_shares, labels=labels, autopct='%1.1f%%', startangle=140)
-plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+# share_data['fsb'].append(avg_share_fsb)
+# share_data['typo'].append(avg_share_typo)
+# share_data['emo'].append(avg_share_emo)
 
-plt.show()
-plt.savefig('pie')
+# # Create the pie chart
+# labels = [
+#  'Frustratingly Simple Bert'
+# , 'Typoceros'
+# , 'Emojier'
+# ]
+# average_shares = [
+# np.mean(share_data['fsb']),
+# np.mean(share_data['typo']),
+# np.mean(share_data['emo'])
+# ]
+
+# # Define cooler colors
+# cool_colors = ['#66c2a5', '#fc8d62', '#8da0cb']
+
+# plt.title('Average Share Distribution')
+# plt.pie(average_shares, labels=labels, autopct='%1.1f%%', startangle=140, colors=cool_colors)
+# plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+
+# # Add legend outside the pie chart
+# plt.legend(labels, title="Layers", loc="center left", bbox_to_anchor=(1, 0, 0.5, 1))
+
+# plt.tight_layout()  # Adjust layout to prevent labels from being cut off
+
+# # plt.show()
+# plt.savefig('pie.png', dpi=300, bbox_inches='tight')  # Save the figure with higher resolution

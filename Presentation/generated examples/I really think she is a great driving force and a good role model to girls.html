@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>String Alternator</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				height: 100vh;
+				margin: 0;
+				background-color: #fff;
+			}
+			#output {
+				font-size: 24px;
+				text-align: center;
+				margin-bottom: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div
+			style="
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+			"
+		>
+			<div id="stringLaps" style="display: block">String laps</div>
+			<div id="output">Initial Text</div>
+			<div id="buttons">
+				<button id="startButton">Start</button>
+				<button id="stopButton">Stop</button>
+			</div>
+		</div>
+		<script>
+			const strings = ["I really think she is a great driving force and a good role model to girls.", "I rweally think she is a great driving force and a good role model to girls.", "I rewally think she is a great driving force and a good role model to girls.", "I rwally think she is a great driving force and a good role model to girls.", "I resally think she is a great driving force and a good role model to girls.", "I reaslly think she is a great driving force and a good role model to girls.", "I reslly think she is a great driving force and a good role model to girls.", "I relly think she is a great driving force and a good role model to girls.", "I really tghink she is a great driving force and a good role model to girls.", "I really thgink she is a great driving force and a good role model to girls.", "I really tgink she is a great driving force and a good role model to girls.", "I really tjhink she is a great driving force and a good role model to girls.", "I really thjink she is a great driving force and a good role model to girls.", "I really tjink she is a great driving force and a good role model to girls.", "I really tink she is a great driving force and a good role model to girls.", "I really thuink she is a great driving force and a good role model to girls.", "I really thiunk she is a great driving force and a good role model to girls.", "I really thoink she is a great driving force and a good role model to girls.", "I really thionk she is a great driving force and a good role model to girls.", "I really thonk she is a great driving force and a good role model to girls.", "I really thibnk she is a great driving force and a good role model to girls.", "I really thinbk she is a great driving force and a good role model to girls.", "I really thibk she is a great driving force and a good role model to girls.", "I really thimk she is a great driving force and a good role model to girls.", "I really thik she is a great driving force and a good role model to girls.", "I really think sghe is a great driving force and a good role model to girls.", "I really think shge is a great driving force and a good role model to girls.", "I really think sjhe is a great driving force and a good role model to girls.", "I really think shje is a great driving force and a good role model to girls.", "I really think sje is a great driving force and a good role model to girls.", "I really think she is a gtreat driving force and a good role model to girls.", "I really think she is a grteat driving force and a good role model to girls.", "I really think she is a gteat driving force and a good role model to girls.", "I really think she is a geat driving force and a good role model to girls.", "I really think she is a grweat driving force and a good role model to girls.", "I really think she is a grewat driving force and a good role model to girls.", "I really think she is a grwat driving force and a good role model to girls.", "I really think she is a gresat driving force and a good role model to girls.", "I really think she is a greast driving force and a good role model to girls.", "I really think she is a grest driving force and a good role model to girls.", "I really think she is a great dreiving force and a good role model to girls.", "I really think she is a great dtriving force and a good role model to girls.", "I really think she is a great drtiving force and a good role model to girls.", "I really think she is a great dtiving force and a good role model to girls.", "I really think she is a great druiving force and a good role model to girls.", "I really think she is a great driuving force and a good role model to girls.", "I really think she is a great druving force and a good role model to girls.", "I really think she is a great droiving force and a good role model to girls.", "I really think she is a great drioving force and a good role model to girls.", "I really think she is a great droving force and a good role model to girls.", "I really think she is a great drving force and a good role model to girls.", "I really think she is a great dricving force and a good role model to girls.", "I really think she is a great drivcing force and a good role model to girls.", "I really think she is a great dricing force and a good role model to girls.", "I really think she is a great dribving force and a good role model to girls.", "I really think she is a great drivbing force and a good role model to girls.", "I really think she is a great dribing force and a good role model to girls.", "I really think she is a great driing force and a good role model to girls.", "I really think she is a great drivng force and a good role model to girls.", "I really think she is a great drivibng force and a good role model to girls.", "I really think she is a great drivinbg force and a good role model to girls.", "I really think she is a great drivibg force and a good role model to girls.", "I really think she is a great drivimg force and a good role model to girls.", "I really think she is a great drivig force and a good role model to girls.", "I really think she is a great driving fiorce and a good role model to girls.", "I really think she is a great driving foirce and a good role model to girls.", "I really think she is a great driving fprce and a good role model to girls.", "I really think she is a great driving forece and a good role model to girls.", "I really think she is a great driving foece and a good role model to girls.", "I really think she is a great driving fotrce and a good role model to girls.", "I really think she is a great driving fortce and a good role model to girls.", "I really think she is a great driving fotce and a good role model to girls.", "I really think she is a great driving foce and a good role model to girls.", "I really think she is a great driving forxce and a good role model to girls.", "I really think she is a great driving forcxe and a good role model to girls.", "I really think she is a great driving forxe and a good role model to girls.", "I really think she is a great driving forvce and a good role model to girls.", "I really think she is a great driving forcve and a good role model to girls.", "I really think she is a great driving forve and a good role model to girls.", "I really think she is a great driving force abnd a good role model to girls.", "I really think she is a great driving force anbd a good role model to girls.", "I really think she is a great driving force and a good riole model to girls.", "I really think she is a great driving force and a good roile model to girls.", "I really think she is a great driving force and a good rple model to girls.", "I really think she is a great driving force and a good rokle model to girls.", "I really think she is a great driving force and a good rolke model to girls.", "I really think she is a great driving force and a good roke model to girls.", "I really think she is a great driving force and a good role miodel to girls.", "I really think she is a great driving force and a good role moidel to girls.", "I really think she is a great driving force and a good role midel to girls.", "I really think she is a great driving force and a good role mpdel to girls.", "I really think she is a great driving force and a good role mdel to girls.", "I really think she is a great driving force and a good role mosdel to girls.", "I really think she is a great driving force and a good role modsel to girls.", "I really think she is a great driving force and a good role mofdel to girls.", "I really think she is a great driving force and a good role modfel to girls.", "I really think she is a great driving force and a good role mofel to girls.", "I really think she is a great driving force and a good role modwel to girls.", "I really think she is a great driving force and a good role modewl to girls.", "I really think she is a great driving force and a good role modwl to girls.", "I really think she is a great driving force and a good role modrel to girls.", "I really think she is a great driving force and a good role moderl to girls.", "I really think she is a great driving force and a good role modrl to girls.", "I really think she is a great driving force and a good role modl to girls.", "I really think she is a great driving force and a good role model to guirls.", "I really think she is a great driving force and a good role model to giurls.", "I really think she is a great driving force and a good role model to gurls.", "I really think she is a great driving force and a good role model to goirls.", "I really think she is a great driving force and a good role model to giorls.", "I really think she is a great driving force and a good role model to gorls.", "I really think she is a great driving force and a good role model to gierls.", "I really think she is a great driving force and a good role model to girels.", "I really think she is a great driving force and a good role model to giels.", "I really think she is a great driving force and a good role model to gitrls.", "I really think she is a great driving force and a good role model to girtls.", "I really think she is a great driving force and a good role model to gitls.", "I really think she is a great driving force and a good role model to girkls.", "I really think she is a great driving force and a good role model to girlks.", "I really think she is a great driving force and a good role model to girks."];
+
+			const outputElement = document.getElementById("output");
+			const startButton = document.getElementById("startButton");
+			const stopButton = document.getElementById("stopButton");
+			const stringLaps = document.getElementById("stringLaps");
+
+			let currentIndex = 0;
+			var intervalId;
+
+			function updateText() {
+				outputElement.textContent = strings[currentIndex];
+				currentIndex = (currentIndex + 1) % strings.length;
+			}
+
+			function startAlternating() {
+				stringLaps.style.display = "none"; // Hide the "String laps" text
+				document.getElementById("buttons").style.display = "none"; // Hide the buttons
+				// intervalId = setInterval(updateText, 300);
+				setTimeout(() => {
+					clearInterval(intervalId);
+					stringLaps.style.display = "none"; // Hide the "String laps" text
+					document.getElementById("buttons").style.display = "none"; // Hide the buttons
+					intervalId = setInterval(updateText, 300);
+				}, 6000); // Start animation after a 2-second delay
+			}
+
+			function stopAlternating() {
+				clearInterval(intervalId);
+				stringLaps.style.display = "block"; // Show the "String laps" text
+				document.getElementById("buttons").style.display = "flex"; // Show the buttons
+			}
+
+			startButton.addEventListener("click", startAlternating);
+			stopButton.addEventListener("click", stopAlternating);
+
+			updateText(); // Initial update
+		</script>
+	</body>
+</html>

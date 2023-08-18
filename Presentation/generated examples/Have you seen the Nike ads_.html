@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>String Alternator</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				height: 100vh;
+				margin: 0;
+				background-color: #fff;
+			}
+			#output {
+				font-size: 24px;
+				text-align: center;
+				margin-bottom: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div
+			style="
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+			"
+		>
+			<div id="stringLaps" style="display: block">String laps</div>
+			<div id="output">Initial Text</div>
+			<div id="buttons">
+				<button id="startButton">Start</button>
+				<button id="stopButton">Stop</button>
+			</div>
+		</div>
+		<script>
+			const strings = ["Have you seen the Nike ads?", "HAve you seen the Nike ads?", "Hsave you seen the Nike ads?", "Hasve you seen the Nike ads?", "Hsve you seen the Nike ads?", "Hacve you seen the Nike ads?", "Havce you seen the Nike ads?", "Habve you seen the Nike ads?", "Havbe you seen the Nike ads?", "Habe you seen the Nike ads?", "Have yiou seen the Nike ads?", "Have ypu seen the Nike ads?", "Have yu seen the Nike ads?", "Have you seen tghe Nike ads?", "Have you seen thge Nike ads?", "Have you seen tge Nike ads?", "Have you seen tjhe Nike ads?", "Have you seen thje Nike ads?", "Have you seen tje Nike ads?", "Have you seen the NIke ads?", "Have you seen the Nuike ads?", "Have you seen the Niuke ads?", "Have you seen the Noike ads?", "Have you seen the Nioke ads?", "Have you seen the Noke ads?", "Have you seen the Nijke ads?", "Have you seen the Nikje ads?", "Have you seen the Nije ads?", "Have you seen the Nike afds?", "Have you seen the Nike adfs?", "Have you seen the Nike afs?"];
+
+			const outputElement = document.getElementById("output");
+			const startButton = document.getElementById("startButton");
+			const stopButton = document.getElementById("stopButton");
+			const stringLaps = document.getElementById("stringLaps");
+
+			let currentIndex = 0;
+			var intervalId;
+
+			function updateText() {
+				outputElement.textContent = strings[currentIndex];
+				currentIndex = (currentIndex + 1) % strings.length;
+			}
+
+			function startAlternating() {
+				stringLaps.style.display = "none"; // Hide the "String laps" text
+				document.getElementById("buttons").style.display = "none"; // Hide the buttons
+				// intervalId = setInterval(updateText, 300);
+				setTimeout(() => {
+					clearInterval(intervalId);
+					stringLaps.style.display = "none"; // Hide the "String laps" text
+					document.getElementById("buttons").style.display = "none"; // Hide the buttons
+					intervalId = setInterval(updateText, 300);
+				}, 6000); // Start animation after a 2-second delay
+			}
+
+			function stopAlternating() {
+				clearInterval(intervalId);
+				stringLaps.style.display = "block"; // Show the "String laps" text
+				document.getElementById("buttons").style.display = "flex"; // Show the buttons
+			}
+
+			startButton.addEventListener("click", startAlternating);
+			stopButton.addEventListener("click", stopAlternating);
+
+			updateText(); // Initial update
+		</script>
+	</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>String Alternator</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				height: 100vh;
+				margin: 0;
+				background-color: #fff;
+			}
+			#output {
+				font-size: 24px;
+				text-align: center;
+				margin-bottom: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div
+			style="
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+			"
+		>
+			<div id="stringLaps" style="display: block">String laps</div>
+			<div id="output">Initial Text</div>
+			<div id="buttons">
+				<button id="startButton">Start</button>
+				<button id="stopButton">Stop</button>
+			</div>
+		</div>
+		<script>
+			const strings = ["What did you think of the last couple elections?", "WHat did you think of the last couple elections?", "Wghat did you think of the last couple elections?", "Whgat did you think of the last couple elections?", "Wgat did you think of the last couple elections?", "Wjhat did you think of the last couple elections?", "Whjat did you think of the last couple elections?", "Wjat did you think of the last couple elections?", "Wat did you think of the last couple elections?", "Whsat did you think of the last couple elections?", "Whast did you think of the last couple elections?", "What diod you think of the last couple elections?", "What dod you think of the last couple elections?", "What did yiou think of the last couple elections?", "What did ypu think of the last couple elections?", "What did yu think of the last couple elections?", "What did you tghink of the last couple elections?", "What did you thgink of the last couple elections?", "What did you tgink of the last couple elections?", "What did you tjhink of the last couple elections?", "What did you thjink of the last couple elections?", "What did you tjink of the last couple elections?", "What did you tink of the last couple elections?", "What did you thuink of the last couple elections?", "What did you thiunk of the last couple elections?", "What did you thoink of the last couple elections?", "What did you thionk of the last couple elections?", "What did you thonk of the last couple elections?", "What did you thibnk of the last couple elections?", "What did you thinbk of the last couple elections?", "What did you thibk of the last couple elections?", "What did you thimk of the last couple elections?", "What did you thik of the last couple elections?", "What did you think of tghe last couple elections?", "What did you think of thge last couple elections?", "What did you think of tge last couple elections?", "What did you think of tjhe last couple elections?", "What did you think of thje last couple elections?", "What did you think of tje last couple elections?", "What did you think of the ladst couple elections?", "What did you think of the lasdt couple elections?", "What did you think of the ladt couple elections?", "What did you think of the last ciouple elections?", "What did you think of the last cpuple elections?", "What did you think of the last cuple elections?", "What did you think of the last coyuple elections?", "What did you think of the last couyple elections?", "What did you think of the last coyple elections?", "What did you think of the last couiple elections?", "What did you think of the last cople elections?", "What did you think of the last couople elections?", "What did you think of the last coupole elections?", "What did you think of the last coupkle elections?", "What did you think of the last couplke elections?", "What did you think of the last coupke elections?", "What did you think of the last couple eklections?", "What did you think of the last couple elkections?", "What did you think of the last couple elwections?", "What did you think of the last couple elewctions?", "What did you think of the last couple elwctions?", "What did you think of the last couple elrections?", "What did you think of the last couple elerctions?", "What did you think of the last couple elrctions?", "What did you think of the last couple elctions?", "What did you think of the last couple elexctions?", "What did you think of the last couple elecxtions?", "What did you think of the last couple elextions?", "What did you think of the last couple elevctions?", "What did you think of the last couple elecvtions?", "What did you think of the last couple elevtions?", "What did you think of the last couple eletions?", "What did you think of the last couple elecrtions?", "What did you think of the last couple electrions?", "What did you think of the last couple elecrions?", "What did you think of the last couple elecytions?", "What did you think of the last couple electyions?", "What did you think of the last couple elecyions?", "What did you think of the last couple elecions?", "What did you think of the last couple electuions?", "What did you think of the last couple electiuons?", "What did you think of the last couple electuons?", "What did you think of the last couple electons?", "What did you think of the last couple electipns?", "What did you think of the last couple electins?", "What did you think of the last couple electiobns?", "What did you think of the last couple electionbs?", "What did you think of the last couple electiobs?", "What did you think of the last couple electioms?", "What did you think of the last couple electios?"];
+
+			const outputElement = document.getElementById("output");
+			const startButton = document.getElementById("startButton");
+			const stopButton = document.getElementById("stopButton");
+			const stringLaps = document.getElementById("stringLaps");
+
+			let currentIndex = 0;
+			var intervalId;
+
+			function updateText() {
+				outputElement.textContent = strings[currentIndex];
+				currentIndex = (currentIndex + 1) % strings.length;
+			}
+
+			function startAlternating() {
+				stringLaps.style.display = "none"; // Hide the "String laps" text
+				document.getElementById("buttons").style.display = "none"; // Hide the buttons
+				// intervalId = setInterval(updateText, 300);
+				setTimeout(() => {
+					clearInterval(intervalId);
+					stringLaps.style.display = "none"; // Hide the "String laps" text
+					document.getElementById("buttons").style.display = "none"; // Hide the buttons
+					intervalId = setInterval(updateText, 300);
+				}, 6000); // Start animation after a 2-second delay
+			}
+
+			function stopAlternating() {
+				clearInterval(intervalId);
+				stringLaps.style.display = "block"; // Show the "String laps" text
+				document.getElementById("buttons").style.display = "flex"; // Show the buttons
+			}
+
+			startButton.addEventListener("click", startAlternating);
+			stopButton.addEventListener("click", stopAlternating);
+
+			updateText(); // Initial update
+		</script>
+	</body>
+</html>
