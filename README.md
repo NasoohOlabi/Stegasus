@@ -19,7 +19,11 @@ We all make misstakes and roll on the floor laughing 🤣🤣🤣.
 
 ## System Acheticture
 
-![Alt text](image.png)
+### Stegasus Engine
+
+we created a Layer based Steganography Engine (Similar to OSI layers) each layer reflects a fact about modern day texting or a defect in texts
+
+![Alt text](Images/Engine.svg)
 
 ## Still in Development
 
@@ -30,11 +34,9 @@ We all make misstakes and roll on the floor laughing 🤣🤣🤣.
 - [X] Try make Emoji multiplicity reach 3.
 - [X] Try add 👍 Emoji since it's missing in labels.
 - [X] help Emojier after you shot it in the head with the last commit cutting ticks in half
-- [ ] Benchmarks and Demo.
-  - [ ] Tune Emojier and Typoceros on high capacity then low capacity.
-  - [ ] Try each setting on the same chat.
-  - [ ] Pick low
+- [X] Benchmarks and Demo.
+  - [X] Tune Emojier and Typoceros on high capacity then low capacity.
   - [ ] Try on a large chat dataset.
-  - [ ] benchmark without compression.
+  - [X] benchmark without compression.
 - [ ] first layer should be chat aware!
 - [X] package it
