@@ -17,6 +17,10 @@ We all make misstakes and roll on the floor laughing 🤣🤣🤣.
 
  [Typoceros](https://github.com/NasoohOlabi/Typoceros) The Typo Engine.
 
+## System Acheticture
+
+![Alt text](image.png)
+
 ## Still in Development
 
 - [X] Migrate Typoceros to java to solve the lang_tool bottle neck
